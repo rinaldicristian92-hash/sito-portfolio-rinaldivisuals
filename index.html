@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristian Rinaldi | Creative Studio</title>
+    
+    <!-- Google Fonts: Montserrat for that bold, agency brutalist typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;0,800;0,900;1,500&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for standard icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================================================
+           CSS VARIABLES & "CREATIVE STUDIO" DESIGN SYSTEM
+           ========================================================================== */
+        :root {
+            --bg-color: #0c0c0c; /* Deep studio black */
+            --text-main: #f4f3f0; /* Off-white from your original site */
+            --text-muted: #888888;
+            --accent: #e62020; /* Red accent */
+            --font-main: 'Montserrat', sans-serif;
+            
+            --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-fast: all 0.3s ease;
+        }
+
+        /* ==========================================================================
+           RESET & GLOBAL
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none; /* Custom cursor */
+        }
+
+        /* Personalizzazione evidenziazione testo (Rosso) */
+        ::selection {
+            background-color: var(--accent);
+            color: #ffffff;
+        }
+
+        ::-moz-selection {
+            background-color: var(--accent);
+            color: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Custom Cursor */
+        .cursor-dot, .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(230, 32, 32, 0.5);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
+        body:hover .cursor-outline.hovered {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(230, 32, 32, 0.1);
+            border-color: var(--accent);
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, .massive-text {
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 0.9;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 5vw;
+        }
+
+        section {
+            padding: 10vw 0;
+        }
+
+        /* ==========================================================================
+           HEADER & NAVIGATION
+           ========================================================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 5vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            mix-blend-mode: difference;
+            transition: var(--transition-smooth);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-decoration: none;
+            color: #fff;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .menu-btn {
+            font-size: 1rem;
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent);
+            transform: translateX(-100%);
+            transition: var(--transition-smooth);
+        }
+
+        .menu-btn:hover::after {
+            transform: translateX(0);
+        }
+
+        /* ==========================================================================
+           HERO SECTION
+           ========================================================================== */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 2vh;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: clamp(4rem, 12vw, 15rem);
+            letter-spacing: -0.04em;
+            margin-left: -0.5vw; /* Optical alignment */
+            white-space: nowrap;
+        }
+
+        .hero-roles {
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-weight: 300;
+            color: var(--text-muted);
+            margin-top: 2vh;
+            max-width: 800px;
+            line-height: 1.2;
+        }
+
+        /* ==========================================================================
+           MARQUEE (SCROLLING TEXT TAPE)
+           ========================================================================== */
+        .marquee-wrapper {
+            width: 100%;
+            overflow: hidden;
+            background-color: var(--accent);
+            color: var(--bg-color);
+            padding: 2vh 0;
+            transform: rotate(-2deg) scale(1.05);
+            margin: 5vw 0;
+            display: flex;
+        }
+
+        .marquee {
+            display: flex;
+            white-space: nowrap;
+        }
+
+        .marquee-content {
+            display: flex;
+            flex-shrink: 0;
+            animation: scroll 20s linear infinite;
+        }
+
+        .marquee-content span {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            padding: 0 2vw;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* ==========================================================================
+           BRUSH MARQUEE DIVIDER
+           ========================================================================== */
+        .brush-divider {
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+            background-color: transparent;
+            margin: 5vw 0;
+            display: flex;
+            align-items: center;
+            transform: rotate(1deg) scale(1.1); /* Inclinazione opposta al nastro iniziale */
+            pointer-events: none;
+        }
+
+        .brush-track {
+            display: flex;
+            white-space: nowrap;
+            animation: scroll-brush 15s linear infinite;
+        }
+
+        .brush-svg {
+            height: 120px;
+            width: auto;
+            flex-shrink: 0;
+            fill: var(--accent);
+        }
+
+        @keyframes scroll-brush {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ==========================================================================
+           ABOUT SECTION
+           ========================================================================== */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 5vw;
+            align-items: start;
+            margin-bottom: 15vw;
+        }
+
+        .section-label {
+            font-size: 1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            border-bottom: 2px solid var(--text-muted);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .about-text {
+            font-size: clamp(1.5rem, 3.5vw, 4rem);
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .about-text span {
+            color: var(--text-muted);
+        }
+
+        /* ==========================================================================
+           ABOUT ME (SU DI ME / PROFILO) SECTION
+           ========================================================================== */
+        .about-me-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8vw;
+            align-items: center;
+        }
+
+        .about-me-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .about-me-text {
+            font-size: clamp(1.1rem, 1.4vw, 1.25rem);
+            color: var(--text-main);
+            font-weight: 500;
+            line-height: 1.6;
+            max-width: 650px;
+        }
+
+        /* Collage a due immagini */
+        .about-me-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2vw;
+            align-items: center;
+            position: relative;
+        }
+
+        .about-me-img-wrapper {
+            width: 100%;
+            overflow: hidden;
+            background: #1a1a1a;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .about-me-img-wrapper.portrait {
+            aspect-ratio: 3/4;
+            transform: translateY(-5%);
+        }
+
+        .about-me-img-wrapper.cv {
+            aspect-ratio: 1 / 1.414;
+            transform: translateY(10%);
+        }
+
+        .about-me-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(80%);
+            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), filter 1s ease;
+            display: block;
+        }
+
+        .about-me-img-wrapper:hover img {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+        }
+
+        /* ==========================================================================
+           RESUME / CV TIMELINE SECTION
+           ========================================================================== */
+        .resume-section {
+            margin-top: 15vw;
+        }
+
+        .resume-header {
+            margin-bottom: 4vw;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 1rem;
+        }
+
+        .resume-list {
+            margin-bottom: 8vw;
+        }
+
+        .resume-item {
+            display: grid;
+            grid-template-columns: 1fr 3.5fr;
+            gap: 4vw;
+            padding: 3vw 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition-smooth);
+        }
+
+        .resume-item:hover {
+            padding-left: 1vw;
+            background-color: rgba(230, 32, 32, 0.03);
+        }
+
+        .resume-year {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .resume-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .resume-role {
+            font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+            font-weight: 900;
+            color: var(--text-main);
+            line-height: 1.1;
+        }
+
+        .resume-item:hover .resume-role {
+            color: var(--accent);
+        }
+
+        .resume-desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            max-width: 800px;
+            font-weight: 500;
+        }
+
+        /* ==========================================================================
+           SERVICES (AGENCY LIST STYLE)
+           ========================================================================== */
+        .services-section {
+            margin-top: 15vw;
+            margin-bottom: 5vw;
+        }
+
+        .services-header {
+            margin-bottom: 8vw;
+        }
+
+        .services-list {
+            list-style: none;
+        }
+
+        .service-item {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 3vw 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-item:first-child {
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .service-content-left {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition-smooth);
+        }
+
+        .service-name {
+            font-size: clamp(2rem, 6vw, 7rem);
+            font-weight: 900;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--text-main);
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .service-number {
+            font-size: clamp(1rem, 2vw, 2rem);
+            font-weight: 300;
+            color: var(--text-muted);
+            transition: var(--transition-smooth);
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--accent);
+            transform: translateY(100%);
+            transition: var(--transition-smooth);
+            z-index: 1;
+        }
+
+        .service-item:hover::before {
+            transform: translateY(0);
+        }
+
+        .service-item:hover .service-content-left {
+            transform: translateX(2vw);
+        }
+
+        .service-item:hover .service-name {
+            color: var(--bg-color);
+            -webkit-text-stroke: 0px transparent;
+        }
+
+        .service-item:hover .service-number {
+            color: var(--bg-color);
+        }
+
+        .software-details {
+            font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+            text-transform: none;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-top: 10px;
+            letter-spacing: 0;
+            line-height: 1.4;
+            transition: var(--transition-smooth);
+        }
+
+        .service-item:hover .software-details {
+            color: var(--bg-color);
+        }
+
+        /* ==========================================================================
+           QR LINKS SECTION (NEW)
+           ========================================================================== */
+        .links-section {
+            text-align: center;
+            padding: 5vw 0 10vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .links-title {
+            font-size: clamp(1.5rem, 3.5vw, 4.5rem);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .arrow-animated {
+            animation: bounce 1.5s infinite;
+            color: var(--accent);
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .qr-wrapper {
+            width: clamp(200px, 15vw, 300px);
+            background: white;
+            padding: 1rem;
+            border-radius: 4px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* ==========================================================================
+           PORTFOLIO / WORKS
+           ========================================================================== */
+        .works-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 5vw;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3vw;
+            margin-bottom: 6vw;
+        }
+
+        .more-works-container {
+            text-align: center;
+            margin-bottom: 12vw;
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .work-item {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .work-item:nth-child(even) {
+            margin-top: 10vw;
+        }
+
+        .work-img-wrapper {
+            width: 100%;
+            aspect-ratio: 4/5;
+            overflow: hidden;
+            background: #1a1a1a;
+        }
+
+        .work-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+            filter: grayscale(80%);
+        }
+
+        .work-item:hover .work-img-wrapper img {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+        }
+
+        .work-info {
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .work-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        /* ==========================================================================
+           FOOTER / CTA MASSIVA
+           ========================================================================== */
+        footer {
+            background-color: var(--text-main);
+            color: var(--bg-color);
+            padding: 10vw 0 2vw;
+            text-align: center;
+        }
+
+        .footer-cta {
+            font-size: clamp(3rem, 10vw, 12rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 0.8;
+            letter-spacing: -0.03em;
+            text-decoration: none;
+            color: var(--bg-color);
+            display: inline-block;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-cta:hover {
+            color: transparent;
+            -webkit-text-stroke: 2px var(--bg-color);
+        }
+
+        .footer-cta span {
+            display: block;
+            color: var(--accent);
+            -webkit-text-stroke: 0;
+        }
+
+        .footer-bottom {
+            margin-top: 10vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .social-links a {
+            color: var(--bg-color);
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ==========================================================================
+           ANIMATIONS & REVEALS
+           ========================================================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==========================================================================
+           LIGHTBOX / FULLSCREEN IMAGES
+           ========================================================================== */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 9000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            transform: scale(0.95);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+        }
+
+        .lightbox.active .lightbox-img {
+            transform: scale(1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 4rem;
+            color: #ffffff;
+            font-weight: 300;
+            line-height: 1;
+            transition: color 0.3s ease;
+            z-index: 9001;
+            user-select: none;
+        }
+
+        .lightbox-close:hover {
+            color: var(--accent);
+        }
+
+        /* ==========================================================================
+           RESPONSIVE
+           ========================================================================== */
+        @media (max-width: 768px) {
+            .about, .about-me-grid {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+            .about {
+                margin-bottom: 25vw;
+            }
+            .about-me-content {
+                order: 2;
+            }
+            .about-me-images {
+                order: 1;
+            }
+            .about-me-img-wrapper.portrait {
+                transform: translateY(0);
+            }
+            .resume-item {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .services-section {
+                margin-top: 25vw;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                margin-bottom: 8vw;
+            }
+            .more-works-container {
+                margin-bottom: 20vw;
+            }
+            .work-item:nth-child(even) {
+                margin-top: 0;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .social-links a {
+                margin: 0 1rem;
+            }
+            .lightbox-close {
+                top: 20px;
+                right: 20px;
+                font-size: 3rem;
+            }
+            .brush-divider {
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CUSTOM CURSOR -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+
+    <!-- HEADER -->
+    <header>
+        <a href="#" class="logo interactive">CR / Studio</a>
+        <a href="#contact" class="menu-btn interactive">Lavoriamo Insieme</a>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero container">
+        <span class="hero-subtitle reveal">Cristian Rinaldi</span>
+        <h1 class="reveal">RINALDI<span style="color: var(--accent);">.</span><br>VISUALS</h1>
+        <p class="hero-roles reveal">Graphic Designer & Photographer.<br>Creo identità visive che lasciano il segno.</p>
+    </section>
+
+    <!-- MARQUEE (AGENCY VIBE) -->
+    <div class="marquee-wrapper interactive">
+        <div class="marquee">
+            <div class="marquee-content">
+                <span>Branding</span>
+                <span>&bull;</span>
+                <span>Graphic Design</span>
+                <span>&bull;</span>
+                <span>Photography</span>
+                <span>&bull;</span>
+                <span>Art Direction</span>
+                <span>&bull;</span>
+                <span>Branding</span>
+                <span>&bull;</span>
+                <span>Graphic Design</span>
+                <span>&bull;</span>
+                <span>Photography</span>
+                <span>&bull;</span>
+                <span>Art Direction</span>
+                <span>&bull;</span>
+            </div>
+            <div class="marquee-content" aria-hidden="true">
+                <span>Branding</span>
+                <span>&bull;</span>
+                <span>Graphic Design</span>
+                <span>&bull;</span>
+                <span>Photography</span>
+                <span>&bull;</span>
+                <span>Art Direction</span>
+                <span>&bull;</span>
+                <span>Branding</span>
+                <span>&bull;</span>
+                <span>Graphic Design</span>
+                <span>&bull;</span>
+                <span>Photography</span>
+                <span>&bull;</span>
+                <span>Art Direction</span>
+                <span>&bull;</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- STORYTELLING SECTION (Approccio + Su di me uniti) -->
+    <section class="container">
+        
+        <!-- L'Approccio -->
+        <div class="about">
+            <div class="reveal">
+                <span class="section-label">L'Approccio</span>
+            </div>
+            <div class="reveal">
+                <p class="about-text">
+                    Se cerchi qualcuno che trasformi un’idea in un progetto visivo concreto, sono pronto a farlo. 
+                    <span>Il mio obiettivo è crescere ogni giorno, trasformando idee in identità visive che lasciano il segno.</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Su di me -->
+        <div class="about-me-grid">
+            <div class="about-me-content reveal">
+                <div>
+                    <span class="section-label">Su di me</span>
+                </div>
+                <p class="about-me-text">
+                    Creativo e professionale. Specializzato in Visual Design. 
+                    Sono proattivo, imparo in fretta nuove metodologie di lavoro e mi piace tenermi aggiornato sui trend del momento. 
+                    Con un occhio attento ai dettagli e una passione per le forme decise, costruisco identità visive e layout che comunicano con forza e chiarezza, unendo fotografia, tipografia e design editoriale in un'unica visione coerente.
+                    <br><br>
+                    Mi chiamo Cristian Rinaldi e sono uno studente di Graphic Design presso l’I.S.S. “L. Einaudi” di Foggia. Frequento il quinto anno e ho iniziato il mio percorso di studi nell’anno scolastico 2021/2022.
+                </p>
+            </div>
+
+            <div class="about-me-images reveal">
+                <div class="about-me-img-wrapper portrait interactive">
+                    <img src="ritratto con sfondo.jpg" alt="Cristian Rinaldi - Ritratto">
+                </div>
+                <div class="about-me-img-wrapper cv interactive">
+                    <img src="Curriculum Vitae Semplice Essenziale Minimal Pulito Moderno Bianco Nero Designer.jpg" alt="Cristian Rinaldi - Curriculum Vitae">
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- CURRICULUM -->
+    <section class="container resume-section">
+        
+        <!-- ESPERIENZE -->
+        <div class="resume-header reveal">
+            <span class="section-label">Esperienze</span>
+        </div>
+        
+        <div class="resume-list">
+            <!-- Mostra 2026 -->
+            <div class="resume-item interactive reveal">
+                <div class="resume-year">2026 | mostra fondazione dei monti uniti di foggia</div>
+                <div class="resume-details">
+                    <h4 class="resume-role">Partecipazione alla mostra del 27 gennaio</h4>
+                    <p class="resume-desc">Partecipazione a mostra collettiva con opera selezionata ed esposta al pubblico. Progetto sviluppato in ambito scolastico e presentato in contesto culturale ufficiale.</p>
+                </div>
+            </div>
+
+            <!-- Evento Capitanatale 2025 -->
+            <div class="resume-item interactive reveal">
+                <div class="resume-year">2025 | PARTECIPAZIONE EVENTO CAPITANATALE FOGGIA</div>
+                <div class="resume-details">
+                    <h4 class="resume-role">Impaginazione fondale e poster evento capitanatale foggia</h4>
+                    <p class="resume-desc">Sviluppo layout e impaginazione per evento capitanatale foggia in occasione dell’ ottavo centenario del “cantico delle creature”.</p>
+                </div>
+            </div>
+
+            <!-- Stage 2025-2026 -->
+            <div class="resume-item interactive reveal">
+                <div class="resume-year">2025 &mdash; 2026</div>
+                <div class="resume-details">
+                    <h4 class="resume-role">Stage Scolastico</h4>
+                    <p class="resume-desc">Partecipazione a grani digitali con obiettivo di creare una web app per far conoscere la città di Foggia.</p>
+                </div>
+            </div>
+
+            <!-- Campagna ADMO 2024 -->
+            <div class="resume-item interactive reveal">
+                <div class="resume-year">2024 | impaginazione poster admo puglia</div>
+                <div class="resume-details">
+                    <h4 class="resume-role">Promozione campagna pubblicitaria con Gianmarco Saurino</h4>
+                    <p class="resume-desc">Sviluppo layout e impaginazione per campagna di sensibilizzazione; in questa occasione ho scelto di aderire attivamente alla causa iscrivendomi ufficialmente ad ADMO. Elaborato selezionato e pubblicato nella comunicazione ufficiale.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FORMAZIONE -->
+        <div class="resume-header reveal">
+            <span class="section-label">Formazione</span>
+        </div>
+
+        <div class="resume-list">
+            <div class="resume-item interactive reveal">
+                <div class="resume-year">2021 &mdash; 2026</div>
+                <div class="resume-details">
+                    <h4 class="resume-role">Diploma tecnico grafico computer</h4>
+                    <p class="resume-desc">I.I.S. EINAUDI GIECO FOGGIA</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPETENZE -->
+    <section class="container services-section">
+        <div class="services-header reveal">
+            <span class="section-label">Competenze</span>
+        </div>
+        <ul class="services-list">
+            <li class="service-item interactive reveal">
+                <div class="service-content-left">
+                    <span class="service-name">Branding & Identity</span>
+                </div>
+                <span class="service-number">01</span>
+            </li>
+            <li class="service-item interactive reveal">
+                <div class="service-content-left">
+                    <span class="service-name">Graphic Design</span>
+                </div>
+                <span class="service-number">02</span>
+            </li>
+            <li class="service-item interactive reveal">
+                <div class="service-content-left">
+                    <span class="service-name">Photography</span>
+                </div>
+                <span class="service-number">03</span>
+            </li>
+            <li class="service-item interactive reveal">
+                <div class="service-content-left">
+                    <span class="service-name">Tools & Software</span>
+                    <div class="software-details">
+                        &bull; Adobe Photoshop<br>
+                        &bull; Adobe Illustrator<br>
+                        &bull; Adobe InDesign<br>
+                        &bull; Altri strumenti di grafica e impaginazione
+                    </div>
+                </div>
+                <span class="service-number">04</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- BRUSH MARQUEE DIVIDER -->
+    <div class="brush-divider">
+        <div class="brush-track">
+            <!-- Ripetizione del tracciato SVG a pennello per effetto infinito -->
+            <svg class="brush-svg" viewBox="0 0 800 100" preserveAspectRatio="none">
+                <path d="M0,50 C50,20 150,80 250,40 C350,10 450,90 550,50 C650,20 750,80 800,50 L800,65 C750,95 650,35 550,65 C450,105 350,25 250,55 C150,95 50,35 0,65 Z" />
+            </svg>
+            <svg class="brush-svg" aria-hidden="true" viewBox="0 0 800 100" preserveAspectRatio="none">
+                <path d="M0,50 C50,20 150,80 250,40 C350,10 450,90 550,50 C650,20 750,80 800,50 L800,65 C750,95 650,35 550,65 C450,105 350,25 250,55 C150,95 50,35 0,65 Z" />
+            </svg>
+            <svg class="brush-svg" aria-hidden="true" viewBox="0 0 800 100" preserveAspectRatio="none">
+                <path d="M0,50 C50,20 150,80 250,40 C350,10 450,90 550,50 C650,20 750,80 800,50 L800,65 C750,95 650,35 550,65 C450,105 350,25 250,55 C150,95 50,35 0,65 Z" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- PORTFOLIO -->
+    <section class="container">
+        <div class="works-header reveal">
+            <h2 class="massive-text" style="font-size: clamp(3rem, 8vw, 8rem);">Lavori<br>Selezionati</h2>
+            <a href="#" class="menu-btn interactive">Vedi tutti</a>
+        </div>
+
+        <div class="portfolio-grid">
+            <div class="work-item interactive reveal">
+                <div class="work-img-wrapper">
+                    <img src="layout admo x tutto (1)_page-0001.jpg" alt="ADMO Campaign">
+                </div>
+                <div class="work-info">
+                    <span class="work-title">ADMO Campaign</span>
+                </div>
+            </div>
+
+            <div class="work-item interactive reveal">
+                <div class="work-img-wrapper">
+                    <img src="Blue Bold Modern Fashion Coming Soon Poster.jpg" alt="Fashion Poster">
+                </div>
+                <div class="work-info">
+                    <span class="work-title">Modern Fashion</span>
+                </div>
+            </div>
+
+            <div class="work-item interactive reveal">
+                <div class="work-img-wrapper">
+                    <img src="foto da consegnare2.jpg" alt="Photography">
+                </div>
+                <div class="work-info">
+                    <span class="work-title">Shooting</span>
+                </div>
+            </div>
+
+            <div class="work-item interactive reveal">
+                <div class="work-img-wrapper">
+                    <img src="consegna giornata della memoria -01.jpeg" alt="Giornata della Memoria">
+                </div>
+                <div class="work-info">
+                    <span class="work-title">Memorial Poster</span>
+                </div>
+            </div>
+
+            <div class="work-item interactive reveal">
+                <div class="work-img-wrapper">
+                    <img src="Black and Gray Minimalist Creative Portfolio Presentation.png" alt="Minimalist Presentation">
+                </div>
+                <div class="work-info">
+                    <span class="work-title">Creative Portfolio</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="more-works-container reveal">
+            per visualizzare altri <span style="color: var(--accent);">miei lavori</span>, seguimi sui <span style="color: var(--accent);">social</span>.
+        </div>
+    </section>
+
+    <!-- QR LINKS SECTION (NEW) -->
+    <section class="container links-section reveal">
+        <h2 class="links-title">visita i miei link principali<span style="color: var(--accent);">:</span></h2>
+        <div class="arrow-animated">
+            <i class="fas fa-arrow-down"></i>
+        </div>
+        <div class="qr-wrapper interactive">
+            <img src="qr_cristian_rinaldi_highres.png" alt="QR Code Linktree" style="width: 100%; height: auto; display: block;">
+        </div>
+    </section>
+
+    <!-- FOOTER / CTA -->
+    <footer id="contact">
+        <div class="container reveal">
+            <a href="mailto:info@cristianrinaldi.com" class="footer-cta interactive">
+                Iniziamo un
+                <span>Progetto.</span>
+            </a>
+            
+            <div class="footer-bottom">
+                <div>
+                    <p>&copy; 2024 Cristian Rinaldi. All Rights Reserved.</p>
+                    <p style="margin-top: 5px; font-size: 0.75rem; color: var(--text-muted);">Designed & Built by Cristian Rinaldi and AI</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://linktr.ee/cristianRinaldi" class="interactive" target="_blank" rel="noopener noreferrer">Linktree</a>
+                    <a href="https://www.instagram.com/rinaldi.visuals/" class="interactive" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://www.linkedin.com/in/cristian-rinaldi-514b553a0/" class="interactive" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LIGHTBOX OVERLAY -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close interactive" id="lightbox-close">&times;</span>
+        <img src="" alt="Fullscreen Image" class="lightbox-img" id="lightbox-img">
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            /* --- 1. CUSTOM CURSOR LOGIC --- */
+            const cursorDot = document.getElementById("cursor-dot");
+            const cursorOutline = document.getElementById("cursor-outline");
+            const interactives = document.querySelectorAll(".interactive, a, button");
+
+            window.addEventListener("mousemove", (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
+
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+
+                cursorOutline.animate({
+                    left: `${posX}px`,
+                    top: `${posY}px`
+                }, { duration: 500, fill: "forwards" });
+            });
+
+            interactives.forEach(el => {
+                el.addEventListener("mouseenter", () => {
+                    cursorOutline.classList.add("hovered");
+                });
+                el.addEventListener("mouseleave", () => {
+                    cursorOutline.classList.remove("hovered");
+                });
+            });
+
+            /* --- 2. SCROLL REVEAL --- */
+            const reveals = document.querySelectorAll(".reveal");
+            const observerOptions = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.15
+            };
+
+            const revealOnScroll = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            reveals.forEach(reveal => {
+                revealOnScroll.observe(reveal);
+            });
+
+            /* --- 3. LIGHTBOX LOGIC --- */
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const siteImages = document.querySelectorAll('img:not(.lightbox-img)');
+            
+            siteImages.forEach(img => {
+                img.addEventListener('mouseenter', () => {
+                    cursorOutline.classList.add("hovered");
+                });
+                img.addEventListener('mouseleave', () => {
+                    cursorOutline.classList.remove("hovered");
+                });
+
+                img.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    lightboxImg.src = img.src;
+                    lightbox.classList.add('active');
+                });
+            });
+
+            lightboxClose.addEventListener('click', () => {
+                lightbox.classList.remove('active');
+            });
+
+            lightbox.addEventListener('click', (e) => {
+                if (e.target !== lightboxImg) {
+                    lightbox.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
