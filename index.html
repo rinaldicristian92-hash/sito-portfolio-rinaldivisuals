@@ -63,14 +63,17 @@
         }
 
         /* Custom Cursor */
-        .cursor-dot, .cursor-outline {
+        .cursor-dot, .cursor-outline, .cursor-wave {
             position: fixed;
             top: 0;
             left: 0;
             transform: translate(-50%, -50%);
-            border-radius: 50%;
             z-index: 9999;
             pointer-events: none;
+        }
+
+        .cursor-dot, .cursor-outline {
+            border-radius: 50%;
         }
 
         .cursor-dot {
@@ -86,11 +89,45 @@
             transition: width 0.2s, height 0.2s, background-color 0.2s;
         }
 
+        .cursor-wave {
+            width: 54px;
+            height: 18px;
+            opacity: 0.95;
+            filter: drop-shadow(0 0 6px rgba(230, 32, 32, 0.45));
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .cursor-wave svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        .cursor-wave path {
+            fill: none;
+            stroke: var(--accent);
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 36;
+            animation: wave-flow 1.4s linear infinite;
+        }
+
+        @keyframes wave-flow {
+            from { stroke-dashoffset: 0; }
+            to { stroke-dashoffset: -72; }
+        }
+
         body:hover .cursor-outline.hovered {
             width: 60px;
             height: 60px;
             background-color: rgba(230, 32, 32, 0.1);
             border-color: var(--accent);
+        }
+
+        body:hover .cursor-wave.hovered {
+            transform: translate(-50%, -50%) scale(1.25);
+            opacity: 1;
         }
 
         /* Typography */
@@ -821,6 +858,11 @@
     <!-- CUSTOM CURSOR -->
     <div class="cursor-dot" id="cursor-dot"></div>
     <div class="cursor-outline" id="cursor-outline"></div>
+    <div class="cursor-wave" id="cursor-wave" aria-hidden="true">
+        <svg viewBox="0 0 54 18">
+            <path d="M1 9 C6 3, 12 15, 18 9 S30 3, 36 9 S48 15, 53 9" />
+        </svg>
+    </div>
 
     <!-- HEADER -->
     <header>
@@ -1142,11 +1184,17 @@
             /* --- 1. CUSTOM CURSOR LOGIC --- */
             const cursorDot = document.getElementById("cursor-dot");
             const cursorOutline = document.getElementById("cursor-outline");
+            const cursorWave = document.getElementById("cursor-wave");
             const interactives = document.querySelectorAll(".interactive, a, button");
+            let previousX = window.innerWidth / 2;
+            let previousY = window.innerHeight / 2;
 
             window.addEventListener("mousemove", (e) => {
                 const posX = e.clientX;
                 const posY = e.clientY;
+                const deltaX = posX - previousX;
+                const deltaY = posY - previousY;
+                const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
 
                 cursorDot.style.left = `${posX}px`;
                 cursorDot.style.top = `${posY}px`;
@@ -1155,14 +1203,25 @@
                     left: `${posX}px`,
                     top: `${posY}px`
                 }, { duration: 500, fill: "forwards" });
+
+                cursorWave.animate({
+                    left: `${posX + 14}px`,
+                    top: `${posY}px`,
+                    transform: `translate(-50%, -50%) rotate(${angle}deg)`
+                }, { duration: 350, fill: "forwards" });
+
+                previousX = posX;
+                previousY = posY;
             });
 
             interactives.forEach(el => {
                 el.addEventListener("mouseenter", () => {
                     cursorOutline.classList.add("hovered");
+                    cursorWave.classList.add("hovered");
                 });
                 el.addEventListener("mouseleave", () => {
                     cursorOutline.classList.remove("hovered");
+                    cursorWave.classList.remove("hovered");
                 });
             });
 
@@ -1196,9 +1255,11 @@
             siteImages.forEach(img => {
                 img.addEventListener('mouseenter', () => {
                     cursorOutline.classList.add("hovered");
+                    cursorWave.classList.add("hovered");
                 });
                 img.addEventListener('mouseleave', () => {
                     cursorOutline.classList.remove("hovered");
+                    cursorWave.classList.remove("hovered");
                 });
 
                 img.addEventListener('click', (e) => {
