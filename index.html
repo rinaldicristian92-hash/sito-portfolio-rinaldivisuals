@@ -63,22 +63,38 @@
         }
 
         /* Custom Cursor */
-        .cursor-wave {
+        .cursor-dot, .cursor-outline, .cursor-wave {
             position: fixed;
             top: 0;
             left: 0;
-            transform: translateY(-50%);
+            transform: translate(-50%, -50%);
             z-index: 9999;
             pointer-events: none;
         }
 
+        .cursor-dot, .cursor-outline {
+            border-radius: 50%;
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(230, 32, 32, 0.5);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
         .cursor-wave {
-            width: 60px;
+            width: 54px;
             height: 18px;
             opacity: 0.95;
             filter: drop-shadow(0 0 6px rgba(230, 32, 32, 0.45));
-            transform-origin: 0 50%;
-            transition: opacity 0.2s ease;
+            transition: transform 0.2s ease, opacity 0.2s ease;
         }
 
         .cursor-wave svg {
@@ -102,7 +118,15 @@
             to { stroke-dashoffset: -72; }
         }
 
+        body:hover .cursor-outline.hovered {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(230, 32, 32, 0.1);
+            border-color: var(--accent);
+        }
+
         body:hover .cursor-wave.hovered {
+            transform: translate(-50%, -50%) scale(1.25);
             opacity: 1;
         }
 
@@ -832,9 +856,11 @@
 <body>
 
     <!-- CUSTOM CURSOR -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
     <div class="cursor-wave" id="cursor-wave" aria-hidden="true">
-        <svg viewBox="0 0 60 18">
-            <path d="M0 9 C7 3, 13 15, 20 9 S33 3, 43 9 S53 15, 60 9" />
+        <svg viewBox="0 0 54 18">
+            <path d="M1 9 C6 3, 12 15, 18 9 S30 3, 36 9 S48 15, 53 9" />
         </svg>
     </div>
 
@@ -1156,6 +1182,8 @@
         document.addEventListener("DOMContentLoaded", () => {
             
             /* --- 1. CUSTOM CURSOR LOGIC --- */
+            const cursorDot = document.getElementById("cursor-dot");
+            const cursorOutline = document.getElementById("cursor-outline");
             const cursorWave = document.getElementById("cursor-wave");
             const interactives = document.querySelectorAll(".interactive, a, button");
             let previousX = window.innerWidth / 2;
@@ -1167,14 +1195,20 @@
                 const deltaX = posX - previousX;
                 const deltaY = posY - previousY;
                 const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
-                const speed = Math.min(Math.hypot(deltaX, deltaY), 22);
-                const stretch = 1 + speed / 45;
+
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+
+                cursorOutline.animate({
+                    left: `${posX}px`,
+                    top: `${posY}px`
+                }, { duration: 500, fill: "forwards" });
 
                 cursorWave.animate({
-                    left: `${posX}px`,
+                    left: `${posX + 14}px`,
                     top: `${posY}px`,
-                    transform: `translateY(-50%) rotate(${angle}deg) scaleX(${stretch})`
-                }, { duration: 240, fill: "forwards" });
+                    transform: `translate(-50%, -50%) rotate(${angle}deg)`
+                }, { duration: 350, fill: "forwards" });
 
                 previousX = posX;
                 previousY = posY;
@@ -1182,9 +1216,11 @@
 
             interactives.forEach(el => {
                 el.addEventListener("mouseenter", () => {
+                    cursorOutline.classList.add("hovered");
                     cursorWave.classList.add("hovered");
                 });
                 el.addEventListener("mouseleave", () => {
+                    cursorOutline.classList.remove("hovered");
                     cursorWave.classList.remove("hovered");
                 });
             });
@@ -1218,9 +1254,11 @@
             
             siteImages.forEach(img => {
                 img.addEventListener('mouseenter', () => {
+                    cursorOutline.classList.add("hovered");
                     cursorWave.classList.add("hovered");
                 });
                 img.addEventListener('mouseleave', () => {
+                    cursorOutline.classList.remove("hovered");
                     cursorWave.classList.remove("hovered");
                 });
 
