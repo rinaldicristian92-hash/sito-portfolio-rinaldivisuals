@@ -63,43 +63,9 @@
         }
 
         /* Custom Cursor */
-        .cursor-wave {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 60px;
-            height: 18px;
-            transform: translateY(-50%);
-            opacity: 0.95;
-            z-index: 9999;
-            pointer-events: none;
-            filter: drop-shadow(0 0 6px rgba(230, 32, 32, 0.45));
-            transform-origin: 0 50%;
-            transition: transform 0.12s ease-out, opacity 0.2s ease;
-        }
-
-        .cursor-wave svg {
-            width: 100%;
-            height: 100%;
-            overflow: visible;
-        }
-
-        .cursor-wave path {
-            fill: none;
-            stroke: var(--accent);
-            stroke-width: 2.5;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            stroke-dasharray: 36;
-            animation: wave-flow 1.4s linear infinite;
-        }
-
-        @keyframes wave-flow {
-            from { stroke-dashoffset: 0; }
-            to { stroke-dashoffset: -72; }
-        }
 
         body:hover .cursor-wave.hovered {
+            transform: translate(-50%, -50%) scale(1.25);
             opacity: 1;
         }
 
@@ -828,13 +794,6 @@
 </head>
 <body>
 
-    <!-- CUSTOM CURSOR -->
-    <div class="cursor-wave" id="cursor-wave" aria-hidden="true">
-        <svg viewBox="0 0 60 18">
-            <path d="M0 9 C7 3, 13 15, 20 9 S33 3, 43 9 S53 15, 60 9" />
-        </svg>
-    </div>
-
     <!-- HEADER -->
     <header>
         <a href="#" class="logo interactive">CR / Studio</a>
@@ -1152,36 +1111,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             
-            /* --- 1. CUSTOM CURSOR LOGIC --- */
-            const cursorWave = document.getElementById("cursor-wave");
-            const interactives = document.querySelectorAll(".interactive, a, button");
-            let previousX = window.innerWidth / 2;
-            let previousY = window.innerHeight / 2;
 
-            window.addEventListener("mousemove", (e) => {
-                const posX = e.clientX;
-                const posY = e.clientY;
-                const deltaX = posX - previousX;
-                const deltaY = posY - previousY;
-                const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
-                const speed = Math.min(Math.hypot(deltaX, deltaY), 22);
-                const stretch = 1 + speed / 45;
-                cursorWave.style.left = `${posX}px`;
-                cursorWave.style.top = `${posY}px`;
-                cursorWave.style.transform = `translateY(-50%) rotate(${angle}deg) scaleX(${stretch})`;
-
-                previousX = posX;
-                previousY = posY;
-            });
-
-            interactives.forEach(el => {
-                el.addEventListener("mouseenter", () => {
-                    cursorWave.classList.add("hovered");
-                });
-                el.addEventListener("mouseleave", () => {
-                    cursorWave.classList.remove("hovered");
-                });
-            });
 
             /* --- 2. SCROLL REVEAL --- */
             const reveals = document.querySelectorAll(".reveal");
@@ -1210,13 +1140,6 @@
             const lightboxClose = document.getElementById('lightbox-close');
             const siteImages = document.querySelectorAll('img:not(.lightbox-img)');
             
-            siteImages.forEach(img => {
-                img.addEventListener('mouseenter', () => {
-                    cursorWave.classList.add("hovered");
-                });
-                img.addEventListener('mouseleave', () => {
-                    cursorWave.classList.remove("hovered");
-                });
 
                 img.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -1238,4 +1161,3 @@
         });
     </script>
 </body>
-</html>
