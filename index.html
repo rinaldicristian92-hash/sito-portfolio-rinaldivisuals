@@ -1156,6 +1156,65 @@
             50% { transform: translateY(-15px); }
         }
 
+
+
+        .business-card-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 8vw;
+            text-align: center;
+        }
+
+        .card-scene {
+            width: clamp(300px, 60vw, 600px);
+            height: clamp(180px, 36vw, 360px);
+            perspective: 1500px;
+        }
+
+        .card-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+
+        .card-container.is-flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 14px 35px rgba(0,0,0,0.35);
+        }
+
+        .card-face img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-face-back {
+            transform: rotateY(180deg);
+        }
+
+        .card-instruction {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
         .contact-cta {
             position: relative;
             background: var(--cta-bg);
@@ -1471,6 +1530,16 @@
 
             .more-works-container {
                 margin-bottom: 20vw;
+            }
+
+
+            .business-card-section {
+                margin-bottom: 16vw;
+            }
+
+            .card-scene {
+                width: 100%;
+                height: clamp(180px, 56vw, 280px);
             }
 
             .contact-cta {
@@ -1829,6 +1898,23 @@
         </div>
     </section>
 
+
+
+    <section class="container business-card-section reveal">
+        <span class="section-label">Il mio contatto</span>
+        <div class="card-scene">
+            <div class="card-container interactive" id="business-card">
+                <div class="card-face card-face-front">
+                    <img loading="lazy" decoding="async" fetchpriority="low" src="tavola disegno 1.png" alt="Biglietto Fronte" />
+                </div>
+                <div class="card-face card-face-back">
+                    <img loading="lazy" decoding="async" fetchpriority="low" src="tavola disegno 2.png" alt="Biglietto Retro" />
+                </div>
+            </div>
+        </div>
+        <p class="card-instruction">Clicca per girare il bigliettino</p>
+    </section>
+
     <section class="contact-cta" id="contact">
         <div class="container contact-cta-inner">
             <div class="reveal">
@@ -1930,6 +2016,15 @@
                     lightboxImg.removeAttribute('src');
                 }
             });
+
+
+            const businessCard = document.getElementById('business-card');
+            if (businessCard) {
+                businessCard.addEventListener('click', () => {
+                    businessCard.classList.toggle('is-flipped');
+                });
+            }
+
         });
     </script>
 </body>
