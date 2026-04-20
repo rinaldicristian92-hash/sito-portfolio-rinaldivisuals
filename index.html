@@ -153,12 +153,13 @@
         .hero-logo { width: clamp(90px, 14vw, 180px); margin-bottom: 2.5rem; }
         .hero-logo img { width: 100%; display: block; }
         .hero-label { font-size: clamp(0.75rem, 2vw, 1rem); font-weight: 800; letter-spacing: 0.3em; color: var(--accent); text-transform: uppercase; margin-bottom: 1rem; display: block; }
+        .hero-title-parallax { position: relative; z-index: 1; will-change: transform; overflow: visible; }
         .hero-title { font-size: clamp(3.8rem, 14vw, 13rem); font-weight: 900; text-transform: uppercase; line-height: 0.88; letter-spacing: -0.03em; margin-bottom: 2rem; }
         .hero-title .dot { color: var(--accent); }
         .hero-sub { font-size: clamp(1rem, 2.5vw, 1.6rem); font-weight: 300; color: rgba(240,237,232,0.65); line-height: 1.3; max-width: 520px; margin-bottom: 1.5rem; }
 
         /* Stats row */
-        .hero-stats { display: flex; gap: 2.5rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+        .hero-stats { display: flex; gap: 2.5rem; margin-bottom: 2.5rem; flex-wrap: wrap; position: relative; z-index: 2; isolation: isolate; }
         .hero-stat { display: flex; flex-direction: column; gap: 2px; }
         .hero-stat-num { font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 900; color: var(--text); line-height: 1; }
         .hero-stat-num span { color: var(--accent); }
@@ -463,7 +464,9 @@
         <img src="Progetto senza titolo.png" alt="Logo Cristian Rinaldi" decoding="async" fetchpriority="high"/>
     </div>
     <span class="hero-label reveal reveal-d1">Cristian Rinaldi</span>
+    <div class="hero-title-parallax">
     <h1 class="hero-title reveal reveal-d1">RINALDI<span class="dot">.</span><br>VISUALS</h1>
+    </div>
     <p class="hero-sub reveal reveal-d2">
         <span data-it>Graphic Designer &amp; Fotografo.<br>Creo identità visive che lasciano il segno.</span>
         <span data-en style="display:none">Graphic Designer &amp; Photographer.<br>I create visual identities that leave a mark.</span>
@@ -523,29 +526,6 @@
     </div>
 </div>
 
-<!-- Stats row -->
-<div class="stats-row reveal" style="margin-top:2vw">
-    <div class="stat-block">
-        <div class="stat-n" data-count-block="4">0<sup>+</sup></div>
-        <div class="stat-l" data-it>Anni di formazione</div>
-        <div class="stat-l" data-en style="display:none">Years of training</div>
-    </div>
-    <div class="stat-block">
-        <div class="stat-n" data-count-block="10">0<sup>+</sup></div>
-        <div class="stat-l" data-it>Progetti completati</div>
-        <div class="stat-l" data-en style="display:none">Completed projects</div>
-    </div>
-    <div class="stat-block">
-        <div class="stat-n" data-count-block="2">0<sup>+</sup></div>
-        <div class="stat-l" data-it>Campagne pubblicate</div>
-        <div class="stat-l" data-en style="display:none">Published campaigns</div>
-    </div>
-    <div class="stat-block">
-        <div class="stat-n" data-count-block="1">0<sup>+</sup></div>
-        <div class="stat-l" data-it>Mostra collettiva</div>
-        <div class="stat-l" data-en style="display:none">Collective exhibition</div>
-    </div>
-</div>
 
 <!-- About -->
 <section class="s">
@@ -1219,11 +1199,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ── PARALLAX HERO ── */
-    const heroTitle = document.querySelector('.hero-title');
+    const heroTitle = document.querySelector('.hero-title-parallax');
     if (heroTitle && window.matchMedia('(min-width:769px)').matches) {
         window.addEventListener('scroll', () => {
             const y = window.scrollY;
-            heroTitle.style.transform = `translateY(${y * 0.18}px)`;
+            heroTitle.style.transform = `translateY(${y * -0.18}px)`;
         }, { passive: true });
     }
 
