@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="it" data-lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cristian Rinaldi | Rinaldi Visuals — Graphic Designer & Fotografo</title>
+    <meta name="description" content="Cristian Rinaldi — Graphic Designer e Fotografo a Foggia. Branding, identità visive, fotografia e art direction." />
+    <meta name="keywords" content="graphic designer foggia, fotografo foggia, branding, identità visiva, cristian rinaldi" />
+    <meta name="author" content="Cristian Rinaldi" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Cristian Rinaldi | Rinaldi Visuals" />
+    <meta property="og:description" content="Graphic Designer & Fotografo. Creo identità visive che lasciano il segno." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="tavola disegno 1.png" />
+
+    <!-- Favicon inline SVG -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='16' fill='%23080808'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-family='Arial Black' font-weight='900' font-size='11' fill='%23e62020'>CR</text></svg>" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;0,800;0,900;1,500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        :root {
+            --bg: #080808;
+            --surface: #111111;
+            --surface2: #181818;
+            --text: #f0ede8;
+            --muted: #666666;
+            --accent: #e62020;
+            --accent-dim: rgba(230,32,32,0.15);
+            --border: rgba(255,255,255,0.07);
+            --border-hover: rgba(230,32,32,0.3);
+            --font: 'Montserrat', sans-serif;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+            --header-h: 64px;
+            --mobile-cta-h: 72px;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { background: var(--bg); color: var(--text); font-family: var(--font); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        ::selection { background: var(--accent); color: #fff; }
+
+        /* ── CURSOR ── */
+        @media (hover: hover) {
+            * { cursor: none; }
+            .cursor {
+                position: fixed; width: 20px; height: 20px;
+                top: 0; left: 0; transform: translate(-50%,-50%);
+                pointer-events: none; z-index: 9999;
+                transition: transform .15s ease, opacity .2s ease;
+            }
+            .cursor::before, .cursor::after {
+                content: ''; position: absolute; left: 50%; top: 50%;
+                background: var(--accent); transform: translate(-50%,-50%);
+            }
+            .cursor::before { width: 14px; height: 1.5px; }
+            .cursor::after  { width: 1.5px; height: 14px; }
+            .cursor.hover   { transform: translate(-50%,-50%) scale(0); opacity: 0; }
+            .cursor-label {
+                position: fixed; top: 0; left: 0;
+                transform: translate(-50%,-50%);
+                pointer-events: none; z-index: 9998;
+                width: 64px; height: 64px; border-radius: 50%;
+                background: var(--accent);
+                display: flex; align-items: center; justify-content: center;
+                font-size: 0.6rem; font-weight: 900; letter-spacing: 0.1em;
+                color: #fff; text-transform: uppercase;
+                opacity: 0; transition: opacity .2s ease, transform .15s ease;
+            }
+            .cursor-label.hover { opacity: 1; }
+        }
+
+        /* ── LANG SWITCH ── */
+        .lang-switch {
+            position: fixed; top: 50%; right: 0;
+            transform: translateY(-50%);
+            z-index: 600;
+            display: flex; flex-direction: column;
+            border: 1px solid var(--border);
+            border-right: none;
+            overflow: hidden;
+        }
+        .lang-btn {
+            padding: 0.6rem 0.7rem;
+            font-size: 0.6rem; font-weight: 900;
+            letter-spacing: 0.14em; text-transform: uppercase;
+            background: var(--surface); color: var(--muted);
+            border: none; cursor: pointer;
+            transition: background .2s, color .2s;
+        }
+        .lang-btn.active { background: var(--accent); color: #fff; }
+        .lang-btn:hover:not(.active) { background: var(--surface2); color: var(--text); }
+        @media (hover: hover) { .lang-btn { cursor: none; } }
+
+        /* ── HEADER ── */
+        header {
+            position: fixed; top: 0; left: 0; right: 0;
+            height: var(--header-h);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 5vw; z-index: 500;
+            background: rgba(8,8,8,0.88);
+            backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
+            transition: border-color .3s;
+        }
+        header.scrolled { border-bottom-color: rgba(230,32,32,0.15); }
+
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+        .logo-mark {
+            width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.7rem; font-weight: 900; letter-spacing: 0.05em; flex-shrink: 0;
+            transition: border-color .3s, color .3s;
+        }
+        .logo:hover .logo-mark { border-color: var(--accent); color: var(--accent); }
+        .logo-text strong { display: block; font-size: 0.82rem; font-weight: 900; letter-spacing: 0.28em; line-height: 1; }
+        .logo-text span   { display: block; font-size: 0.55rem; color: rgba(255,255,255,0.5); letter-spacing: 0.32em; margin-top: 3px; }
+
+        .nav-right { display: flex; align-items: center; gap: 0.8rem; }
+
+        .nav-cta {
+            font-size: 0.7rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase;
+            color: var(--text); text-decoration: none;
+            padding: 0.6rem 1rem;
+            border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04);
+            transition: border-color .3s, background .3s; white-space: nowrap;
+        }
+        .nav-cta:hover { border-color: var(--border-hover); background: rgba(255,255,255,0.08); }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end;
+            padding: calc(var(--header-h) + 2rem) 5vw 8vw;
+            position: relative; overflow: hidden;
+            background: radial-gradient(ellipse at 15% 15%, rgba(230,32,32,0.1) 0%, transparent 50%),
+                        radial-gradient(ellipse at 85% 30%, rgba(230,32,32,0.06) 0%, transparent 40%), #000;
+        }
+        .lightning-svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+        .bolt { fill: none; stroke: rgba(255,40,40,0.95); stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; opacity: 0; filter: drop-shadow(0 0 6px rgba(255,0,0,.9)) drop-shadow(0 0 20px rgba(255,0,0,.5)); }
+        .bolt-a { stroke-width: 3;   animation: blt-a 7.5s infinite steps(1,end); }
+        .bolt-b { stroke-width: 2;   animation: blt-b 9s   infinite steps(1,end); }
+        .bolt-c { stroke-width: 1.5; animation: blt-c 11s  infinite steps(1,end); }
+        @keyframes blt-a { 0%,10%,12.5%,100%{opacity:0} 10.2%,10.7%{opacity:1} 11%,11.5%{opacity:.3} 11.2%{opacity:1} 52%,52.8%{opacity:1} 53.2%,100%{opacity:0} }
+        @keyframes blt-b { 0%,26%,28%,100%{opacity:0} 26.2%,26.7%{opacity:.9} 27%,27.5%{opacity:.3} 27.2%{opacity:.8} }
+        @keyframes blt-c { 0%,39%,41.5%,100%{opacity:0} 39.2%,40%{opacity:.75} 40.3%,41%{opacity:.2} 40.6%{opacity:.65} }
+        .hero-flash { position:absolute;inset:0; background:radial-gradient(circle at 18% 20%,rgba(255,30,30,.28),transparent 22%),radial-gradient(circle at 78% 28%,rgba(255,30,30,.2),transparent 18%); mix-blend-mode:screen;opacity:0;pointer-events:none;animation:sky 8.5s infinite steps(1,end); }
+        @keyframes sky { 0%,10%,12.5%,26%,28.2%,39%,41.5%,100%{opacity:0} 10.3%,11.3%{opacity:.4} 26.3%,27.2%{opacity:.28} 39.3%,40.5%{opacity:.22} }
+
+        .hero-logo { width: clamp(90px, 14vw, 180px); margin-bottom: 2.5rem; }
+        .hero-logo img { width: 100%; display: block; }
+        .hero-label { font-size: clamp(0.75rem, 2vw, 1rem); font-weight: 800; letter-spacing: 0.3em; color: var(--accent); text-transform: uppercase; margin-bottom: 1rem; display: block; }
+        .hero-title { font-size: clamp(3.8rem, 14vw, 13rem); font-weight: 900; text-transform: uppercase; line-height: 0.88; letter-spacing: -0.03em; margin-bottom: 2rem; }
+        .hero-title .dot { color: var(--accent); }
+        .hero-sub { font-size: clamp(1rem, 2.5vw, 1.6rem); font-weight: 300; color: rgba(240,237,232,0.65); line-height: 1.3; max-width: 520px; margin-bottom: 1.5rem; }
+
+        /* Stats row */
+        .hero-stats { display: flex; gap: 2.5rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+        .hero-stat { display: flex; flex-direction: column; gap: 2px; }
+        .hero-stat-num { font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 900; color: var(--text); line-height: 1; }
+        .hero-stat-num span { color: var(--accent); }
+        .hero-stat-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; }
+
+        .hero-btns { display: flex; flex-wrap: wrap; gap: 1rem; }
+        .btn-primary { display:inline-flex;align-items:center;gap:8px;padding:.9rem 1.6rem;background:var(--accent);color:#fff;font-size:.78rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border:1px solid var(--accent);transition:background .3s,color .3s; }
+        .btn-primary:hover { background:transparent;color:var(--accent); }
+        .btn-ghost  { display:inline-flex;align-items:center;gap:8px;padding:.9rem 1.6rem;background:transparent;color:var(--text);font-size:.78rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,0.16);transition:border-color .3s; }
+        .btn-ghost:hover { border-color:rgba(255,255,255,0.4); }
+
+        .scroll-hint { position:absolute;bottom:2.5rem;right:5vw;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:.6rem;font-weight:800;letter-spacing:.25em;color:var(--muted);text-transform:uppercase; }
+        .scroll-line { width:1px;height:48px;background:linear-gradient(to bottom,transparent,var(--accent));animation:scrl 2s ease infinite; }
+        @keyframes scrl { 0%,100%{transform:scaleY(1);opacity:.7} 50%{transform:scaleY(.5) translateY(12px);opacity:.3} }
+
+        /* ── MARQUEE ── */
+        .marquee-wrap { width:100%;overflow:hidden;background:var(--accent);padding:1.2rem 0;transform:rotate(-1.5deg) scale(1.04); }
+        .marquee-track { display:flex;white-space:nowrap; }
+        .marquee-inner { display:flex;flex-shrink:0;animation:mq 18s linear infinite; }
+        .marquee-inner span { font-size:clamp(1.6rem,4vw,3rem);font-weight:900;text-transform:uppercase;color:#080808;padding:0 2vw; }
+        @keyframes mq { 0%{transform:translateX(0)} 100%{transform:translateX(-100%)} }
+
+        /* ── LAYOUT ── */
+        .s      { padding: 8vw 5vw; }
+        .s-wide { padding: 8vw 0; }
+
+        .section-tag { display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);border-bottom:1.5px solid var(--muted);padding-bottom:6px;margin-bottom:2rem; }
+
+        /* ── ABOUT ── */
+        .about-grid { display:grid;grid-template-columns:1fr 2fr;gap:4vw;align-items:start;margin-bottom:6vw; }
+        .about-statement { font-size:clamp(1.4rem,3.5vw,3.5rem);font-weight:500;line-height:1.1;letter-spacing:-.02em; }
+        .about-statement em { color:var(--muted);font-style:normal; }
+        .about-me-grid { display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center; }
+        .about-me-text { font-size:clamp(.95rem,1.3vw,1.15rem);font-weight:500;line-height:1.75;color:rgba(240,237,232,.8); }
+
+        .cv-download {
+            display: inline-flex; align-items: center; gap: 8px;
+            margin-top: 1.5rem;
+            padding: .75rem 1.2rem;
+            border: 1px solid rgba(255,255,255,.14);
+            background: rgba(255,255,255,.04);
+            color: var(--text); text-decoration: none;
+            font-size: .72rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase;
+            transition: border-color .3s, background .3s;
+        }
+        .cv-download:hover { border-color: var(--accent); background: var(--accent-dim); }
+
+        .about-imgs { display:grid;grid-template-columns:1fr 1fr;gap:1.5vw; }
+        .img-wrap { overflow:hidden;background:#1a1a1a;border:1px solid var(--border); }
+        .img-wrap.portrait { aspect-ratio:3/4;transform:translateY(-6%); }
+        .img-wrap.cv-img   { aspect-ratio:1/1.414;transform:translateY(8%); }
+        .img-wrap img { width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(80%);transition:transform .8s var(--ease),filter .8s ease; }
+        .img-wrap:hover img { transform:scale(1.05);filter:grayscale(0%); }
+
+        /* ── STATS SECTION ── */
+        .stats-row {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            border: 1px solid var(--border);
+            border-bottom: none;
+            margin: 0 5vw;
+        }
+        .stat-block {
+            padding: 2.5rem 2rem;
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            position: relative; overflow: hidden;
+        }
+        .stat-block:last-child { border-right: none; }
+        .stat-block::after { content:''; position:absolute;inset:auto 0 0 0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease); }
+        .stat-block:hover::after { transform:scaleX(1); }
+        .stat-n { font-size:clamp(2rem,5vw,4rem);font-weight:900;line-height:1;color:var(--text); }
+        .stat-n sup { font-size:.5em;color:var(--accent);vertical-align:super; }
+        .stat-l { font-size:.65rem;font-weight:700;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-top:6px; }
+
+        /* ── EXPERIENCES ── */
+        .exp-panel { padding:6vw 5vw;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden; }
+        .exp-panel::before { content:'';position:absolute;inset:0 auto 0 0;width:3px;background:linear-gradient(to bottom,transparent,var(--accent) 25%,rgba(230,32,32,.3) 75%,transparent); }
+        .exp-list { display:flex;flex-direction:column;gap:0;margin-bottom:3rem; }
+        .exp-item { display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:2rem;padding:1.8rem 0;border-bottom:1px solid var(--border); }
+        .exp-item:last-child { border-bottom:none; }
+        .exp-year { font-size:.7rem;font-weight:800;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;line-height:1.6;padding-top:4px; }
+        .exp-role { font-size:clamp(1.1rem,2vw,1.6rem);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1.05;margin-bottom:.5rem; }
+        .exp-desc { font-size:.9rem;color:rgba(240,237,232,.6);line-height:1.7;font-weight:500; }
+
+        /* ── SKILLS ── */
+        .skills-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border); }
+        .skill-card { background:var(--surface);padding:2rem 1.6rem;display:flex;flex-direction:column;gap:.8rem;transition:background .3s;position:relative;overflow:hidden; }
+        .skill-card::after { content:'';position:absolute;inset:auto 0 0 0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease); }
+        .skill-card:hover { background:var(--surface2); }
+        .skill-card:hover::after { transform:scaleX(1); }
+        .skill-num  { font-size:.7rem;font-weight:800;color:var(--muted);letter-spacing:.2em; }
+        .skill-name { font-size:clamp(1.2rem,2.5vw,2.2rem);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1;color:transparent;-webkit-text-stroke:1px var(--text);transition:color .3s,-webkit-text-stroke .3s; }
+        .skill-card:hover .skill-name { color:var(--text);-webkit-text-stroke:1px transparent; }
+        .skill-tools { font-size:.8rem;color:var(--muted);line-height:1.7;font-weight:500; }
+
+        /* ── WORKS ── */
+        .works-title { font-size:clamp(2.5rem,8vw,7rem);font-weight:900;text-transform:uppercase;letter-spacing:-.04em;line-height:.9; }
+
+        /* Filter tabs */
+        .filter-tabs { display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.5rem;padding:0 5vw; }
+        .filter-btn { padding:.5rem 1rem;font-size:.65rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;background:transparent;color:var(--muted);border:1px solid var(--border);transition:all .25s; }
+        .filter-btn.active,.filter-btn:hover { background:var(--accent);color:#fff;border-color:var(--accent); }
+        @media (hover:hover) { .filter-btn { cursor:none; } }
+
+        .portfolio-grid { padding:2rem 5vw;display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-bottom:5rem; }
+        .work-card { position:relative;overflow:hidden;border:1px solid var(--border);background:var(--surface);transition:transform .6s var(--ease),border-color .4s; }
+        .work-card:hover { transform:translateY(-8px);border-color:var(--border-hover); }
+        .work-card.span2 { grid-column:span 2; }
+        .work-card[data-hidden="true"] { display:none; }
+
+        .work-img { width:100%;overflow:hidden;background:#1a1a1a;position:relative; }
+        .work-card.span2 .work-img { aspect-ratio:16/9; }
+        .work-img-inner { aspect-ratio:4/5; }
+        .work-img img { width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(70%);transition:transform .6s var(--ease),filter .6s ease; }
+        .work-card:hover .work-img img { transform:scale(1.04);filter:grayscale(0%); }
+        .work-img::after { content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.7) 0%,transparent 55%);pointer-events:none; }
+
+        .work-info { padding:1rem 1.2rem;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem; }
+        .work-name { font-size:clamp(.9rem,1.5vw,1.3rem);font-weight:800;text-transform:uppercase;letter-spacing:.08em; }
+        .work-cat  { font-size:.65rem;font-weight:700;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;white-space:nowrap;padding-top:2px; }
+
+        /* VIEW overlay on hover */
+        .work-view-label { position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:2; }
+        .work-view-label span { font-size:.75rem;font-weight:900;letter-spacing:.3em;color:#fff;text-transform:uppercase;opacity:0;transform:scale(.85);transition:opacity .3s,transform .3s; background:var(--accent);padding:.5rem 1rem; }
+        .work-card:hover .work-view-label span { opacity:1;transform:scale(1); }
+
+        /* Mobile scroll */
+        .portfolio-scroll { display:none;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:1.5rem 5vw 2rem;gap:1rem;scrollbar-width:none; }
+        .portfolio-scroll::-webkit-scrollbar { display:none; }
+        .portfolio-scroll .work-card { flex:0 0 72vw;max-width:300px; }
+        .portfolio-scroll .work-img { aspect-ratio:3/4; }
+        .portfolio-scroll .work-img img { height:100%; }
+
+        /* ── LINKS / QR ── */
+        .links-s { text-align:center;padding:8vw 5vw;display:flex;flex-direction:column;align-items:center; }
+        .links-title { font-size:clamp(1.4rem,4vw,3.5rem);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;margin-bottom:1.5rem; }
+        .arrow-bounce { color:var(--accent);font-size:2rem;margin-bottom:1.5rem;animation:bnc .8s ease infinite alternate; }
+        @keyframes bnc { from{transform:translateY(0)} to{transform:translateY(-8px)} }
+        .qr-box { width:clamp(160px,22vw,260px);border:1px solid var(--border);padding:1rem;background:#fff; }
+        .qr-box img { width:100%;display:block; }
+
+        /* ── BUSINESS CARD ── */
+        .card-s { display:flex;flex-direction:column;align-items:center;gap:1.2rem;padding:6vw 5vw;text-align:center; }
+        .card-scene { width:min(580px,90vw);aspect-ratio:16/9.6;perspective:1400px; }
+        .card-container { width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .75s cubic-bezier(.175,.885,.32,1.275); }
+        .card-container.flipped { transform:rotateY(180deg); }
+        .card-face { position:absolute;inset:0;backface-visibility:hidden;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 12px 40px rgba(0,0,0,.5); }
+        .card-face img { width:100%;height:100%;object-fit:cover;display:block; }
+        .card-back { transform:rotateY(180deg); }
+        .card-hint { font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--muted); }
+
+        /* ── CONTACT ── */
+        .contact-s { background:#f0ede8;color:#0a0a0a;padding:8vw 5vw;position:relative;overflow:hidden; }
+        .contact-s::before { content:'INIZIA';position:absolute;right:-2vw;top:-1vw;font-size:clamp(5rem,18vw,16rem);font-weight:900;letter-spacing:-.06em;color:rgba(0,0,0,.05);pointer-events:none;line-height:1;text-transform:uppercase; }
+        .contact-inner { display:grid;grid-template-columns:1.1fr 1fr;gap:5vw;align-items:center;position:relative;z-index:1; }
+        .contact-h { font-size:clamp(3rem,7.5vw,8rem);font-weight:900;line-height:.88;letter-spacing:-.04em;text-transform:uppercase; }
+        .contact-h .red { color:var(--accent); }
+        .contact-eyebrow { font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(0,0,0,.4);margin-bottom:1rem;font-weight:800; }
+        .contact-body { font-size:clamp(.95rem,1.4vw,1.1rem);line-height:1.7;color:rgba(0,0,0,.75);font-weight:500;margin-bottom:2rem; }
+
+        /* Contact form */
+        .contact-form { display:flex;flex-direction:column;gap:1rem; }
+        .form-row { display:grid;grid-template-columns:1fr 1fr;gap:1rem; }
+        .form-field { display:flex;flex-direction:column;gap:.4rem; }
+        .form-field label { font-size:.62rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,0,0,.5); }
+        .form-field input, .form-field textarea, .form-field select {
+            padding:.8rem 1rem;
+            background:rgba(0,0,0,.06);
+            border:1px solid rgba(0,0,0,.12);
+            color:#0a0a0a; font-family:var(--font); font-size:.85rem; font-weight:500;
+            outline:none; transition:border-color .25s,background .25s;
+            -webkit-appearance:none; border-radius:0;
+        }
+        .form-field input:focus, .form-field textarea:focus, .form-field select:focus { border-color:var(--accent);background:rgba(230,32,32,.04); }
+        .form-field textarea { resize:vertical;min-height:110px; }
+        .form-field select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M0 0l6 8 6-8z' fill='rgba(0,0,0,0.4)'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .8rem center; }
+        .form-msg { font-size:.75rem;font-weight:700;letter-spacing:.1em;color:var(--accent);min-height:1.2em; }
+        .contact-btn { display:inline-flex;align-items:center;gap:10px;padding:1.1rem 1.8rem;background:#0a0a0a;color:#fff;font-size:.78rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border:1px solid #0a0a0a;transition:background .3s,color .3s; }
+        .contact-btn:hover { background:transparent;color:#0a0a0a; }
+        @media (hover:hover) { .contact-btn { cursor:none; } }
+
+        /* ── MOBILE CTA BAR ── */
+        .mobile-cta { display:none;position:fixed;bottom:0;left:0;right:0;height:var(--mobile-cta-h);background:rgba(8,8,8,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--border);z-index:400;padding:0 5vw;align-items:center;justify-content:space-between;gap:1rem;transition:transform .4s ease; }
+        .mobile-cta-info { display:flex;flex-direction:column; }
+        .mobile-cta-info strong { font-size:.82rem;font-weight:900;letter-spacing:.1em; }
+        .mobile-cta-info span  { font-size:.62rem;color:var(--muted);letter-spacing:.14em; }
+        .mobile-cta-btn { display:inline-flex;align-items:center;gap:8px;padding:.8rem 1.4rem;background:var(--accent);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;white-space:nowrap;flex-shrink:0; }
+
+        /* ── FORGE DIVIDER ── */
+        .forge-wrap { position:relative;height:100px;overflow:hidden;margin:4vw 0; }
+        .forge-line { position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:1px;background:linear-gradient(90deg,transparent,rgba(230,32,32,.7),transparent); }
+        .forge-belt-outer { position:absolute;inset:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);top:28px;bottom:28px;overflow:hidden; }
+        .forge-belt { display:flex;align-items:center;height:100%;width:max-content;animation:forge 12s linear infinite; }
+        @keyframes forge { 0%{transform:translateX(0)} 100%{transform:translateX(-300px)} }
+        .forge-unit { width:150px;height:100%;flex-shrink:0;position:relative;display:flex;align-items:center; }
+        .forge-bar { width:60px;height:8px;background:linear-gradient(90deg,var(--accent),rgba(255,80,80,.6));margin-left:16px;position:relative; }
+        .forge-diamond { width:32px;height:32px;border:1px solid rgba(230,32,32,.25);background:rgba(230,32,32,.06);transform:rotate(45deg);position:absolute;right:20px; }
+
+        /* ── FOOTER ── */
+        footer { background:#000;padding:2rem 5vw; }
+        .footer-inner { display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap; }
+        .footer-copy { font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;line-height:1.8; }
+        .footer-copy small { color:rgba(240,237,232,.4);display:block; }
+        .social-links { display:flex;gap:1.5rem; }
+        .social-links a { font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s; }
+        .social-links a:hover { color:var(--accent); }
+
+        /* ── LIGHTBOX ── */
+        .lightbox { position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:9000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s ease;backdrop-filter:blur(6px); }
+        .lightbox.open { opacity:1;pointer-events:auto; }
+        .lightbox img { max-width:90%;max-height:90svh;object-fit:contain;transform:scale(.96);transition:transform .4s var(--ease);box-shadow:0 10px 60px rgba(0,0,0,.6); }
+        .lightbox.open img { transform:scale(1); }
+        .lb-close { position:absolute;top:20px;right:24px;font-size:3rem;color:#fff;font-weight:300;line-height:1;transition:color .3s;user-select:none; }
+        .lb-close:hover { color:var(--accent); }
+        @media (hover:hover) { .lb-close { cursor:none; } }
+
+        /* ── REVEAL ── */
+        .reveal { opacity:0;transform:translateY(44px);transition:opacity .9s var(--ease),transform .9s var(--ease); }
+        .reveal.in { opacity:1;transform:translateY(0); }
+        .reveal-d1 { transition-delay:.1s; }
+        .reveal-d2 { transition-delay:.2s; }
+        .reveal-d3 { transition-delay:.3s; }
+
+        /* ── LANG HIDDEN ── */
+        [data-it], [data-en] { transition: opacity .2s; }
+
+        /* ═══ MOBILE ═══ */
+        @media (max-width:768px) {
+            :root { --header-h:58px; }
+            .cursor, .cursor-label { display:none!important; }
+            .lang-switch { top:auto;bottom:calc(var(--mobile-cta-h) + 12px);transform:none;right:0; flex-direction:row; border:1px solid var(--border); border-right:1px solid var(--border); }
+            .logo-text span { display:none; }
+            .nav-cta { padding:.55rem .8rem;font-size:.62rem;letter-spacing:.14em; }
+            .hero { padding:calc(var(--header-h) + 1.5rem) 5vw 6rem;justify-content:flex-end; }
+            .hero-btns { flex-direction:column; }
+            .btn-primary, .btn-ghost { width:100%;justify-content:center; }
+            .scroll-hint { display:none; }
+            .hero-stats { gap:1.5rem; }
+            .stats-row { grid-template-columns:repeat(2,1fr); }
+            .about-grid { grid-template-columns:1fr;gap:2rem; }
+            .about-me-grid { grid-template-columns:1fr;gap:3rem; }
+            .about-imgs .portrait { transform:translateY(0); }
+            .exp-item { grid-template-columns:1fr;gap:.6rem;padding:1.4rem 0; }
+            .skills-grid { grid-template-columns:1fr; }
+            .portfolio-grid { display:none; }
+            .portfolio-scroll { display:flex; }
+            .filter-tabs { padding:0 5vw; }
+            .contact-inner { grid-template-columns:1fr;gap:2.5rem; }
+            .form-row { grid-template-columns:1fr; }
+            .contact-btn { width:100%;justify-content:center; }
+            .mobile-cta { display:flex; }
+            footer { padding-bottom:calc(var(--mobile-cta-h) + 1rem); }
+            .s { padding:12vw 5vw; }
+        }
+        @media (max-width:480px) {
+            .hero-title { font-size:clamp(3rem,15vw,4.5rem); }
+            .about-imgs { grid-template-columns:1fr; }
+            .about-imgs .cv-img { display:none; }
+            .about-imgs .portrait { transform:none; }
+            .stats-row { grid-template-columns:1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-label" id="cursorLabel" aria-hidden="true">VIEW</div>
+
+<!-- Lang switch -->
+<div class="lang-switch" role="group" aria-label="Lingua / Language">
+    <button class="lang-btn active" data-lang-btn="it" aria-pressed="true">IT</button>
+    <button class="lang-btn" data-lang-btn="en" aria-pressed="false">EN</button>
+</div>
+
+<!-- Header -->
+<header id="siteHeader">
+    <a href="#" class="logo" aria-label="Rinaldi Visuals">
+        <span class="logo-mark">CR</span>
+        <span class="logo-text">
+            <strong>RINALDI</strong>
+            <span>CREATIVE STUDIO</span>
+        </span>
+    </a>
+    <div class="nav-right">
+        <a href="#contact" class="nav-cta">
+            <span data-it>Lavoriamo Insieme</span>
+            <span data-en style="display:none">Let's Work Together</span>
+        </a>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+    <svg class="lightning-svg" viewBox="0 0 1600 900" preserveAspectRatio="none" aria-hidden="true">
+        <path class="bolt bolt-a" d="M210 0 L235 120 L205 185 L255 255 L230 330 L285 430 L250 520 L310 640 L270 760 L325 900"/>
+        <path class="bolt bolt-b" d="M1180 0 L1145 95 L1178 170 L1118 250 L1152 338 L1088 430 L1128 540 L1066 670 L1102 790 L1050 900"/>
+        <path class="bolt bolt-c" d="M760 0 L730 80 L770 160 L720 250 L750 340 L705 430 L735 520 L690 610 L720 720 L675 820 L700 900"/>
+    </svg>
+    <div class="hero-flash" aria-hidden="true"></div>
+
+    <div class="hero-logo reveal">
+        <img src="Progetto senza titolo.png" alt="Logo Cristian Rinaldi" decoding="async" fetchpriority="high"/>
+    </div>
+    <span class="hero-label reveal reveal-d1">Cristian Rinaldi</span>
+    <h1 class="hero-title reveal reveal-d1">RINALDI<span class="dot">.</span><br>VISUALS</h1>
+    <p class="hero-sub reveal reveal-d2">
+        <span data-it>Graphic Designer &amp; Fotografo.<br>Creo identità visive che lasciano il segno.</span>
+        <span data-en style="display:none">Graphic Designer &amp; Photographer.<br>I create visual identities that leave a mark.</span>
+    </p>
+
+    <div class="hero-stats reveal reveal-d2">
+        <div class="hero-stat">
+            <div class="hero-stat-num" data-count="4"><span>0</span><span style="color:var(--accent)">+</span></div>
+            <div class="hero-stat-label" data-it>Anni di studio</div>
+            <div class="hero-stat-label" data-en style="display:none">Years of study</div>
+        </div>
+        <div class="hero-stat">
+            <div class="hero-stat-num" data-count="10"><span>0</span><span style="color:var(--accent)">+</span></div>
+            <div class="hero-stat-label" data-it>Progetti completati</div>
+            <div class="hero-stat-label" data-en style="display:none">Completed projects</div>
+        </div>
+        <div class="hero-stat">
+            <div class="hero-stat-num" data-count="2"><span>0</span><span style="color:var(--accent)">+</span></div>
+            <div class="hero-stat-label" data-it>Campagne pubblicate</div>
+            <div class="hero-stat-label" data-en style="display:none">Published campaigns</div>
+        </div>
+        <div class="hero-stat">
+            <div class="hero-stat-num" data-count="1"><span>0</span><span style="color:var(--accent)">+</span></div>
+            <div class="hero-stat-label" data-it>Mostra collettiva</div>
+            <div class="hero-stat-label" data-en style="display:none">Collective exhibition</div>
+        </div>
+    </div>
+
+    <div class="hero-btns reveal reveal-d3">
+        <a href="#contact" class="btn-primary">
+            <span data-it>Parliamo <i class="fas fa-arrow-right" style="font-size:.7em"></i></span>
+            <span data-en style="display:none">Let's talk <i class="fas fa-arrow-right" style="font-size:.7em"></i></span>
+        </a>
+        <a href="#works" class="btn-ghost">
+            <span data-it>Vedi i lavori</span>
+            <span data-en style="display:none">See works</span>
+        </a>
+    </div>
+
+    <div class="scroll-hint" aria-hidden="true">
+        <div class="scroll-line"></div>
+        <span>Scroll</span>
+    </div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+        <div class="marquee-inner">
+            <span>Branding</span><span>&bull;</span><span>Graphic Design</span><span>&bull;</span><span>Photography</span><span>&bull;</span><span>Art Direction</span><span>&bull;</span>
+            <span>Branding</span><span>&bull;</span><span>Graphic Design</span><span>&bull;</span><span>Photography</span><span>&bull;</span><span>Art Direction</span><span>&bull;</span>
+        </div>
+        <div class="marquee-inner" aria-hidden="true">
+            <span>Branding</span><span>&bull;</span><span>Graphic Design</span><span>&bull;</span><span>Photography</span><span>&bull;</span><span>Art Direction</span><span>&bull;</span>
+            <span>Branding</span><span>&bull;</span><span>Graphic Design</span><span>&bull;</span><span>Photography</span><span>&bull;</span><span>Art Direction</span><span>&bull;</span>
+        </div>
+    </div>
+</div>
+
+<!-- Stats row -->
+<div class="stats-row reveal" style="margin-top:2vw">
+    <div class="stat-block">
+        <div class="stat-n" data-count-block="4">0<sup>+</sup></div>
+        <div class="stat-l" data-it>Anni di formazione</div>
+        <div class="stat-l" data-en style="display:none">Years of training</div>
+    </div>
+    <div class="stat-block">
+        <div class="stat-n" data-count-block="10">0<sup>+</sup></div>
+        <div class="stat-l" data-it>Progetti completati</div>
+        <div class="stat-l" data-en style="display:none">Completed projects</div>
+    </div>
+    <div class="stat-block">
+        <div class="stat-n" data-count-block="2">0<sup>+</sup></div>
+        <div class="stat-l" data-it>Campagne pubblicate</div>
+        <div class="stat-l" data-en style="display:none">Published campaigns</div>
+    </div>
+    <div class="stat-block">
+        <div class="stat-n" data-count-block="1">0<sup>+</sup></div>
+        <div class="stat-l" data-it>Mostra collettiva</div>
+        <div class="stat-l" data-en style="display:none">Collective exhibition</div>
+    </div>
+</div>
+
+<!-- About -->
+<section class="s">
+    <div class="about-grid">
+        <div class="reveal">
+            <span class="section-tag" data-it>L'Approccio</span>
+            <span class="section-tag" data-en style="display:none">The Approach</span>
+        </div>
+        <div class="reveal reveal-d1">
+            <p class="about-statement">
+                <span data-it>Se cerchi qualcuno che trasformi un'idea in un progetto visivo concreto, sono pronto. <em>Cresco ogni giorno, costruendo identità che lasciano il segno.</em></span>
+                <span data-en style="display:none">If you're looking for someone to turn an idea into a concrete visual project, I'm ready. <em>I grow every day, building identities that leave a mark.</em></span>
+            </p>
+        </div>
+    </div>
+
+    <div class="about-me-grid">
+        <div class="reveal">
+            <span class="section-tag" data-it>Su di me</span>
+            <span class="section-tag" data-en style="display:none">About me</span>
+            <p class="about-me-text" data-it>
+                Creativo e professionale, specializzato in Visual Design. Sono proattivo, imparo rapidamente nuove metodologie di lavoro e mi tengo aggiornato sui trend del momento.
+                <br><br>
+                Con un occhio attento ai dettagli e una passione per le forme decise, costruisco identità visive e layout che comunicano con forza e chiarezza — unendo fotografia, tipografia e design editoriale in un'unica visione coerente.
+                <br><br>
+                Mi chiamo Cristian Rinaldi, studente di Graphic Design presso l'I.S.S. "L. Einaudi" di Foggia dal 2021.
+            </p>
+            <p class="about-me-text" data-en style="display:none">
+                Creative and professional, specialised in Visual Design. I'm proactive, I quickly learn new working methodologies and I keep up with current trends.
+                <br><br>
+                With a keen eye for detail and a passion for bold forms, I build visual identities and layouts that communicate with strength and clarity — combining photography, typography and editorial design into one coherent vision.
+                <br><br>
+                My name is Cristian Rinaldi, a Graphic Design student at I.S.S. "L. Einaudi" in Foggia since 2021.
+            </p>
+            <a href="Curriculum Vitae Semplice Essenziale Minimal Pulito Moderno Bianco Nero Designer.jpg" download="CV_CristianRinaldi.jpg" class="cv-download">
+                <i class="fas fa-download" style="font-size:.85em"></i>
+                <span data-it>Scarica CV</span>
+                <span data-en style="display:none">Download CV</span>
+            </a>
+        </div>
+        <div class="about-imgs reveal reveal-d1">
+            <div class="img-wrap portrait">
+                <img src="ritratto con sfondo.jpg" alt="Cristian Rinaldi" loading="lazy"/>
+            </div>
+            <div class="img-wrap cv-img">
+                <img src="Curriculum Vitae Semplice Essenziale Minimal Pulito Moderno Bianco Nero Designer.jpg" alt="CV Cristian Rinaldi" loading="lazy"/>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Forge divider -->
+<div class="forge-wrap" aria-hidden="true">
+    <div class="forge-line"></div>
+    <div class="forge-belt-outer">
+        <div class="forge-belt">
+            <div class="forge-unit"><div class="forge-bar"></div><div class="forge-diamond"></div></div>
+            <div class="forge-unit"><div class="forge-bar"></div><div class="forge-diamond"></div></div>
+            <div class="forge-unit"><div class="forge-bar"></div><div class="forge-diamond"></div></div>
+            <div class="forge-unit"><div class="forge-bar"></div><div class="forge-diamond"></div></div>
+            <div class="forge-unit"><div class="forge-bar"></div><div class="forge-diamond"></div></div>
+            <div class="forge-unit"><div class="forge-bar"></div><div class="forge-diamond"></div></div>
+            <div class="forge-unit"><div class="forge-bar"></div><div class="forge-diamond"></div></div>
+            <div class="forge-unit"><div class="forge-bar"></div><div class="forge-diamond"></div></div>
+            <div class="forge-unit"><div class="forge-bar"></div><div class="forge-diamond"></div></div>
+            <div class="forge-unit"><div class="forge-bar"></div><div class="forge-diamond"></div></div>
+            <div class="forge-unit"><div class="forge-bar"></div><div class="forge-diamond"></div></div>
+            <div class="forge-unit"><div class="forge-bar"></div><div class="forge-diamond"></div></div>
+        </div>
+    </div>
+</div>
+
+<!-- Experiences -->
+<section class="exp-panel">
+    <span class="section-tag reveal" data-it>Esperienze</span>
+    <span class="section-tag reveal" data-en style="display:none">Experience</span>
+
+    <div class="exp-list" style="margin-top:1.5rem">
+        <div class="exp-item reveal">
+            <div class="exp-year">2026 · Fondazione Monti Uniti</div>
+            <div>
+                <h4 class="exp-role" data-it>Mostra del 27 Gennaio</h4>
+                <h4 class="exp-role" data-en style="display:none">Exhibition — 27th January</h4>
+                <p class="exp-desc" data-it>Partecipazione a mostra collettiva con opera selezionata ed esposta al pubblico. Progetto sviluppato in ambito scolastico e presentato in contesto culturale ufficiale.</p>
+                <p class="exp-desc" data-en style="display:none">Participation in a collective exhibition with a selected work displayed publicly. Project developed at school and presented in an official cultural context.</p>
+            </div>
+        </div>
+        <div class="exp-item reveal">
+            <div class="exp-year">2025 · Capitanatale Foggia</div>
+            <div>
+                <h4 class="exp-role" data-it>Impaginazione fondale &amp; poster</h4>
+                <h4 class="exp-role" data-en style="display:none">Layout — backdrop &amp; poster</h4>
+                <p class="exp-desc" data-it>Layout e impaginazione per l'evento Capitanatale in occasione dell'ottavo centenario del "Cantico delle Creature".</p>
+                <p class="exp-desc" data-en style="display:none">Layout and typesetting for the Capitanatale event on the occasion of the eighth centenary of the "Canticle of the Sun".</p>
+            </div>
+        </div>
+        <div class="exp-item reveal">
+            <div class="exp-year">2025 — 2026</div>
+            <div>
+                <h4 class="exp-role" data-it>Stage — Grani Digitali</h4>
+                <h4 class="exp-role" data-en style="display:none">Internship — Grani Digitali</h4>
+                <p class="exp-desc" data-it>Sviluppo web app per la promozione della città di Foggia nell'ambito del progetto Grani Digitali.</p>
+                <p class="exp-desc" data-en style="display:none">Web app development to promote the city of Foggia as part of the Grani Digitali project.</p>
+            </div>
+        </div>
+        <div class="exp-item reveal">
+            <div class="exp-year">2024 · ADMO Puglia</div>
+            <div>
+                <h4 class="exp-role" data-it>Campagna con Gianmarco Saurino</h4>
+                <h4 class="exp-role" data-en style="display:none">Campaign with Gianmarco Saurino</h4>
+                <p class="exp-desc" data-it>Layout per campagna di sensibilizzazione; elaborato selezionato e pubblicato nella comunicazione ufficiale. Mi sono iscritto ufficialmente ad ADMO.</p>
+                <p class="exp-desc" data-en style="display:none">Layout for an awareness campaign; artwork selected and published in official communications. I officially joined ADMO.</p>
+            </div>
+        </div>
+    </div>
+
+    <span class="section-tag reveal" data-it>Formazione</span>
+    <span class="section-tag reveal" data-en style="display:none">Education</span>
+    <div class="exp-list" style="margin-top:1.5rem">
+        <div class="exp-item reveal">
+            <div class="exp-year">2021 — 2026</div>
+            <div>
+                <h4 class="exp-role" data-it>Diploma Tecnico Grafico Computer</h4>
+                <h4 class="exp-role" data-en style="display:none">Graphic Design Technical Diploma</h4>
+                <p class="exp-desc">I.I.S. Einaudi-GiECO, Foggia</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills -->
+<section class="s">
+    <span class="section-tag reveal" data-it>Competenze</span>
+    <span class="section-tag reveal" data-en style="display:none">Skills</span>
+    <div class="skills-grid" style="margin-top:2rem">
+        <div class="skill-card reveal">
+            <span class="skill-num">01</span>
+            <span class="skill-name">Branding &amp; Identity</span>
+        </div>
+        <div class="skill-card reveal reveal-d1">
+            <span class="skill-num">02</span>
+            <span class="skill-name">Graphic Design</span>
+        </div>
+        <div class="skill-card reveal reveal-d2">
+            <span class="skill-num">03</span>
+            <span class="skill-name">Photography</span>
+        </div>
+        <div class="skill-card reveal reveal-d3">
+            <span class="skill-num">04</span>
+            <span class="skill-name">Tools &amp; Software</span>
+            <div class="skill-tools">
+                Adobe Photoshop · Illustrator · InDesign<br>
+                <span data-it>Utilizzo consapevole dell'IA</span>
+                <span data-en style="display:none">Conscious use of AI</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Works -->
+<section id="works" class="s-wide">
+    <div style="padding:0 5vw" class="reveal">
+        <h2 class="works-title">
+            <span data-it>Lavori<br>Selezionati</span>
+            <span data-en style="display:none">Selected<br>Works</span>
+        </h2>
+    </div>
+
+    <!-- Filter tabs -->
+    <div class="filter-tabs reveal reveal-d1" role="group" aria-label="Filtra per categoria">
+        <button class="filter-btn active" data-filter="all">
+            <span data-it>Tutti</span><span data-en style="display:none">All</span>
+        </button>
+        <button class="filter-btn" data-filter="adv">ADV / Layout</button>
+        <button class="filter-btn" data-filter="editorial">Editorial</button>
+        <button class="filter-btn" data-filter="poster">Poster</button>
+        <button class="filter-btn" data-filter="design">Graphic Design</button>
+    </div>
+
+    <!-- Desktop grid -->
+    <div class="portfolio-grid">
+        <div class="work-card span2 reveal" data-category="adv">
+            <div class="work-img">
+                <div class="work-view-label"><span>VIEW</span></div>
+                <img src="layout admo x tutto (1)_page-0001.jpg" alt="Campagna ADMO" loading="lazy"/>
+            </div>
+            <div class="work-info">
+                <span class="work-name" data-it>Campagna Pubblicitaria ADMO</span>
+                <span class="work-name" data-en style="display:none">ADMO Ad Campaign</span>
+                <span class="work-cat">ADV / Layout</span>
+            </div>
+        </div>
+        <div class="work-card span2 reveal" data-category="editorial">
+            <div class="work-img">
+                <div class="work-view-label"><span>VIEW</span></div>
+                <img src="copertina libro.jpg" alt="Copertina libro" loading="lazy"/>
+            </div>
+            <div class="work-info">
+                <span class="work-name" data-it>Copertina Libri</span>
+                <span class="work-name" data-en style="display:none">Book Cover</span>
+                <span class="work-cat">Editorial Design</span>
+            </div>
+        </div>
+        <div class="work-card reveal" data-category="poster">
+            <div class="work-img work-img-inner">
+                <div class="work-view-label"><span>VIEW</span></div>
+                <img src="Blue Bold Modern Fashion Coming Soon Poster.jpg" alt="Fashion Poster" loading="lazy"/>
+            </div>
+            <div class="work-info">
+                <span class="work-name">Poster</span>
+                <span class="work-cat">Poster Design</span>
+            </div>
+        </div>
+        <div class="work-card reveal" data-category="design">
+            <div class="work-img work-img-inner">
+                <div class="work-view-label"><span>VIEW</span></div>
+                <img src="Tavola disegno 1@3x.png" alt="Menú Cresima" loading="lazy"/>
+            </div>
+            <div class="work-info">
+                <span class="work-name">Menú</span>
+                <span class="work-cat">Graphic Design</span>
+            </div>
+        </div>
+        <div class="work-card reveal" data-category="poster">
+            <div class="work-img work-img-inner">
+                <div class="work-view-label"><span>VIEW</span></div>
+                <img src="consegna giornata della memoria -01.jpeg" alt="Giornata della Memoria" loading="lazy"/>
+            </div>
+            <div class="work-info">
+                <span class="work-name" data-it>Poster Memoria</span>
+                <span class="work-name" data-en style="display:none">Memorial Poster</span>
+                <span class="work-cat">Editorial Poster</span>
+            </div>
+        </div>
+        <div class="work-card reveal" data-category="poster">
+            <div class="work-img work-img-inner">
+                <div class="work-view-label"><span>VIEW</span></div>
+                <img src="MANIFESTO completo.jpg" alt="Manifesto Off Road CVM" loading="lazy"/>
+            </div>
+            <div class="work-info">
+                <span class="work-name">Poster</span>
+                <span class="work-cat">Graphic Design</span>
+            </div>
+        </div>
+        <div class="work-card reveal" data-category="design">
+            <div class="work-img work-img-inner">
+                <div class="work-view-label"><span>VIEW</span></div>
+                <img src="ChatGPT Image 17 apr 2026, 17_56_25.png" alt="Inviti compleanni" loading="lazy"/>
+            </div>
+            <div class="work-info">
+                <span class="work-name" data-it>Inviti Compleanni</span>
+                <span class="work-name" data-en style="display:none">Birthday Invitations</span>
+                <span class="work-cat">Invitation Design</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile scroll -->
+    <div class="portfolio-scroll">
+        <div class="work-card" data-category="adv">
+            <div class="work-img" style="aspect-ratio:3/4"><img src="layout admo x tutto (1)_page-0001.jpg" alt="ADMO" loading="lazy" style="height:100%;object-fit:cover"/></div>
+            <div class="work-info"><span class="work-name">ADMO</span><span class="work-cat">ADV</span></div>
+        </div>
+        <div class="work-card" data-category="editorial">
+            <div class="work-img" style="aspect-ratio:3/4"><img src="copertina libro.jpg" alt="Copertina" loading="lazy" style="height:100%;object-fit:cover"/></div>
+            <div class="work-info"><span class="work-name" data-it>Copertina</span><span class="work-name" data-en style="display:none">Cover</span><span class="work-cat">Editorial</span></div>
+        </div>
+        <div class="work-card" data-category="poster">
+            <div class="work-img" style="aspect-ratio:3/4"><img src="Blue Bold Modern Fashion Coming Soon Poster.jpg" alt="Poster" loading="lazy" style="height:100%;object-fit:cover"/></div>
+            <div class="work-info"><span class="work-name">Poster</span><span class="work-cat">Design</span></div>
+        </div>
+        <div class="work-card" data-category="design">
+            <div class="work-img" style="aspect-ratio:3/4"><img src="Tavola disegno 1@3x.png" alt="Menú" loading="lazy" style="height:100%;object-fit:cover"/></div>
+            <div class="work-info"><span class="work-name">Menú</span><span class="work-cat">Design</span></div>
+        </div>
+        <div class="work-card" data-category="poster">
+            <div class="work-img" style="aspect-ratio:3/4"><img src="consegna giornata della memoria -01.jpeg" alt="Memoria" loading="lazy" style="height:100%;object-fit:cover"/></div>
+            <div class="work-info"><span class="work-name" data-it>Memoria</span><span class="work-name" data-en style="display:none">Memorial</span><span class="work-cat">Editorial</span></div>
+        </div>
+        <div class="work-card" data-category="poster">
+            <div class="work-img" style="aspect-ratio:3/4"><img src="MANIFESTO completo.jpg" alt="Manifesto" loading="lazy" style="height:100%;object-fit:cover"/></div>
+            <div class="work-info"><span class="work-name">Manifesto</span><span class="work-cat">Design</span></div>
+        </div>
+        <div class="work-card" data-category="design">
+            <div class="work-img" style="aspect-ratio:3/4"><img src="ChatGPT Image 17 apr 2026, 17_56_25.png" alt="Inviti" loading="lazy" style="height:100%;object-fit:cover"/></div>
+            <div class="work-info"><span class="work-name" data-it>Inviti</span><span class="work-name" data-en style="display:none">Invitations</span><span class="work-cat">Design</span></div>
+        </div>
+    </div>
+
+    <div class="reveal" style="padding:0 5vw 2rem;font-size:clamp(.9rem,1.5vw,1.2rem);font-weight:500;color:var(--muted)">
+        <span data-it>Per altri lavori, seguimi sui <a href="https://www.instagram.com/rinaldi.visuals/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">social</a>.</span>
+        <span data-en style="display:none">For more work, follow me on <a href="https://www.instagram.com/rinaldi.visuals/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">social media</a>.</span>
+    </div>
+</section>
+
+<!-- QR -->
+<section class="links-s reveal">
+    <h2 class="links-title">
+        <span data-it>Visita i miei link<span style="color:var(--accent)">:</span></span>
+        <span data-en style="display:none">Visit my links<span style="color:var(--accent)">:</span></span>
+    </h2>
+    <div class="arrow-bounce" aria-hidden="true"><i class="fas fa-arrow-down"></i></div>
+    <div class="qr-box">
+        <img src="qr_cristian_rinaldi_highres.png" alt="QR Code Linktree" loading="lazy"/>
+    </div>
+</section>
+
+<!-- Business card -->
+<section class="card-s reveal">
+    <span class="section-tag" data-it>Il mio contatto</span>
+    <span class="section-tag" data-en style="display:none">My contact</span>
+    <div class="card-scene">
+        <div class="card-container" id="bcard">
+            <div class="card-face">
+                <img src="tavola disegno 1.png" alt="Biglietto fronte" loading="lazy"/>
+            </div>
+            <div class="card-face card-back">
+                <img src="tavola disegno 2.png" alt="Biglietto retro" loading="lazy"/>
+            </div>
+        </div>
+    </div>
+    <p class="card-hint" data-it>Tocca per girare</p>
+    <p class="card-hint" data-en style="display:none">Tap to flip</p>
+</section>
+
+<!-- Contact + Form -->
+<section class="contact-s" id="contact">
+    <div class="contact-inner">
+        <div class="reveal">
+            <h2 class="contact-h">
+                <span data-it>Iniziamo<br><span class="red">un progetto</span></span>
+                <span data-en style="display:none">Let's start<br><span class="red">a project</span></span>
+            </h2>
+        </div>
+        <div class="reveal reveal-d1">
+            <p class="contact-eyebrow" data-it>Parliamoci — senza impegno</p>
+            <p class="contact-eyebrow" data-en style="display:none">Let's talk — no commitment</p>
+            <p class="contact-body" data-it>
+                Hai un'idea, un brand da costruire o un progetto da rendere più forte visivamente?
+                Compila il form o scrivimi direttamente.
+            </p>
+            <p class="contact-body" data-en style="display:none">
+                Have an idea, a brand to build or a project to strengthen visually?
+                Fill in the form or write to me directly.
+            </p>
+
+            <!-- 
+                ISTRUZIONI FORMSPREE:
+                1. Vai su formspree.io e crea un account gratuito
+                2. Crea un nuovo form e copia il tuo Form ID
+                3. Sostituisci "YOUR_FORM_ID" nell'action qui sotto con il tuo ID
+                   Es: action="https://formspree.io/f/xpwzgqkr"
+            -->
+            <form class="contact-form" id="contactForm"
+                  action="https://formspree.io/f/YOUR_FORM_ID"
+                  method="POST">
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="cf-name" data-it>Nome</label>
+                        <label for="cf-name" data-en style="display:none">Name</label>
+                        <input type="text" id="cf-name" name="name" required
+                               placeholder="Mario Rossi" autocomplete="name"/>
+                    </div>
+                    <div class="form-field">
+                        <label for="cf-email">Email</label>
+                        <input type="email" id="cf-email" name="email" required
+                               placeholder="mario@email.com" autocomplete="email"/>
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label for="cf-service" data-it>Tipo di progetto</label>
+                    <label for="cf-service" data-en style="display:none">Project type</label>
+                    <select id="cf-service" name="service">
+                        <option value="" data-it>Seleziona...</option>
+                        <option value="" data-en style="display:none">Select...</option>
+                        <option value="branding" data-it>Branding &amp; Identity</option>
+                        <option value="branding" data-en style="display:none">Branding &amp; Identity</option>
+                        <option value="graphic" data-it>Graphic Design</option>
+                        <option value="graphic" data-en style="display:none">Graphic Design</option>
+                        <option value="photo" data-it>Fotografia</option>
+                        <option value="photo" data-en style="display:none">Photography</option>
+                        <option value="other" data-it>Altro</option>
+                        <option value="other" data-en style="display:none">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-field">
+                    <label for="cf-msg" data-it>Messaggio</label>
+                    <label for="cf-msg" data-en style="display:none">Message</label>
+                    <textarea id="cf-msg" name="message" required
+                              placeholder="" data-placeholder-it="Raccontami il tuo progetto..."
+                              data-placeholder-en="Tell me about your project..."></textarea>
+                </div>
+
+                <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+                    <button type="submit" class="contact-btn">
+                        <span data-it>Invia messaggio <i class="fas fa-paper-plane" style="font-size:.85em"></i></span>
+                        <span data-en style="display:none">Send message <i class="fas fa-paper-plane" style="font-size:.85em"></i></span>
+                    </button>
+                    <p class="form-msg" id="formMsg"></p>
+                </div>
+
+                <p style="font-size:.7rem;color:rgba(0,0,0,.4);margin-top:.5rem;font-weight:500">
+                    <span data-it>oppure scrivimi a</span>
+                    <span data-en style="display:none">or email me at</span>
+                    <a href="mailto:rinaldivisuals@icloud.com" style="color:var(--accent);text-decoration:none;font-weight:700">rinaldivisuals@icloud.com</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Mobile sticky CTA -->
+<div class="mobile-cta" id="mobileCta">
+    <div class="mobile-cta-info">
+        <strong>Cristian Rinaldi</strong>
+        <span data-it>Grafico &amp; Fotografo</span>
+        <span data-en style="display:none">Designer &amp; Photographer</span>
+    </div>
+    <a href="#contact" class="mobile-cta-btn">
+        <span data-it>Scrivimi <i class="fas fa-arrow-right" style="font-size:.7em"></i></span>
+        <span data-en style="display:none">Contact <i class="fas fa-arrow-right" style="font-size:.7em"></i></span>
+    </a>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-copy">
+            <p>&copy; 2024 Cristian Rinaldi. All Rights Reserved.</p>
+            <small>Designed &amp; Built by Cristian Rinaldi and AI</small>
+        </div>
+        <nav class="social-links">
+            <a href="https://linktr.ee/cristianRinaldi" target="_blank" rel="noopener">Linktree</a>
+            <a href="https://www.instagram.com/rinaldi.visuals/" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.linkedin.com/in/cristian-rinaldi-514b553a0/" target="_blank" rel="noopener">LinkedIn</a>
+        </nav>
+    </div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Immagine ingrandita">
+    <span class="lb-close" id="lbClose" role="button" tabindex="0" aria-label="Chiudi">&times;</span>
+    <img src="" alt="" id="lbImg"/>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    /* ── CURSOR ── */
+    const cursor = document.getElementById('cursor');
+    const cursorLabel = document.getElementById('cursorLabel');
+    if (cursor && window.matchMedia('(hover:hover)').matches) {
+        let raf = null;
+        let mx = 0, my = 0;
+        window.addEventListener('mousemove', e => {
+            mx = e.clientX; my = e.clientY;
+            if (raf) return;
+            raf = requestAnimationFrame(() => {
+                cursor.style.left = mx + 'px';
+                cursor.style.top  = my + 'px';
+                if (cursorLabel) { cursorLabel.style.left = mx + 'px'; cursorLabel.style.top = my + 'px'; }
+                raf = null;
+            });
+        }, { passive: true });
+
+        document.querySelectorAll('.work-card, .work-img').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+                if (cursorLabel) cursorLabel.classList.add('hover');
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+                if (cursorLabel) cursorLabel.classList.remove('hover');
+            });
+        });
+    }
+
+    /* ── HEADER SCROLL ── */
+    const header = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    /* ── REVEAL ── */
+    const revIO = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+        });
+    }, { rootMargin: '60px 0px', threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => revIO.observe(el));
+
+    /* ── COUNT UP ANIMATION ── */
+    function animateCount(el, target, suffix) {
+        let start = 0;
+        const duration = 1200;
+        const step = timestamp => {
+            if (!step.startTime) step.startTime = timestamp;
+            const progress = Math.min((timestamp - step.startTime) / duration, 1);
+            const ease = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.round(ease * target) + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+    }
+
+    // Hero stats
+    const statIO = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => {
+            if (!e.isIntersecting) return;
+            const target = parseInt(e.target.dataset.count);
+            const numEl  = e.target.querySelector('span');
+            if (numEl) animateCount(numEl, target, '');
+            obs.unobserve(e.target);
+        });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-count]').forEach(el => statIO.observe(el));
+
+    // Stats row blocks
+    const blockIO = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => {
+            if (!e.isIntersecting) return;
+            const target = parseInt(e.target.dataset.countBlock);
+            animateCount(e.target, target, '+');
+            obs.unobserve(e.target);
+        });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-count-block]').forEach(el => blockIO.observe(el));
+
+    /* ── FILTER TABS ── */
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.dataset.filter;
+            document.querySelectorAll('.portfolio-grid .work-card').forEach(card => {
+                const show = filter === 'all' || card.dataset.category === filter;
+                card.setAttribute('data-hidden', !show);
+                card.style.display = show ? '' : 'none';
+            });
+        });
+    });
+
+    /* ── BUSINESS CARD ── */
+    const bcard = document.getElementById('bcard');
+    if (bcard) bcard.addEventListener('click', () => bcard.classList.toggle('flipped'));
+
+    /* ── LIGHTBOX ── */
+    const lb = document.getElementById('lb');
+    const lbImg = document.getElementById('lbImg');
+    const lbClose = document.getElementById('lbClose');
+
+    function openLb(src, alt) {
+        lbImg.src = src; lbImg.alt = alt || '';
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeLb() {
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+        setTimeout(() => { lbImg.src = ''; }, 400);
+    }
+
+    document.addEventListener('click', e => {
+        const img = e.target.closest('.work-img img, .about-imgs img, .qr-box img');
+        if (!img) return;
+        e.preventDefault();
+        openLb(img.src, img.alt);
+    });
+
+    lbClose.addEventListener('click', closeLb);
+    lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+
+    /* ── MOBILE CTA HIDE ON CONTACT ── */
+    const contactSec = document.getElementById('contact');
+    const mobileCta  = document.getElementById('mobileCta');
+    if (contactSec && mobileCta) {
+        new IntersectionObserver(([entry]) => {
+            mobileCta.style.transform = entry.isIntersecting ? 'translateY(120%)' : 'translateY(0)';
+        }, { threshold: 0.1 }).observe(contactSec);
+    }
+
+    /* ── CONTACT FORM ── */
+    const form = document.getElementById('contactForm');
+    const formMsg = document.getElementById('formMsg');
+    if (form && formMsg) {
+        // Set placeholder based on lang
+        const textarea = form.querySelector('textarea');
+
+        form.addEventListener('submit', async e => {
+            const action = form.getAttribute('action');
+            if (action.includes('YOUR_FORM_ID')) {
+                // Fallback to mailto if Formspree not configured
+                e.preventDefault();
+                const name    = form.querySelector('[name="name"]').value;
+                const email   = form.querySelector('[name="email"]').value;
+                const service = form.querySelector('[name="service"]').value;
+                const message = form.querySelector('[name="message"]').value;
+                const subject = encodeURIComponent('Progetto: ' + service);
+                const body    = encodeURIComponent(`Da: ${name} (${email})\n\n${message}`);
+                window.location.href = `mailto:rinaldivisuals@icloud.com?subject=${subject}&body=${body}`;
+                return;
+            }
+            e.preventDefault();
+            const btn = form.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            formMsg.textContent = '';
+            try {
+                const res = await fetch(action, {
+                    method: 'POST', headers: { 'Accept': 'application/json' },
+                    body: new FormData(form)
+                });
+                if (res.ok) {
+                    const lang = document.documentElement.dataset.lang;
+                    formMsg.textContent = lang === 'en' ? '✓ Message sent!' : '✓ Messaggio inviato!';
+                    formMsg.style.color = '#2a9d5c';
+                    form.reset();
+                } else {
+                    throw new Error();
+                }
+            } catch {
+                const lang = document.documentElement.dataset.lang;
+                formMsg.textContent = lang === 'en' ? 'Error. Try again or email directly.' : 'Errore. Riprova o scrivimi via email.';
+                formMsg.style.color = 'var(--accent)';
+            }
+            btn.disabled = false;
+        });
+    }
+
+    /* ── LANGUAGE SWITCH ── */
+    const langBtns = document.querySelectorAll('[data-lang-btn]');
+    const html = document.documentElement;
+
+    function setLang(lang) {
+        html.setAttribute('data-lang', lang);
+        html.setAttribute('lang', lang);
+
+        langBtns.forEach(b => {
+            const active = b.dataset.langBtn === lang;
+            b.classList.toggle('active', active);
+            b.setAttribute('aria-pressed', active);
+        });
+
+        // Toggle [data-it] / [data-en]
+        document.querySelectorAll('[data-it]').forEach(el => {
+            el.style.display = lang === 'it' ? '' : 'none';
+        });
+        document.querySelectorAll('[data-en]').forEach(el => {
+            el.style.display = lang === 'en' ? '' : 'none';
+        });
+
+        // Update textarea placeholder
+        const ta = document.querySelector('textarea[data-placeholder-it]');
+        if (ta) ta.placeholder = lang === 'en' ? ta.dataset.placeholderEn : ta.dataset.placeholderIt;
+
+        // Persist
+        try { localStorage.setItem('cr-lang', lang); } catch(e) {}
+    }
+
+    // Load saved lang
+    let savedLang = 'it';
+    try { savedLang = localStorage.getItem('cr-lang') || 'it'; } catch(e) {}
+    setLang(savedLang);
+
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', () => setLang(btn.dataset.langBtn));
+    });
+
+    /* ── PARALLAX HERO ── */
+    const heroTitle = document.querySelector('.hero-title');
+    if (heroTitle && window.matchMedia('(min-width:769px)').matches) {
+        window.addEventListener('scroll', () => {
+            const y = window.scrollY;
+            heroTitle.style.transform = `translateY(${y * 0.18}px)`;
+        }, { passive: true });
+    }
+
+});
+</script>
+</body>
+</html>
