@@ -612,41 +612,47 @@
 
         /* ── PHOTOGRAPHY SECTION ── */
         .photo-section {
-            padding: 3rem 5vw 5rem;
+            padding: 4rem 0 5rem;
             border-top: 1px solid var(--border);
             margin-top: 1rem;
         }
         .photo-section-header {
             display: flex; align-items: flex-end;
             justify-content: space-between;
-            gap: 1rem; margin-bottom: 2.5rem;
-            flex-wrap: wrap;
+            gap: 1.5rem; margin-bottom: 2.5rem;
+            flex-wrap: wrap; padding: 0 5vw;
         }
+        .photo-section-header > div:first-child { flex: 1; min-width: 0; }
         .photo-section-title {
-            font-size: clamp(2rem, 5vw, 4.5rem);
+            font-size: clamp(2.2rem, 6vw, 5rem);
             font-weight: 900; text-transform: uppercase;
-            letter-spacing: -.03em; line-height: .9;
+            letter-spacing: -.035em; line-height: .9;
+            margin-top: .75rem;
         }
         .photo-section-title span { color: var(--accent); }
 
         .photo-controls {
-            display: flex; align-items: center; gap: 1rem;
+            display: flex; align-items: center; gap: .9rem;
             flex-shrink: 0;
         }
         .photo-counter {
-            font-size: .72rem; font-weight: 800; letter-spacing: .2em;
+            font-size: .78rem; font-weight: 800; letter-spacing: .22em;
             color: var(--muted); text-transform: uppercase;
-            white-space: nowrap; min-width: 56px; text-align: center;
+            white-space: nowrap; min-width: 70px; text-align: center;
+            font-variant-numeric: tabular-nums;
         }
-        .photo-counter strong { color: var(--text); }
+        .photo-counter strong { color: var(--text); font-weight: 900; }
         .photo-arrow-btn {
-            width: 44px; height: 44px;
+            width: 48px; height: 48px;
             border: 1px solid var(--border); background: var(--surface);
             display: flex; align-items: center; justify-content: center;
-            transition: border-color .25s, background .25s;
-            flex-shrink: 0;
+            transition: border-color .25s, background .25s, opacity .25s, transform .25s;
+            flex-shrink: 0; padding: 0;
         }
-        .photo-arrow-btn:hover { border-color: var(--accent); background: var(--accent-dim); }
+        .photo-arrow-btn:hover:not(:disabled) {
+            border-color: var(--accent); background: var(--accent-dim);
+            transform: translateY(-2px);
+        }
         .photo-arrow-btn:disabled { opacity: .25; pointer-events: none; }
         .photo-arrow-btn svg {
             width: 18px; height: 18px; stroke: var(--text);
@@ -654,83 +660,127 @@
         }
         @media (hover:hover) { .photo-arrow-btn { cursor: none; } }
 
+        /* Track wrapper with edge fade hints */
         .photo-slider-outer {
             position: relative; overflow: hidden;
-            /* negative margin to bleed to edges */
+            padding: .25rem 5vw;
+            mask-image: linear-gradient(to right, transparent 0, #000 4%, #000 96%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0, #000 4%, #000 96%, transparent 100%);
         }
         .photo-slider-track {
-            display: flex; gap: 1.5rem;
-            transition: transform .55s cubic-bezier(.16, 1, .3, 1);
+            display: flex; gap: 1.25rem;
+            transition: transform .65s cubic-bezier(.22, 1, .36, 1);
             will-change: transform;
         }
         .photo-slide {
-            flex: 0 0 calc(33.333% - 1rem);
+            flex: 0 0 calc((100% - 2.5rem) / 3);
             position: relative; overflow: hidden;
             border: 1px solid var(--border);
             background: #111;
+            /* uniform aspect for cohesion regardless of source orientation */
+            aspect-ratio: 3 / 4;
         }
         .photo-slide .ps-img {
-            width: 100%; aspect-ratio: 3/4;
-            object-fit: cover; display: block;
-            filter: grayscale(60%);
-            transition: transform .6s var(--ease), filter .6s ease;
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center;
+            display: block;
+            filter: grayscale(55%);
+            transition: transform .7s var(--ease), filter .6s ease;
         }
-        .photo-slide:hover .ps-img {
-            transform: scale(1.04); filter: grayscale(0%);
+        @media (hover: hover) {
+            .photo-slide:hover .ps-img { transform: scale(1.05); filter: grayscale(0%); }
         }
-        /* landscape images keep a wider ratio */
-        .photo-slide.landscape .ps-img { aspect-ratio: 3/2; }
+        @media (hover: none) {
+            /* on touch devices show full color since no hover */
+            .photo-slide .ps-img { filter: grayscale(20%); }
+        }
 
         .photo-slide-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(to top, rgba(8,8,8,.7) 0%, transparent 50%);
-            pointer-events: none;
-        }
-        .photo-slide-label {
-            position: absolute; bottom: 0; left: 0; right: 0;
-            padding: .8rem 1rem;
-            font-size: .6rem; font-weight: 800;
-            letter-spacing: .2em; text-transform: uppercase;
-            color: rgba(240,237,232,.7);
+            background: linear-gradient(to top, rgba(8,8,8,.55) 0%, transparent 45%);
+            pointer-events: none; z-index: 1;
         }
         .photo-slide-num {
-            position: absolute; top: .8rem; left: .8rem;
-            font-size: .6rem; font-weight: 900; letter-spacing: .2em;
-            color: rgba(255,255,255,.35);
+            position: absolute; top: .85rem; left: .9rem;
+            font-size: .58rem; font-weight: 900; letter-spacing: .22em;
+            color: rgba(255,255,255,.55);
+            background: rgba(8,8,8,.5);
+            padding: 4px 8px;
+            backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+            z-index: 2;
         }
 
-        /* View cursor on hover */
         .photo-slide .ps-view {
             position: absolute; inset: 0;
             display: flex; align-items: center; justify-content: center;
-            pointer-events: none; z-index: 2;
+            pointer-events: none; z-index: 3;
         }
         .photo-slide .ps-view span {
-            font-size: .72rem; font-weight: 900; letter-spacing: .3em;
+            font-size: .7rem; font-weight: 900; letter-spacing: .3em;
             color: #fff; text-transform: uppercase;
-            background: var(--accent); padding: .45rem .9rem;
+            background: var(--accent); padding: .5rem 1rem;
             opacity: 0; transform: scale(.85);
             transition: opacity .3s, transform .3s;
         }
-        .photo-slide:hover .ps-view span { opacity: 1; transform: scale(1); }
+        @media (hover: hover) {
+            .photo-slide:hover .ps-view span { opacity: 1; transform: scale(1); }
+        }
 
         /* Progress dots */
         .photo-dots {
             display: flex; gap: 6px; justify-content: center;
-            margin-top: 1.5rem; flex-wrap: wrap;
+            margin-top: 2rem; flex-wrap: wrap; padding: 0 5vw;
         }
         .photo-dot {
-            width: 18px; height: 3px; background: var(--border);
+            width: 22px; height: 3px; background: var(--border);
             transition: background .3s, width .3s;
+            border: none; padding: 0;
         }
-        .photo-dot.active { background: var(--accent); width: 32px; }
+        .photo-dot.active { background: var(--accent); width: 38px; }
+        @media (hover:hover) { .photo-dot { cursor: none; } }
 
-        @media (max-width: 900px) {
-            .photo-slide { flex: 0 0 calc(50% - .75rem); }
+        /* Mobile-only controls bar (under carousel) */
+        .photo-mobile-controls {
+            display: none;
+            align-items: center; justify-content: center;
+            gap: 1rem; margin-top: 1.75rem;
+            padding: 0 5vw;
         }
-        @media (max-width: 600px) {
-            .photo-slide { flex: 0 0 82vw; }
-            .photo-section { padding: 2.5rem 5vw 4rem; }
+
+        /* ─── Tablet ─── */
+        @media (max-width: 1024px) {
+            .photo-slide { flex: 0 0 calc((100% - 1.25rem) / 2); }
+        }
+
+        /* ─── Mobile ─── */
+        @media (max-width: 640px) {
+            .photo-section { padding: 3rem 0 4rem; }
+            .photo-section-header {
+                margin-bottom: 1.75rem;
+                align-items: flex-start;
+            }
+            /* Hide top controls on mobile, show below carousel instead */
+            .photo-section-header .photo-controls { display: none; }
+            .photo-mobile-controls { display: flex; }
+
+            .photo-slider-outer {
+                padding: .25rem 0 .25rem 5vw;
+                mask-image: linear-gradient(to right, #000 0, #000 90%, transparent 100%);
+                -webkit-mask-image: linear-gradient(to right, #000 0, #000 90%, transparent 100%);
+            }
+            .photo-slider-track { gap: .9rem; }
+            .photo-slide {
+                flex: 0 0 78vw; max-width: 360px;
+                aspect-ratio: 3 / 4;
+            }
+            .photo-arrow-btn { width: 52px; height: 52px; }
+            .photo-arrow-btn svg { width: 20px; height: 20px; }
+            .photo-counter { font-size: .82rem; }
+            .photo-dots { margin-top: 1.5rem; }
+            /* always show VIEW label on mobile (subtler) */
+            .photo-slide .ps-view span {
+                opacity: 0; /* keep subtle, lightbox opens on tap anyway */
+            }
         }
 
         /* ═══ MOBILE ═══ */
@@ -1370,20 +1420,20 @@
                     <div class="photo-slide-overlay"></div>
                     <div class="ps-view"><span>VIEW</span></div>
                 </div>
-                <!-- Landscape photos -->
-                <div class="photo-slide landscape" data-index="16">
+                <!-- Landscape photos (uniformly cropped to portrait) -->
+                <div class="photo-slide" data-index="16">
                     <span class="photo-slide-num">17</span>
                     <img class="ps-img" src="2e3a1980-286c-4b29-a1e7-2d15f1f1907d.jpg" alt="Fotografia 17" loading="lazy"/>
                     <div class="photo-slide-overlay"></div>
                     <div class="ps-view"><span>VIEW</span></div>
                 </div>
-                <div class="photo-slide landscape" data-index="17">
+                <div class="photo-slide" data-index="17">
                     <span class="photo-slide-num">18</span>
                     <img class="ps-img" src="68ee55c1-d494-498a-9950-cbf8829da1f7.jpg" alt="Fotografia 18" loading="lazy"/>
                     <div class="photo-slide-overlay"></div>
                     <div class="ps-view"><span>VIEW</span></div>
                 </div>
-                <div class="photo-slide landscape" data-index="18">
+                <div class="photo-slide" data-index="18">
                     <span class="photo-slide-num">19</span>
                     <img class="ps-img" src="ec5d42eb-55bd-4f0c-9544-be05dbdfe282.jpg" alt="Fotografia 19" loading="lazy"/>
                     <div class="photo-slide-overlay"></div>
@@ -1394,6 +1444,17 @@
 
         <!-- Dots -->
         <div class="photo-dots" id="photoDots"></div>
+
+        <!-- Mobile-only controls (arrows + counter, larger tap targets) -->
+        <div class="photo-mobile-controls">
+            <button class="photo-arrow-btn" id="photoPrevMobile" aria-label="Foto precedente">
+                <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <span class="photo-counter"><strong id="photoCurrentNumMobile">01</strong> / <span id="photoTotalNumMobile">19</span></span>
+            <button class="photo-arrow-btn" id="photoNextMobile" aria-label="Foto successiva">
+                <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+            </button>
+        </div>
     </div>
 </section>
 
@@ -1733,32 +1794,45 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ── PHOTO CAROUSEL ── */
     (function() {
         const track      = document.getElementById('photoTrack');
+        const outer      = document.getElementById('photoSliderOuter');
         const prevBtn    = document.getElementById('photoPrev');
         const nextBtn    = document.getElementById('photoNext');
+        const prevBtnM   = document.getElementById('photoPrevMobile');
+        const nextBtnM   = document.getElementById('photoNextMobile');
         const currentNum = document.getElementById('photoCurrentNum');
         const totalNum   = document.getElementById('photoTotalNum');
+        const currentNumM = document.getElementById('photoCurrentNumMobile');
+        const totalNumM   = document.getElementById('photoTotalNumMobile');
         const dotsWrap   = document.getElementById('photoDots');
         if (!track) return;
 
-        const slides     = Array.from(track.querySelectorAll('.photo-slide'));
-        const total      = slides.length;
-        let current      = 0;
+        const slides = Array.from(track.querySelectorAll('.photo-slide'));
+        const total  = slides.length;
+        let current  = 0;
 
-        // How many slides visible at once (responsive)
         function visibleCount() {
-            if (window.innerWidth <= 600) return 1;
-            if (window.innerWidth <= 900) return 2;
+            const w = window.innerWidth;
+            if (w <= 640)  return 1;
+            if (w <= 1024) return 2;
             return 3;
         }
 
-        // Build dots (one per visible page)
+        // Read computed gap from CSS so we stay in sync with media queries
+        function trackGap() {
+            const cs = window.getComputedStyle(track);
+            return parseFloat(cs.gap || cs.columnGap || '0') || 0;
+        }
+
         function buildDots() {
             dotsWrap.innerHTML = '';
-            const pages = Math.ceil(total / visibleCount());
+            const vis   = visibleCount();
+            const pages = Math.max(1, Math.ceil(total / vis));
             for (let i = 0; i < pages; i++) {
-                const d = document.createElement('div');
+                const d = document.createElement('button');
+                d.type = 'button';
                 d.className = 'photo-dot' + (i === 0 ? ' active' : '');
-                d.addEventListener('click', () => goTo(i * visibleCount()));
+                d.setAttribute('aria-label', `Vai a pagina ${i + 1}`);
+                d.addEventListener('click', () => goTo(i * vis));
                 dotsWrap.appendChild(d);
             }
         }
@@ -1771,48 +1845,75 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        function goTo(index) {
-            const vis = visibleCount();
-            const maxIndex = total - vis;
-            current = Math.max(0, Math.min(index, maxIndex));
+        function setNum(el, v) { if (el) el.textContent = String(v).padStart(2, '0'); }
 
-            // Calculate slide width including gap
-            const slideEl  = slides[0];
-            const gap      = 24; // 1.5rem = 24px
-            const slideW   = slideEl.getBoundingClientRect().width;
+        function goTo(index) {
+            const vis      = visibleCount();
+            const maxIndex = Math.max(0, total - vis);
+            current        = Math.max(0, Math.min(index, maxIndex));
+
+            // Step = slide width + gap
+            const slideW = slides[0].getBoundingClientRect().width;
+            const gap    = trackGap();
             track.style.transform = `translateX(-${current * (slideW + gap)}px)`;
 
-            // Counter: show range
-            const first = current + 1;
-            const last  = Math.min(current + vis, total);
-            currentNum.textContent = String(first).padStart(2, '0');
-            totalNum.textContent   = String(total).padStart(2, '0');
+            // Counter
+            setNum(currentNum,  current + 1);
+            setNum(currentNumM, current + 1);
+            setNum(totalNum,  total);
+            setNum(totalNumM, total);
 
-            prevBtn.disabled = current === 0;
-            nextBtn.disabled = current >= maxIndex;
+            // Arrow disabled state (both desktop + mobile)
+            [prevBtn, prevBtnM].forEach(b => { if (b) b.disabled = current === 0; });
+            [nextBtn, nextBtnM].forEach(b => { if (b) b.disabled = current >= maxIndex; });
+
             updateDots();
         }
 
-        prevBtn.addEventListener('click', () => goTo(current - visibleCount()));
-        nextBtn.addEventListener('click', () => goTo(current + visibleCount()));
+        function step(dir) {
+            const vis = visibleCount();
+            // step by 1 on mobile (1 visible), by full page on desktop
+            goTo(current + dir * (vis === 1 ? 1 : vis));
+        }
 
-        // Keyboard
+        [prevBtn, prevBtnM].forEach(b => b && b.addEventListener('click', () => step(-1)));
+        [nextBtn, nextBtnM].forEach(b => b && b.addEventListener('click', () => step(+1)));
+
+        // Keyboard (only when carousel is in viewport-ish)
         document.addEventListener('keydown', e => {
             if (!photoSection || photoSection.style.display === 'none') return;
-            if (e.key === 'ArrowLeft')  goTo(current - 1);
-            if (e.key === 'ArrowRight') goTo(current + 1);
+            if (document.activeElement && /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return;
+            const rect = outer.getBoundingClientRect();
+            const inView = rect.top < window.innerHeight && rect.bottom > 0;
+            if (!inView) return;
+            if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(current - 1); }
+            if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
         });
 
         // Touch / swipe
-        let touchStartX = 0;
-        track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+        let touchStartX = 0, touchStartY = 0, isSwiping = false;
+        track.addEventListener('touchstart', e => {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+            isSwiping = false;
+        }, { passive: true });
+        track.addEventListener('touchmove', e => {
+            const dx = Math.abs(e.touches[0].clientX - touchStartX);
+            const dy = Math.abs(e.touches[0].clientY - touchStartY);
+            if (dx > dy && dx > 8) isSwiping = true;
+        }, { passive: true });
         track.addEventListener('touchend', e => {
+            if (!isSwiping) return;
             const diff = touchStartX - e.changedTouches[0].clientX;
             if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
         }, { passive: true });
 
-        // Resize
-        window.addEventListener('resize', () => { buildDots(); goTo(current); }, { passive: true });
+        // Resize handler — debounced
+        let resizeTO = null;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTO);
+            resizeTO = setTimeout(() => { buildDots(); goTo(current); }, 120);
+        }, { passive: true });
 
         // Photo click → lightbox
         slides.forEach(slide => {
@@ -1822,8 +1923,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        buildDots();
-        goTo(0);
+        // Init: wait for layout (images may shift first paint)
+        requestAnimationFrame(() => {
+            buildDots();
+            goTo(0);
+        });
     })();
 
     /* ── BUSINESS CARD ── */
