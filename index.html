@@ -39,6 +39,134 @@
             --mobile-cta-h: 72px;
         }
 
+        /* ── PROGRESS BAR ── */
+        .progress-bar {
+            position: fixed; top: 0; left: 0; height: 3px;
+            background: var(--accent); z-index: 9999;
+            width: 0%; transition: width 0.05s linear;
+            box-shadow: 0 0 10px var(--accent), 0 0 20px rgba(230,32,32,.4);
+        }
+
+        /* ── BACK TO TOP ── */
+        .back-top {
+            position: fixed; bottom: 2rem; right: 2rem; z-index: 800;
+            width: 44px; height: 44px;
+            background: var(--surface); border: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none;
+            transition: opacity .3s, border-color .3s, background .3s;
+        }
+        .back-top.visible { opacity: 1; pointer-events: auto; }
+        .back-top:hover { border-color: var(--accent); background: var(--accent-dim); }
+        .back-top svg { width: 16px; height: 16px; stroke: var(--text); fill: none; stroke-width: 2; }
+        @media (max-width:768px) { .back-top { bottom: calc(var(--mobile-cta-h) + 1rem); right: 1rem; } }
+        @media (hover:hover) { .back-top { cursor: none; } }
+
+        /* ── SOCIAL SIDEBAR ── */
+        .social-sidebar {
+            position: fixed; left: 0; top: 50%; transform: translateY(-50%);
+            z-index: 400; display: flex; flex-direction: column;
+            border: 1px solid var(--border); border-left: none;
+            overflow: hidden;
+        }
+        .social-sidebar a {
+            padding: .65rem .75rem; font-size: .58rem; font-weight: 800;
+            letter-spacing: .13em; text-transform: uppercase; text-decoration: none;
+            background: var(--surface); color: var(--muted);
+            border-bottom: 1px solid var(--border);
+            writing-mode: vertical-lr; text-orientation: mixed;
+            transform: rotate(180deg);
+            transition: background .2s, color .2s;
+            white-space: nowrap;
+        }
+        .social-sidebar a:last-child { border-bottom: none; }
+        .social-sidebar a:hover { background: var(--accent-dim); color: var(--accent); }
+        @media (max-width: 960px) { .social-sidebar { display: none; } }
+        @media (hover:hover) { .social-sidebar a { cursor: none; } }
+
+        /* ── HAMBURGER MENU ── */
+        .hamburger {
+            display: none; flex-direction: column; gap: 5px;
+            padding: .5rem; background: none; border: none; z-index: 600;
+        }
+        .hamburger span {
+            display: block; width: 22px; height: 1.5px;
+            background: var(--text); transition: transform .3s, opacity .3s;
+        }
+        .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+        @media (max-width: 768px) { .hamburger { display: flex; } }
+        @media (hover:hover) { .hamburger { cursor: none; } }
+
+        .mobile-nav-drawer {
+            position: fixed; inset: 0; background: rgba(8,8,8,.97);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            z-index: 550; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 2rem;
+            opacity: 0; pointer-events: none;
+            transition: opacity .35s ease;
+        }
+        .mobile-nav-drawer.open { opacity: 1; pointer-events: auto; }
+        .mobile-nav-drawer a {
+            font-size: clamp(2.2rem, 10vw, 3.5rem); font-weight: 900;
+            text-transform: uppercase; letter-spacing: -.03em;
+            text-decoration: none; color: var(--text);
+            transition: color .25s;
+        }
+        .mobile-nav-drawer a:hover { color: var(--accent); }
+        .mobile-nav-drawer .drawer-tag {
+            font-size: .65rem; font-weight: 800; letter-spacing: .3em;
+            color: var(--muted); text-transform: uppercase;
+            border-bottom: 1px solid var(--muted); padding-bottom: 4px;
+            margin-bottom: 1rem;
+        }
+
+        /* ── PROCESS SECTION ── */
+        .process-s { padding: 8vw 5vw; border-top: 1px solid var(--border); }
+        .process-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 1px; background: var(--border);
+            border: 1px solid var(--border);
+            margin-top: 2.5rem;
+        }
+        .process-step {
+            background: var(--surface); padding: 2.5rem 2rem;
+            position: relative; overflow: hidden;
+            transition: background .3s;
+        }
+        .process-step::after {
+            content: ''; position: absolute; inset: auto 0 0 0;
+            height: 2px; background: var(--accent);
+            transform: scaleX(0); transform-origin: left;
+            transition: transform .5s var(--ease);
+        }
+        .process-step:hover { background: var(--surface2); }
+        .process-step:hover::after { transform: scaleX(1); }
+        .process-step-num {
+            font-size: 3.5rem; font-weight: 900; color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,.1);
+            line-height: 1; margin-bottom: 1rem;
+        }
+        .process-step-title {
+            font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 900;
+            text-transform: uppercase; letter-spacing: -.02em;
+            margin-bottom: .75rem;
+        }
+        .process-step-title .accent { color: var(--accent); }
+        .process-step-desc {
+            font-size: .88rem; color: rgba(240,237,232,.55);
+            line-height: 1.75; font-weight: 500;
+        }
+        .process-arrow {
+            position: absolute; top: 2.5rem; right: 2rem;
+            color: var(--accent); opacity: .3; font-size: 1.2rem;
+        }
+        @media (max-width: 768px) {
+            .process-grid { grid-template-columns: 1fr; }
+            .process-arrow { display: none; }
+        }
+
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; font-size: 16px; }
         body { background: var(--bg); color: var(--text); font-family: var(--font); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
@@ -521,6 +649,31 @@
 </head>
 <body>
 
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Social sidebar -->
+<div class="social-sidebar" aria-label="Social links">
+    <a href="https://www.instagram.com/rinaldi.visuals/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.linkedin.com/in/cristian-rinaldi-514b553a0/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://linktr.ee/cristianRinaldi" target="_blank" rel="noopener">Linktree</a>
+</div>
+
+<!-- Mobile nav drawer -->
+<div class="mobile-nav-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Navigazione">
+    <span class="drawer-tag" data-it>Menu</span>
+    <span class="drawer-tag" data-en style="display:none">Menu</span>
+    <a href="#" onclick="closeDrawer()">Home</a>
+    <a href="#works" onclick="closeDrawer()" data-it>Lavori</a>
+    <a href="#works" onclick="closeDrawer()" data-en style="display:none">Works</a>
+    <a href="#contact" onclick="closeDrawer()" data-it>Contatti</a>
+    <a href="#contact" onclick="closeDrawer()" data-en style="display:none">Contact</a>
+</div>
+
+<!-- Back to top -->
+<button class="back-top" id="backTop" aria-label="Torna in cima">
+    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
 <div class="cursor" id="cursor" aria-hidden="true"></div>
 <div class="cursor-label" id="cursorLabel" aria-hidden="true">VIEW</div>
 
@@ -540,10 +693,13 @@
         </span>
     </a>
     <div class="nav-right">
-        <a href="#contact" class="nav-cta">
+        <a href="#contact" class="nav-cta" id="navCta">
             <span data-it>Lavoriamo Insieme</span>
             <span data-en style="display:none">Let's Work Together</span>
         </a>
+        <button class="hamburger" id="hamburger" aria-label="Apri menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
     </div>
 </header>
 
@@ -585,22 +741,22 @@
 
     <div class="hero-stats reveal reveal-d2">
         <div class="hero-stat">
-            <div class="hero-stat-num" data-count="4"><span>0</span><span style="color:var(--accent)">+</span></div>
+            <div class="hero-stat-num" data-count="5"><span>0</span><span style="color:var(--accent)">+</span></div>
             <div class="hero-stat-label" data-it>Anni di studio</div>
             <div class="hero-stat-label" data-en style="display:none">Years of study</div>
         </div>
         <div class="hero-stat">
-            <div class="hero-stat-num" data-count="10"><span>0</span><span style="color:var(--accent)">+</span></div>
+            <div class="hero-stat-num" data-count="20"><span>0</span><span style="color:var(--accent)">+</span></div>
             <div class="hero-stat-label" data-it>Progetti completati</div>
             <div class="hero-stat-label" data-en style="display:none">Completed projects</div>
         </div>
         <div class="hero-stat">
-            <div class="hero-stat-num" data-count="2"><span>0</span><span style="color:var(--accent)">+</span></div>
+            <div class="hero-stat-num" data-count="4"><span>0</span><span style="color:var(--accent)">+</span></div>
             <div class="hero-stat-label" data-it>Campagne pubblicate</div>
             <div class="hero-stat-label" data-en style="display:none">Published campaigns</div>
         </div>
         <div class="hero-stat">
-            <div class="hero-stat-num" data-count="1"><span>0</span><span style="color:var(--accent)">+</span></div>
+            <div class="hero-stat-num" data-count="3"><span>0</span><span style="color:var(--accent)">+</span></div>
             <div class="hero-stat-label" data-it>Mostra collettiva</div>
             <div class="hero-stat-label" data-en style="display:none">Collective exhibition</div>
         </div>
@@ -687,6 +843,30 @@
         </div>
     </div>
 </section>
+
+<!-- Stats row -->
+<div class="stats-row reveal">
+    <div class="stat-block">
+        <div class="stat-n" data-count-block="4"><span>4</span><sup>+</sup></div>
+        <div class="stat-l" data-it>Anni di studio</div>
+        <div class="stat-l" data-en style="display:none">Years of study</div>
+    </div>
+    <div class="stat-block">
+        <div class="stat-n" data-count-block="10"><span>10</span><sup>+</sup></div>
+        <div class="stat-l" data-it>Progetti completati</div>
+        <div class="stat-l" data-en style="display:none">Completed projects</div>
+    </div>
+    <div class="stat-block">
+        <div class="stat-n" data-count-block="2"><span>2</span><sup>+</sup></div>
+        <div class="stat-l" data-it>Campagne pubblicate</div>
+        <div class="stat-l" data-en style="display:none">Published campaigns</div>
+    </div>
+    <div class="stat-block">
+        <div class="stat-n" data-count-block="1"><span>1</span><sup>+</sup></div>
+        <div class="stat-l" data-it>Mostra collettiva</div>
+        <div class="stat-l" data-en style="display:none">Collective exhibition</div>
+    </div>
+</div>
 
 <!-- Forge divider -->
 <div class="forge-wrap" aria-hidden="true">
@@ -775,14 +955,26 @@
         <div class="skill-card reveal">
             <span class="skill-num">01</span>
             <span class="skill-name">Branding &amp; Identity</span>
+            <div class="skill-tools">
+                <span data-it>Loghi · Palette · Moodboard · Brand guidelines · Naming</span>
+                <span data-en style="display:none">Logos · Palette · Moodboard · Brand guidelines · Naming</span>
+            </div>
         </div>
         <div class="skill-card reveal reveal-d1">
             <span class="skill-num">02</span>
             <span class="skill-name">Graphic Design</span>
+            <div class="skill-tools">
+                <span data-it>Editorial · Poster · Layout · Packaging · Social content</span>
+                <span data-en style="display:none">Editorial · Poster · Layout · Packaging · Social content</span>
+            </div>
         </div>
         <div class="skill-card reveal reveal-d2">
             <span class="skill-num">03</span>
             <span class="skill-name">Photography</span>
+            <div class="skill-tools">
+                <span data-it>Ritratto · Still life · Reportage · Post-produzione</span>
+                <span data-en style="display:none">Portrait · Still life · Reportage · Post-production</span>
+            </div>
         </div>
         <div class="skill-card reveal reveal-d3">
             <span class="skill-num">04</span>
@@ -962,6 +1154,34 @@
     <p class="card-hint" data-en style="display:none">Tap to flip</p>
 </section>
 
+<!-- Process section -->
+<section class="process-s">
+    <span class="section-tag reveal" data-it>Come lavoro</span>
+    <span class="section-tag reveal" data-en style="display:none">How I work</span>
+    <div class="process-grid">
+        <div class="process-step reveal">
+            <div class="process-step-num">01</div>
+            <div class="process-step-title"><span class="accent">Ascolto</span> &amp; Analisi</div>
+            <p class="process-step-desc" data-it>Capisco il tuo brand, i tuoi obiettivi e il pubblico a cui ti rivolgi. Ogni progetto inizia con domande giuste.</p>
+            <p class="process-step-desc" data-en style="display:none">I understand your brand, your goals and your target audience. Every project starts with the right questions.</p>
+            <span class="process-arrow" aria-hidden="true">→</span>
+        </div>
+        <div class="process-step reveal reveal-d1">
+            <div class="process-step-num">02</div>
+            <div class="process-step-title"><span class="accent">Idea</span> &amp; Sviluppo</div>
+            <p class="process-step-desc" data-it>Costruisco concept, esploro direzioni visive e raffino ogni dettaglio fino a trovare la soluzione che funziona davvero.</p>
+            <p class="process-step-desc" data-en style="display:none">I build concepts, explore visual directions and refine every detail until I find the solution that truly works.</p>
+            <span class="process-arrow" aria-hidden="true">→</span>
+        </div>
+        <div class="process-step reveal reveal-d2">
+            <div class="process-step-num">03</div>
+            <div class="process-step-title"><span class="accent">Consegna</span> &amp; Supporto</div>
+            <p class="process-step-desc" data-it>Rilascio file pronti all'uso in tutti i formati necessari, con supporto post-consegna incluso.</p>
+            <p class="process-step-desc" data-en style="display:none">I deliver production-ready files in all required formats, with included post-delivery support.</p>
+        </div>
+    </div>
+</section>
+
 <!-- Contact + Form -->
 <section class="contact-s" id="contact">
     <div class="contact-inner">
@@ -1068,7 +1288,7 @@
 <footer>
     <div class="footer-inner">
         <div class="footer-copy">
-            <p>&copy; 2024 Cristian Rinaldi. All Rights Reserved.</p>
+            <p>&copy; 2026 Cristian Rinaldi. All Rights Reserved.</p>
             <small>Designed &amp; Built by Cristian Rinaldi and AI</small>
         </div>
         <nav class="social-links">
@@ -1130,6 +1350,42 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { rootMargin: '60px 0px', threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(el => revIO.observe(el));
+
+    /* ── PROGRESS BAR ── */
+    const progressBar = document.getElementById('progressBar');
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        if (progressBar) progressBar.style.width = pct + '%';
+    }, { passive: true });
+
+    /* ── BACK TO TOP ── */
+    const backTop = document.getElementById('backTop');
+    window.addEventListener('scroll', () => {
+        if (backTop) backTop.classList.toggle('visible', window.scrollY > 500);
+    }, { passive: true });
+    if (backTop) backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    /* ── HAMBURGER ── */
+    const hamburger = document.getElementById('hamburger');
+    const drawer = document.getElementById('mobileDrawer');
+    function closeDrawer() {
+        drawer.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    }
+    window.closeDrawer = closeDrawer;
+    if (hamburger && drawer) {
+        hamburger.addEventListener('click', () => {
+            const isOpen = drawer.classList.toggle('open');
+            hamburger.classList.toggle('open', isOpen);
+            hamburger.setAttribute('aria-expanded', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+    }
 
     /* ── COUNT UP ANIMATION ── */
     function animateCount(el, target, suffix) {
