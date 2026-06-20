@@ -177,12 +177,11 @@
             color: var(--accent); opacity: .3; font-size: 1.2rem;
         }
         @media (max-width: 768px) {
-            .process-grid { grid-template-columns: 1fr; }
             .process-arrow { display: none; }
         }
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; font-size: 16px; }
+        html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
         body { background: var(--bg); color: var(--text); font-family: var(--font); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
         ::selection { background: var(--accent); color: #fff; }
 
@@ -760,34 +759,64 @@
             .cursor, .cursor-label { display:none!important; }
             .lang-switch { top:auto;bottom:calc(var(--mobile-cta-h) + 12px);transform:none;right:0; flex-direction:row; border:1px solid var(--border); border-right:1px solid var(--border); }
             .logo-text span { display:none; }
-            .nav-cta { padding:.55rem .8rem;font-size:.62rem;letter-spacing:.14em; }
+            .nav-cta { padding:.65rem 1rem;font-size:.62rem;letter-spacing:.14em;min-height:44px;display:flex;align-items:center; }
             .hero { padding:calc(var(--header-h) + 1.5rem) 5vw 6rem;justify-content:flex-end; }
+            .hero-logo { width:clamp(60px,18vw,110px);margin-bottom:1.5rem; }
+            .avail-badge { font-size:.55rem;padding:.38rem .8rem;margin-bottom:.8rem; }
             .hero-btns { flex-direction:column; }
-            .btn-primary, .btn-ghost { width:100%;justify-content:center; }
+            .btn-primary, .btn-ghost { width:100%;justify-content:center;min-height:48px; }
             .scroll-hint { display:none; }
             .hero-stats { gap:1.5rem; }
             .stats-row { grid-template-columns:repeat(2,1fr); }
+            .stat-block { padding:1.4rem 1rem; }
             .about-grid { grid-template-columns:1fr;gap:2rem; }
             .about-me-grid { grid-template-columns:1fr;gap:3rem; }
             .about-imgs .portrait { transform:translateY(0); }
             .exp-item { grid-template-columns:1fr;gap:.6rem;padding:1.4rem 0; }
             .skills-grid { grid-template-columns:1fr; }
+            .skill-card { padding:1.4rem 1.2rem; }
+            .process-grid { grid-template-columns:1fr; }
+            .process-step { padding:1.6rem 1.2rem; }
             .portfolio-grid { display:none; }
             .portfolio-scroll { display:flex; }
-            .filter-tabs { padding:0 5vw; }
+            .filter-tabs { padding:0 5vw;gap:.4rem; }
+            .filter-btn { padding:.65rem 1rem;font-size:.62rem;min-height:44px;display:inline-flex;align-items:center; }
             .contact-inner { grid-template-columns:1fr;gap:2.5rem; }
             .form-row { grid-template-columns:1fr; }
-            .contact-btn { width:100%;justify-content:center; }
+            .contact-btn { width:100%;justify-content:center;min-height:48px; }
             .mobile-cta { display:flex; }
             footer { padding-bottom:calc(var(--mobile-cta-h) + 1rem); }
             .s { padding:12vw 5vw; }
+            .marquee-wrap { transform:rotate(-1.5deg) scale(1.01); }
         }
         @media (max-width:480px) {
-            .hero-title { font-size:clamp(3rem,15vw,4.5rem); }
+            .hero-title { font-size:clamp(2.8rem,14vw,4.5rem); }
             .about-imgs { grid-template-columns:1fr; }
             .about-imgs .cv-img { display:none; }
             .about-imgs .portrait { transform:none; }
             .stats-row { grid-template-columns:1fr 1fr; }
+            .mobile-nav-drawer a { font-size:clamp(1.8rem,9vw,3rem); }
+        }
+
+        /* ── SAFE AREA (notched iPhones) ── */
+        @supports (padding: env(safe-area-inset-bottom)) {
+            @media (max-width:768px) {
+                .mobile-cta { padding-bottom:env(safe-area-inset-bottom); }
+                .lang-switch { bottom:calc(var(--mobile-cta-h) + env(safe-area-inset-bottom) + 12px); }
+                .back-top { bottom:calc(var(--mobile-cta-h) + env(safe-area-inset-bottom) + 1rem); }
+                footer { padding-bottom:calc(var(--mobile-cta-h) + env(safe-area-inset-bottom) + 1rem); }
+            }
+        }
+
+        /* ── REDUCED MOTION ── */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+            .marquee-inner { animation: none; }
+            .avail-dot { animation: none; }
         }
     </style>
 </head>
