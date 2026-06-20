@@ -538,7 +538,7 @@
         .work-card:hover .work-view-label span { opacity:1;transform:scale(1); }
 
         /* Mobile scroll */
-        .portfolio-scroll { display:none;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:1.5rem 5vw 2rem;gap:1rem;scrollbar-width:none; }
+        .portfolio-scroll { display:none;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:1.5rem 5vw 2rem;gap:1rem;scrollbar-width:none;touch-action:pan-x;overscroll-behavior-x:contain; }
         .portfolio-scroll::-webkit-scrollbar { display:none; }
         .portfolio-scroll .work-card { flex:0 0 72vw;max-width:300px; }
         .portfolio-scroll .work-img { aspect-ratio:3/4; }
@@ -745,6 +745,8 @@
                 scrollbar-width: none;
                 padding: 0 5vw 2rem;
                 gap: 1rem;
+                touch-action: pan-x;
+                overscroll-behavior-x: contain;
             }
             .photo-gallery::-webkit-scrollbar { display: none; }
             .photo-gallery .photo-card {
