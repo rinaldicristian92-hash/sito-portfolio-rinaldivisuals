@@ -15,7 +15,9 @@
     <meta property="og:image" content="tavola disegno 1.png" />
 
     <!-- Favicon inline SVG -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='16' fill='%23080808'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-family='Arial Black' font-weight='900' font-size='11' fill='%23e62020'>CR</text></svg>" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/svg+xml" sizes="any" href="favicon.svg" />
+    <meta name="theme-color" content="#080808" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -633,6 +635,40 @@
         .reveal-d2 { transition-delay:.2s; }
         .reveal-d3 { transition-delay:.3s; }
 
+        /* ── STAGGER GRIDS ── */
+        [data-stagger] > * {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .72s var(--ease), transform .72s var(--ease);
+        }
+        [data-stagger] > *.stagger-in {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* ── AVAILABILITY BADGE ── */
+        .avail-badge {
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: .42rem .95rem;
+            border: 1px solid rgba(255,255,255,.1);
+            background: rgba(255,255,255,.05);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border-radius: 100px;
+            font-size: .6rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+            color: rgba(240,237,232,.65);
+            margin-bottom: 1rem; width: fit-content;
+        }
+        .avail-dot {
+            width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+            background: #34c759;
+            box-shadow: 0 0 0 2px rgba(52,199,89,.2), 0 0 8px rgba(52,199,89,.45);
+            animation: avail-pulse 2.5s ease-in-out infinite;
+        }
+        @keyframes avail-pulse {
+            0%,100% { box-shadow: 0 0 0 2px rgba(52,199,89,.2), 0 0 8px rgba(52,199,89,.4); }
+            50%     { box-shadow: 0 0 0 5px rgba(52,199,89,.07), 0 0 16px rgba(52,199,89,.55); }
+        }
+
         /* ── LANG HIDDEN ── */
         [data-it], [data-en] { transition: opacity .2s; }
 
@@ -837,6 +873,11 @@
 
     <div class="hero-logo reveal">
         <img src="Progetto senza titolo.png" alt="Logo Cristian Rinaldi" decoding="async" fetchpriority="high"/>
+    </div>
+    <div class="avail-badge reveal">
+        <span class="avail-dot" aria-hidden="true"></span>
+        <span data-it>Disponibile per nuovi progetti</span>
+        <span data-en style="display:none">Available for new projects</span>
     </div>
     <span class="hero-label reveal reveal-d1">Cristian Rinaldi</span>
     <div class="hero-title-parallax">
@@ -1059,7 +1100,7 @@
 <section class="s">
     <span class="section-tag reveal" data-it>Competenze</span>
     <span class="section-tag reveal" data-en style="display:none">Skills</span>
-    <div class="skills-grid" style="margin-top:2rem">
+    <div class="skills-grid" style="margin-top:2rem" data-stagger>
         <div class="skill-card reveal">
             <span class="skill-num">01</span>
             <span class="skill-name">Branding &amp; Identity</span>
@@ -1120,7 +1161,7 @@
     </div>
 
     <!-- Desktop grid -->
-    <div class="portfolio-grid">
+    <div class="portfolio-grid" data-stagger>
         <div class="work-card span2 reveal" data-category="adv">
             <div class="work-img">
                 <div class="work-view-label"><span>VIEW</span></div>
@@ -1245,7 +1286,7 @@
             </h3>
         </div>
 
-        <div class="photo-gallery">
+        <div class="photo-gallery" data-stagger>
             <div class="photo-card"><img src="IMG_1863-Edit.jpg" alt="Fotografia 01" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
             <div class="photo-card"><img src="IMG_1106.jpg" alt="Fotografia 02" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
             <div class="photo-card"><img src="IMG_1242.jpg" alt="Fotografia 03" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
@@ -1303,7 +1344,7 @@
 <section class="process-s">
     <span class="section-tag reveal" data-it>Come lavoro</span>
     <span class="section-tag reveal" data-en style="display:none">How I work</span>
-    <div class="process-grid">
+    <div class="process-grid" data-stagger>
         <div class="process-step reveal">
             <div class="process-step-num">01</div>
             <div class="process-step-title"><span class="accent">Ascolto</span> &amp; Analisi</div>
@@ -1494,7 +1535,25 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
         });
     }, { rootMargin: '60px 0px', threshold: 0.08 });
-    document.querySelectorAll('.reveal').forEach(el => revIO.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => {
+        if (!el.closest('[data-stagger]')) revIO.observe(el);
+    });
+
+    /* ── STAGGER GRIDS ── */
+    const staggerIO = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => {
+            if (!e.isIntersecting) return;
+            const children = Array.from(e.target.children);
+            children.forEach((child, i) => {
+                child.style.transitionDelay = (i * 65) + 'ms';
+            });
+            requestAnimationFrame(() => {
+                children.forEach(child => child.classList.add('stagger-in'));
+            });
+            obs.unobserve(e.target);
+        });
+    }, { rootMargin: '0px 0px -20px 0px', threshold: 0.05 });
+    document.querySelectorAll('[data-stagger]').forEach(g => staggerIO.observe(g));
 
     /* ── PROGRESS BAR ── */
     const progressBar = document.getElementById('progressBar');
@@ -1601,6 +1660,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    /* ── IMAGE OPTIMIZATION ── decoding async on all lazy images ── */
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => { img.decoding = 'async'; });
 
     /* ── PHOTO GALLERY ── photo cards open lightbox on click ── */
     document.querySelectorAll('.photo-card').forEach(card => {
