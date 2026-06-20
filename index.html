@@ -633,138 +633,6 @@
         .reveal-d2 { transition-delay:.2s; }
         .reveal-d3 { transition-delay:.3s; }
 
-        /* ── THEME TOGGLE ── */
-        .theme-toggle {
-            width: 34px; height: 34px; border-radius: 50%;
-            border: 1px solid var(--border);
-            background: var(--surface);
-            display: flex; align-items: center; justify-content: center;
-            position: relative; overflow: hidden; flex-shrink: 0;
-            transition: border-color .3s var(--ease), background .3s var(--ease), transform .35s var(--ease);
-        }
-        .theme-toggle:hover { border-color: var(--accent); background: var(--accent-dim); }
-        .theme-toggle:active { transform: scale(.88); }
-        @media (hover:hover) { .theme-toggle { cursor: none; } }
-        .theme-toggle .t-icon {
-            position: absolute;
-            font-size: .72rem;
-            color: var(--text);
-            transition: opacity .3s ease, transform .4s cubic-bezier(0.16,1,0.3,1);
-            pointer-events: none;
-        }
-        .theme-toggle .t-moon { opacity: 1; transform: rotate(0) scale(1); }
-        .theme-toggle .t-sun  { opacity: 0; transform: rotate(90deg) scale(.4); }
-        [data-theme="light"] .theme-toggle .t-moon { opacity: 0; transform: rotate(-90deg) scale(.4); }
-        [data-theme="light"] .theme-toggle .t-sun  { opacity: 1; transform: rotate(0) scale(1); }
-
-        /* ── THEME TRANSITION SMOOTHING ── */
-        html.theme-switching,
-        html.theme-switching header,
-        html.theme-switching .social-sidebar,
-        html.theme-switching .social-sidebar a,
-        html.theme-switching .lang-switch,
-        html.theme-switching .lang-btn,
-        html.theme-switching .mobile-nav-drawer,
-        html.theme-switching .hero,
-        html.theme-switching .skill-card,
-        html.theme-switching .process-step,
-        html.theme-switching .stat-block,
-        html.theme-switching .work-card,
-        html.theme-switching .exp-panel,
-        html.theme-switching .img-wrap,
-        html.theme-switching .photo-slide,
-        html.theme-switching .mobile-cta,
-        html.theme-switching .back-top,
-        html.theme-switching footer,
-        html.theme-switching .contact-s {
-            transition: background .4s ease, background-color .4s ease,
-                        color .4s ease, border-color .4s ease !important;
-        }
-
-        /* ── LIGHT THEME ── */
-        [data-theme="light"] {
-            --bg: #f5f5f7;
-            --surface: #ffffff;
-            --surface2: #e8e8ed;
-            --text: #1d1d1f;
-            --muted: #86868b;
-            --accent-dim: rgba(230,32,32,0.08);
-            --border: rgba(0,0,0,0.1);
-            --border-hover: rgba(230,32,32,0.3);
-        }
-        [data-theme="light"] header {
-            background: rgba(245,245,247,0.88);
-        }
-        [data-theme="light"] .logo-text span { color: rgba(0,0,0,0.4); }
-        [data-theme="light"] .nav-cta {
-            border-color: rgba(0,0,0,0.14); background: rgba(0,0,0,0.04);
-        }
-        [data-theme="light"] .nav-cta:hover { background: rgba(0,0,0,0.08); }
-        [data-theme="light"] .hamburger span { background: var(--text); }
-        [data-theme="light"] .mobile-nav-drawer {
-            background: rgba(245,245,247,.97);
-        }
-        [data-theme="light"] .mobile-nav-drawer a { color: var(--text); }
-        [data-theme="light"] .hero {
-            background:
-                radial-gradient(ellipse at 15% 15%, rgba(230,32,32,0.07) 0%, transparent 50%),
-                radial-gradient(ellipse at 85% 30%, rgba(230,32,32,0.04) 0%, transparent 40%),
-                var(--bg);
-        }
-        [data-theme="light"] .hero-sub { color: rgba(29,29,31,0.6); }
-        [data-theme="light"] .btn-ghost {
-            border-color: rgba(0,0,0,0.18); color: var(--text);
-        }
-        [data-theme="light"] .btn-ghost:hover { border-color: rgba(0,0,0,0.45); }
-        [data-theme="light"] .about-me-text { color: rgba(29,29,31,.75); }
-        [data-theme="light"] .about-statement em { color: var(--muted); }
-        [data-theme="light"] .img-wrap { background: #e0e0e0; border-color: rgba(0,0,0,.08); }
-        [data-theme="light"] .process-step-num { -webkit-text-stroke: 1px rgba(0,0,0,.09); }
-        [data-theme="light"] .process-step-desc { color: rgba(29,29,31,.6); }
-        [data-theme="light"] .exp-desc { color: rgba(29,29,31,.6); }
-        [data-theme="light"] .skill-name { -webkit-text-stroke: 1px var(--text); }
-        [data-theme="light"] .skill-card:hover .skill-name { color: var(--text); -webkit-text-stroke: 1px transparent; }
-        [data-theme="light"] .work-img::after {
-            background: linear-gradient(to top, rgba(245,245,247,.6) 0%, transparent 55%);
-        }
-        [data-theme="light"] .photo-card { background: #ddd; border-color: rgba(0,0,0,.08); }
-        [data-theme="light"] .photo-card::after {
-            background: linear-gradient(to top, rgba(245,245,247,.5) 0%, transparent 50%);
-        }
-        [data-theme="light"] .mobile-cta {
-            background: rgba(245,245,247,.95); border-top-color: rgba(0,0,0,.1);
-        }
-        [data-theme="light"] .mobile-cta-info span { color: var(--muted); }
-        /* Contact section: inverted to dark in light theme for visual contrast */
-        [data-theme="light"] .contact-s { background: #1d1d1f; color: #f5f5f7; }
-        [data-theme="light"] .contact-s::before { color: rgba(255,255,255,.04); }
-        [data-theme="light"] .contact-eyebrow { color: rgba(255,255,255,.4); }
-        [data-theme="light"] .contact-body { color: rgba(255,255,255,.7); }
-        [data-theme="light"] .form-field label { color: rgba(255,255,255,.45); }
-        [data-theme="light"] .form-field input,
-        [data-theme="light"] .form-field textarea,
-        [data-theme="light"] .form-field select {
-            background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.15); color: #f5f5f7;
-        }
-        [data-theme="light"] .form-field input:focus,
-        [data-theme="light"] .form-field textarea:focus,
-        [data-theme="light"] .form-field select:focus {
-            border-color: var(--accent); background: rgba(230,32,32,.06);
-        }
-        [data-theme="light"] .contact-btn {
-            background: #f5f5f7; color: #1d1d1f; border-color: #f5f5f7;
-        }
-        [data-theme="light"] .contact-btn:hover { background: transparent; color: #f5f5f7; }
-        /* Footer */
-        [data-theme="light"] footer { background: var(--surface); border-top: 1px solid var(--border); }
-        [data-theme="light"] .footer-copy { color: var(--text); }
-        [data-theme="light"] .footer-copy small { color: var(--muted); }
-        [data-theme="light"] .social-links a { color: var(--muted); }
-        /* Progress bar stays red */
-        [data-theme="light"] .progress-bar { background: var(--accent); }
-        /* Forge divider */
-        [data-theme="light"] .forge-belt-outer { border-color: var(--border); }
-
         /* ── LANG HIDDEN ── */
         [data-it], [data-en] { transition: opacity .2s; }
 
@@ -937,11 +805,7 @@
             <span data-it>Lavoriamo Insieme</span>
             <span data-en style="display:none">Let's Work Together</span>
         </a>
-        <button class="theme-toggle" id="themeToggle" aria-label="Cambia tema">
-            <i class="fas fa-moon t-icon t-moon"></i>
-            <i class="fas fa-sun t-icon t-sun"></i>
-        </button>
-        <button class="hamburger" id="hamburger" aria-label="Apri menu" aria-expanded="false">
+<button class="hamburger" id="hamburger" aria-label="Apri menu" aria-expanded="false">
             <span></span><span></span><span></span>
         </button>
     </div>
@@ -1879,30 +1743,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const y = window.scrollY;
             heroTitle.style.transform = `translateY(${y * -0.18}px)`;
         }, { passive: true });
-    }
-
-    /* ── THEME TOGGLE ── */
-    const themeToggle = document.getElementById('themeToggle');
-
-    function setTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        try { localStorage.setItem('cr-theme', theme); } catch(e) {}
-    }
-
-    // Load saved theme (default: dark)
-    let savedTheme = 'dark';
-    try { savedTheme = localStorage.getItem('cr-theme') || 'dark'; } catch(e) {}
-    setTheme(savedTheme);
-
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const current = document.documentElement.getAttribute('data-theme') || 'dark';
-            const next = current === 'light' ? 'dark' : 'light';
-            // Enable smooth cross-element transition during switch
-            document.documentElement.classList.add('theme-switching');
-            setTheme(next);
-            setTimeout(() => document.documentElement.classList.remove('theme-switching'), 450);
-        });
     }
 
 });
