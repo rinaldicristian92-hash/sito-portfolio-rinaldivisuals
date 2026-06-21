@@ -528,9 +528,11 @@
         .work-card:hover .work-img img { transform:scale(1.04);filter:grayscale(0%); }
         .work-img::after { content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.7) 0%,transparent 55%);pointer-events:none; }
 
-        .work-info { padding:1rem 1.2rem;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem; }
+        .work-info { padding:1rem 1.2rem;display:flex;flex-direction:column;gap:.35rem; }
+        .work-info-top { display:flex;justify-content:space-between;align-items:flex-start;gap:1rem; }
         .work-name { font-size:clamp(.9rem,1.5vw,1.3rem);font-weight:800;text-transform:uppercase;letter-spacing:.08em; }
         .work-cat  { font-size:.65rem;font-weight:700;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;white-space:nowrap;padding-top:2px; }
+        .work-desc { font-size:.72rem;color:var(--muted);line-height:1.55;font-weight:500; }
 
         /* VIEW overlay on hover */
         .work-view-label { position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:2; }
@@ -915,8 +917,8 @@
     <h1 class="hero-title reveal reveal-d1">RINALDI<span class="dot">.</span><br>VISUALS</h1>
     </div>
     <p class="hero-sub reveal reveal-d2">
-        <span data-it>Graphic Designer &amp; Fotografo.<br>Creo identità visive che lasciano il segno.</span>
-        <span data-en style="display:none">Graphic Designer &amp; Photographer.<br>I create visual identities that leave a mark.</span>
+        <span data-it>Graphic Designer &amp; Fotografo a Foggia.<br>Branding, campagne, editorial e fotografia.</span>
+        <span data-en style="display:none">Graphic Designer &amp; Photographer based in Foggia.<br>Branding, campaigns, editorial &amp; photography.</span>
     </p>
 
     <div class="hero-stats reveal reveal-d2">
@@ -973,6 +975,209 @@
     </div>
 </div>
 
+<!-- Works -->
+<section id="works" class="s-wide">
+    <div style="padding:0 5vw" class="reveal">
+        <h2 class="works-title">
+            <span data-it>Lavori<br>Selezionati</span>
+            <span data-en style="display:none">Selected<br>Works</span>
+        </h2>
+    </div>
+
+    <!-- Filter tabs -->
+    <div class="filter-tabs reveal reveal-d1" role="group" aria-label="Filtra per categoria">
+        <button class="filter-btn active" data-filter="all">
+            <span data-it>Tutti</span><span data-en style="display:none">All</span>
+        </button>
+        <button class="filter-btn" data-filter="adv">ADV / Layout</button>
+        <button class="filter-btn" data-filter="editorial">Editorial</button>
+        <button class="filter-btn" data-filter="poster">Poster</button>
+        <button class="filter-btn" data-filter="design">Graphic Design</button>
+        <button class="filter-btn" data-filter="photo">
+            <span data-it>Fotografia</span><span data-en style="display:none">Photography</span>
+        </button>
+    </div>
+
+    <!-- Desktop grid -->
+    <div class="portfolio-grid" data-stagger>
+        <div class="work-card span2 reveal" data-category="adv">
+            <div class="work-img">
+                <div class="work-view-label"><span>VIEW</span></div>
+                <img src="layout admo x tutto (1)_page-0001.jpg" alt="Campagna ADMO" loading="lazy"/>
+            </div>
+            <div class="work-info">
+                <div class="work-info-top">
+                    <span class="work-name" data-it>Campagna ADMO</span>
+                    <span class="work-name" data-en style="display:none">ADMO Campaign</span>
+                    <span class="work-cat">ADV / Layout</span>
+                </div>
+                <p class="work-desc" data-it>Sensibilizzazione sulla donazione del midollo osseo · selezionato per la comunicazione ufficiale con Gianmarco Saurino · 2024</p>
+                <p class="work-desc" data-en style="display:none">Bone marrow donation awareness · selected for official campaign with Gianmarco Saurino · 2024</p>
+            </div>
+        </div>
+        <div class="work-card span2 reveal" data-category="editorial">
+            <div class="work-img">
+                <div class="work-view-label"><span>VIEW</span></div>
+                <img src="copertina libro.jpg" alt="Copertina libro" loading="lazy"/>
+            </div>
+            <div class="work-info">
+                <div class="work-info-top">
+                    <span class="work-name" data-it>Copertina Libri</span>
+                    <span class="work-name" data-en style="display:none">Book Cover</span>
+                    <span class="work-cat">Editorial Design</span>
+                </div>
+                <p class="work-desc" data-it>Progettazione copertina editoriale · tipografia, composizione e scelta immagine</p>
+                <p class="work-desc" data-en style="display:none">Book cover design · typography, layout and image selection</p>
+            </div>
+        </div>
+        <div class="work-card reveal" data-category="poster">
+            <div class="work-img work-img-inner">
+                <div class="work-view-label"><span>VIEW</span></div>
+                <img src="Blue Bold Modern Fashion Coming Soon Poster.jpg" alt="Fashion Poster" loading="lazy"/>
+            </div>
+            <div class="work-info">
+                <div class="work-info-top">
+                    <span class="work-name" data-it>Poster Fashion</span>
+                    <span class="work-name" data-en style="display:none">Fashion Poster</span>
+                    <span class="work-cat">Poster Design</span>
+                </div>
+                <p class="work-desc" data-it>Poster promozionale · stile bold e contemporaneo</p>
+                <p class="work-desc" data-en style="display:none">Promotional poster · bold contemporary style</p>
+            </div>
+        </div>
+        <div class="work-card reveal" data-category="design">
+            <div class="work-img work-img-inner">
+                <div class="work-view-label"><span>VIEW</span></div>
+                <img src="Tavola disegno 1@3x.png" alt="Menú Cresima" loading="lazy"/>
+            </div>
+            <div class="work-info">
+                <div class="work-info-top">
+                    <span class="work-name" data-it>Menú Evento</span>
+                    <span class="work-name" data-en style="display:none">Event Menu</span>
+                    <span class="work-cat">Graphic Design</span>
+                </div>
+                <p class="work-desc" data-it>Impaginazione menú per evento privato · stile elegante e minimalista</p>
+                <p class="work-desc" data-en style="display:none">Menu layout for private event · elegant minimal style</p>
+            </div>
+        </div>
+        <div class="work-card reveal" data-category="poster">
+            <div class="work-img work-img-inner">
+                <div class="work-view-label"><span>VIEW</span></div>
+                <img src="consegna giornata della memoria -01.jpeg" alt="Giornata della Memoria" loading="lazy"/>
+            </div>
+            <div class="work-info">
+                <div class="work-info-top">
+                    <span class="work-name" data-it>Giornata della Memoria</span>
+                    <span class="work-name" data-en style="display:none">Memorial Day Poster</span>
+                    <span class="work-cat">Editorial Poster</span>
+                </div>
+                <p class="work-desc" data-it>Poster commemorativo · 27 Gennaio · progetto esposto alla Fondazione Monti Uniti 2026</p>
+                <p class="work-desc" data-en style="display:none">Commemorative poster · January 27th · exhibited at Fondazione Monti Uniti 2026</p>
+            </div>
+        </div>
+        <div class="work-card reveal" data-category="poster">
+            <div class="work-img work-img-inner">
+                <div class="work-view-label"><span>VIEW</span></div>
+                <img src="MANIFESTO completo.jpg" alt="Manifesto Off Road CVM" loading="lazy"/>
+            </div>
+            <div class="work-info">
+                <div class="work-info-top">
+                    <span class="work-name">Manifesto CVM</span>
+                    <span class="work-cat">Graphic Design</span>
+                </div>
+                <p class="work-desc" data-it>Manifesto per evento Off Road CVM · composizione tipografica e visiva d'impatto</p>
+                <p class="work-desc" data-en style="display:none">Poster for Off Road CVM event · strong typographic and visual composition</p>
+            </div>
+        </div>
+        <div class="work-card reveal" data-category="design">
+            <div class="work-img work-img-inner">
+                <div class="work-view-label"><span>VIEW</span></div>
+                <img src="ChatGPT Image 17 apr 2026, 17_56_25.png" alt="Inviti compleanni" loading="lazy"/>
+            </div>
+            <div class="work-info">
+                <div class="work-info-top">
+                    <span class="work-name" data-it>Inviti Evento</span>
+                    <span class="work-name" data-en style="display:none">Event Invitations</span>
+                    <span class="work-cat">Invitation Design</span>
+                </div>
+                <p class="work-desc" data-it>Design personalizzato per inviti · concept grafico coordinato</p>
+                <p class="work-desc" data-en style="display:none">Custom invitation design · coordinated graphic concept</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile scroll -->
+    <div class="portfolio-scroll">
+        <div class="work-card" data-category="adv">
+            <div class="work-img" style="aspect-ratio:3/4"><img src="layout admo x tutto (1)_page-0001.jpg" alt="ADMO" loading="lazy" style="height:100%;object-fit:cover"/></div>
+            <div class="work-info"><span class="work-name">ADMO</span><span class="work-cat">ADV</span></div>
+        </div>
+        <div class="work-card" data-category="editorial">
+            <div class="work-img" style="aspect-ratio:3/4"><img src="copertina libro.jpg" alt="Copertina" loading="lazy" style="height:100%;object-fit:cover"/></div>
+            <div class="work-info"><span class="work-name" data-it>Copertina</span><span class="work-name" data-en style="display:none">Cover</span><span class="work-cat">Editorial</span></div>
+        </div>
+        <div class="work-card" data-category="poster">
+            <div class="work-img" style="aspect-ratio:3/4"><img src="Blue Bold Modern Fashion Coming Soon Poster.jpg" alt="Poster" loading="lazy" style="height:100%;object-fit:cover"/></div>
+            <div class="work-info"><span class="work-name">Poster</span><span class="work-cat">Design</span></div>
+        </div>
+        <div class="work-card" data-category="design">
+            <div class="work-img" style="aspect-ratio:3/4"><img src="Tavola disegno 1@3x.png" alt="Menú" loading="lazy" style="height:100%;object-fit:cover"/></div>
+            <div class="work-info"><span class="work-name">Menú</span><span class="work-cat">Design</span></div>
+        </div>
+        <div class="work-card" data-category="poster">
+            <div class="work-img" style="aspect-ratio:3/4"><img src="consegna giornata della memoria -01.jpeg" alt="Memoria" loading="lazy" style="height:100%;object-fit:cover"/></div>
+            <div class="work-info"><span class="work-name" data-it>Memoria</span><span class="work-name" data-en style="display:none">Memorial</span><span class="work-cat">Editorial</span></div>
+        </div>
+        <div class="work-card" data-category="poster">
+            <div class="work-img" style="aspect-ratio:3/4"><img src="MANIFESTO completo.jpg" alt="Manifesto" loading="lazy" style="height:100%;object-fit:cover"/></div>
+            <div class="work-info"><span class="work-name">Manifesto</span><span class="work-cat">Design</span></div>
+        </div>
+        <div class="work-card" data-category="design">
+            <div class="work-img" style="aspect-ratio:3/4"><img src="ChatGPT Image 17 apr 2026, 17_56_25.png" alt="Inviti" loading="lazy" style="height:100%;object-fit:cover"/></div>
+            <div class="work-info"><span class="work-name" data-it>Inviti</span><span class="work-name" data-en style="display:none">Invitations</span><span class="work-cat">Design</span></div>
+        </div>
+    </div>
+
+    <div class="reveal" style="padding:0 5vw 2rem;font-size:clamp(.9rem,1.5vw,1.2rem);font-weight:500;color:var(--muted)">
+        <span data-it>Per altri lavori, seguimi sui <a href="https://www.instagram.com/rinaldi.visuals/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">social</a>.</span>
+        <span data-en style="display:none">For more work, follow me on <a href="https://www.instagram.com/rinaldi.visuals/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">social media</a>.</span>
+    </div>
+
+    <!-- ── PHOTOGRAPHY SECTION ── -->
+    <div class="photo-section reveal" id="photoSection">
+        <div class="photo-section-header">
+            <span class="section-tag" data-it>Lavori Selezionati</span>
+            <span class="section-tag" data-en style="display:none">Selected Works</span>
+            <h3 class="photo-section-title">
+                <span data-it>Foto<span style="color:var(--accent)">grafia</span></span>
+                <span data-en style="display:none">Photo<span style="color:var(--accent)">graphy</span></span>
+            </h3>
+        </div>
+
+        <div class="photo-gallery" data-stagger>
+            <div class="photo-card"><img src="IMG_1863-Edit.jpg" alt="Fotografia 01" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
+            <div class="photo-card"><img src="IMG_1106.jpg" alt="Fotografia 02" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
+            <div class="photo-card"><img src="IMG_1242.jpg" alt="Fotografia 03" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
+            <div class="photo-card"><img src="IMG_1245.jpg" alt="Fotografia 04" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
+            <div class="photo-card"><img src="IMG_1843.jpg" alt="Fotografia 05" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
+            <div class="photo-card"><img src="IMG_0980.jpg" alt="Fotografia 06" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
+            <div class="photo-card"><img src="IMG_0989.jpg" alt="Fotografia 07" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
+            <div class="photo-card"><img src="IMG_0995.jpg" alt="Fotografia 08" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
+            <div class="photo-card"><img src="IMG_1352.jpg" alt="Fotografia 09" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
+            <div class="photo-card"><img src="3.jpg" alt="Fotografia 10" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
+            <div class="photo-card"><img src="7b0ea8e9-adf0-42ef-923d-ab93ec44c02b.jpg" alt="Fotografia 11" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
+            <div class="photo-card"><img src="890A6FF2-625E-4C06-8CCE-3B4FAE2E5FC6.jpg" alt="Fotografia 12" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
+            <div class="photo-card"><img src="C511B57F-2E1F-434E-96E7-F7943D91B77D.jpg" alt="Fotografia 13" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
+            <div class="photo-card"><img src="EBC6D4A8-8E5D-4C27-ADA8-2D70D02EEC97.jpg" alt="Fotografia 14" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
+            <div class="photo-card"><img src="FDEB8F01-3D1A-4F8F-A43E-DEF6FA323882.jpg" alt="Fotografia 15" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
+            <div class="photo-card"><img src="IMG_0621.jpg" alt="Fotografia 16" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
+            <div class="photo-card"><img src="2e3a1980-286c-4b29-a1e7-2d15f1f1907d.jpg" alt="Fotografia 17" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
+            <div class="photo-card"><img src="68ee55c1-d494-498a-9950-cbf8829da1f7.jpg" alt="Fotografia 18" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
+            <div class="photo-card"><img src="ec5d42eb-55bd-4f0c-9544-be05dbdfe282.jpg" alt="Fotografia 19" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
+        </div>
+    </div>
+</section>
+
 
 <!-- About -->
 <section class="s">
@@ -983,8 +1188,8 @@
         </div>
         <div class="reveal reveal-d1">
             <p class="about-statement">
-                <span data-it>Se cerchi qualcuno che trasformi un'idea in un progetto visivo concreto, sono pronto. <em>Cresco ogni giorno, costruendo identità che lasciano il segno.</em></span>
-                <span data-en style="display:none">If you're looking for someone to turn an idea into a concrete visual project, I'm ready. <em>I grow every day, building identities that leave a mark.</em></span>
+                <span data-it>Non faccio solo "cose belle". <em>Costruisco identità visive che parlano al tuo pubblico, con una logica precisa dietro ogni scelta.</em></span>
+                <span data-en style="display:none">I don't just make "nice things". <em>I build visual identities that speak to your audience, with clear thinking behind every decision.</em></span>
             </p>
         </div>
     </div>
@@ -1024,29 +1229,6 @@
     </div>
 </section>
 
-<!-- Stats row -->
-<div class="stats-row reveal">
-    <div class="stat-block">
-        <div class="stat-n" data-count-block="4"><span>4</span><sup>+</sup></div>
-        <div class="stat-l" data-it>Anni di studio</div>
-        <div class="stat-l" data-en style="display:none">Years of study</div>
-    </div>
-    <div class="stat-block">
-        <div class="stat-n" data-count-block="10"><span>10</span><sup>+</sup></div>
-        <div class="stat-l" data-it>Progetti completati</div>
-        <div class="stat-l" data-en style="display:none">Completed projects</div>
-    </div>
-    <div class="stat-block">
-        <div class="stat-n" data-count-block="2"><span>2</span><sup>+</sup></div>
-        <div class="stat-l" data-it>Campagne pubblicate</div>
-        <div class="stat-l" data-en style="display:none">Published campaigns</div>
-    </div>
-    <div class="stat-block">
-        <div class="stat-n" data-count-block="1"><span>1</span><sup>+</sup></div>
-        <div class="stat-l" data-it>Mostra collettiva</div>
-        <div class="stat-l" data-en style="display:none">Collective exhibition</div>
-    </div>
-</div>
 
 <!-- Forge divider -->
 <div class="forge-wrap" aria-hidden="true">
@@ -1164,179 +1346,6 @@
                 <span data-it>Utilizzo consapevole dell'IA</span>
                 <span data-en style="display:none">Conscious use of AI</span>
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- Works -->
-<section id="works" class="s-wide">
-    <div style="padding:0 5vw" class="reveal">
-        <h2 class="works-title">
-            <span data-it>Lavori<br>Selezionati</span>
-            <span data-en style="display:none">Selected<br>Works</span>
-        </h2>
-    </div>
-
-    <!-- Filter tabs -->
-    <div class="filter-tabs reveal reveal-d1" role="group" aria-label="Filtra per categoria">
-        <button class="filter-btn active" data-filter="all">
-            <span data-it>Tutti</span><span data-en style="display:none">All</span>
-        </button>
-        <button class="filter-btn" data-filter="adv">ADV / Layout</button>
-        <button class="filter-btn" data-filter="editorial">Editorial</button>
-        <button class="filter-btn" data-filter="poster">Poster</button>
-        <button class="filter-btn" data-filter="design">Graphic Design</button>
-        <button class="filter-btn" data-filter="photo">
-            <span data-it>Fotografia</span><span data-en style="display:none">Photography</span>
-        </button>
-    </div>
-
-    <!-- Desktop grid -->
-    <div class="portfolio-grid" data-stagger>
-        <div class="work-card span2 reveal" data-category="adv">
-            <div class="work-img">
-                <div class="work-view-label"><span>VIEW</span></div>
-                <img src="layout admo x tutto (1)_page-0001.jpg" alt="Campagna ADMO" loading="lazy"/>
-            </div>
-            <div class="work-info">
-                <span class="work-name" data-it>Campagna Pubblicitaria ADMO</span>
-                <span class="work-name" data-en style="display:none">ADMO Ad Campaign</span>
-                <span class="work-cat">ADV / Layout</span>
-            </div>
-        </div>
-        <div class="work-card span2 reveal" data-category="editorial">
-            <div class="work-img">
-                <div class="work-view-label"><span>VIEW</span></div>
-                <img src="copertina libro.jpg" alt="Copertina libro" loading="lazy"/>
-            </div>
-            <div class="work-info">
-                <span class="work-name" data-it>Copertina Libri</span>
-                <span class="work-name" data-en style="display:none">Book Cover</span>
-                <span class="work-cat">Editorial Design</span>
-            </div>
-        </div>
-        <div class="work-card reveal" data-category="poster">
-            <div class="work-img work-img-inner">
-                <div class="work-view-label"><span>VIEW</span></div>
-                <img src="Blue Bold Modern Fashion Coming Soon Poster.jpg" alt="Fashion Poster" loading="lazy"/>
-            </div>
-            <div class="work-info">
-                <span class="work-name">Poster</span>
-                <span class="work-cat">Poster Design</span>
-            </div>
-        </div>
-        <div class="work-card reveal" data-category="design">
-            <div class="work-img work-img-inner">
-                <div class="work-view-label"><span>VIEW</span></div>
-                <img src="Tavola disegno 1@3x.png" alt="Menú Cresima" loading="lazy"/>
-            </div>
-            <div class="work-info">
-                <span class="work-name">Menú</span>
-                <span class="work-cat">Graphic Design</span>
-            </div>
-        </div>
-        <div class="work-card reveal" data-category="poster">
-            <div class="work-img work-img-inner">
-                <div class="work-view-label"><span>VIEW</span></div>
-                <img src="consegna giornata della memoria -01.jpeg" alt="Giornata della Memoria" loading="lazy"/>
-            </div>
-            <div class="work-info">
-                <span class="work-name" data-it>Poster Memoria</span>
-                <span class="work-name" data-en style="display:none">Memorial Poster</span>
-                <span class="work-cat">Editorial Poster</span>
-            </div>
-        </div>
-        <div class="work-card reveal" data-category="poster">
-            <div class="work-img work-img-inner">
-                <div class="work-view-label"><span>VIEW</span></div>
-                <img src="MANIFESTO completo.jpg" alt="Manifesto Off Road CVM" loading="lazy"/>
-            </div>
-            <div class="work-info">
-                <span class="work-name">Poster</span>
-                <span class="work-cat">Graphic Design</span>
-            </div>
-        </div>
-        <div class="work-card reveal" data-category="design">
-            <div class="work-img work-img-inner">
-                <div class="work-view-label"><span>VIEW</span></div>
-                <img src="ChatGPT Image 17 apr 2026, 17_56_25.png" alt="Inviti compleanni" loading="lazy"/>
-            </div>
-            <div class="work-info">
-                <span class="work-name" data-it>Inviti Compleanni</span>
-                <span class="work-name" data-en style="display:none">Birthday Invitations</span>
-                <span class="work-cat">Invitation Design</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Mobile scroll -->
-    <div class="portfolio-scroll">
-        <div class="work-card" data-category="adv">
-            <div class="work-img" style="aspect-ratio:3/4"><img src="layout admo x tutto (1)_page-0001.jpg" alt="ADMO" loading="lazy" style="height:100%;object-fit:cover"/></div>
-            <div class="work-info"><span class="work-name">ADMO</span><span class="work-cat">ADV</span></div>
-        </div>
-        <div class="work-card" data-category="editorial">
-            <div class="work-img" style="aspect-ratio:3/4"><img src="copertina libro.jpg" alt="Copertina" loading="lazy" style="height:100%;object-fit:cover"/></div>
-            <div class="work-info"><span class="work-name" data-it>Copertina</span><span class="work-name" data-en style="display:none">Cover</span><span class="work-cat">Editorial</span></div>
-        </div>
-        <div class="work-card" data-category="poster">
-            <div class="work-img" style="aspect-ratio:3/4"><img src="Blue Bold Modern Fashion Coming Soon Poster.jpg" alt="Poster" loading="lazy" style="height:100%;object-fit:cover"/></div>
-            <div class="work-info"><span class="work-name">Poster</span><span class="work-cat">Design</span></div>
-        </div>
-        <div class="work-card" data-category="design">
-            <div class="work-img" style="aspect-ratio:3/4"><img src="Tavola disegno 1@3x.png" alt="Menú" loading="lazy" style="height:100%;object-fit:cover"/></div>
-            <div class="work-info"><span class="work-name">Menú</span><span class="work-cat">Design</span></div>
-        </div>
-        <div class="work-card" data-category="poster">
-            <div class="work-img" style="aspect-ratio:3/4"><img src="consegna giornata della memoria -01.jpeg" alt="Memoria" loading="lazy" style="height:100%;object-fit:cover"/></div>
-            <div class="work-info"><span class="work-name" data-it>Memoria</span><span class="work-name" data-en style="display:none">Memorial</span><span class="work-cat">Editorial</span></div>
-        </div>
-        <div class="work-card" data-category="poster">
-            <div class="work-img" style="aspect-ratio:3/4"><img src="MANIFESTO completo.jpg" alt="Manifesto" loading="lazy" style="height:100%;object-fit:cover"/></div>
-            <div class="work-info"><span class="work-name">Manifesto</span><span class="work-cat">Design</span></div>
-        </div>
-        <div class="work-card" data-category="design">
-            <div class="work-img" style="aspect-ratio:3/4"><img src="ChatGPT Image 17 apr 2026, 17_56_25.png" alt="Inviti" loading="lazy" style="height:100%;object-fit:cover"/></div>
-            <div class="work-info"><span class="work-name" data-it>Inviti</span><span class="work-name" data-en style="display:none">Invitations</span><span class="work-cat">Design</span></div>
-        </div>
-    </div>
-
-    <div class="reveal" style="padding:0 5vw 2rem;font-size:clamp(.9rem,1.5vw,1.2rem);font-weight:500;color:var(--muted)">
-        <span data-it>Per altri lavori, seguimi sui <a href="https://www.instagram.com/rinaldi.visuals/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">social</a>.</span>
-        <span data-en style="display:none">For more work, follow me on <a href="https://www.instagram.com/rinaldi.visuals/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">social media</a>.</span>
-    </div>
-
-    <!-- ── PHOTOGRAPHY SECTION ── -->
-    <div class="photo-section reveal" id="photoSection">
-        <div class="photo-section-header">
-            <span class="section-tag" data-it>Lavori Selezionati</span>
-            <span class="section-tag" data-en style="display:none">Selected Works</span>
-            <h3 class="photo-section-title">
-                <span data-it>Foto<span style="color:var(--accent)">grafia</span></span>
-                <span data-en style="display:none">Photo<span style="color:var(--accent)">graphy</span></span>
-            </h3>
-        </div>
-
-        <div class="photo-gallery" data-stagger>
-            <div class="photo-card"><img src="IMG_1863-Edit.jpg" alt="Fotografia 01" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="IMG_1106.jpg" alt="Fotografia 02" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="IMG_1242.jpg" alt="Fotografia 03" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="IMG_1245.jpg" alt="Fotografia 04" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="IMG_1843.jpg" alt="Fotografia 05" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="IMG_0980.jpg" alt="Fotografia 06" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="IMG_0989.jpg" alt="Fotografia 07" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="IMG_0995.jpg" alt="Fotografia 08" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="IMG_1352.jpg" alt="Fotografia 09" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="3.jpg" alt="Fotografia 10" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="7b0ea8e9-adf0-42ef-923d-ab93ec44c02b.jpg" alt="Fotografia 11" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="890A6FF2-625E-4C06-8CCE-3B4FAE2E5FC6.jpg" alt="Fotografia 12" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="C511B57F-2E1F-434E-96E7-F7943D91B77D.jpg" alt="Fotografia 13" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="EBC6D4A8-8E5D-4C27-ADA8-2D70D02EEC97.jpg" alt="Fotografia 14" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="FDEB8F01-3D1A-4F8F-A43E-DEF6FA323882.jpg" alt="Fotografia 15" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="IMG_0621.jpg" alt="Fotografia 16" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="2e3a1980-286c-4b29-a1e7-2d15f1f1907d.jpg" alt="Fotografia 17" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="68ee55c1-d494-498a-9950-cbf8829da1f7.jpg" alt="Fotografia 18" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="ec5d42eb-55bd-4f0c-9544-be05dbdfe282.jpg" alt="Fotografia 19" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
         </div>
     </div>
 </section>
