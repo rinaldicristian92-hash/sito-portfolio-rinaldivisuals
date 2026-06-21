@@ -451,7 +451,56 @@
         .work-live-btn { display:inline-flex;align-items:center;gap:.35rem;margin-top:.5rem;padding:.35rem .8rem;font-size:.72rem;font-weight:800;letter-spacing:.06em;color:var(--accent);border:1px solid var(--accent);border-radius:2px;text-decoration:none;transition:background .2s,color .2s; }
         .work-live-btn:hover { background:var(--accent);color:#fff; }
 
-        /* VIEW overlay on hover */
+        /* ── TYPOGRAPHIC WORK CARD ── */
+        .work-type-hero {
+            width:100%; aspect-ratio:16/9; background:#08101e;
+            position:relative; overflow:hidden;
+            display:flex; flex-direction:column; justify-content:flex-end;
+            padding:clamp(1.2rem,3vw,2.4rem); gap:.7rem;
+        }
+        .work-type-hero::before {
+            content:''; position:absolute; inset:0;
+            background-image:radial-gradient(circle,rgba(255,255,255,.07) 1px,transparent 1px);
+            background-size:28px 28px; pointer-events:none;
+        }
+        .work-type-hero::after {
+            content:''; position:absolute; top:-30%; right:-5%;
+            width:55%; height:110%;
+            background:radial-gradient(ellipse at top right,rgba(230,32,32,.2) 0%,transparent 65%);
+            pointer-events:none;
+        }
+        .wth-deco {
+            position:absolute; right:-.02em; top:50%; transform:translateY(-52%);
+            font-size:clamp(7rem,20vw,16rem); font-weight:900; letter-spacing:-.06em;
+            color:rgba(255,255,255,.045); text-transform:uppercase; line-height:1;
+            pointer-events:none; user-select:none; z-index:0;
+        }
+        .wth-live {
+            position:absolute; top:1.4rem; right:1.4rem;
+            font-size:.65rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase;
+            text-decoration:none; color:var(--accent); border:1px solid var(--accent);
+            padding:.45rem .9rem; z-index:3; transition:background .2s,color .2s;
+        }
+        .wth-live:hover { background:var(--accent); color:#fff; }
+        .wth-meta {
+            font-size:.6rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase;
+            color:rgba(255,255,255,.3); position:relative; z-index:1;
+        }
+        .wth-name {
+            font-size:clamp(2.6rem,7vw,6rem); font-weight:900; letter-spacing:-.04em;
+            line-height:.88; text-transform:uppercase; color:#fff;
+            position:relative; z-index:1;
+        }
+        .wth-chips { display:flex; flex-wrap:wrap; gap:.4rem; position:relative; z-index:1; }
+        .wth-chip {
+            font-size:.58rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase;
+            color:rgba(255,255,255,.45); border:1px solid rgba(255,255,255,.1);
+            padding:.28rem .65rem; white-space:nowrap;
+        }
+        @media (hover:hover) { .wth-live { cursor:none; } }
+        @media (max-width:768px) { .work-type-hero { aspect-ratio:3/4; } .wth-deco { font-size:clamp(5rem,28vw,9rem); } }
+
+                /* VIEW overlay on hover */
         .work-view-label { position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:2; }
         .work-view-label span { font-size:.75rem;font-weight:900;letter-spacing:.3em;color:#fff;text-transform:uppercase;opacity:0;transform:scale(.85);transition:opacity .3s,transform .3s; background:var(--accent);padding:.5rem 1rem; }
         .work-card:hover .work-view-label span { opacity:1;transform:scale(1); }
@@ -872,6 +921,31 @@
 
     <!-- Desktop grid -->
     <div class="portfolio-grid" data-stagger>
+        <div class="work-card span2 reveal" data-category="design">
+            <div class="work-type-hero">
+                <span class="wth-deco" aria-hidden="true">F</span>
+                <a href="https://rinaldicristian92-hash.github.io/foggiApp/" target="_blank" rel="noopener" class="wth-live" data-it>Apri l'app ↗</a>
+                <a href="https://rinaldicristian92-hash.github.io/foggiApp/" target="_blank" rel="noopener" class="wth-live" data-en style="display:none">Open app ↗</a>
+                <div class="wth-meta">Stage Grani Digitali &middot; Web App &middot; 2025–26</div>
+                <div class="wth-name">FoggiApp</div>
+                <div class="wth-chips">
+                    <span class="wth-chip" data-it>Percorsi storici</span>
+                    <span class="wth-chip" data-it>Mappa interattiva</span>
+                    <span class="wth-chip" data-it>Moduli multimediali</span>
+                    <span class="wth-chip" data-en style="display:none">Historic trails</span>
+                    <span class="wth-chip" data-en style="display:none">Interactive map</span>
+                    <span class="wth-chip" data-en style="display:none">Multimedia modules</span>
+                </div>
+            </div>
+            <div class="work-info">
+                <div class="work-info-top">
+                    <span class="work-name">FoggiApp</span>
+                    <span class="work-cat">Web App</span>
+                </div>
+                <p class="work-desc" data-it>Stage Grani Digitali · web app per la promozione culturale e turistica di Foggia — percorsi storici, mappa interattiva, moduli multimediali · 2025–26</p>
+                <p class="work-desc" data-en style="display:none">Grani Digitali internship · web app promoting Foggia's cultural and tourist heritage · 2025–26</p>
+            </div>
+        </div>
 
         <div class="work-card span2 reveal" data-category="adv">
             <div class="work-img">
@@ -997,6 +1071,20 @@
 
     <!-- Mobile scroll -->
     <div class="portfolio-scroll">
+        <div class="work-card" data-category="design">
+            <div class="work-type-hero">
+                <span class="wth-deco" aria-hidden="true">F</span>
+                <div class="wth-meta">Web App · 2025–26</div>
+                <div class="wth-name">FoggiApp</div>
+                <div class="wth-chips">
+                    <span class="wth-chip" data-it>Mappa</span>
+                    <span class="wth-chip" data-it>Percorsi</span>
+                    <span class="wth-chip" data-en style="display:none">Map</span>
+                    <span class="wth-chip" data-en style="display:none">Trails</span>
+                </div>
+            </div>
+            <div class="work-info"><span class="work-name">FoggiApp</span><span class="work-cat">Web App</span></div>
+        </div>
 
         <div class="work-card" data-category="adv">
             <div class="work-img"><img src="layout admo x tutto (1)_page-0001.jpg" alt="ADMO" loading="lazy"/></div>
