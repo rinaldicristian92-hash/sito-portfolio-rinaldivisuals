@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cristian Rinaldi | Rinaldi Visuals — Graphic Designer & Fotografo</title>
-    <meta name="description" content="Cristian Rinaldi — Graphic Designer e Fotografo a Foggia. Branding, identità visive, fotografia e art direction." />
-    <meta name="keywords" content="graphic designer foggia, fotografo foggia, branding, identità visiva, cristian rinaldi" />
+    <meta name="color-scheme" content="dark" />
+    <title>Cristian Rinaldi — Graphic Designer &amp; Fotografo a Foggia</title>
+    <meta name="description" content="Cristian Rinaldi, Graphic Designer e Fotografo a Foggia. Branding, campagne, editorial design e fotografia per privati e aziende." />
+    <meta name="keywords" content="graphic designer foggia, fotografo foggia, branding, identità visiva, cristian rinaldi, campagne visive" />
     <meta name="author" content="Cristian Rinaldi" />
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Cristian Rinaldi | Rinaldi Visuals" />
-    <meta property="og:description" content="Graphic Designer & Fotografo. Creo identità visive che lasciano il segno." />
+    <meta property="og:title" content="Cristian Rinaldi — Graphic Designer &amp; Fotografo a Foggia" />
+    <meta property="og:description" content="Branding, campagne, editorial design e fotografia. Lavoro con privati e aziende per creare identità visive che funzionano." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="tavola disegno 1.png" />
+    <meta property="og:image" content="https://rinaldicristian92-hash.github.io/sito-portfolio-rinaldivisuals/tavola%20disegno%201.png" />
+    <meta property="og:url" content="https://rinaldicristian92-hash.github.io/sito-portfolio-rinaldivisuals/" />
 
     <!-- Favicon inline SVG -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
@@ -21,8 +23,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;0,800;0,900;1,500&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,800;0,900;1,500&display=swap" rel="stylesheet" />
 
     <style>
         :root {
@@ -136,49 +137,6 @@
             margin-bottom: 1rem;
         }
 
-        /* ── PROCESS SECTION ── */
-        .process-s { padding: 8vw 5vw; border-top: 1px solid var(--border); }
-        .process-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 1px; background: var(--border);
-            border: 1px solid var(--border);
-            margin-top: 2.5rem;
-        }
-        .process-step {
-            background: var(--surface); padding: 2.5rem 2rem;
-            position: relative; overflow: hidden;
-            transition: background .3s;
-        }
-        .process-step::after {
-            content: ''; position: absolute; inset: auto 0 0 0;
-            height: 2px; background: var(--accent);
-            transform: scaleX(0); transform-origin: left;
-            transition: transform .5s var(--ease);
-        }
-        .process-step:hover { background: var(--surface2); }
-        .process-step:hover::after { transform: scaleX(1); }
-        .process-step-num {
-            font-size: 3.5rem; font-weight: 900; color: transparent;
-            -webkit-text-stroke: 1px rgba(255,255,255,.1);
-            line-height: 1; margin-bottom: 1rem;
-        }
-        .process-step-title {
-            font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 900;
-            text-transform: uppercase; letter-spacing: -.02em;
-            margin-bottom: .75rem;
-        }
-        .process-step-title .accent { color: var(--accent); }
-        .process-step-desc {
-            font-size: .88rem; color: rgba(240,237,232,.55);
-            line-height: 1.75; font-weight: 500;
-        }
-        .process-arrow {
-            position: absolute; top: 2.5rem; right: 2rem;
-            color: var(--accent); opacity: .3; font-size: 1.2rem;
-        }
-        @media (max-width: 768px) {
-            .process-arrow { display: none; }
-        }
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
@@ -409,23 +367,6 @@
         .hero-title .dot { color: var(--accent); }
         .hero-sub { font-size: clamp(1rem, 2.5vw, 1.6rem); font-weight: 300; color: rgba(240,237,232,0.65); line-height: 1.3; max-width: 520px; margin-bottom: 1.5rem; }
 
-        /* Stats row */
-        .hero-stats { display: flex; gap: 2.5rem; margin-bottom: 2.5rem; flex-wrap: wrap; position: relative; z-index: 2; isolation: isolate; }
-        .hero-stat { display: flex; flex-direction: column; gap: 2px; }
-        .hero-stat-num { font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 900; color: var(--text); line-height: 1; }
-        .hero-stat-num span { color: var(--accent); }
-        .hero-stat-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; }
-
-        .hero-btns { display: flex; flex-wrap: wrap; gap: 1rem; }
-        .btn-primary { display:inline-flex;align-items:center;gap:8px;padding:.9rem 1.6rem;background:var(--accent);color:#fff;font-size:.78rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border:1px solid var(--accent);transition:background .3s,color .3s; }
-        .btn-primary:hover { background:transparent;color:var(--accent); }
-        .btn-ghost  { display:inline-flex;align-items:center;gap:8px;padding:.9rem 1.6rem;background:transparent;color:var(--text);font-size:.78rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,0.16);transition:border-color .3s; }
-        .btn-ghost:hover { border-color:rgba(255,255,255,0.4); }
-
-        .scroll-hint { position:absolute;bottom:2.5rem;right:5vw;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:.6rem;font-weight:800;letter-spacing:.25em;color:var(--muted);text-transform:uppercase; }
-        .scroll-line { width:1px;height:48px;background:linear-gradient(to bottom,transparent,var(--accent));animation:scrl 2s ease infinite; }
-        @keyframes scrl { 0%,100%{transform:scaleY(1);opacity:.7} 50%{transform:scaleY(.5) translateY(12px);opacity:.3} }
-
         /* ── MARQUEE ── */
         .marquee-wrap { width:100%;overflow:hidden;background:var(--accent);padding:1.2rem 0;transform:rotate(-1.5deg) scale(1.04); }
         .marquee-track { display:flex;white-space:nowrap; }
@@ -469,47 +410,6 @@
         .img-wrap img { width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(80%);transition:transform .8s var(--ease),filter .8s ease; }
         .img-wrap:hover img { transform:scale(1.05);filter:grayscale(0%); }
 
-        /* ── STATS SECTION ── */
-        .stats-row {
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            border: 1px solid var(--border);
-            border-bottom: none;
-            margin: 0 5vw;
-        }
-        .stat-block {
-            padding: 2.5rem 2rem;
-            border-right: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            position: relative; overflow: hidden;
-        }
-        .stat-block:last-child { border-right: none; }
-        .stat-block::after { content:''; position:absolute;inset:auto 0 0 0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease); }
-        .stat-block:hover::after { transform:scaleX(1); }
-        .stat-n { font-size:clamp(2rem,5vw,4rem);font-weight:900;line-height:1;color:var(--text); }
-        .stat-n sup { font-size:.5em;color:var(--accent);vertical-align:super; }
-        .stat-l { font-size:.65rem;font-weight:700;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-top:6px; }
-
-        /* ── EXPERIENCES ── */
-        .exp-panel { padding:6vw 5vw;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden; }
-        .exp-panel::before { content:'';position:absolute;inset:0 auto 0 0;width:3px;background:linear-gradient(to bottom,transparent,var(--accent) 25%,rgba(230,32,32,.3) 75%,transparent); }
-        .exp-list { display:flex;flex-direction:column;gap:0;margin-bottom:3rem; }
-        .exp-item { display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:2rem;padding:1.8rem 0;border-bottom:1px solid var(--border); }
-        .exp-item:last-child { border-bottom:none; }
-        .exp-year { font-size:.7rem;font-weight:800;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;line-height:1.6;padding-top:4px; }
-        .exp-role { font-size:clamp(1.1rem,2vw,1.6rem);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1.05;margin-bottom:.5rem; }
-        .exp-desc { font-size:.9rem;color:rgba(240,237,232,.6);line-height:1.7;font-weight:500; }
-
-        /* ── SKILLS ── */
-        .skills-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border); }
-        .skill-card { background:var(--surface);padding:2rem 1.6rem;display:flex;flex-direction:column;gap:.8rem;transition:background .3s;position:relative;overflow:hidden; }
-        .skill-card::after { content:'';position:absolute;inset:auto 0 0 0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease); }
-        .skill-card:hover { background:var(--surface2); }
-        .skill-card:hover::after { transform:scaleX(1); }
-        .skill-num  { font-size:.7rem;font-weight:800;color:var(--muted);letter-spacing:.2em; }
-        .skill-name { font-size:clamp(1.2rem,2.5vw,2.2rem);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1;color:transparent;-webkit-text-stroke:1px var(--text);transition:color .3s,-webkit-text-stroke .3s; }
-        .skill-card:hover .skill-name { color:var(--text);-webkit-text-stroke:1px transparent; }
-        .skill-tools { font-size:.8rem;color:var(--muted);line-height:1.7;font-weight:500; }
-
         /* ── WORKS ── */
         .works-title { font-size:clamp(2.5rem,8vw,7rem);font-weight:900;text-transform:uppercase;letter-spacing:-.04em;line-height:.9; }
 
@@ -550,24 +450,6 @@
         .portfolio-scroll .work-img { aspect-ratio:3/4; }
         .portfolio-scroll .work-img img { height:100%; }
 
-        /* ── LINKS / QR ── */
-        .links-s { text-align:center;padding:8vw 5vw;display:flex;flex-direction:column;align-items:center; }
-        .links-title { font-size:clamp(1.4rem,4vw,3.5rem);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;margin-bottom:1.5rem; }
-        .arrow-bounce { color:var(--accent);font-size:2rem;margin-bottom:1.5rem;animation:bnc .8s ease infinite alternate; }
-        @keyframes bnc { from{transform:translateY(0)} to{transform:translateY(-8px)} }
-        .qr-box { width:clamp(160px,22vw,260px);border:1px solid var(--border);padding:1rem;background:#fff; }
-        .qr-box img { width:100%;display:block; }
-
-        /* ── BUSINESS CARD ── */
-        .card-s { display:flex;flex-direction:column;align-items:center;gap:1.2rem;padding:6vw 5vw;text-align:center; }
-        .card-scene { width:min(580px,90vw);aspect-ratio:16/9.6;perspective:1400px; }
-        .card-container { width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .75s cubic-bezier(.175,.885,.32,1.275); }
-        .card-container.flipped { transform:rotateY(180deg); }
-        .card-face { position:absolute;inset:0;backface-visibility:hidden;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 12px 40px rgba(0,0,0,.5); }
-        .card-face img { width:100%;height:100%;object-fit:cover;display:block; }
-        .card-back { transform:rotateY(180deg); }
-        .card-hint { font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--muted); }
-
         /* ── CONTACT ── */
         .contact-s { background:#f0ede8;color:#0a0a0a;padding:8vw 5vw;position:relative;overflow:hidden; }
         .contact-s::before { content:'INIZIA';position:absolute;right:-2vw;top:-1vw;font-size:clamp(5rem,18vw,16rem);font-weight:900;letter-spacing:-.06em;color:rgba(0,0,0,.05);pointer-events:none;line-height:1;text-transform:uppercase; }
@@ -604,16 +486,6 @@
         .mobile-cta-info strong { font-size:.82rem;font-weight:900;letter-spacing:.1em; }
         .mobile-cta-info span  { font-size:.62rem;color:var(--muted);letter-spacing:.14em; }
         .mobile-cta-btn { display:inline-flex;align-items:center;gap:8px;padding:.8rem 1.4rem;background:var(--accent);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;white-space:nowrap;flex-shrink:0; }
-
-        /* ── FORGE DIVIDER ── */
-        .forge-wrap { position:relative;height:100px;overflow:hidden;margin:4vw 0; }
-        .forge-line { position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:1px;background:linear-gradient(90deg,transparent,rgba(230,32,32,.7),transparent); }
-        .forge-belt-outer { position:absolute;inset:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);top:28px;bottom:28px;overflow:hidden; }
-        .forge-belt { display:flex;align-items:center;height:100%;width:max-content;animation:forge 12s linear infinite; }
-        @keyframes forge { 0%{transform:translateX(0)} 100%{transform:translateX(-300px)} }
-        .forge-unit { width:150px;height:100%;flex-shrink:0;position:relative;display:flex;align-items:center; }
-        .forge-bar { width:60px;height:8px;background:linear-gradient(90deg,var(--accent),rgba(255,80,80,.6));margin-left:16px;position:relative; }
-        .forge-diamond { width:32px;height:32px;border:1px solid rgba(230,32,32,.25);background:rgba(230,32,32,.06);transform:rotate(45deg);position:absolute;right:20px; }
 
         /* ── FOOTER ── */
         footer { background:#000;padding:2rem 5vw; }
@@ -770,7 +642,7 @@
             .nav-cta { padding:.65rem 1rem;font-size:.62rem;letter-spacing:.14em;min-height:44px;display:flex;align-items:center; }
             .hero { padding:calc(var(--header-h) + 1.5rem) 5vw 6rem;justify-content:flex-end; }
             .hero-logo { width:clamp(60px,18vw,110px);margin-bottom:1.5rem; }
-            .avail-badge { font-size:.55rem;padding:.38rem .8rem;margin-bottom:.8rem; }
+            .avail-badge { font-size:.62rem;padding:.38rem .8rem;margin-bottom:.8rem; }
             .hero-btns { flex-direction:column; }
             .btn-primary, .btn-ghost { width:100%;justify-content:center;min-height:48px; }
             .scroll-hint { display:none; }
@@ -926,8 +798,8 @@
 
     <div class="hero-btns reveal reveal-d3">
         <a href="#contact" class="btn-primary">
-            <span data-it>Parliamo <i class="fas fa-arrow-right" style="font-size:.7em"></i></span>
-            <span data-en style="display:none">Let's talk <i class="fas fa-arrow-right" style="font-size:.7em"></i></span>
+            <span data-it>Parliamo <svg xmlns="http://www.w3.org/2000/svg" width=".9em" height=".9em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;margin-left:.3em"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+            <span data-en style="display:none">Let's talk <svg xmlns="http://www.w3.org/2000/svg" width=".9em" height=".9em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;margin-left:.3em"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </a>
         <a href="#works" class="btn-ghost">
             <span data-it>Vedi i lavori</span>
@@ -1080,7 +952,8 @@
             </div>
             <div class="work-info">
                 <div class="work-info-top">
-                    <span class="work-name">Manifesto CVM</span>
+                    <span class="work-name" data-it>Manifesto CVM</span>
+                    <span class="work-name" data-en style="display:none">CVM Poster</span>
                     <span class="work-cat">Graphic Design</span>
                 </div>
                 <p class="work-desc" data-it>Manifesto per evento Off Road CVM · composizione tipografica e visiva d'impatto</p>
@@ -1188,17 +1061,17 @@
             <span class="section-tag" data-it>Chi sono</span>
             <span class="section-tag" data-en style="display:none">About me</span>
             <p class="about-statement" style="margin-top:1.5rem">
-                <span data-it>Non faccio solo "cose belle". <em>Costruisco identità visive che parlano al tuo pubblico, con una logica precisa dietro ogni scelta.</em></span>
-                <span data-en style="display:none">I don't just make "nice things". <em>I build visual identities that speak to your audience, with clear thinking behind every decision.</em></span>
+                <span data-it>Un buon progetto visivo non è solo esteticamente bello — <em>è quello che funziona per il tuo brand, riconoscibile, coerente, difficile da ignorare.</em></span>
+                <span data-en style="display:none">A good visual project isn't just beautiful — <em>it's the one that works for your brand: recognisable, consistent, hard to ignore.</em></span>
             </p>
             <p class="about-me-text" data-it>
-                Cristian Rinaldi — Graphic Designer e Fotografo a Foggia. Specializzato in branding, editorial e campagne visive. Diplomando in Graphic Design all'I.I.S. Einaudi (2021–2026), lavoro su commesse private e collaboro con enti e associazioni del territorio.
+                Graphic Designer e Fotografo a Foggia. Mi occupo di branding, campagne visive ed editorial design — lavoro con privati, associazioni e realtà locali che vogliono comunicare meglio attraverso il visual.
             </p>
             <p class="about-me-text" data-en style="display:none">
-                Cristian Rinaldi — Graphic Designer and Photographer based in Foggia. Specialised in branding, editorial and visual campaigns. Completing a Graphic Design diploma at I.I.S. Einaudi (2021–2026), I work on private commissions and collaborate with local organisations.
+                Graphic Designer and Photographer based in Foggia. I work on branding, visual campaigns and editorial design — for private clients, associations and local businesses that want stronger visual communication.
             </p>
             <a href="Curriculum Vitae Semplice Essenziale Minimal Pulito Moderno Bianco Nero Designer.jpg" download="CV_CristianRinaldi.jpg" class="cv-download">
-                <i class="fas fa-download" style="font-size:.85em"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width=".9em" height=".9em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 <span data-it>Scarica CV</span>
                 <span data-en style="display:none">Download CV</span>
             </a>
@@ -1246,15 +1119,13 @@
             </h2>
         </div>
         <div class="reveal reveal-d1">
-            <p class="contact-eyebrow" data-it>Parliamoci — senza impegno</p>
-            <p class="contact-eyebrow" data-en style="display:none">Let's talk — no commitment</p>
+            <p class="contact-eyebrow" data-it>Scrivimi — rispondo entro 24h</p>
+            <p class="contact-eyebrow" data-en style="display:none">Write to me — I reply within 24h</p>
             <p class="contact-body" data-it>
-                Hai un'idea, un brand da costruire o un progetto da rendere più forte visivamente?
-                Compila il form o scrivimi direttamente.
+                Hai un progetto da avviare, un brand da costruire o materiali grafici da realizzare? Racconta brevemente cosa ti serve — troveremo insieme la strada giusta.
             </p>
             <p class="contact-body" data-en style="display:none">
-                Have an idea, a brand to build or a project to strengthen visually?
-                Fill in the form or write to me directly.
+                Got a project to start, a brand to build or graphics to create? Tell me briefly what you need — we'll find the right approach together.
             </p>
 
             <!-- 
@@ -1303,14 +1174,15 @@
                     <label for="cf-msg" data-it>Messaggio</label>
                     <label for="cf-msg" data-en style="display:none">Message</label>
                     <textarea id="cf-msg" name="message" required
-                              placeholder="" data-placeholder-it="Raccontami il tuo progetto..."
+                              placeholder="Raccontami il tuo progetto..."
+                              data-placeholder-it="Raccontami il tuo progetto..."
                               data-placeholder-en="Tell me about your project..."></textarea>
                 </div>
 
                 <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
                     <button type="submit" class="contact-btn">
-                        <span data-it>Invia messaggio <i class="fas fa-paper-plane" style="font-size:.85em"></i></span>
-                        <span data-en style="display:none">Send message <i class="fas fa-paper-plane" style="font-size:.85em"></i></span>
+                        <span data-it>Invia messaggio <svg xmlns="http://www.w3.org/2000/svg" width=".9em" height=".9em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;margin-left:.3em"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>
+                        <span data-en style="display:none">Send message <svg xmlns="http://www.w3.org/2000/svg" width=".9em" height=".9em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;margin-left:.3em"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>
                     </button>
                     <p class="form-msg" id="formMsg"></p>
                 </div>
@@ -1333,8 +1205,8 @@
         <span data-en style="display:none">Designer &amp; Photographer</span>
     </div>
     <a href="#contact" class="mobile-cta-btn">
-        <span data-it>Scrivimi <i class="fas fa-arrow-right" style="font-size:.7em"></i></span>
-        <span data-en style="display:none">Contact <i class="fas fa-arrow-right" style="font-size:.7em"></i></span>
+        <span data-it>Scrivimi <svg xmlns="http://www.w3.org/2000/svg" width=".9em" height=".9em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;margin-left:.3em"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        <span data-en style="display:none">Contact <svg xmlns="http://www.w3.org/2000/svg" width=".9em" height=".9em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;margin-left:.3em"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
     </a>
 </div>
 
@@ -1457,43 +1329,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
     }
 
-    /* ── COUNT UP ANIMATION ── */
-    function animateCount(el, target, suffix) {
-        let start = 0;
-        const duration = 1200;
-        const step = timestamp => {
-            if (!step.startTime) step.startTime = timestamp;
-            const progress = Math.min((timestamp - step.startTime) / duration, 1);
-            const ease = 1 - Math.pow(1 - progress, 3);
-            el.textContent = Math.round(ease * target) + suffix;
-            if (progress < 1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-    }
-
-    // Hero stats
-    const statIO = new IntersectionObserver((entries, obs) => {
-        entries.forEach(e => {
-            if (!e.isIntersecting) return;
-            const target = parseInt(e.target.dataset.count);
-            const numEl  = e.target.querySelector('span');
-            if (numEl) animateCount(numEl, target, '');
-            obs.unobserve(e.target);
-        });
-    }, { threshold: 0.5 });
-    document.querySelectorAll('[data-count]').forEach(el => statIO.observe(el));
-
-    // Stats row blocks
-    const blockIO = new IntersectionObserver((entries, obs) => {
-        entries.forEach(e => {
-            if (!e.isIntersecting) return;
-            const target = parseInt(e.target.dataset.countBlock);
-            animateCount(e.target, target, '+');
-            obs.unobserve(e.target);
-        });
-    }, { threshold: 0.5 });
-    document.querySelectorAll('[data-count-block]').forEach(el => blockIO.observe(el));
-
     /* ── FILTER TABS ── */
     const filterBtns = document.querySelectorAll('.filter-btn');
     const photoSection = document.getElementById('photoSection');
@@ -1537,10 +1372,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (img) openLb(img.src, img.alt);
         });
     });
-
-    /* ── BUSINESS CARD ── */
-    const bcard = document.getElementById('bcard');
-    if (bcard) bcard.addEventListener('click', () => bcard.classList.toggle('flipped'));
 
     /* ── LIGHTBOX ── */
     const lb = document.getElementById('lb');
