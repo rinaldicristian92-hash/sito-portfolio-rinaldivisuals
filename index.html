@@ -702,6 +702,25 @@
             .marquee-inner { animation: none; }
             .avail-dot { animation: none; }
         }
+
+        /* ── FLIPBOOK ── */
+        .flipbook-s { background:#030303;padding:8vw 5vw;border-top:1px solid var(--border); }
+        .flipbook-inner { max-width:1100px;margin:0 auto; }
+        .flipbook-head { margin-bottom:2.5rem; }
+        .flipbook-title { font-size:clamp(2.2rem,6vw,5rem);font-weight:900;letter-spacing:-.04em;line-height:.9;text-transform:uppercase;margin-top:.5rem; }
+        .flipbook-title em { color:var(--accent);font-style:normal; }
+        .flipbook-hint { font-size:.72rem;color:var(--muted);margin-top:.9rem;letter-spacing:.08em; }
+        .flipbook-stage { margin:0 auto 0;max-width:900px;display:flex;justify-content:center;align-items:center; }
+        .flipbook-stage .stf__parent { box-shadow:0 24px 80px rgba(0,0,0,.85)!important; }
+        .flipbook-controls { display:flex;align-items:center;justify-content:center;gap:2rem;margin-top:2rem; }
+        .flip-btn { width:48px;height:48px;background:none;border:1px solid var(--border);color:var(--text);display:flex;align-items:center;justify-content:center;transition:border-color .25s,background .25s; }
+        .flip-btn:hover { border-color:var(--accent);background:var(--accent-dim); }
+        .flip-btn:disabled { opacity:.3;pointer-events:none; }
+        .flip-btn svg { width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2; }
+        .flip-counter { font-size:.68rem;font-weight:800;letter-spacing:.22em;color:var(--muted);min-width:80px;text-align:center;text-transform:uppercase; }
+        .flipbook-loading { padding:4rem;text-align:center;font-size:.72rem;letter-spacing:.14em;color:var(--muted);text-transform:uppercase; }
+        @media (hover:hover) { .flip-btn { cursor:none; } }
+        @media (max-width:768px) { .flipbook-s { padding:12vw 5vw; } .flipbook-controls { gap:1.5rem; } }
     </style>
 </head>
 <body>
@@ -1154,6 +1173,37 @@
 
 
 
+
+<!-- Flipbook -->
+<section class="flipbook-s" id="portfolio-pdf">
+    <div class="flipbook-inner">
+        <div class="flipbook-head reveal">
+            <span class="section-tag" data-it>Portfolio Book</span>
+            <span class="section-tag" data-en style="display:none">Portfolio Book</span>
+            <h2 class="flipbook-title">
+                <span data-it>Sfoglia il <em>portfolio</em></span>
+                <span data-en style="display:none">Browse the <em>portfolio</em></span>
+            </h2>
+            <p class="flipbook-hint" data-it>Fai clic sulle pagine o trascina per sfogliarle — usa ← → per navigare</p>
+            <p class="flipbook-hint" data-en style="display:none">Click or drag pages to flip — use ← → keys to navigate</p>
+        </div>
+        <div class="flipbook-stage reveal reveal-d1">
+            <div class="flipbook-loading" data-it>Caricamento...</div>
+            <div id="flipContainer" style="display:none"></div>
+        </div>
+        <div class="flipbook-controls">
+            <button class="flip-btn" id="flipPrev" aria-label="Pagina precedente" disabled>
+                <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <span class="flip-counter" id="flipCounter">— / —</span>
+            <button class="flip-btn" id="flipNext" aria-label="Pagina successiva" disabled>
+                <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+            </button>
+        </div>
+    </div>
+</section>
+
+
 <!-- Contact + Form -->
 <section class="contact-s" id="contact">
     <div class="contact-inner">
@@ -1550,7 +1600,93 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: true });
     }
 
+    /* ── FLIPBOOK ── */
+    const fbSection = document.getElementById('portfolio-pdf');
+    if (fbSection) {
+        let fbReady = false;
+        const fbIO = new IntersectionObserver(([e]) => {
+            if (e.isIntersecting && !fbReady) {
+                fbReady = true;
+                fbIO.disconnect();
+                waitForFlipLib();
+            }
+        }, { rootMargin: '300px' });
+        fbIO.observe(fbSection);
+    }
+
+    let _fbRetry = 0;
+    function waitForFlipLib() {
+        if (typeof St !== 'undefined') { initFlipbook(); return; }
+        if (++_fbRetry < 60) setTimeout(waitForFlipLib, 100);
+    }
+
+    function initFlipbook() {
+        const images = [
+            'flipbook-cover.jpg',
+            'flipbook-01.jpg','flipbook-02.jpg','flipbook-03.jpg','flipbook-04.jpg',
+            'flipbook-05.jpg','flipbook-06.jpg','flipbook-07.jpg','flipbook-08.jpg',
+            'flipbook-09.jpg','flipbook-10.jpg','flipbook-11.jpg','flipbook-12.jpg',
+            'flipbook-13.jpg','flipbook-14.jpg','flipbook-15.jpg','flipbook-16.jpg',
+            'flipbook-back.jpg'
+        ];
+
+        const loader   = document.querySelector('.flipbook-loading');
+        const container = document.getElementById('flipContainer');
+        if (!container) return;
+
+        if (loader) loader.style.display = 'none';
+        container.style.display = '';
+
+        const pf = new St.PageFlip(container, {
+            width: 600, height: 424,
+            size: 'stretch',
+            minWidth: 240, maxWidth: 900,
+            minHeight: 170, maxHeight: 637,
+            showCover: true,
+            drawShadow: true,
+            flippingTime: 700,
+            usePortrait: true,
+            mobileScrollSupport: true,
+            swipeDistance: 30,
+            autoSize: true
+        });
+
+        pf.loadFromImages(images);
+
+        const counter  = document.getElementById('flipCounter');
+        const btnPrev  = document.getElementById('flipPrev');
+        const btnNext  = document.getElementById('flipNext');
+        const total    = images.length;
+
+        function updateUI() {
+            const cur = pf.getCurrentPageIndex();
+            if (counter) counter.textContent = (cur + 1) + ' / ' + total;
+            if (btnPrev) btnPrev.disabled = cur === 0;
+            if (btnNext) btnNext.disabled = cur === total - 1;
+        }
+
+        pf.on('flip', updateUI);
+        pf.on('init', () => {
+            if (btnPrev) btnPrev.disabled = false;
+            if (btnNext) btnNext.disabled = false;
+            updateUI();
+        });
+
+        btnPrev?.addEventListener('click', () => pf.flipPrev());
+        btnNext?.addEventListener('click', () => pf.flipNext());
+
+        document.addEventListener('keydown', e => {
+            if (!fbSection) return;
+            const rect = fbSection.getBoundingClientRect();
+            const inView = rect.top < window.innerHeight && rect.bottom > 0;
+            if (!inView) return;
+            if (e.key === 'ArrowLeft')  pf.flipPrev();
+            if (e.key === 'ArrowRight') pf.flipNext();
+        });
+    }
+
 });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js" defer></script>
 </body>
 </html>
