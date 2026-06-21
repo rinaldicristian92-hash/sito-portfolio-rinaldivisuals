@@ -428,6 +428,8 @@
         .work-img { width:100%;overflow:hidden;background:#1a1a1a;position:relative; }
         .work-card.span2 .work-img { aspect-ratio:16/9; }
         .work-img-inner { aspect-ratio:4/5; }
+        .work-img-webapp { aspect-ratio:16/9;background:var(--surface2);display:flex;align-items:center;justify-content:center;gap:1.5rem;overflow:hidden; }
+        .work-img-webapp img { height:100%;width:auto;max-width:none;object-fit:contain;flex-shrink:0; }
         .work-img img { width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(70%);transition:transform .6s var(--ease),filter .6s ease; }
         .work-card:hover .work-img img { transform:scale(1.04);filter:grayscale(0%); }
         .work-img::after { content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.7) 0%,transparent 55%);pointer-events:none; }
@@ -851,10 +853,27 @@
         <button class="filter-btn" data-filter="photo">
             <span data-it>Fotografia</span><span data-en style="display:none">Photography</span>
         </button>
+        <button class="filter-btn" data-filter="web">Web App</button>
     </div>
 
     <!-- Desktop grid -->
     <div class="portfolio-grid" data-stagger>
+        <div class="work-card span2 reveal" data-category="web">
+            <div class="work-img work-img-webapp">
+                <div class="work-view-label"><span>VIEW</span></div>
+                <img src="foggiapp-home.jpg" alt="FoggiApp — Home" loading="lazy"/>
+                <img src="foggiapp-percorsi.jpg" alt="FoggiApp — Percorsi" loading="lazy"/>
+                <img src="foggiapp-mappa.jpg" alt="FoggiApp — Mappa" loading="lazy"/>
+            </div>
+            <div class="work-info">
+                <div class="work-info-top">
+                    <span class="work-name">FoggiApp</span>
+                    <span class="work-cat">Web App</span>
+                </div>
+                <p class="work-desc" data-it>Stage Grani Digitali · web app per la promozione culturale e turistica di Foggia — percorsi storici, mappa interattiva, moduli multimediali · 2025–26</p>
+                <p class="work-desc" data-en style="display:none">Grani Digitali internship · web app to promote Foggia's cultural and tourist heritage — historic trails, interactive map, multimedia modules · 2025–26</p>
+            </div>
+        </div>
         <div class="work-card span2 reveal" data-category="adv">
             <div class="work-img">
                 <div class="work-view-label"><span>VIEW</span></div>
@@ -979,6 +998,10 @@
 
     <!-- Mobile scroll -->
     <div class="portfolio-scroll">
+        <div class="work-card" data-category="web">
+            <div class="work-img" style="aspect-ratio:3/4"><img src="foggiapp-home.jpg" alt="FoggiApp" loading="lazy" style="height:100%;object-fit:cover;object-position:top"/></div>
+            <div class="work-info"><span class="work-name">FoggiApp</span><span class="work-cat">Web App</span></div>
+        </div>
         <div class="work-card" data-category="adv">
             <div class="work-img" style="aspect-ratio:3/4"><img src="layout admo x tutto (1)_page-0001.jpg" alt="ADMO" loading="lazy" style="height:100%;object-fit:cover"/></div>
             <div class="work-info"><span class="work-name">ADMO</span><span class="work-cat">ADV</span></div>
@@ -1359,7 +1382,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (!isPhotoOnly) {
-                document.querySelectorAll('.portfolio-grid .work-card').forEach(card => {
+                document.querySelectorAll('.portfolio-grid .work-card, .portfolio-scroll .work-card').forEach(card => {
                     const show = filter === 'all' || card.dataset.category === filter;
                     card.style.display = show ? '' : 'none';
                 });
