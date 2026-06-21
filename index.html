@@ -444,7 +444,11 @@
         .about-statement { font-size:clamp(1.4rem,3.5vw,3.5rem);font-weight:500;line-height:1.1;letter-spacing:-.02em; }
         .about-statement em { color:var(--muted);font-style:normal; }
         .about-me-grid { display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center; }
-        .about-me-text { font-size:clamp(.95rem,1.3vw,1.15rem);font-weight:500;line-height:1.75;color:rgba(240,237,232,.8); }
+        .about-me-text { font-size:clamp(.95rem,1.3vw,1.15rem);font-weight:500;line-height:1.75;color:rgba(240,237,232,.8);margin-top:1.2rem; }
+        .exp-compact { display:flex;flex-direction:column;gap:.6rem;border-top:1px solid var(--border);margin-top:2rem;padding-top:1.5rem; }
+        .exp-compact-item { display:flex;gap:1.5rem;align-items:baseline; }
+        .exp-compact-year { font-size:.62rem;font-weight:800;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;white-space:nowrap;min-width:64px; }
+        .exp-compact-role { font-size:.85rem;color:rgba(240,237,232,.6);font-weight:500;line-height:1.4; }
 
         .cv-download {
             display: inline-flex; align-items: center; gap: 8px;
@@ -921,29 +925,6 @@
         <span data-en style="display:none">Graphic Designer &amp; Photographer based in Foggia.<br>Branding, campaigns, editorial &amp; photography.</span>
     </p>
 
-    <div class="hero-stats reveal reveal-d2">
-        <div class="hero-stat">
-            <div class="hero-stat-num" data-count="4"><span>0</span><span style="color:var(--accent)">+</span></div>
-            <div class="hero-stat-label" data-it>Anni di studio</div>
-            <div class="hero-stat-label" data-en style="display:none">Years of study</div>
-        </div>
-        <div class="hero-stat">
-            <div class="hero-stat-num" data-count="10"><span>0</span><span style="color:var(--accent)">+</span></div>
-            <div class="hero-stat-label" data-it>Progetti completati</div>
-            <div class="hero-stat-label" data-en style="display:none">Completed projects</div>
-        </div>
-        <div class="hero-stat">
-            <div class="hero-stat-num" data-count="2"><span>0</span><span style="color:var(--accent)">+</span></div>
-            <div class="hero-stat-label" data-it>Campagne pubblicate</div>
-            <div class="hero-stat-label" data-en style="display:none">Published campaigns</div>
-        </div>
-        <div class="hero-stat">
-            <div class="hero-stat-num" data-count="1"><span>0</span><span style="color:var(--accent)">+</span></div>
-            <div class="hero-stat-label" data-it>Mostra collettiva</div>
-            <div class="hero-stat-label" data-en style="display:none">Collective exhibition</div>
-        </div>
-    </div>
-
     <div class="hero-btns reveal reveal-d3">
         <a href="#contact" class="btn-primary">
             <span data-it>Parliamo <i class="fas fa-arrow-right" style="font-size:.7em"></i></span>
@@ -1200,232 +1181,58 @@
 
 <!-- About -->
 <section class="s">
-    <div class="about-grid">
+    <div class="about-me-grid">
         <div class="reveal">
-            <span class="section-tag" data-it>L'Approccio</span>
-            <span class="section-tag" data-en style="display:none">The Approach</span>
-        </div>
-        <div class="reveal reveal-d1">
-            <p class="about-statement">
+            <span class="section-tag" data-it>Chi sono</span>
+            <span class="section-tag" data-en style="display:none">About me</span>
+            <p class="about-statement" style="margin-top:1.5rem">
                 <span data-it>Non faccio solo "cose belle". <em>Costruisco identità visive che parlano al tuo pubblico, con una logica precisa dietro ogni scelta.</em></span>
                 <span data-en style="display:none">I don't just make "nice things". <em>I build visual identities that speak to your audience, with clear thinking behind every decision.</em></span>
             </p>
-        </div>
-    </div>
-
-    <div class="about-me-grid">
-        <div class="reveal">
-            <span class="section-tag" data-it>Su di me</span>
-            <span class="section-tag" data-en style="display:none">About me</span>
             <p class="about-me-text" data-it>
-                Creativo e professionale, specializzato in Visual Design. Sono proattivo, imparo rapidamente nuove metodologie di lavoro e mi tengo aggiornato sui trend del momento.
-                <br><br>
-                Con un occhio attento ai dettagli e una passione per le forme decise, costruisco identità visive e layout che comunicano con forza e chiarezza — unendo fotografia, tipografia e design editoriale in un'unica visione coerente.
-                <br><br>
-                Mi chiamo Cristian Rinaldi, studente di Graphic Design presso l'I.S.S. "L. Einaudi" di Foggia dal 2021.
+                Cristian Rinaldi — Graphic Designer e Fotografo a Foggia. Specializzato in branding, editorial e campagne visive. Diplomando in Graphic Design all'I.I.S. Einaudi (2021–2026), lavoro su commesse private e collaboro con enti e associazioni del territorio.
             </p>
             <p class="about-me-text" data-en style="display:none">
-                Creative and professional, specialised in Visual Design. I'm proactive, I quickly learn new working methodologies and I keep up with current trends.
-                <br><br>
-                With a keen eye for detail and a passion for bold forms, I build visual identities and layouts that communicate with strength and clarity — combining photography, typography and editorial design into one coherent vision.
-                <br><br>
-                My name is Cristian Rinaldi, a Graphic Design student at I.S.S. "L. Einaudi" in Foggia since 2021.
+                Cristian Rinaldi — Graphic Designer and Photographer based in Foggia. Specialised in branding, editorial and visual campaigns. Completing a Graphic Design diploma at I.I.S. Einaudi (2021–2026), I work on private commissions and collaborate with local organisations.
             </p>
             <a href="Curriculum Vitae Semplice Essenziale Minimal Pulito Moderno Bianco Nero Designer.jpg" download="CV_CristianRinaldi.jpg" class="cv-download">
                 <i class="fas fa-download" style="font-size:.85em"></i>
                 <span data-it>Scarica CV</span>
                 <span data-en style="display:none">Download CV</span>
             </a>
+
+            <div class="exp-compact">
+                <div class="exp-compact-item">
+                    <span class="exp-compact-year">2026</span>
+                    <span class="exp-compact-role" data-it>Mostra collettiva · Fondazione Monti Uniti, Foggia</span>
+                    <span class="exp-compact-role" data-en style="display:none">Collective exhibition · Fondazione Monti Uniti, Foggia</span>
+                </div>
+                <div class="exp-compact-item">
+                    <span class="exp-compact-year">2025–26</span>
+                    <span class="exp-compact-role" data-it>Stage · Grani Digitali</span>
+                    <span class="exp-compact-role" data-en style="display:none">Internship · Grani Digitali</span>
+                </div>
+                <div class="exp-compact-item">
+                    <span class="exp-compact-year">2025</span>
+                    <span class="exp-compact-role" data-it>Layout · Capitanatale Foggia</span>
+                    <span class="exp-compact-role" data-en style="display:none">Layout · Capitanatale Foggia</span>
+                </div>
+                <div class="exp-compact-item">
+                    <span class="exp-compact-year">2024</span>
+                    <span class="exp-compact-role" data-it>Campagna ADMO con Gianmarco Saurino</span>
+                    <span class="exp-compact-role" data-en style="display:none">ADMO campaign with Gianmarco Saurino</span>
+                </div>
+            </div>
         </div>
         <div class="about-imgs reveal reveal-d1">
             <div class="img-wrap portrait">
                 <img src="ritratto con sfondo.jpg" alt="Cristian Rinaldi" loading="lazy"/>
             </div>
-            <div class="img-wrap cv-img">
-                <img src="Curriculum Vitae Semplice Essenziale Minimal Pulito Moderno Bianco Nero Designer.jpg" alt="CV Cristian Rinaldi" loading="lazy"/>
-            </div>
         </div>
     </div>
 </section>
 
 
-<!-- Forge divider -->
-<div class="forge-wrap" aria-hidden="true">
-    <div class="forge-line"></div>
-    <div class="forge-belt-outer">
-        <div class="forge-belt">
-            <div class="forge-unit"><div class="forge-bar"></div><div class="forge-diamond"></div></div>
-            <div class="forge-unit"><div class="forge-bar"></div><div class="forge-diamond"></div></div>
-            <div class="forge-unit"><div class="forge-bar"></div><div class="forge-diamond"></div></div>
-            <div class="forge-unit"><div class="forge-bar"></div><div class="forge-diamond"></div></div>
-            <div class="forge-unit"><div class="forge-bar"></div><div class="forge-diamond"></div></div>
-            <div class="forge-unit"><div class="forge-bar"></div><div class="forge-diamond"></div></div>
-            <div class="forge-unit"><div class="forge-bar"></div><div class="forge-diamond"></div></div>
-            <div class="forge-unit"><div class="forge-bar"></div><div class="forge-diamond"></div></div>
-            <div class="forge-unit"><div class="forge-bar"></div><div class="forge-diamond"></div></div>
-            <div class="forge-unit"><div class="forge-bar"></div><div class="forge-diamond"></div></div>
-            <div class="forge-unit"><div class="forge-bar"></div><div class="forge-diamond"></div></div>
-            <div class="forge-unit"><div class="forge-bar"></div><div class="forge-diamond"></div></div>
-        </div>
-    </div>
-</div>
-
-<!-- Experiences -->
-<section class="exp-panel">
-    <span class="section-tag reveal" data-it>Esperienze</span>
-    <span class="section-tag reveal" data-en style="display:none">Experience</span>
-
-    <div class="exp-list" style="margin-top:1.5rem">
-        <div class="exp-item reveal">
-            <div class="exp-year">2026 · Fondazione Monti Uniti</div>
-            <div>
-                <h4 class="exp-role" data-it>Mostra del 27 Gennaio</h4>
-                <h4 class="exp-role" data-en style="display:none">Exhibition — 27th January</h4>
-                <p class="exp-desc" data-it>Partecipazione a mostra collettiva con opera selezionata ed esposta al pubblico. Progetto sviluppato in ambito scolastico e presentato in contesto culturale ufficiale.</p>
-                <p class="exp-desc" data-en style="display:none">Participation in a collective exhibition with a selected work displayed publicly. Project developed at school and presented in an official cultural context.</p>
-            </div>
-        </div>
-        <div class="exp-item reveal">
-            <div class="exp-year">2025 · Capitanatale Foggia</div>
-            <div>
-                <h4 class="exp-role" data-it>Impaginazione fondale &amp; poster</h4>
-                <h4 class="exp-role" data-en style="display:none">Layout — backdrop &amp; poster</h4>
-                <p class="exp-desc" data-it>Layout e impaginazione per l'evento Capitanatale in occasione dell'ottavo centenario del "Cantico delle Creature".</p>
-                <p class="exp-desc" data-en style="display:none">Layout and typesetting for the Capitanatale event on the occasion of the eighth centenary of the "Canticle of the Sun".</p>
-            </div>
-        </div>
-        <div class="exp-item reveal">
-            <div class="exp-year">2025 — 2026</div>
-            <div>
-                <h4 class="exp-role" data-it>Stage — Grani Digitali</h4>
-                <h4 class="exp-role" data-en style="display:none">Internship — Grani Digitali</h4>
-                <p class="exp-desc" data-it>Sviluppo web app per la promozione della città di Foggia nell'ambito del progetto Grani Digitali.</p>
-                <p class="exp-desc" data-en style="display:none">Web app development to promote the city of Foggia as part of the Grani Digitali project.</p>
-            </div>
-        </div>
-        <div class="exp-item reveal">
-            <div class="exp-year">2024 · ADMO Puglia</div>
-            <div>
-                <h4 class="exp-role" data-it>Campagna con Gianmarco Saurino</h4>
-                <h4 class="exp-role" data-en style="display:none">Campaign with Gianmarco Saurino</h4>
-                <p class="exp-desc" data-it>Layout per campagna di sensibilizzazione; elaborato selezionato e pubblicato nella comunicazione ufficiale. Mi sono iscritto ufficialmente ad ADMO.</p>
-                <p class="exp-desc" data-en style="display:none">Layout for an awareness campaign; artwork selected and published in official communications. I officially joined ADMO.</p>
-            </div>
-        </div>
-    </div>
-
-    <span class="section-tag reveal" data-it>Formazione</span>
-    <span class="section-tag reveal" data-en style="display:none">Education</span>
-    <div class="exp-list" style="margin-top:1.5rem">
-        <div class="exp-item reveal">
-            <div class="exp-year">2021 — 2026</div>
-            <div>
-                <h4 class="exp-role" data-it>Diploma Tecnico Grafico Computer</h4>
-                <h4 class="exp-role" data-en style="display:none">Graphic Design Technical Diploma</h4>
-                <p class="exp-desc">I.I.S. Einaudi-GiECO, Foggia</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Skills -->
-<section class="s">
-    <span class="section-tag reveal" data-it>Competenze</span>
-    <span class="section-tag reveal" data-en style="display:none">Skills</span>
-    <div class="skills-grid" style="margin-top:2rem" data-stagger>
-        <div class="skill-card reveal">
-            <span class="skill-num">01</span>
-            <span class="skill-name">Branding &amp; Identity</span>
-            <div class="skill-tools">
-                <span data-it>Loghi · Palette · Moodboard · Brand guidelines · Naming</span>
-                <span data-en style="display:none">Logos · Palette · Moodboard · Brand guidelines · Naming</span>
-            </div>
-        </div>
-        <div class="skill-card reveal reveal-d1">
-            <span class="skill-num">02</span>
-            <span class="skill-name">Graphic Design</span>
-            <div class="skill-tools">
-                <span data-it>Editorial · Poster · Layout · Packaging · Social content</span>
-                <span data-en style="display:none">Editorial · Poster · Layout · Packaging · Social content</span>
-            </div>
-        </div>
-        <div class="skill-card reveal reveal-d2">
-            <span class="skill-num">03</span>
-            <span class="skill-name">Photography</span>
-            <div class="skill-tools">
-                <span data-it>Ritratto · Still life · Reportage · Post-produzione</span>
-                <span data-en style="display:none">Portrait · Still life · Reportage · Post-production</span>
-            </div>
-        </div>
-        <div class="skill-card reveal reveal-d3">
-            <span class="skill-num">04</span>
-            <span class="skill-name">Tools &amp; Software</span>
-            <div class="skill-tools">
-                Adobe Photoshop · Illustrator · InDesign<br>
-                <span data-it>Utilizzo consapevole dell'IA</span>
-                <span data-en style="display:none">Conscious use of AI</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- QR -->
-<section class="links-s reveal">
-    <h2 class="links-title">
-        <span data-it>Visita i miei link<span style="color:var(--accent)">:</span></span>
-        <span data-en style="display:none">Visit my links<span style="color:var(--accent)">:</span></span>
-    </h2>
-    <div class="arrow-bounce" aria-hidden="true"><i class="fas fa-arrow-down"></i></div>
-    <div class="qr-box">
-        <img src="qr_cristian_rinaldi_highres.png" alt="QR Code Linktree" loading="lazy"/>
-    </div>
-</section>
-
-<!-- Business card -->
-<section class="card-s reveal">
-    <span class="section-tag" data-it>Il mio contatto</span>
-    <span class="section-tag" data-en style="display:none">My contact</span>
-    <div class="card-scene">
-        <div class="card-container" id="bcard">
-            <div class="card-face">
-                <img src="tavola disegno 1.png" alt="Biglietto fronte" loading="lazy"/>
-            </div>
-            <div class="card-face card-back">
-                <img src="tavola disegno 2.png" alt="Biglietto retro" loading="lazy"/>
-            </div>
-        </div>
-    </div>
-    <p class="card-hint" data-it>Tocca per girare</p>
-    <p class="card-hint" data-en style="display:none">Tap to flip</p>
-</section>
-
-<!-- Process section -->
-<section class="process-s">
-    <span class="section-tag reveal" data-it>Come lavoro</span>
-    <span class="section-tag reveal" data-en style="display:none">How I work</span>
-    <div class="process-grid" data-stagger>
-        <div class="process-step reveal">
-            <div class="process-step-num">01</div>
-            <div class="process-step-title"><span class="accent">Ascolto</span> &amp; Analisi</div>
-            <p class="process-step-desc" data-it>Capisco il tuo brand, i tuoi obiettivi e il pubblico a cui ti rivolgi. Ogni progetto inizia con domande giuste.</p>
-            <p class="process-step-desc" data-en style="display:none">I understand your brand, your goals and your target audience. Every project starts with the right questions.</p>
-            <span class="process-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="process-step reveal reveal-d1">
-            <div class="process-step-num">02</div>
-            <div class="process-step-title"><span class="accent">Idea</span> &amp; Sviluppo</div>
-            <p class="process-step-desc" data-it>Costruisco concept, esploro direzioni visive e raffino ogni dettaglio fino a trovare la soluzione che funziona davvero.</p>
-            <p class="process-step-desc" data-en style="display:none">I build concepts, explore visual directions and refine every detail until I find the solution that truly works.</p>
-            <span class="process-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="process-step reveal reveal-d2">
-            <div class="process-step-num">03</div>
-            <div class="process-step-title"><span class="accent">Consegna</span> &amp; Supporto</div>
-            <p class="process-step-desc" data-it>Rilascio file pronti all'uso in tutti i formati necessari, con supporto post-consegna incluso.</p>
-            <p class="process-step-desc" data-en style="display:none">I deliver production-ready files in all required formats, with included post-delivery support.</p>
-        </div>
-    </div>
-</section>
 
 <!-- Contact + Form -->
 <section class="contact-s" id="contact">
