@@ -438,8 +438,7 @@
         .work-img { width:100%;overflow:hidden;background:#1a1a1a;position:relative; }
         .work-card.span2 .work-img { aspect-ratio:16/9; }
         .work-img-inner { aspect-ratio:4/5; }
-        .work-img-webapp { aspect-ratio:16/9;background:var(--surface2);display:flex;align-items:center;justify-content:center;gap:1.5rem;overflow:hidden; }
-        .work-img-webapp img { height:100%;width:auto;max-width:none;object-fit:contain;flex-shrink:0; }
+
         .work-img img { width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(70%);transition:transform .6s var(--ease),filter .6s ease; }
         .work-card:hover .work-img img { transform:scale(1.04);filter:grayscale(0%); }
         .work-img::after { content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.7) 0%,transparent 55%);pointer-events:none; }
@@ -452,7 +451,33 @@
         .work-live-btn { display:inline-flex;align-items:center;gap:.35rem;margin-top:.5rem;padding:.35rem .8rem;font-size:.72rem;font-weight:800;letter-spacing:.06em;color:var(--accent);border:1px solid var(--accent);border-radius:2px;text-decoration:none;transition:background .2s,color .2s; }
         .work-live-btn:hover { background:var(--accent);color:#fff; }
 
-        /* VIEW overlay on hover */
+        /* ── FOGGIAPP CARD ── */
+        .work-card--webapp { background:#0c111d; }
+        .work-app-preview {
+            width:100%; aspect-ratio:16/9; background:#0c111d;
+            display:flex; align-items:center; justify-content:center; gap:3%;
+            overflow:hidden; position:relative; padding:0 5%;
+        }
+        .work-app-preview::after {
+            content:''; position:absolute; inset:0;
+            background:linear-gradient(to top,rgba(8,8,8,.5) 0%,transparent 40%);
+            pointer-events:none; z-index:3;
+        }
+        .work-app-preview img {
+            height:82%; width:auto; object-fit:contain; flex-shrink:0;
+            border-radius:14px; box-shadow:0 12px 40px rgba(0,0,0,.65);
+            transition:transform .65s var(--ease), box-shadow .65s;
+            position:relative;
+        }
+        .work-app-preview img:nth-of-type(1) { transform:rotate(-4deg) translateY(8px); z-index:1; }
+        .work-app-preview img:nth-of-type(2) { transform:translateY(-10px); z-index:2; }
+        .work-app-preview img:nth-of-type(3) { transform:rotate(3deg) translateY(6px); z-index:1; }
+        .work-card--webapp:hover .work-app-preview img:nth-of-type(1) { transform:rotate(-7deg) translateY(4px); box-shadow:0 20px 50px rgba(0,0,0,.7); }
+        .work-card--webapp:hover .work-app-preview img:nth-of-type(2) { transform:translateY(-22px); box-shadow:0 26px 60px rgba(0,0,0,.85); }
+        .work-card--webapp:hover .work-app-preview img:nth-of-type(3) { transform:rotate(5deg) translateY(2px); box-shadow:0 20px 50px rgba(0,0,0,.7); }
+        .work-app-preview .work-view-label { z-index:4; }
+
+                /* VIEW overlay on hover */
         .work-view-label { position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:2; }
         .work-view-label span { font-size:.75rem;font-weight:900;letter-spacing:.3em;color:#fff;text-transform:uppercase;opacity:0;transform:scale(.85);transition:opacity .3s,transform .3s; background:var(--accent);padding:.5rem 1rem; }
         .work-card:hover .work-view-label span { opacity:1;transform:scale(1); }
@@ -873,12 +898,12 @@
 
     <!-- Desktop grid -->
     <div class="portfolio-grid" data-stagger>
-        <div class="work-card span2 reveal" data-category="web">
-            <div class="work-img work-img-webapp">
+        <div class="work-card span2 reveal work-card--webapp" data-category="web">
+            <div class="work-app-preview">
                 <div class="work-view-label"><span>VIEW</span></div>
-                <img src="foggiapp-home.jpg" alt="FoggiApp — Home" loading="lazy"/>
-                <img src="foggiapp-percorsi.jpg" alt="FoggiApp — Percorsi" loading="lazy"/>
-                <img src="foggiapp-mappa.jpg" alt="FoggiApp — Mappa" loading="lazy"/>
+                <img src="foggiapp-home.jpg"      alt="FoggiApp — Home"      loading="lazy"/>
+                <img src="foggiapp-percorsi.jpg"  alt="FoggiApp — Percorsi"  loading="lazy"/>
+                <img src="foggiapp-mappa.jpg"     alt="FoggiApp — Mappa"     loading="lazy"/>
             </div>
             <div class="work-info">
                 <div class="work-info-top">
@@ -886,7 +911,7 @@
                     <span class="work-cat">Web App</span>
                 </div>
                 <p class="work-desc" data-it>Stage Grani Digitali · web app per la promozione culturale e turistica di Foggia — percorsi storici, mappa interattiva, moduli multimediali · 2025–26</p>
-                <p class="work-desc" data-en style="display:none">Grani Digitali internship · web app to promote Foggia's cultural and tourist heritage — historic trails, interactive map, multimedia modules · 2025–26</p>
+                <p class="work-desc" data-en style="display:none">Grani Digitali internship · web app promoting Foggia's cultural heritage — historic trails, interactive map, multimedia modules · 2025–26</p>
                 <a href="https://rinaldicristian92-hash.github.io/foggiApp/" target="_blank" rel="noopener" class="work-live-btn" data-it>Apri l'app live ↗</a>
                 <a href="https://rinaldicristian92-hash.github.io/foggiApp/" target="_blank" rel="noopener" class="work-live-btn" data-en style="display:none">Open live app ↗</a>
             </div>
@@ -1016,7 +1041,7 @@
     <!-- Mobile scroll -->
     <div class="portfolio-scroll">
         <div class="work-card" data-category="web">
-            <div class="work-img"><img src="foggiapp-home.jpg" alt="FoggiApp" loading="lazy" style="object-position:top"/></div>
+            <div class="work-img"><img src="foggiapp-mappa.jpg" alt="FoggiApp" loading="lazy" style="object-position:center"/></div>
             <div class="work-info"><span class="work-name">FoggiApp</span><span class="work-cat">Web App</span></div>
         </div>
         <div class="work-card" data-category="adv">
