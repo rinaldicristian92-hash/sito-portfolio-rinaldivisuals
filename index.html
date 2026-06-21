@@ -123,13 +123,19 @@
             transition: opacity .35s ease;
         }
         .mobile-nav-drawer.open { opacity: 1; pointer-events: auto; }
-        .mobile-nav-drawer a {
+        .drawer-link {
             font-size: clamp(2.2rem, 10vw, 3.5rem); font-weight: 900;
             text-transform: uppercase; letter-spacing: -.03em;
-            text-decoration: none; color: var(--text);
-            transition: color .25s;
+            text-decoration: none; color: var(--text); display:flex; align-items:center;
+            opacity:0; transform:translateY(20px);
+            transition: color .25s, opacity .35s var(--ease), transform .35s var(--ease);
         }
-        .mobile-nav-drawer a:hover { color: var(--accent); }
+        .drawer-link:hover { color: var(--accent); }
+        .mobile-nav-drawer.open .drawer-link { opacity:1; transform:none; }
+        .mobile-nav-drawer.open .drawer-link:nth-child(2) { transition-delay:.04s; }
+        .mobile-nav-drawer.open .drawer-link:nth-child(3) { transition-delay:.09s; }
+        .mobile-nav-drawer.open .drawer-link:nth-child(4) { transition-delay:.14s; }
+        .mobile-nav-drawer.open .drawer-link:nth-child(5) { transition-delay:.19s; }
         .mobile-nav-drawer .drawer-tag {
             font-size: .65rem; font-weight: 800; letter-spacing: .3em;
             color: var(--muted); text-transform: uppercase;
@@ -234,6 +240,11 @@
         .logo-text span   { display: block; font-size: 0.55rem; color: rgba(255,255,255,0.5); letter-spacing: 0.32em; margin-top: 3px; }
 
         .nav-right { display: flex; align-items: center; gap: 0.8rem; }
+        .nav-links { display:flex;align-items:center;gap:.1rem;margin-right:.4rem; }
+        .nav-link { font-size:.65rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.5rem .9rem;transition:color .25s; }
+        .nav-link:hover { color:var(--text); }
+        @media (max-width:768px) { .nav-links { display:none; } }
+        @media (hover:hover) { .nav-link { cursor:none; } }
 
         .nav-cta {
             font-size: 0.7rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase;
@@ -381,7 +392,6 @@
         .section-tag { display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);border-bottom:1.5px solid var(--muted);padding-bottom:6px;margin-bottom:2rem; }
 
         /* ── ABOUT ── */
-        .about-grid { display:grid;grid-template-columns:1fr 2fr;gap:4vw;align-items:start;margin-bottom:6vw; }
         .about-statement { font-size:clamp(1.4rem,3.5vw,3.5rem);font-weight:500;line-height:1.1;letter-spacing:-.02em; }
         .about-statement em { color:var(--muted);font-style:normal; }
         .about-me-grid { display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center; }
@@ -452,7 +462,7 @@
         .portfolio-scroll::-webkit-scrollbar { display:none; }
         .portfolio-scroll .work-card { flex:0 0 72vw;max-width:300px; }
         .portfolio-scroll .work-img { aspect-ratio:3/4; }
-        .portfolio-scroll .work-img img { height:100%; }
+        .portfolio-scroll .work-img img { height:100%;object-fit:cover; }
 
         /* ── CONTACT ── */
         .contact-s { background:#f0ede8;color:#0a0a0a;padding:8vw 5vw;position:relative;overflow:hidden; }
@@ -505,7 +515,7 @@
         .lightbox.open { opacity:1;pointer-events:auto; }
         .lightbox img { max-width:90%;max-height:90svh;object-fit:contain;transform:scale(.96);transition:transform .4s var(--ease);box-shadow:0 10px 60px rgba(0,0,0,.6); }
         .lightbox.open img { transform:scale(1); }
-        .lb-close { position:absolute;top:20px;right:24px;font-size:3rem;color:#fff;font-weight:300;line-height:1;transition:color .3s;user-select:none; }
+        .lb-close { position:absolute;top:20px;right:24px;font-size:3rem;color:#fff;font-weight:300;line-height:1;transition:color .3s;user-select:none;background:none;border:none;padding:0; }
         .lb-close:hover { color:var(--accent); }
         @media (hover:hover) { .lb-close { cursor:none; } }
 
@@ -650,17 +660,8 @@
             .hero-btns { flex-direction:column; }
             .btn-primary, .btn-ghost { width:100%;justify-content:center;min-height:48px; }
             .scroll-hint { display:none; }
-            .hero-stats { gap:1.5rem; }
-            .stats-row { grid-template-columns:repeat(2,1fr); }
-            .stat-block { padding:1.4rem 1rem; }
-            .about-grid { grid-template-columns:1fr;gap:2rem; }
             .about-me-grid { grid-template-columns:1fr;gap:3rem; }
             .about-imgs .portrait { transform:translateY(0); }
-            .exp-item { grid-template-columns:1fr;gap:.6rem;padding:1.4rem 0; }
-            .skills-grid { grid-template-columns:1fr; }
-            .skill-card { padding:1.4rem 1.2rem; }
-            .process-grid { grid-template-columns:1fr; }
-            .process-step { padding:1.6rem 1.2rem; }
             .portfolio-grid { display:none; }
             .portfolio-scroll { display:flex; }
             .filter-tabs { padding:0 5vw;gap:.4rem; }
@@ -678,8 +679,7 @@
             .about-imgs { grid-template-columns:1fr; }
             .about-imgs .cv-img { display:none; }
             .about-imgs .portrait { transform:none; }
-            .stats-row { grid-template-columns:1fr 1fr; }
-            .mobile-nav-drawer a { font-size:clamp(1.8rem,9vw,3rem); }
+            .drawer-link { font-size:clamp(1.8rem,9vw,3rem); }
         }
 
         /* ── SAFE AREA (notched iPhones) ── */
@@ -714,15 +714,18 @@
 </div>
 
 <!-- Mobile nav drawer -->
-<div class="mobile-nav-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Navigazione">
-    <span class="drawer-tag" data-it>Menu</span>
-    <span class="drawer-tag" data-en style="display:none">Menu</span>
-    <a href="#" onclick="closeDrawer()">Home</a>
-    <a href="#works" onclick="closeDrawer()" data-it>Lavori</a>
-    <a href="#works" onclick="closeDrawer()" data-en style="display:none">Works</a>
-    <a href="#contact" onclick="closeDrawer()" data-it>Contatti</a>
-    <a href="#contact" onclick="closeDrawer()" data-en style="display:none">Contact</a>
-    <a href="https://rinaldicristian92-hash.github.io/linkthreek/" target="_blank" rel="noopener" onclick="closeDrawer()">Links</a>
+<div class="mobile-nav-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Menu">
+    <span class="drawer-tag">Menu</span>
+    <a href="#" class="drawer-link">Home</a>
+    <a href="#works" class="drawer-link">
+        <span data-it>Lavori</span>
+        <span data-en style="display:none">Works</span>
+    </a>
+    <a href="#contact" class="drawer-link">
+        <span data-it>Contatti</span>
+        <span data-en style="display:none">Contact</span>
+    </a>
+    <a href="https://rinaldicristian92-hash.github.io/linkthreek/" target="_blank" rel="noopener" class="drawer-link">Links</a>
 </div>
 
 <!-- Back to top -->
@@ -749,11 +752,21 @@
         </span>
     </a>
     <div class="nav-right">
+        <nav class="nav-links" aria-label="Sezioni">
+            <a href="#works" class="nav-link">
+                <span data-it>Lavori</span>
+                <span data-en style="display:none">Works</span>
+            </a>
+            <a href="#contact" class="nav-link">
+                <span data-it>Contatti</span>
+                <span data-en style="display:none">Contact</span>
+            </a>
+        </nav>
         <a href="#contact" class="nav-cta" id="navCta">
             <span data-it>Lavoriamo Insieme</span>
             <span data-en style="display:none">Let's Work Together</span>
         </a>
-<button class="hamburger" id="hamburger" aria-label="Apri menu" aria-expanded="false">
+        <button class="hamburger" id="hamburger" aria-label="Apri menu" aria-expanded="false">
             <span></span><span></span><span></span>
         </button>
     </div>
@@ -1003,39 +1016,39 @@
     <!-- Mobile scroll -->
     <div class="portfolio-scroll">
         <div class="work-card" data-category="web">
-            <div class="work-img" style="aspect-ratio:3/4"><img src="foggiapp-home.jpg" alt="FoggiApp" loading="lazy" style="height:100%;object-fit:cover;object-position:top"/></div>
+            <div class="work-img"><img src="foggiapp-home.jpg" alt="FoggiApp" loading="lazy" style="object-position:top"/></div>
             <div class="work-info"><span class="work-name">FoggiApp</span><span class="work-cat">Web App</span></div>
         </div>
         <div class="work-card" data-category="adv">
-            <div class="work-img" style="aspect-ratio:3/4"><img src="layout admo x tutto (1)_page-0001.jpg" alt="ADMO" loading="lazy" style="height:100%;object-fit:cover"/></div>
+            <div class="work-img"><img src="layout admo x tutto (1)_page-0001.jpg" alt="ADMO" loading="lazy"/></div>
             <div class="work-info"><span class="work-name">ADMO</span><span class="work-cat">ADV</span></div>
         </div>
         <div class="work-card" data-category="adv">
-            <div class="work-img" style="aspect-ratio:3/4"><img src="petito-elezioni-p1.jpg" alt="Campagna Petito" loading="lazy" style="height:100%;object-fit:cover"/></div>
+            <div class="work-img"><img src="petito-elezioni-p1.jpg" alt="Campagna Petito" loading="lazy"/></div>
             <div class="work-info"><span class="work-name" data-it>Campagna Elettorale</span><span class="work-name" data-en style="display:none">Election Campaign</span><span class="work-cat">ADV</span></div>
         </div>
         <div class="work-card" data-category="editorial">
-            <div class="work-img" style="aspect-ratio:3/4"><img src="copertina libro.jpg" alt="Copertina" loading="lazy" style="height:100%;object-fit:cover"/></div>
+            <div class="work-img"><img src="copertina libro.jpg" alt="Copertina" loading="lazy"/></div>
             <div class="work-info"><span class="work-name" data-it>Copertina</span><span class="work-name" data-en style="display:none">Cover</span><span class="work-cat">Editorial</span></div>
         </div>
         <div class="work-card" data-category="poster">
-            <div class="work-img" style="aspect-ratio:3/4"><img src="Blue Bold Modern Fashion Coming Soon Poster.jpg" alt="Poster" loading="lazy" style="height:100%;object-fit:cover"/></div>
+            <div class="work-img"><img src="Blue Bold Modern Fashion Coming Soon Poster.jpg" alt="Poster" loading="lazy"/></div>
             <div class="work-info"><span class="work-name">Poster</span><span class="work-cat">Design</span></div>
         </div>
         <div class="work-card" data-category="design">
-            <div class="work-img" style="aspect-ratio:3/4"><img src="Tavola disegno 1@3x.png" alt="Menú" loading="lazy" style="height:100%;object-fit:cover"/></div>
+            <div class="work-img"><img src="Tavola disegno 1@3x.png" alt="Menú" loading="lazy"/></div>
             <div class="work-info"><span class="work-name">Menú</span><span class="work-cat">Design</span></div>
         </div>
         <div class="work-card" data-category="poster">
-            <div class="work-img" style="aspect-ratio:3/4"><img src="consegna giornata della memoria -01.jpeg" alt="Memoria" loading="lazy" style="height:100%;object-fit:cover"/></div>
+            <div class="work-img"><img src="consegna giornata della memoria -01.jpeg" alt="Memoria" loading="lazy"/></div>
             <div class="work-info"><span class="work-name" data-it>Memoria</span><span class="work-name" data-en style="display:none">Memorial</span><span class="work-cat">Editorial</span></div>
         </div>
         <div class="work-card" data-category="poster">
-            <div class="work-img" style="aspect-ratio:3/4"><img src="MANIFESTO completo.jpg" alt="Manifesto" loading="lazy" style="height:100%;object-fit:cover"/></div>
+            <div class="work-img"><img src="MANIFESTO completo.jpg" alt="Manifesto" loading="lazy"/></div>
             <div class="work-info"><span class="work-name">Manifesto</span><span class="work-cat">Design</span></div>
         </div>
         <div class="work-card" data-category="design">
-            <div class="work-img" style="aspect-ratio:3/4"><img src="ChatGPT Image 17 apr 2026, 17_56_25.png" alt="Inviti" loading="lazy" style="height:100%;object-fit:cover"/></div>
+            <div class="work-img"><img src="ChatGPT Image 17 apr 2026, 17_56_25.png" alt="Inviti" loading="lazy"/></div>
             <div class="work-info"><span class="work-name" data-it>Inviti</span><span class="work-name" data-en style="display:none">Invitations</span><span class="work-cat">Design</span></div>
         </div>
     </div>
@@ -1257,7 +1270,7 @@
 
 <!-- Lightbox -->
 <div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Immagine ingrandita">
-    <span class="lb-close" id="lbClose" role="button" tabindex="0" aria-label="Chiudi">&times;</span>
+    <button class="lb-close" id="lbClose" aria-label="Chiudi">&times;</button>
     <img src="" alt="" id="lbImg"/>
 </div>
 
@@ -1350,14 +1363,15 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
     }
-    window.closeDrawer = closeDrawer;
     if (hamburger && drawer) {
         hamburger.addEventListener('click', () => {
             const isOpen = drawer.classList.toggle('open');
             hamburger.classList.toggle('open', isOpen);
             hamburger.setAttribute('aria-expanded', isOpen);
+            hamburger.setAttribute('aria-label', isOpen ? 'Chiudi menu' : 'Apri menu');
             document.body.style.overflow = isOpen ? 'hidden' : '';
         });
+        drawer.querySelectorAll('.drawer-link').forEach(a => a.addEventListener('click', closeDrawer));
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
     }
 
@@ -1474,7 +1488,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (res.ok) {
                     const lang = document.documentElement.dataset.lang;
                     formMsg.textContent = lang === 'en' ? '✓ Message sent!' : '✓ Messaggio inviato!';
-                    formMsg.style.color = '#2a9d5c';
+                    formMsg.style.color = '#34c759';
                     form.reset();
                 } else {
                     throw new Error();
