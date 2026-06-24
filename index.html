@@ -1,1113 +1,1009 @@
 <!DOCTYPE html>
 <html lang="it" data-lang="it" data-theme="dark">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cristian Rinaldi — Graphic Designer &amp; Fotografo a Foggia</title>
-    <meta name="description" content="Cristian Rinaldi, Graphic Designer e Fotografo a Foggia. Branding, campagne, editorial design e fotografia per privati e aziende." />
-    <meta name="keywords" content="graphic designer foggia, fotografo foggia, branding, identità visiva, cristian rinaldi, campagne visive" />
-    <meta name="author" content="Cristian Rinaldi" />
-    <meta property="og:title" content="Cristian Rinaldi — Graphic Designer &amp; Fotografo a Foggia" />
-    <meta property="og:description" content="Branding, campagne, editorial design e fotografia. Lavoro con privati e aziende per creare identità visive che funzionano." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://rinaldicristian92-hash.github.io/sito-portfolio-rinaldivisuals/" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <meta name="theme-color" content="#0e0e0e" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <style>
-        /* ── TOKENS ── */
-        :root {
-            --bg: #0e0e0e;
-            --surface: #141414;
-            --surface2: #1a1a1a;
-            --text: #f0f0f0;
-            --text-muted: #888888;
-            --border: #2a2a2a;
-            --accent: #e62020;
-            --accent-dim: rgba(230,32,32,0.10);
-            --font: 'Inter', sans-serif;
-            --radius: 6px;
-            --header-h: 60px;
-            --mobile-cta-h: 68px;
-            --tr: 0.18s ease;
-        }
-        [data-theme="light"] {
-            --bg: #fafafa;
-            --surface: #f2f2f2;
-            --surface2: #e8e8e8;
-            --text: #0e0e0e;
-            --text-muted: #666666;
-            --border: #e0e0e0;
-            --accent-dim: rgba(230,32,32,0.07);
-        }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cristian Rinaldi — Graphic Designer &amp; Fotografo a Foggia</title>
+<meta name="description" content="Cristian Rinaldi, Graphic Designer e Fotografo a Foggia. Branding, campagne, editorial design e fotografia per privati e aziende."/>
+<meta name="author" content="Cristian Rinaldi"/>
+<meta property="og:title" content="Cristian Rinaldi — Graphic Designer &amp; Fotografo"/>
+<meta property="og:description" content="Branding, campagne, editorial design e fotografia per privati e aziende."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://rinaldicristian92-hash.github.io/sito-portfolio-rinaldivisuals/"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<meta name="theme-color" content="#0e0e0e"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+/* ── TOKENS (identici al linktree) ── */
+:root {
+  --bg: #0e0e0e;
+  --surface: #141414;
+  --surface2: #1e1e1e;
+  --text: #f0f0f0;
+  --muted: #888888;
+  --border: #2a2a2a;
+  --accent: #e62020;
+  --r: 6px;
+  --tr: 0.18s ease;
+  --font: 'Inter', system-ui, sans-serif;
+  --max: 1040px;
+  --hh: 58px;
+  --mcta: 64px;
+}
+[data-theme="light"] {
+  --bg: #fafafa;
+  --surface: #f2f2f2;
+  --surface2: #e8e8e8;
+  --text: #0e0e0e;
+  --muted: #666666;
+  --border: #e0e0e0;
+}
 
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; overflow-x: hidden; }
-        body {
-            background: var(--bg); color: var(--text);
-            font-family: var(--font); overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            transition: background var(--tr), color var(--tr);
-        }
-        ::selection { background: var(--accent); color: #fff; }
-        a { color: inherit; text-decoration: none; }
-        button { font-family: var(--font); }
-        img { display: block; max-width: 100%; }
+/* ── BASE ── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:var(--font);-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background var(--tr),color var(--tr)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font-family:var(--font);cursor:pointer}
+::selection{background:var(--accent);color:#fff}
 
-        /* ── PROGRESS BAR ── */
-        .progress-bar {
-            position: fixed; top: 0; left: 0; height: 2px;
-            background: var(--accent); z-index: 9999;
-            width: 0%; transition: width 0.05s linear;
-        }
+/* ── LAYOUT ── */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(1.2rem,5vw,2.5rem)}
+.section{padding:clamp(3.5rem,7vw,5.5rem) 0;border-top:1.5px solid var(--border)}
 
-        /* ── THEME TOGGLE ── */
-        .theme-toggle {
-            position: fixed; top: 20px; right: 20px; z-index: 700;
-            width: 38px; height: 38px; border-radius: 50%;
-            background: var(--surface); border: 1.5px solid var(--border);
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer;
-            transition: background var(--tr), border-color var(--tr), transform var(--tr), box-shadow var(--tr);
-        }
-        .theme-toggle:hover { background: var(--surface2); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
-        .theme-toggle svg { width: 15px; height: 15px; stroke: var(--text); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; transition: stroke var(--tr); }
-        .theme-toggle .icon-sun { display: none; }
-        .theme-toggle .icon-moon { display: block; }
-        [data-theme="light"] .theme-toggle .icon-sun { display: block; }
-        [data-theme="light"] .theme-toggle .icon-moon { display: none; }
+/* ── PROGRESS ── */
+#prog{position:fixed;top:0;left:0;height:2px;width:0%;background:var(--accent);z-index:9999;transition:width .05s linear}
 
-        /* ── LANG SWITCH ── */
-        .lang-switch {
-            position: fixed; top: 50%; right: 0; transform: translateY(-50%);
-            z-index: 600; display: flex; flex-direction: column;
-            border: 1.5px solid var(--border); border-right: none;
-            border-radius: var(--radius) 0 0 var(--radius); overflow: hidden;
-        }
-        .lang-btn {
-            padding: 0.55rem 0.65rem; font-size: 0.56rem; font-weight: 700;
-            letter-spacing: 0.12em; text-transform: uppercase;
-            background: var(--surface); color: var(--text-muted);
-            border: none; cursor: pointer;
-            transition: background var(--tr), color var(--tr);
-        }
-        .lang-btn + .lang-btn { border-top: 1.5px solid var(--border); }
-        .lang-btn.active { background: var(--accent); color: #fff; }
-        .lang-btn:hover:not(.active) { background: var(--surface2); color: var(--text); }
-        @media (max-width: 768px) {
-            .lang-switch { top: auto; bottom: calc(var(--mobile-cta-h) + 10px); transform: none; flex-direction: row; border: 1.5px solid var(--border); border-right: 1.5px solid var(--border); border-radius: var(--radius) var(--radius) 0 0; right: 0; }
-            .lang-btn + .lang-btn { border-top: none; border-left: 1.5px solid var(--border); }
-        }
+/* ── THEME BTN ── */
+.theme-btn{
+  position:fixed;top:18px;right:18px;z-index:800;
+  width:38px;height:38px;border-radius:50%;
+  background:var(--surface);border:1.5px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  transition:transform var(--tr),box-shadow var(--tr),background var(--tr)
+}
+.theme-btn:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.3)}
+.theme-btn svg{width:14px;height:14px;stroke:var(--text);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.theme-btn .sun{display:none}
+[data-theme="light"] .theme-btn .moon{display:none}
+[data-theme="light"] .theme-btn .sun{display:block}
 
-        /* ── HEADER ── */
-        header {
-            position: fixed; top: 0; left: 0; right: 0;
-            height: var(--header-h); z-index: 500;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 5vw;
-            background: var(--bg); border-bottom: 1.5px solid var(--border);
-            transition: background var(--tr), border-color var(--tr);
-        }
-        .logo { display: flex; align-items: center; gap: 10px; color: var(--text); }
-        .logo-mark {
-            width: 34px; height: 34px; border-radius: var(--radius);
-            border: 1.5px solid var(--border);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 0.62rem; font-weight: 800; letter-spacing: 0.04em;
-            transition: border-color var(--tr), color var(--tr);
-        }
-        .logo:hover .logo-mark { border-color: var(--accent); color: var(--accent); }
-        .logo-text strong { display: block; font-size: 0.76rem; font-weight: 800; letter-spacing: 0.22em; }
-        .logo-text span { display: block; font-size: 0.5rem; color: var(--text-muted); letter-spacing: 0.24em; margin-top: 2px; }
+/* ── LANG SWITCH ── */
+.lang-sw{
+  position:fixed;top:50%;right:0;transform:translateY(-50%);z-index:700;
+  display:flex;flex-direction:column;
+  border:1.5px solid var(--border);border-right:none;
+  border-radius:var(--r) 0 0 var(--r);overflow:hidden
+}
+.lang-btn{
+  padding:.5rem .6rem;font-size:.55rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  background:var(--surface);color:var(--muted);border:none;
+  transition:background var(--tr),color var(--tr)
+}
+.lang-btn+.lang-btn{border-top:1.5px solid var(--border)}
+.lang-btn.on{background:var(--accent);color:#fff}
+.lang-btn:hover:not(.on){background:var(--surface2);color:var(--text)}
 
-        .nav-right { display: flex; align-items: center; gap: 0.5rem; }
-        .nav-links { display: flex; align-items: center; margin-right: 0.4rem; }
-        .nav-link {
-            font-size: 0.6rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
-            color: var(--text-muted); padding: 0.45rem 0.75rem;
-            transition: color var(--tr);
-        }
-        .nav-link:hover { color: var(--text); }
-        @media (max-width: 768px) { .nav-links { display: none; } .logo-text span { display: none; } }
+/* ── BACK TO TOP ── */
+#btt{
+  position:fixed;bottom:calc(var(--mcta) + 14px);right:18px;z-index:700;
+  width:36px;height:36px;border-radius:50%;
+  background:var(--surface);border:1.5px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity var(--tr),transform var(--tr)
+}
+#btt.show{opacity:1;pointer-events:auto}
+#btt:hover{transform:translateY(-2px)}
+#btt svg{width:13px;height:13px;stroke:var(--text);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
-        .nav-cta {
-            font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
-            color: var(--text); padding: 0.48rem 0.95rem;
-            border: 1.5px solid var(--border); border-radius: var(--radius); background: transparent;
-            transition: border-color var(--tr), background var(--tr), transform var(--tr);
-            white-space: nowrap;
-        }
-        .nav-cta:hover { border-color: var(--accent); background: var(--accent-dim); transform: translateY(-2px); }
+/* ── OVERLAY + DRAWER ── */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:890;opacity:0;pointer-events:none;transition:opacity .28s}
+.overlay.open{opacity:1;pointer-events:auto}
+.drawer{
+  position:fixed;top:0;left:0;bottom:0;width:72vw;max-width:280px;
+  background:var(--surface);border-right:1.5px solid var(--border);
+  z-index:900;display:flex;flex-direction:column;padding:0;
+  transform:translateX(-100%);transition:transform .28s cubic-bezier(.25,.8,.25,1)
+}
+.drawer.open{transform:none}
+.drawer-top{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.9rem 1.3rem;border-bottom:1.5px solid var(--border)
+}
+.drawer-name{font-size:.78rem;font-weight:700}
+.drawer-x{background:none;border:none;color:var(--text);font-size:1.3rem;line-height:1;padding:0}
+.drawer-a{
+  display:block;padding:.85rem 1.3rem;
+  font-size:.85rem;font-weight:600;
+  border-bottom:1.5px solid var(--border);
+  opacity:0;transform:translateX(-8px);
+  transition:opacity .2s,transform .2s,background var(--tr)
+}
+.drawer.open .drawer-a{opacity:1;transform:none}
+.drawer.open .drawer-a:nth-child(1){transition-delay:.04s}
+.drawer.open .drawer-a:nth-child(2){transition-delay:.08s}
+.drawer.open .drawer-a:nth-child(3){transition-delay:.12s}
+.drawer.open .drawer-a:nth-child(4){transition-delay:.16s}
+.drawer.open .drawer-a:nth-child(5){transition-delay:.20s}
+.drawer-a:hover{background:var(--surface2)}
 
-        /* ── HAMBURGER ── */
-        .hamburger { display: none; flex-direction: column; gap: 5px; padding: 0.4rem; background: none; border: none; cursor: pointer; z-index: 600; }
-        .hamburger span { display: block; width: 20px; height: 1.5px; background: var(--text); transition: transform 0.26s, opacity 0.26s; }
-        .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-        .hamburger.open span:nth-child(2) { opacity: 0; }
-        .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-        @media (max-width: 768px) { .hamburger { display: flex; } }
+/* ── HEADER ── */
+header{
+  position:sticky;top:0;z-index:600;height:var(--hh);
+  border-bottom:1.5px solid var(--border);
+  background:var(--bg);transition:background var(--tr)
+}
+.h-inner{
+  max-width:var(--max);margin:0 auto;
+  padding:0 clamp(1.2rem,5vw,2.5rem);
+  height:100%;display:flex;align-items:center;justify-content:space-between
+}
+.h-logo{font-size:.82rem;font-weight:800;letter-spacing:-.01em}
+.h-logo span{color:var(--accent)}
+.h-nav{display:flex;align-items:center;gap:1.8rem}
+.h-nav a{font-size:.74rem;font-weight:600;color:var(--muted);transition:color var(--tr)}
+.h-nav a:hover{color:var(--text)}
+.h-cta{
+  font-size:.7rem;font-weight:700;letter-spacing:.05em;
+  padding:.4rem 1rem;border-radius:var(--r);
+  background:var(--accent);color:#fff;border:none;
+  transition:opacity var(--tr),transform var(--tr)
+}
+.h-cta:hover{opacity:.86;transform:translateY(-1px)}
+.h-menu{
+  display:none;background:none;
+  border:1.5px solid var(--border);border-radius:var(--r);
+  padding:.35rem .55rem;color:var(--text);font-size:.9rem;line-height:1
+}
 
-        /* ── MOBILE DRAWER ── */
-        .mobile-nav-drawer {
-            position: fixed; inset: 0; background: var(--bg); z-index: 550;
-            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.6rem;
-            opacity: 0; pointer-events: none; transition: opacity 0.26s ease;
-        }
-        .mobile-nav-drawer.open { opacity: 1; pointer-events: auto; }
-        .drawer-link {
-            font-size: clamp(1.9rem, 9vw, 3rem); font-weight: 800;
-            text-transform: uppercase; letter-spacing: -0.03em; color: var(--text);
-            opacity: 0; transform: translateY(12px);
-            transition: color var(--tr), opacity 0.3s ease, transform 0.3s ease;
-        }
-        .drawer-link:hover { color: var(--accent); }
-        .mobile-nav-drawer.open .drawer-link { opacity: 1; transform: none; }
-        .mobile-nav-drawer.open .drawer-link:nth-child(1) { transition-delay: 0.03s; }
-        .mobile-nav-drawer.open .drawer-link:nth-child(2) { transition-delay: 0.07s; }
-        .mobile-nav-drawer.open .drawer-link:nth-child(3) { transition-delay: 0.11s; }
-        .mobile-nav-drawer.open .drawer-link:nth-child(4) { transition-delay: 0.15s; }
-        .mobile-nav-drawer.open .drawer-link:nth-child(5) { transition-delay: 0.19s; }
+/* ── HERO ── */
+.hero{
+  min-height:calc(100svh - var(--hh));
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:clamp(3rem,8vw,5rem) clamp(1.2rem,5vw,2.5rem);
+  border-bottom:1.5px solid var(--border)
+}
+.hero-logo{
+  width:72px;height:72px;border-radius:var(--r);
+  overflow:hidden;border:1.5px solid var(--border);
+  margin:0 auto 1.4rem;background:var(--surface)
+}
+.hero-logo img{width:100%;height:100%;object-fit:contain}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);background:var(--surface);
+  border:1.5px solid var(--border);border-radius:99px;
+  padding:.26rem .7rem;margin-bottom:1.3rem
+}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;flex-shrink:0}
+.hero-h1{
+  font-size:clamp(2.8rem,9vw,7rem);font-weight:900;
+  letter-spacing:-.04em;line-height:.92;margin-bottom:1.2rem
+}
+.hero-h1 .red{color:var(--accent)}
+.hero-sub{
+  font-size:clamp(.85rem,1.8vw,.98rem);color:var(--muted);
+  line-height:1.7;margin-bottom:2rem;max-width:440px
+}
+.hero-btns{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center}
 
-        /* ── BACK TO TOP ── */
-        .back-top {
-            position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 800;
-            width: 38px; height: 38px; border-radius: 50%;
-            background: var(--surface); border: 1.5px solid var(--border);
-            display: flex; align-items: center; justify-content: center; cursor: pointer;
-            opacity: 0; pointer-events: none;
-            transition: opacity 0.3s, background var(--tr), border-color var(--tr), transform var(--tr);
-        }
-        .back-top.visible { opacity: 1; pointer-events: auto; }
-        .back-top:hover { border-color: var(--accent); background: var(--accent-dim); transform: translateY(-2px); }
-        .back-top svg { width: 14px; height: 14px; stroke: var(--text); fill: none; stroke-width: 2; }
-        @media (max-width: 768px) { .back-top { bottom: calc(var(--mobile-cta-h) + 0.75rem); right: 0.75rem; } }
+/* ── BUTTONS ── */
+.btn-p{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-size:.74rem;font-weight:700;letter-spacing:.04em;
+  padding:.65rem 1.35rem;border-radius:var(--r);
+  background:var(--accent);color:#fff;border:none;
+  transition:opacity var(--tr),transform var(--tr)
+}
+.btn-p:hover{opacity:.86;transform:translateY(-2px)}
+.btn-g{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-size:.74rem;font-weight:600;
+  padding:.65rem 1.35rem;border-radius:var(--r);
+  background:transparent;color:var(--text);
+  border:1.5px solid var(--border);
+  transition:background var(--tr),transform var(--tr)
+}
+.btn-g:hover{background:var(--surface);transform:translateY(-2px)}
 
-        /* ── HERO ── */
-        .hero {
-            min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end;
-            padding: calc(var(--header-h) + 2rem) 5vw 7vw;
-            position: relative; overflow: hidden; background: var(--bg);
-        }
-        .hero::before {
-            content: ''; position: absolute; top: -20%; left: -10%; width: 55%; height: 60%;
-            background: radial-gradient(ellipse, rgba(230,32,32,0.06) 0%, transparent 65%);
-            pointer-events: none;
-        }
-        /* Lightning */
-        .lightning-svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-        .bolt { fill: none; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; opacity: 0; }
-        .bolt-a { stroke: rgba(255,255,255,0.75); stroke-width: 1.5; animation: blt-a 8s infinite steps(1,end); filter: drop-shadow(0 0 2px rgba(255,255,255,0.4)) drop-shadow(0 0 8px rgba(230,32,32,0.45)); }
-        .bolt-a2 { stroke: rgba(255,110,110,.55); stroke-width: 0.8; animation: blt-a2 8s infinite steps(1,end); }
-        .bolt-b { stroke: rgba(255,255,255,0.65); stroke-width: 1.2; animation: blt-b 11s infinite steps(1,end); filter: drop-shadow(0 0 2px rgba(255,255,255,0.35)) drop-shadow(0 0 6px rgba(230,32,32,0.35)); }
-        .bolt-c { stroke: rgba(255,190,190,.55); stroke-width: 1; animation: blt-c 13.5s infinite steps(1,end); }
-        .hero-flash { position: absolute; inset: 0; pointer-events: none; opacity: 0; background: radial-gradient(ellipse 25% 20% at 16% 0%, rgba(255,30,30,.14), transparent); animation: sky-flash 8s infinite steps(1,end); }
-        @keyframes blt-a {
-            0%,9%,100% { opacity:0 }
-            9.15% { opacity:1 } 9.35% { opacity:.1 } 9.5% { opacity:.85 } 9.7% { opacity:.05 } 9.85% { opacity:.7 } 10.1% { opacity:0 }
-            55% { opacity:0 } 55.12% { opacity:.8 } 55.28% { opacity:.08 } 55.4% { opacity:.6 } 55.65% { opacity:0 }
-        }
-        @keyframes blt-a2 { 0%,9.3%,100% { opacity:0 } 9.4% { opacity:.7 } 9.6% { opacity:.12 } 9.75% { opacity:.55 } 10.1% { opacity:0 } 55.15% { opacity:0 } 55.2% { opacity:.6 } 55.5% { opacity:.07 } 55.65% { opacity:0 } }
-        @keyframes blt-b { 0%,24%,100% { opacity:0 } 24.1% { opacity:.72 } 24.25% { opacity:0 } 24.35% { opacity:.78 } 24.5% { opacity:.07 } 24.62% { opacity:.62 } 24.85% { opacity:0 } }
-        @keyframes blt-c { 0%,40%,100% { opacity:0 } 40.08% { opacity:.65 } 40.22% { opacity:.08 } 40.32% { opacity:.55 } 40.55% { opacity:0 } }
-        @keyframes sky-flash { 0%,9%,10.1%,54.9%,55.7%,100% { opacity:0 } 9.2%,9.6% { opacity:1 } 9.4% { opacity:.18 } 55.1%,55.4% { opacity:.65 } 55.25% { opacity:.12 } }
+/* ── MARQUEE ── */
+.marquee{overflow:hidden;border-top:1.5px solid var(--border);border-bottom:1.5px solid var(--border);padding:.85rem 0}
+.mq-track{display:flex;gap:2.5rem;white-space:nowrap;animation:mq 22s linear infinite}
+.mq-item{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:2.5rem}
+.mq-item::after{content:'◆';color:var(--accent);font-size:.42rem}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-        .hero-logo { width: clamp(70px, 11vw, 148px); margin-bottom: 1.85rem; }
-        .avail-badge {
-            display: inline-flex; align-items: center; gap: 7px;
-            padding: 0.36rem 0.82rem; border: 1.5px solid var(--border); border-radius: 100px;
-            font-size: 0.56rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
-            color: var(--text-muted); background: transparent;
-            margin-bottom: 0.85rem; width: fit-content;
-        }
-        .avail-dot { width: 6px; height: 6px; border-radius: 50%; background: #34c759; flex-shrink: 0; animation: avail-pulse 2.5s ease-in-out infinite; }
-        @keyframes avail-pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(52,199,89,.4); } 50% { box-shadow: 0 0 0 4px rgba(52,199,89,.07); } }
-        .hero-label { font-size: clamp(0.68rem, 1.7vw, 0.88rem); font-weight: 700; letter-spacing: 0.28em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.85rem; display: block; }
-        .hero-title { font-size: clamp(3.4rem, 13vw, 11.5rem); font-weight: 900; text-transform: uppercase; line-height: 0.88; letter-spacing: -0.04em; margin-bottom: 1.65rem; }
-        .hero-title .dot { color: var(--accent); }
-        .hero-sub { font-size: clamp(0.92rem, 2.1vw, 1.35rem); font-weight: 400; color: var(--text-muted); line-height: 1.45; max-width: 500px; margin-bottom: 2rem; }
-        .hero-btns { display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap; }
-        .btn-primary {
-            display: inline-flex; align-items: center; gap: 7px;
-            padding: 0.72rem 1.4rem; background: var(--accent); color: #fff;
-            border: 1.5px solid var(--accent); border-radius: var(--radius);
-            font-size: 0.68rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase;
-            transition: background var(--tr), transform var(--tr), box-shadow var(--tr);
-        }
-        .btn-primary:hover { background: #c01818; transform: translateY(-2px); box-shadow: 0 4px 16px rgba(230,32,32,0.32); }
-        .btn-ghost {
-            display: inline-flex; align-items: center; gap: 7px;
-            padding: 0.72rem 1.4rem; background: transparent; color: var(--text);
-            border: 1.5px solid var(--border); border-radius: var(--radius);
-            font-size: 0.68rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase;
-            transition: border-color var(--tr), background var(--tr), transform var(--tr);
-        }
-        .btn-ghost:hover { border-color: var(--text-muted); background: var(--surface); transform: translateY(-2px); }
+/* ── SEC HEADER ── */
+.sec-tag{font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.55rem}
+.sec-h2{font-size:clamp(1.7rem,4vw,3rem);font-weight:900;letter-spacing:-.04em;line-height:1;margin-bottom:1.8rem}
 
-        /* ── MARQUEE ── */
-        .marquee-wrap { width: 100%; overflow: hidden; background: var(--accent); padding: 0.95rem 0; transform: rotate(-1.5deg) scale(1.04); }
-        .marquee-track { display: flex; white-space: nowrap; }
-        .marquee-inner { display: flex; flex-shrink: 0; animation: mq 20s linear infinite; }
-        .marquee-inner span { font-size: clamp(1.3rem, 3.2vw, 2.4rem); font-weight: 800; text-transform: uppercase; color: #fff; padding: 0 1.75vw; }
-        @keyframes mq { 0%{transform:translateX(0)} 100%{transform:translateX(-100%)} }
+/* ── FILTER ── */
+.filters{display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.8rem}
+.f-btn{
+  font-size:.62rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  padding:.35rem .8rem;border-radius:4px;
+  background:transparent;color:var(--muted);border:1.5px solid var(--border);
+  transition:background var(--tr),color var(--tr),border-color var(--tr)
+}
+.f-btn.on,.f-btn:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
 
-        /* ── LAYOUT ── */
-        .s { padding: 7vw 5vw; }
-        .s-wide { padding: 7vw 0; }
-        .section-tag { display: inline-block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); border-bottom: 1.5px solid var(--border); padding-bottom: 5px; margin-bottom: 1.65rem; }
+/* ── WORKS GRID ── */
+.wgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+@media(max-width:860px){.wgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.wgrid{grid-template-columns:1fr}}
 
-        /* ── FADEUP ── */
-        .fadeup { opacity: 0; transform: translateY(10px); transition: opacity 0.62s ease, transform 0.62s ease; }
-        .fadeup.in { opacity: 1; transform: none; }
-        .fadeup-d1 { transition-delay: 0.07s; }
-        .fadeup-d2 { transition-delay: 0.14s; }
-        .fadeup-d3 { transition-delay: 0.21s; }
-        .fadeup-d4 { transition-delay: 0.28s; }
-        [data-stagger] > * { opacity: 0; transform: translateY(10px); transition: opacity 0.58s ease, transform 0.58s ease; }
-        [data-stagger] > *.in { opacity: 1; transform: none; }
+/* ── FOGGIAPP CARD ── */
+.wcard-f{
+  grid-column:1/-1;
+  background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);
+  padding:1.8rem 2rem;position:relative;overflow:hidden;
+  transition:transform var(--tr),border-color var(--tr),box-shadow var(--tr)
+}
+.wcard-f:hover{transform:translateY(-2px);border-color:rgba(230,32,32,.3);box-shadow:0 4px 20px rgba(0,0,0,.25)}
+.wcard-f::before{
+  content:'';position:absolute;top:-80px;right:-80px;
+  width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle,rgba(230,32,32,.07) 0%,transparent 70%);
+  pointer-events:none
+}
+.wf-row{display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.wf-title{font-size:clamp(1.5rem,3.5vw,2.4rem);font-weight:900;letter-spacing:-.04em;line-height:1}
+.wf-title .red{color:var(--accent)}
+.wf-meta{font-size:.57rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.wf-sub{font-size:.76rem;color:var(--muted);line-height:1.6;max-width:400px;margin-top:.5rem}
+.wf-link{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.68rem;font-weight:700;color:var(--accent);
+  border:1.5px solid rgba(230,32,32,.3);border-radius:var(--r);
+  padding:.48rem .9rem;white-space:nowrap;
+  transition:background var(--tr),transform var(--tr)
+}
+.wf-link:hover{background:rgba(230,32,32,.08);transform:translateY(-1px)}
+.wf-chips{display:flex;gap:.45rem;flex-wrap:wrap}
+.wf-chip{
+  font-size:.56rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:.25rem .65rem;border-radius:4px;
+  background:var(--surface2);border:1.5px solid var(--border);color:var(--muted)
+}
 
-        /* ── WORKS ── */
-        .works-title { font-size: clamp(2.2rem, 7vw, 6rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.04em; line-height: 0.9; }
-        .filter-tabs { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 1.5rem; padding: 0 5vw; }
-        .filter-btn { padding: 0.42rem 0.88rem; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; background: transparent; color: var(--text-muted); border: 1.5px solid var(--border); border-radius: var(--radius); cursor: pointer; transition: all var(--tr); }
-        .filter-btn.active, .filter-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+/* ── WORK CARD ── */
+.wcard{
+  background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:transform var(--tr),border-color var(--tr),box-shadow var(--tr)
+}
+.wcard:hover{transform:translateY(-2px);border-color:rgba(230,32,32,.3);box-shadow:0 4px 20px rgba(0,0,0,.25)}
+.wcard-img{aspect-ratio:4/3;overflow:hidden}
+.wcard-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(22%);transition:transform .45s ease,filter .45s ease}
+.wcard:hover .wcard-img img{transform:scale(1.03);filter:grayscale(0%)}
+.wcard-body{padding:.9rem 1rem 1.1rem;flex:1;display:flex;flex-direction:column;gap:.4rem}
+.wcard-meta{display:flex;align-items:center}
+.wcard-cat{font-size:.54rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.wcard-yr{font-size:.54rem;font-weight:600;color:var(--muted);margin-left:auto}
+.wcard-name{font-size:.85rem;font-weight:700;letter-spacing:-.01em;line-height:1.3}
+.wcard-desc{font-size:.7rem;color:var(--muted);line-height:1.55}
 
-        .portfolio-grid { padding: 1.75rem 5vw; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; margin-bottom: 3.5rem; }
-        .work-card {
-            position: relative; overflow: hidden;
-            border: 1.5px solid var(--border); border-radius: var(--radius);
-            background: var(--surface);
-            transition: transform var(--tr), border-color var(--tr), box-shadow var(--tr);
-        }
-        .work-card:hover { transform: translateY(-2px); border-color: rgba(230,32,32,0.28); box-shadow: 0 4px 16px rgba(0,0,0,0.25); }
-        .work-card.span2 { grid-column: span 2; }
-        .work-card[data-hidden="true"] { display: none; }
+/* ── PHOTOGRAPHY ── */
+.photo-cols{columns:3;column-gap:1rem}
+@media(max-width:860px){.photo-cols{columns:2}}
+@media(max-width:480px){.photo-cols{columns:2}}
+.pitem{
+  break-inside:avoid;margin-bottom:1rem;
+  position:relative;overflow:hidden;
+  border:1.5px solid var(--border);border-radius:var(--r);
+  cursor:pointer;background:var(--surface);
+  transition:transform var(--tr),border-color var(--tr),box-shadow var(--tr)
+}
+.pitem:hover{transform:translateY(-2px);border-color:rgba(230,32,32,.3);box-shadow:0 4px 16px rgba(0,0,0,.25)}
+.pitem img{width:100%;display:block;filter:grayscale(30%);transition:filter .45s,transform .45s}
+.pitem:hover img{filter:grayscale(0%);transform:scale(1.02)}
+.pview{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2;pointer-events:none}
+.pview span{
+  font-size:.58rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;
+  color:#fff;background:var(--accent);padding:.35rem .75rem;border-radius:3px;
+  opacity:0;transform:scale(.88);transition:opacity .2s,transform .2s
+}
+.pitem:hover .pview span{opacity:1;transform:scale(1)}
+@media(hover:none){.pitem img{filter:grayscale(12%)}}
 
-        .work-img { width: 100%; overflow: hidden; background: var(--surface2); position: relative; }
-        .work-card.span2 .work-img { aspect-ratio: 16/9; }
-        .work-img-inner { aspect-ratio: 4/5; }
-        .work-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(60%); transition: transform 0.5s ease, filter 0.5s ease; }
-        .work-card:hover .work-img img { transform: scale(1.03); filter: grayscale(0%); }
-        .work-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(14,14,14,.6) 0%, transparent 50%); pointer-events: none; }
-        [data-theme="light"] .work-img::after { background: linear-gradient(to top, rgba(242,242,242,.5) 0%, transparent 50%); }
-        .work-view-label { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; z-index: 2; }
-        .work-view-label span { font-size: 0.65rem; font-weight: 800; letter-spacing: 0.26em; color: #fff; text-transform: uppercase; background: var(--accent); padding: 0.42rem 0.85rem; border-radius: 3px; opacity: 0; transform: scale(0.88); transition: opacity 0.22s, transform 0.22s; }
-        .work-card:hover .work-view-label span { opacity: 1; transform: scale(1); }
-        .work-info { padding: 0.85rem 1rem; display: flex; flex-direction: column; gap: 0.28rem; }
-        .work-info-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.7rem; }
-        .work-name { font-size: clamp(0.82rem, 1.35vw, 1.15rem); font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; }
-        .work-cat { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.17em; color: var(--text-muted); text-transform: uppercase; white-space: nowrap; padding-top: 2px; }
-        .work-desc { font-size: 0.66rem; color: var(--text-muted); line-height: 1.55; font-weight: 500; }
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+@media(max-width:720px){.about-grid{grid-template-columns:1fr}}
+.about-stmt{
+  font-size:clamp(1rem,2.2vw,1.35rem);font-weight:600;line-height:1.6;
+  letter-spacing:-.01em;margin-bottom:1.3rem
+}
+.about-stmt em{color:var(--accent);font-style:normal}
+.about-body{font-size:.82rem;color:var(--muted);line-height:1.75;margin-bottom:1.4rem}
+.cv-btn{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-size:.68rem;font-weight:700;letter-spacing:.06em;
+  padding:.52rem 1rem;border-radius:var(--r);
+  background:transparent;color:var(--text);
+  border:1.5px solid var(--border);
+  transition:background var(--tr),transform var(--tr)
+}
+.cv-btn:hover{background:var(--surface);transform:translateY(-2px)}
+.exp-list{margin-top:1.6rem}
+.exp-row{
+  display:flex;align-items:baseline;gap:.9rem;
+  padding:.6rem 0;border-bottom:1.5px solid var(--border);
+  font-size:.76rem
+}
+.exp-row:first-child{border-top:1.5px solid var(--border)}
+.exp-yr{font-weight:700;color:var(--muted);white-space:nowrap;min-width:60px}
+.exp-role{color:var(--text)}
+.about-portrait{border-radius:var(--r);overflow:hidden;border:1.5px solid var(--border);aspect-ratio:4/5}
+.about-portrait img{width:100%;height:100%;object-fit:cover}
 
-        /* FoggiApp typographic card */
-        .work-type-hero {
-            width: 100%; aspect-ratio: 16/9; background: #08101e;
-            position: relative; overflow: hidden;
-            display: flex; flex-direction: column; justify-content: flex-end;
-            padding: clamp(1.1rem, 2.8vw, 2.1rem); gap: 0.55rem;
-            border-radius: var(--radius) var(--radius) 0 0;
-        }
-        .work-type-hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(255,255,255,.055) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; }
-        .work-type-hero::after { content: ''; position: absolute; top: -30%; right: -5%; width: 55%; height: 110%; background: radial-gradient(ellipse at top right, rgba(230,32,32,.16) 0%, transparent 65%); pointer-events: none; }
-        .wth-deco { position: absolute; right: -0.02em; top: 50%; transform: translateY(-52%); font-size: clamp(5.5rem, 17vw, 13.5rem); font-weight: 900; letter-spacing: -0.06em; color: rgba(255,255,255,.038); text-transform: uppercase; line-height: 1; pointer-events: none; user-select: none; z-index: 0; }
-        .wth-live { position: absolute; top: 1.1rem; right: 1.1rem; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border: 1.5px solid var(--accent); padding: 0.38rem 0.76rem; border-radius: var(--radius); z-index: 3; transition: background var(--tr), color var(--tr); }
-        .wth-live:hover { background: var(--accent); color: #fff; }
-        .wth-meta { font-size: 0.54rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,.28); position: relative; z-index: 1; }
-        .wth-name { font-size: clamp(2.3rem, 6vw, 5.2rem); font-weight: 900; letter-spacing: -0.04em; line-height: .88; text-transform: uppercase; color: #fff; position: relative; z-index: 1; }
-        .wth-chips { display: flex; flex-wrap: wrap; gap: 0.32rem; position: relative; z-index: 1; }
-        .wth-chip { font-size: 0.52rem; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: rgba(255,255,255,.38); border: 1.5px solid rgba(255,255,255,.09); padding: 0.22rem 0.52rem; border-radius: 3px; white-space: nowrap; }
-        @media (max-width: 768px) { .work-type-hero { aspect-ratio: 3/4; } .wth-deco { font-size: clamp(4.2rem, 24vw, 7.5rem); } }
+/* ── CONTACT ── */
+.contact-inner{max-width:600px}
+.contact-h{font-size:clamp(1.9rem,5vw,3.8rem);font-weight:900;letter-spacing:-.04em;line-height:.94;margin-bottom:.8rem}
+.contact-h .red{color:var(--accent)}
+.contact-body{font-size:.82rem;color:var(--muted);line-height:1.7;margin-bottom:1.8rem}
+.form{display:flex;flex-direction:column;gap:.85rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+@media(max-width:480px){.form-row{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:.3rem}
+.field label{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.field input,.field select,.field textarea{
+  background:var(--surface);border:1.5px solid var(--border);
+  border-radius:var(--r);color:var(--text);
+  font-family:var(--font);font-size:.8rem;padding:.65rem .85rem;
+  outline:none;transition:border-color var(--tr)
+}
+.field input::placeholder,.field textarea::placeholder{color:var(--muted)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent)}
+.field textarea{min-height:105px;resize:vertical}
+.field select option{background:var(--bg)}
+.form-foot{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.sub-btn{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-size:.74rem;font-weight:700;letter-spacing:.04em;
+  padding:.65rem 1.35rem;border-radius:var(--r);
+  background:var(--accent);color:#fff;border:none;
+  transition:opacity var(--tr),transform var(--tr)
+}
+.sub-btn:hover{opacity:.86;transform:translateY(-1px)}
+#formMsg{font-size:.7rem;font-weight:600}
+.form-note{font-size:.6rem;color:var(--muted)}
+.form-note a{color:var(--accent);font-weight:700}
 
-        /* Mobile scroll */
-        .portfolio-scroll { display: none; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 1.1rem 5vw 1.6rem; gap: 0.85rem; scrollbar-width: none; touch-action: pan-x; overscroll-behavior-x: contain; }
-        .portfolio-scroll::-webkit-scrollbar { display: none; }
-        .portfolio-scroll .work-card { flex: 0 0 70vw; max-width: 285px; }
-        .portfolio-scroll .work-img { aspect-ratio: 3/4; }
-        .portfolio-scroll .work-img img { height: 100%; object-fit: cover; }
+/* ── MOBILE CTA ── */
+.mcta{
+  position:fixed;bottom:0;left:0;right:0;z-index:500;
+  display:none;
+  background:var(--surface);border-top:1.5px solid var(--border);
+  padding:.75rem clamp(1rem,5vw,1.5rem);
+  align-items:center;justify-content:space-between;gap:1rem
+}
+.mcta-info{display:flex;flex-direction:column;gap:.08rem}
+.mcta-info strong{font-size:.76rem;font-weight:700}
+.mcta-info span{font-size:.6rem;color:var(--muted)}
+.mcta-btn{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.68rem;font-weight:700;white-space:nowrap;
+  padding:.5rem 1rem;border-radius:var(--r);
+  background:var(--accent);color:#fff;border:none
+}
 
-        /* ── ABOUT ── */
-        .about-me-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items: start; }
-        .about-statement { font-size: clamp(1.25rem, 3vw, 2.8rem); font-weight: 600; line-height: 1.15; letter-spacing: -0.02em; }
-        .about-statement em { color: var(--text-muted); font-style: normal; }
-        .about-me-text { font-size: clamp(0.88rem, 1.15vw, 1.05rem); font-weight: 400; line-height: 1.78; color: var(--text-muted); margin-top: 1.05rem; }
-        .cv-download { display: inline-flex; align-items: center; gap: 7px; margin-top: 1.35rem; padding: 0.62rem 1.05rem; border: 1.5px solid var(--border); border-radius: var(--radius); background: transparent; color: var(--text); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; transition: border-color var(--tr), background var(--tr), transform var(--tr); }
-        .cv-download:hover { border-color: var(--accent); background: var(--accent-dim); transform: translateY(-2px); }
-        .exp-compact { display: flex; flex-direction: column; gap: 0.52rem; border-top: 1.5px solid var(--border); margin-top: 1.65rem; padding-top: 1.3rem; }
-        .exp-compact-item { display: flex; gap: 1.2rem; align-items: baseline; }
-        .exp-compact-year { font-size: 0.56rem; font-weight: 700; letter-spacing: 0.11em; color: var(--text-muted); text-transform: uppercase; white-space: nowrap; min-width: 56px; }
-        .exp-compact-role { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; line-height: 1.45; }
-        .about-imgs { display: grid; grid-template-columns: 1fr; }
-        .img-wrap { overflow: hidden; background: var(--surface2); border: 1.5px solid var(--border); border-radius: var(--radius); }
-        .img-wrap.portrait { aspect-ratio: 3/4; }
-        .img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(65%); transition: transform 0.55s ease, filter 0.55s ease; }
-        .img-wrap:hover img { transform: scale(1.03); filter: grayscale(0%); }
+/* ── FOOTER ── */
+footer{border-top:1.5px solid var(--border);padding:1.4rem 0}
+.foot-inner{
+  max-width:var(--max);margin:0 auto;
+  padding:0 clamp(1.2rem,5vw,2.5rem);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.7rem
+}
+.foot-copy p{font-size:.7rem;font-weight:600}
+.foot-copy span{font-size:.57rem;color:var(--muted)}
+.foot-links{display:flex;gap:1.2rem}
+.foot-links a{font-size:.68rem;font-weight:600;color:var(--muted);transition:color var(--tr)}
+.foot-links a:hover{color:var(--text)}
 
-        /* ── PHOTOGRAPHY ── */
-        .photo-section { padding: 3.5rem 0 4.5rem; border-top: 1.5px solid var(--border); margin-top: 0.5rem; }
-        .photo-section-header { padding: 0 5vw; margin-bottom: 2.1rem; }
-        .photo-section-title { font-size: clamp(1.9rem, 5vw, 4.3rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.035em; line-height: 0.9; margin-top: 0.6rem; }
-        .photo-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; padding: 0 5vw 1.5rem; }
-        @media (max-width: 1024px) { .photo-gallery { grid-template-columns: repeat(2, 1fr); } }
-        .photo-card { position: relative; overflow: hidden; cursor: pointer; border: 1.5px solid var(--border); border-radius: var(--radius); background: var(--surface); aspect-ratio: 3/4; transition: transform var(--tr), border-color var(--tr), box-shadow var(--tr); }
-        .photo-card:hover { transform: translateY(-2px); border-color: rgba(230,32,32,0.28); box-shadow: 0 4px 16px rgba(0,0,0,0.25); }
-        .photo-card img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(55%); transition: transform 0.5s ease, filter 0.5s ease; }
-        .photo-card:hover img { transform: scale(1.03); filter: grayscale(0%); }
-        @media (hover: none) { .photo-card img { filter: grayscale(18%); } }
-        .photo-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(14,14,14,.55) 0%, transparent 50%); pointer-events: none; }
-        [data-theme="light"] .photo-card::after { background: linear-gradient(to top, rgba(242,242,242,.45) 0%, transparent 50%); }
-        .photo-card-view { position: absolute; inset: 0; z-index: 2; display: flex; align-items: center; justify-content: center; pointer-events: none; }
-        .photo-card-view span { font-size: 0.65rem; font-weight: 800; letter-spacing: 0.26em; color: #fff; text-transform: uppercase; background: var(--accent); padding: 0.42rem 0.85rem; border-radius: 3px; opacity: 0; transform: scale(0.88); transition: opacity 0.22s, transform 0.22s; }
-        .photo-card:hover .photo-card-view span { opacity: 1; transform: scale(1); }
-        @media (max-width: 640px) {
-            .photo-section { padding: 2.5rem 0 3.5rem; }
-            .photo-gallery { display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 0 5vw 1.5rem; gap: 0.85rem; touch-action: pan-x; overscroll-behavior-x: contain; }
-            .photo-gallery::-webkit-scrollbar { display: none; }
-            .photo-gallery .photo-card { flex: 0 0 68vw; max-width: 265px; aspect-ratio: 3/4; }
-        }
+/* ── LIGHTBOX ── */
+.lb{
+  position:fixed;inset:0;z-index:9000;
+  background:rgba(14,14,14,.96);display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .24s
+}
+.lb.open{opacity:1;pointer-events:auto}
+.lb img{max-width:90vw;max-height:88vh;border-radius:var(--r);object-fit:contain}
+.lb-x{
+  position:absolute;top:1.1rem;right:1.1rem;
+  background:var(--surface);border:1.5px solid var(--border);border-radius:50%;
+  width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+  color:var(--text);font-size:1.1rem;line-height:1;
+  transition:background var(--tr)
+}
+.lb-x:hover{background:var(--surface2)}
 
-        /* ── CONTACT ── */
-        .contact-s { background: var(--surface); padding: 7vw 5vw; position: relative; overflow: hidden; border-top: 1.5px solid var(--border); }
-        .contact-s::before { content: 'INIZIA'; position: absolute; right: -1vw; top: -0.5vw; font-size: clamp(4.5rem, 15vw, 13rem); font-weight: 900; letter-spacing: -0.05em; color: var(--border); pointer-events: none; line-height: 1; text-transform: uppercase; }
-        .contact-inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 5vw; align-items: start; position: relative; z-index: 1; }
-        .contact-h { font-size: clamp(2.6rem, 6vw, 6.5rem); font-weight: 900; line-height: 0.9; letter-spacing: -0.04em; text-transform: uppercase; }
-        .contact-h .red { color: var(--accent); }
-        .contact-eyebrow { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.85rem; font-weight: 700; }
-        .contact-body { font-size: clamp(0.88rem, 1.25vw, 1.02rem); line-height: 1.78; color: var(--text-muted); font-weight: 400; margin-bottom: 1.65rem; }
-        .contact-form { display: flex; flex-direction: column; gap: 0.85rem; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
-        .form-field { display: flex; flex-direction: column; gap: 0.32rem; }
-        .form-field label { font-size: 0.56rem; font-weight: 700; letter-spacing: 0.17em; text-transform: uppercase; color: var(--text-muted); }
-        .form-field input, .form-field textarea, .form-field select { padding: 0.68rem 0.88rem; background: var(--bg); border: 1.5px solid var(--border); border-radius: var(--radius); color: var(--text); font-family: var(--font); font-size: 0.8rem; font-weight: 400; outline: none; transition: border-color var(--tr), background var(--tr); -webkit-appearance: none; }
-        .form-field input:focus, .form-field textarea:focus, .form-field select:focus { border-color: var(--accent); background: var(--accent-dim); }
-        .form-field textarea { resize: vertical; min-height: 100px; }
-        .form-field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M0 0l6 8 6-8z' fill='%23888'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.72rem center; padding-right: 2rem; }
-        .form-msg { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.09em; color: var(--accent); min-height: 1.2em; }
-        .contact-btn { display: inline-flex; align-items: center; gap: 8px; padding: 0.85rem 1.5rem; background: var(--text); color: var(--bg); border: 1.5px solid var(--text); border-radius: var(--radius); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; font-family: var(--font); transition: background var(--tr), color var(--tr), border-color var(--tr), transform var(--tr), box-shadow var(--tr); }
-        .contact-btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(230,32,32,0.22); }
+/* ── FADEUP ── */
+.fu{opacity:0;transform:translateY(12px);transition:opacity .62s ease,transform .62s ease}
+.fu.in{opacity:1;transform:none}
+.fu-d1{transition-delay:.08s}
+.fu-d2{transition-delay:.16s}
+.fu-d3{transition-delay:.24s}
+[data-sg]>*{opacity:0;transform:translateY(10px);transition:opacity .55s ease,transform .55s ease}
+[data-sg]>*.in{opacity:1;transform:none}
 
-        /* ── MOBILE CTA ── */
-        .mobile-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; height: var(--mobile-cta-h); background: var(--bg); border-top: 1.5px solid var(--border); z-index: 400; padding: 0 5vw; align-items: center; justify-content: space-between; gap: 0.7rem; transition: transform 0.35s ease; }
-        .mobile-cta-info { display: flex; flex-direction: column; }
-        .mobile-cta-info strong { font-size: 0.76rem; font-weight: 800; letter-spacing: 0.07em; }
-        .mobile-cta-info span { font-size: 0.56rem; color: var(--text-muted); letter-spacing: 0.11em; }
-        .mobile-cta-btn { display: inline-flex; align-items: center; gap: 6px; padding: 0.65rem 1.2rem; background: var(--accent); color: #fff; border-radius: var(--radius); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; white-space: nowrap; flex-shrink: 0; }
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .h-nav,.h-cta{display:none}
+  .h-menu{display:flex;align-items:center}
+  .mcta{display:flex}
+  footer{padding-bottom:calc(var(--mcta) + 1.2rem)}
+  .lang-sw{
+    top:auto;bottom:calc(var(--mcta) + 10px);transform:none;
+    flex-direction:row;
+    border:1.5px solid var(--border);border-right:1.5px solid var(--border);
+    border-radius:var(--r) var(--r) 0 0;border-bottom:none
+  }
+  .lang-btn+.lang-btn{border-top:none;border-left:1.5px solid var(--border)}
+  #btt{bottom:calc(var(--mcta) + 14px)}
+}
+@media(max-width:480px){
+  .hero{text-align:center}
+  .hero-btns{justify-content:center}
+}
 
-        /* ── FOOTER ── */
-        footer { background: var(--bg); padding: 1.65rem 5vw; border-top: 1.5px solid var(--border); }
-        .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 0.7rem; flex-wrap: wrap; }
-        .footer-copy { font-size: 0.66rem; font-weight: 500; line-height: 1.85; color: var(--text-muted); }
-        .footer-copy strong { color: var(--text); font-weight: 700; }
-        .footer-links { display: flex; gap: 1.2rem; }
-        .footer-links a { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.11em; text-transform: uppercase; color: var(--text-muted); transition: color var(--tr); }
-        .footer-links a:hover { color: var(--accent); }
-
-        /* ── LIGHTBOX ── */
-        .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.96); z-index: 9000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.26s ease; }
-        .lightbox.open { opacity: 1; pointer-events: auto; }
-        .lightbox img { max-width: 90%; max-height: 90svh; object-fit: contain; transform: scale(0.97); transition: transform 0.32s ease; border-radius: var(--radius); box-shadow: 0 8px 50px rgba(0,0,0,.5); }
-        .lightbox.open img { transform: scale(1); }
-        .lb-close { position: absolute; top: 18px; right: 22px; font-size: 2.4rem; color: rgba(255,255,255,.65); font-weight: 300; line-height: 1; cursor: pointer; background: none; border: none; padding: 0; transition: color var(--tr); }
-        .lb-close:hover { color: var(--accent); }
-
-        /* ── MOBILE ── */
-        @media (max-width: 768px) {
-            :root { --header-h: 56px; }
-            .theme-toggle { top: 11px; right: 11px; width: 34px; height: 34px; }
-            .hero { padding: calc(var(--header-h) + 1.2rem) 5vw 5vw; }
-            .hero-logo { width: clamp(52px, 15vw, 95px); margin-bottom: 1.5rem; }
-            .hero-btns { flex-direction: column; align-items: stretch; }
-            .btn-primary, .btn-ghost { justify-content: center; min-height: 45px; }
-            .portfolio-grid { display: none; }
-            .portfolio-scroll { display: flex; }
-            .filter-tabs { gap: 0.32rem; }
-            .filter-btn { padding: 0.5rem 0.82rem; min-height: 39px; display: inline-flex; align-items: center; }
-            .about-me-grid { grid-template-columns: 1fr; gap: 2.4rem; }
-            .contact-inner { grid-template-columns: 1fr; gap: 2.1rem; }
-            .form-row { grid-template-columns: 1fr; }
-            .contact-btn { width: 100%; justify-content: center; min-height: 45px; }
-            .mobile-cta { display: flex; }
-            footer { padding-bottom: calc(var(--mobile-cta-h) + 0.9rem); }
-            .s { padding: 11vw 5vw; }
-        }
-        @media (max-width: 480px) { .hero-title { font-size: clamp(2.5rem, 13.5vw, 4.1rem); } }
-
-        /* ── SAFE AREA ── */
-        @supports (padding: env(safe-area-inset-bottom)) {
-            @media (max-width: 768px) {
-                .mobile-cta { padding-bottom: env(safe-area-inset-bottom); height: calc(var(--mobile-cta-h) + env(safe-area-inset-bottom)); }
-                .lang-switch { bottom: calc(var(--mobile-cta-h) + env(safe-area-inset-bottom) + 10px); }
-                .back-top { bottom: calc(var(--mobile-cta-h) + env(safe-area-inset-bottom) + 0.75rem); }
-                footer { padding-bottom: calc(var(--mobile-cta-h) + env(safe-area-inset-bottom) + 0.9rem); }
-            }
-        }
-
-        /* ── REDUCED MOTION ── */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-            .marquee-inner { animation: none; }
-            .avail-dot { animation: none; }
-        }
-    </style>
+/* ── REDUCED MOTION ── */
+@media(prefers-reduced-motion:reduce){
+  .fu,[data-sg]>*{transition:none;opacity:1;transform:none}
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
 </head>
 <body>
 
-<div class="progress-bar" id="progressBar"></div>
+<div id="prog" role="progressbar" aria-hidden="true"></div>
 
 <!-- Theme toggle -->
-<button class="theme-toggle" id="themeToggle" aria-label="Cambia tema">
-    <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+<button class="theme-btn" id="themeBtn" aria-label="Cambia tema">
+  <svg class="moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  <svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
 </button>
 
 <!-- Lang switch -->
-<div class="lang-switch" role="group" aria-label="Lingua / Language">
-    <button class="lang-btn active" data-lang-btn="it" aria-pressed="true">IT</button>
-    <button class="lang-btn" data-lang-btn="en" aria-pressed="false">EN</button>
-</div>
-
-<!-- Mobile nav drawer -->
-<div class="mobile-nav-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Menu">
-    <a href="#" class="drawer-link">Home</a>
-    <a href="#works" class="drawer-link">
-        <span data-it>Lavori</span><span data-en style="display:none">Works</span>
-    </a>
-    <a href="#about" class="drawer-link">
-        <span data-it>Chi Sono</span><span data-en style="display:none">About</span>
-    </a>
-    <a href="#contact" class="drawer-link">
-        <span data-it>Contatti</span><span data-en style="display:none">Contact</span>
-    </a>
-    <a href="https://rinaldicristian92-hash.github.io/linkthreek/" target="_blank" rel="noopener" class="drawer-link">Links</a>
+<div class="lang-sw" role="group" aria-label="Lingua">
+  <button class="lang-btn on" data-l="it" aria-pressed="true">IT</button>
+  <button class="lang-btn" data-l="en" aria-pressed="false">EN</button>
 </div>
 
 <!-- Back to top -->
-<button class="back-top" id="backTop" aria-label="Torna in cima">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+<button id="btt" aria-label="Torna in cima">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Mobile drawer -->
+<nav class="drawer" id="drawer" aria-label="Navigazione mobile">
+  <div class="drawer-top">
+    <span class="drawer-name">Cristian Rinaldi</span>
+    <button class="drawer-x" id="drawerX" aria-label="Chiudi">×</button>
+  </div>
+  <a class="drawer-a" href="#">Home</a>
+  <a class="drawer-a" href="#works"><span data-it>Lavori</span><span data-en style="display:none">Works</span></a>
+  <a class="drawer-a" href="#about"><span data-it>Chi Sono</span><span data-en style="display:none">About</span></a>
+  <a class="drawer-a" href="#contact"><span data-it>Contatti</span><span data-en style="display:none">Contact</span></a>
+  <a class="drawer-a" href="https://rinaldicristian92-hash.github.io/linkthreek/" target="_blank" rel="noopener">Links ↗</a>
+</nav>
+
 <!-- Header -->
-<header id="siteHeader">
-    <a href="#" class="logo" aria-label="Rinaldi Visuals">
-        <span class="logo-mark">CR</span>
-        <span class="logo-text">
-            <strong>RINALDI</strong>
-            <span>CREATIVE STUDIO</span>
-        </span>
-    </a>
-    <div class="nav-right">
-        <nav class="nav-links" aria-label="Sezioni">
-            <a href="#works" class="nav-link">
-                <span data-it>Lavori</span><span data-en style="display:none">Works</span>
-            </a>
-            <a href="#about" class="nav-link">
-                <span data-it>Chi Sono</span><span data-en style="display:none">About</span>
-            </a>
-            <a href="#contact" class="nav-link">
-                <span data-it>Contatti</span><span data-en style="display:none">Contact</span>
-            </a>
-        </nav>
-        <a href="#contact" class="nav-cta">
-            <span data-it>Lavoriamo Insieme</span>
-            <span data-en style="display:none">Let's Work Together</span>
-        </a>
-        <button class="hamburger" id="hamburger" aria-label="Apri menu" aria-expanded="false">
-            <span></span><span></span><span></span>
-        </button>
-    </div>
+<header>
+  <div class="h-inner">
+    <a href="#" class="h-logo">CR<span>.</span></a>
+    <nav class="h-nav" aria-label="Principale">
+      <a href="#works"><span data-it>Lavori</span><span data-en style="display:none">Works</span></a>
+      <a href="#about"><span data-it>Chi Sono</span><span data-en style="display:none">About</span></a>
+      <a href="#contact"><span data-it>Contatti</span><span data-en style="display:none">Contact</span></a>
+    </nav>
+    <a href="#contact" class="h-cta"><span data-it>Parliamo</span><span data-en style="display:none">Let's talk</span></a>
+    <button class="h-menu" id="menuBtn" aria-label="Menu" aria-expanded="false">≡</button>
+  </div>
 </header>
 
 <!-- Hero -->
 <section class="hero">
-    <svg class="lightning-svg" viewBox="0 0 1600 900" preserveAspectRatio="none" aria-hidden="true">
-        <path class="bolt bolt-a" d="M218 0 L242 108 L208 178 L262 262 L234 348 L292 455 L255 545 L316 668 L272 778 L330 900"/>
-        <path class="bolt bolt-a2" d="M255 545 L298 598 L272 652 L305 720 L285 790"/>
-        <path class="bolt bolt-b" d="M1172 0 L1138 88 L1174 168 L1110 256 L1148 348 L1082 445 L1124 558 L1060 682 L1098 800 L1044 900"/>
-        <path class="bolt bolt-c" d="M755 0 L724 74 L768 155 L714 245 L746 338 L698 432 L730 524 L682 618 L716 726 L668 828 L695 900"/>
-    </svg>
-    <div class="hero-flash" aria-hidden="true"></div>
-
-    <div class="hero-logo fadeup">
-        <img src="Progetto senza titolo.png" alt="Logo Cristian Rinaldi" decoding="async" fetchpriority="high"/>
-    </div>
-    <div class="avail-badge fadeup fadeup-d1">
-        <span class="avail-dot" aria-hidden="true"></span>
-        <span data-it>Disponibile per nuovi progetti</span>
-        <span data-en style="display:none">Available for new projects</span>
-    </div>
-    <span class="hero-label fadeup fadeup-d1">Cristian Rinaldi</span>
-    <h1 class="hero-title fadeup fadeup-d2">RINALDI<span class="dot">.</span><br>VISUALS</h1>
-    <p class="hero-sub fadeup fadeup-d3">
-        <span data-it>Graphic Designer &amp; Fotografo a Foggia.<br>Branding, campagne, editorial e fotografia.</span>
-        <span data-en style="display:none">Graphic Designer &amp; Photographer based in Foggia.<br>Branding, campaigns, editorial &amp; photography.</span>
-    </p>
-    <div class="hero-btns fadeup fadeup-d4">
-        <a href="#contact" class="btn-primary">
-            <span data-it>Parliamo</span><span data-en style="display:none">Let's talk</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a href="#works" class="btn-ghost">
-            <span data-it>Vedi i lavori</span><span data-en style="display:none">See works</span>
-        </a>
-        <a href="https://rinaldicristian92-hash.github.io/linkthreek/" target="_blank" rel="noopener" class="btn-ghost">Links ↗</a>
-    </div>
+  <div class="hero-logo fu">
+    <img src="Progetto senza titolo.png" alt="Logo Cristian Rinaldi" decoding="async" fetchpriority="high"/>
+  </div>
+  <span class="hero-badge fu fu-d1">
+    <span class="badge-dot"></span>
+    <span data-it>Disponibile per nuovi progetti</span>
+    <span data-en style="display:none">Available for new projects</span>
+  </span>
+  <h1 class="hero-h1 fu fu-d2">
+    Cristian<br>Rinaldi<br><span class="red">Visual.</span>
+  </h1>
+  <p class="hero-sub fu fu-d2">
+    <span data-it>Graphic Designer e Fotografo a Foggia.<br>Branding, campagne visive ed editorial design.</span>
+    <span data-en style="display:none">Graphic Designer and Photographer in Foggia.<br>Branding, visual campaigns and editorial design.</span>
+  </p>
+  <div class="hero-btns fu fu-d3">
+    <a href="#contact" class="btn-p">
+      <span data-it>Parliamo</span><span data-en style="display:none">Let's talk</span>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <a href="#works" class="btn-g">
+      <span data-it>Vedi i lavori</span><span data-en style="display:none">See works</span>
+    </a>
+  </div>
 </section>
 
 <!-- Marquee -->
-<div class="marquee-wrap" aria-hidden="true">
-    <div class="marquee-track">
-        <div class="marquee-inner">
-            <span>Branding</span><span>&bull;</span><span>Graphic Design</span><span>&bull;</span><span>Photography</span><span>&bull;</span><span>Art Direction</span><span>&bull;</span>
-            <span>Branding</span><span>&bull;</span><span>Graphic Design</span><span>&bull;</span><span>Photography</span><span>&bull;</span><span>Art Direction</span><span>&bull;</span>
-        </div>
-        <div class="marquee-inner" aria-hidden="true">
-            <span>Branding</span><span>&bull;</span><span>Graphic Design</span><span>&bull;</span><span>Photography</span><span>&bull;</span><span>Art Direction</span><span>&bull;</span>
-            <span>Branding</span><span>&bull;</span><span>Graphic Design</span><span>&bull;</span><span>Photography</span><span>&bull;</span><span>Art Direction</span><span>&bull;</span>
-        </div>
-    </div>
+<div class="marquee" aria-hidden="true">
+  <div class="mq-track">
+    <span class="mq-item">Graphic Design</span>
+    <span class="mq-item">Branding</span>
+    <span class="mq-item">Fotografia</span>
+    <span class="mq-item">Editorial</span>
+    <span class="mq-item">ADV Campaign</span>
+    <span class="mq-item">Visual Identity</span>
+    <span class="mq-item">Graphic Design</span>
+    <span class="mq-item">Branding</span>
+    <span class="mq-item">Fotografia</span>
+    <span class="mq-item">Editorial</span>
+    <span class="mq-item">ADV Campaign</span>
+    <span class="mq-item">Visual Identity</span>
+  </div>
 </div>
 
 <!-- Works -->
-<section id="works" class="s-wide">
-    <div style="padding:0 5vw" class="fadeup">
-        <h2 class="works-title">
-            <span data-it>Lavori<br>Selezionati</span>
-            <span data-en style="display:none">Selected<br>Works</span>
-        </h2>
+<section class="section" id="works">
+  <div class="wrap">
+    <div class="fu">
+      <span class="sec-tag"><span data-it>Lavori selezionati</span><span data-en style="display:none">Selected works</span></span>
+      <h2 class="sec-h2"><span data-it>Progetti</span><span data-en style="display:none">Projects</span></h2>
     </div>
-    <div class="filter-tabs fadeup fadeup-d1" role="group" aria-label="Filtra per categoria">
-        <button class="filter-btn active" data-filter="all"><span data-it>Tutti</span><span data-en style="display:none">All</span></button>
-        <button class="filter-btn" data-filter="adv">ADV / Layout</button>
-        <button class="filter-btn" data-filter="editorial">Editorial</button>
-        <button class="filter-btn" data-filter="poster">Poster</button>
-        <button class="filter-btn" data-filter="design">Graphic Design</button>
-        <button class="filter-btn" data-filter="photo"><span data-it>Fotografia</span><span data-en style="display:none">Photography</span></button>
+    <div class="filters fu fu-d1">
+      <button class="f-btn on" data-filter="all"><span data-it>Tutti</span><span data-en style="display:none">All</span></button>
+      <button class="f-btn" data-filter="design">Design</button>
+      <button class="f-btn" data-filter="adv">ADV</button>
+      <button class="f-btn" data-filter="poster">Poster</button>
+      <button class="f-btn" data-filter="editorial">Editorial</button>
     </div>
+    <div class="wgrid" data-sg>
 
-    <!-- Desktop grid -->
-    <div class="portfolio-grid" data-stagger>
-        <div class="work-card span2" data-category="design">
-            <div class="work-type-hero">
-                <span class="wth-deco" aria-hidden="true">F</span>
-                <a href="https://rinaldicristian92-hash.github.io/foggiApp/" target="_blank" rel="noopener" class="wth-live" data-it>Apri l'app ↗</a>
-                <a href="https://rinaldicristian92-hash.github.io/foggiApp/" target="_blank" rel="noopener" class="wth-live" data-en style="display:none">Open app ↗</a>
-                <div class="wth-meta">Stage Grani Digitali &middot; Web App &middot; 2025–26</div>
-                <div class="wth-name">FoggiApp</div>
-                <div class="wth-chips">
-                    <span class="wth-chip" data-it>Percorsi storici</span>
-                    <span class="wth-chip" data-it>Mappa interattiva</span>
-                    <span class="wth-chip" data-it>Moduli multimediali</span>
-                    <span class="wth-chip" data-en style="display:none">Historic trails</span>
-                    <span class="wth-chip" data-en style="display:none">Interactive map</span>
-                    <span class="wth-chip" data-en style="display:none">Multimedia modules</span>
-                </div>
-            </div>
-            <div class="work-info">
-                <div class="work-info-top"><span class="work-name">FoggiApp</span><span class="work-cat">Web App</span></div>
-                <p class="work-desc" data-it>Stage Grani Digitali · web app per la promozione culturale e turistica di Foggia — percorsi storici, mappa interattiva, moduli multimediali · 2025–26</p>
-                <p class="work-desc" data-en style="display:none">Grani Digitali internship · web app promoting Foggia's cultural and tourist heritage · 2025–26</p>
-            </div>
+      <!-- FoggiApp -->
+      <div class="wcard-f" data-cat="design">
+        <div class="wf-row">
+          <div>
+            <p class="wf-meta">Web App · 2025–26</p>
+            <h3 class="wf-title"><span class="red">Foggi</span>App</h3>
+            <p class="wf-sub" data-it>Stage Grani Digitali · web app per la promozione culturale e turistica di Foggia — percorsi storici, mappa interattiva, moduli multimediali.</p>
+            <p class="wf-sub" data-en style="display:none">Internship at Grani Digitali · web app for cultural and tourist promotion of Foggia — historic trails, interactive map, multimedia modules.</p>
+          </div>
+          <a href="https://rinaldicristian92-hash.github.io/foggiApp/" target="_blank" rel="noopener" class="wf-link">
+            <span data-it>Apri app</span><span data-en style="display:none">Open app</span> ↗
+          </a>
         </div>
+        <div class="wf-chips">
+          <span class="wf-chip" data-it>Percorsi storici</span><span class="wf-chip" data-en style="display:none">Historic trails</span>
+          <span class="wf-chip" data-it>Mappa interattiva</span><span class="wf-chip" data-en style="display:none">Interactive map</span>
+          <span class="wf-chip" data-it>Moduli multimediali</span><span class="wf-chip" data-en style="display:none">Multimedia</span>
+        </div>
+      </div>
 
-        <div class="work-card span2" data-category="adv">
-            <div class="work-img">
-                <div class="work-view-label"><span>VIEW</span></div>
-                <img src="layout admo x tutto (1)_page-0001.jpg" alt="Campagna ADMO" loading="lazy"/>
-            </div>
-            <div class="work-info">
-                <div class="work-info-top">
-                    <span class="work-name" data-it>Campagna ADMO</span><span class="work-name" data-en style="display:none">ADMO Campaign</span>
-                    <span class="work-cat">ADV / Layout</span>
-                </div>
-                <p class="work-desc" data-it>Sensibilizzazione sulla donazione del midollo osseo · selezionato per la comunicazione ufficiale con Gianmarco Saurino · 2024</p>
-                <p class="work-desc" data-en style="display:none">Bone marrow donation awareness · selected for official campaign with Gianmarco Saurino · 2024</p>
-            </div>
+      <!-- Campagna ADMO -->
+      <div class="wcard" data-cat="adv">
+        <div class="wcard-img"><img src="layout admo x tutto (1)_page-0001.jpg" alt="Campagna ADMO" loading="lazy"/></div>
+        <div class="wcard-body">
+          <div class="wcard-meta"><span class="wcard-cat">ADV</span><span class="wcard-yr">2024</span></div>
+          <p class="wcard-name"><span data-it>Campagna ADMO</span><span data-en style="display:none">ADMO Campaign</span></p>
+          <p class="wcard-desc" data-it>Sensibilizzazione sulla donazione del midollo osseo · selezionato per la comunicazione ufficiale con Gianmarco Saurino.</p>
+          <p class="wcard-desc" data-en style="display:none">Bone marrow donation awareness · selected for official communication with Gianmarco Saurino.</p>
         </div>
+      </div>
 
-        <div class="work-card span2" data-category="adv">
-            <div class="work-img">
-                <div class="work-view-label"><span>VIEW</span></div>
-                <img src="petito-elezioni-p1.jpg" alt="Campagna Elettorale Valentina Petito" loading="lazy"/>
-            </div>
-            <div class="work-info">
-                <div class="work-info-top">
-                    <span class="work-name" data-it>Campagna Elettorale</span><span class="work-name" data-en style="display:none">Election Campaign</span>
-                    <span class="work-cat">ADV / Layout</span>
-                </div>
-                <p class="work-desc" data-it>Commessa privata · materiali grafici per Valentina Petito, candidata consigliere comunale · Elezioni Lucera 2026</p>
-                <p class="work-desc" data-en style="display:none">Private commission · campaign graphics for Valentina Petito, council candidate · Lucera Municipal Elections 2026</p>
-            </div>
+      <!-- Campagna Elettorale -->
+      <div class="wcard" data-cat="adv">
+        <div class="wcard-img"><img src="petito-elezioni-p1.jpg" alt="Campagna Elettorale Valentina Petito" loading="lazy"/></div>
+        <div class="wcard-body">
+          <div class="wcard-meta"><span class="wcard-cat">ADV</span><span class="wcard-yr">2026</span></div>
+          <p class="wcard-name"><span data-it>Campagna Elettorale</span><span data-en style="display:none">Election Campaign</span></p>
+          <p class="wcard-desc" data-it>Commessa privata · materiali grafici per Valentina Petito, candidata consigliere comunale · Lucera 2026.</p>
+          <p class="wcard-desc" data-en style="display:none">Private commission · graphic materials for Valentina Petito, council candidate · Lucera 2026.</p>
         </div>
+      </div>
 
-        <div class="work-card span2" data-category="editorial">
-            <div class="work-img">
-                <div class="work-view-label"><span>VIEW</span></div>
-                <img src="copertina libro.jpg" alt="Copertina libro" loading="lazy"/>
-            </div>
-            <div class="work-info">
-                <div class="work-info-top">
-                    <span class="work-name" data-it>Copertina Libri</span><span class="work-name" data-en style="display:none">Book Cover</span>
-                    <span class="work-cat">Editorial Design</span>
-                </div>
-                <p class="work-desc" data-it>Progetto scolastico · I.I.S. Einaudi Foggia · editorial design, tipografia e composizione</p>
-                <p class="work-desc" data-en style="display:none">School project · I.I.S. Einaudi Foggia · editorial design, typography and layout</p>
-            </div>
+      <!-- Copertina Libri -->
+      <div class="wcard" data-cat="editorial">
+        <div class="wcard-img"><img src="copertina libro.jpg" alt="Copertina libro" loading="lazy"/></div>
+        <div class="wcard-body">
+          <div class="wcard-meta"><span class="wcard-cat">Editorial</span><span class="wcard-yr">—</span></div>
+          <p class="wcard-name"><span data-it>Copertina Libri</span><span data-en style="display:none">Book Cover</span></p>
+          <p class="wcard-desc" data-it>Progetto scolastico · I.I.S. Einaudi Foggia · editorial design, tipografia e composizione.</p>
+          <p class="wcard-desc" data-en style="display:none">School project · I.I.S. Einaudi Foggia · editorial design, typography and composition.</p>
         </div>
+      </div>
 
-        <div class="work-card" data-category="poster">
-            <div class="work-img work-img-inner">
-                <div class="work-view-label"><span>VIEW</span></div>
-                <img src="Blue Bold Modern Fashion Coming Soon Poster.jpg" alt="Fashion Poster" loading="lazy"/>
-            </div>
-            <div class="work-info">
-                <div class="work-info-top">
-                    <span class="work-name" data-it>Poster Fashion</span><span class="work-name" data-en style="display:none">Fashion Poster</span>
-                    <span class="work-cat">Poster Design</span>
-                </div>
-                <p class="work-desc" data-it>Progetto scolastico · I.I.S. Einaudi Foggia · poster bold per campagna moda</p>
-                <p class="work-desc" data-en style="display:none">School project · I.I.S. Einaudi Foggia · bold poster for fashion campaign</p>
-            </div>
+      <!-- Poster Fashion -->
+      <div class="wcard" data-cat="poster">
+        <div class="wcard-img"><img src="Blue Bold Modern Fashion Coming Soon Poster.jpg" alt="Fashion Poster" loading="lazy"/></div>
+        <div class="wcard-body">
+          <div class="wcard-meta"><span class="wcard-cat">Poster</span><span class="wcard-yr">—</span></div>
+          <p class="wcard-name"><span data-it>Poster Fashion</span><span data-en style="display:none">Fashion Poster</span></p>
+          <p class="wcard-desc" data-it>Progetto scolastico · I.I.S. Einaudi Foggia · poster bold per campagna moda.</p>
+          <p class="wcard-desc" data-en style="display:none">School project · bold fashion campaign poster.</p>
         </div>
+      </div>
 
-        <div class="work-card" data-category="design">
-            <div class="work-img work-img-inner">
-                <div class="work-view-label"><span>VIEW</span></div>
-                <img src="Tavola disegno 1@3x.png" alt="Menú Cresima" loading="lazy"/>
-            </div>
-            <div class="work-info">
-                <div class="work-info-top">
-                    <span class="work-name" data-it>Menú Evento</span><span class="work-name" data-en style="display:none">Event Menu</span>
-                    <span class="work-cat">Graphic Design</span>
-                </div>
-                <p class="work-desc" data-it>Commessa privata · impaginazione menú per evento · stile elegante e minimalista</p>
-                <p class="work-desc" data-en style="display:none">Private commission · menu layout for event · elegant minimal style</p>
-            </div>
+      <!-- Menú Evento -->
+      <div class="wcard" data-cat="design">
+        <div class="wcard-img"><img src="Tavola disegno 1@3x.png" alt="Menú Cresima" loading="lazy"/></div>
+        <div class="wcard-body">
+          <div class="wcard-meta"><span class="wcard-cat">Design</span><span class="wcard-yr">—</span></div>
+          <p class="wcard-name"><span data-it>Menú Evento</span><span data-en style="display:none">Event Menu</span></p>
+          <p class="wcard-desc" data-it>Commessa privata · impaginazione menú per evento · stile elegante e minimalista.</p>
+          <p class="wcard-desc" data-en style="display:none">Private commission · event menu layout · elegant and minimalist style.</p>
         </div>
+      </div>
 
-        <div class="work-card" data-category="poster">
-            <div class="work-img work-img-inner">
-                <div class="work-view-label"><span>VIEW</span></div>
-                <img src="consegna giornata della memoria -01.jpeg" alt="Giornata della Memoria" loading="lazy"/>
-            </div>
-            <div class="work-info">
-                <div class="work-info-top">
-                    <span class="work-name" data-it>Giornata della Memoria</span><span class="work-name" data-en style="display:none">Memorial Day Poster</span>
-                    <span class="work-cat">Editorial Poster</span>
-                </div>
-                <p class="work-desc" data-it>Poster commemorativo · 27 Gennaio · progetto esposto alla Fondazione Monti Uniti 2026</p>
-                <p class="work-desc" data-en style="display:none">Commemorative poster · January 27th · exhibited at Fondazione Monti Uniti 2026</p>
-            </div>
+      <!-- Giornata della Memoria -->
+      <div class="wcard" data-cat="poster">
+        <div class="wcard-img"><img src="consegna giornata della memoria -01.jpeg" alt="Giornata della Memoria" loading="lazy"/></div>
+        <div class="wcard-body">
+          <div class="wcard-meta"><span class="wcard-cat">Poster</span><span class="wcard-yr">2026</span></div>
+          <p class="wcard-name"><span data-it>Giornata della Memoria</span><span data-en style="display:none">Memorial Day</span></p>
+          <p class="wcard-desc" data-it>Poster commemorativo · 27 Gennaio · esposto alla Fondazione Monti Uniti 2026.</p>
+          <p class="wcard-desc" data-en style="display:none">Commemorative poster · January 27th · exhibited at Fondazione Monti Uniti 2026.</p>
         </div>
+      </div>
 
-        <div class="work-card" data-category="poster">
-            <div class="work-img work-img-inner">
-                <div class="work-view-label"><span>VIEW</span></div>
-                <img src="MANIFESTO completo.jpg" alt="Manifesto Off Road CVM" loading="lazy"/>
-            </div>
-            <div class="work-info">
-                <div class="work-info-top">
-                    <span class="work-name" data-it>Manifesto CVM</span><span class="work-name" data-en style="display:none">CVM Poster</span>
-                    <span class="work-cat">Graphic Design</span>
-                </div>
-                <p class="work-desc" data-it>Manifesto per evento Off Road CVM · composizione tipografica e visiva d'impatto</p>
-                <p class="work-desc" data-en style="display:none">Poster for Off Road CVM event · strong typographic and visual composition</p>
-            </div>
+      <!-- Manifesto CVM -->
+      <div class="wcard" data-cat="poster">
+        <div class="wcard-img"><img src="MANIFESTO completo.jpg" alt="Manifesto Off Road CVM" loading="lazy"/></div>
+        <div class="wcard-body">
+          <div class="wcard-meta"><span class="wcard-cat">Poster</span><span class="wcard-yr">—</span></div>
+          <p class="wcard-name"><span data-it>Manifesto CVM</span><span data-en style="display:none">CVM Poster</span></p>
+          <p class="wcard-desc" data-it>Manifesto per evento Off Road CVM · composizione tipografica e visiva d'impatto.</p>
+          <p class="wcard-desc" data-en style="display:none">Off Road CVM event poster · impactful typographic composition.</p>
         </div>
+      </div>
 
-        <div class="work-card" data-category="design">
-            <div class="work-img work-img-inner">
-                <div class="work-view-label"><span>VIEW</span></div>
-                <img src="ChatGPT Image 17 apr 2026, 17_56_25.png" alt="Inviti compleanni" loading="lazy"/>
-            </div>
-            <div class="work-info">
-                <div class="work-info-top">
-                    <span class="work-name" data-it>Inviti Evento</span><span class="work-name" data-en style="display:none">Event Invitations</span>
-                    <span class="work-cat">Invitation Design</span>
-                </div>
-                <p class="work-desc" data-it>Commessa privata · inviti personalizzati per evento · concept grafico coordinato</p>
-                <p class="work-desc" data-en style="display:none">Private commission · custom invitations for event · coordinated graphic concept</p>
-            </div>
+      <!-- Inviti Evento -->
+      <div class="wcard" data-cat="design">
+        <div class="wcard-img"><img src="ChatGPT Image 17 apr 2026, 17_56_25.png" alt="Inviti compleanni" loading="lazy"/></div>
+        <div class="wcard-body">
+          <div class="wcard-meta"><span class="wcard-cat">Design</span><span class="wcard-yr">—</span></div>
+          <p class="wcard-name"><span data-it>Inviti Evento</span><span data-en style="display:none">Event Invitations</span></p>
+          <p class="wcard-desc" data-it>Commessa privata · inviti personalizzati per evento · concept grafico coordinato.</p>
+          <p class="wcard-desc" data-en style="display:none">Private commission · custom event invitations · coordinated graphic concept.</p>
         </div>
+      </div>
+
+    </div><!-- /wgrid -->
+  </div>
+</section>
+
+<!-- Photography -->
+<section class="section" id="photo">
+  <div class="wrap">
+    <div class="fu">
+      <span class="sec-tag"><span data-it>Scatti selezionati</span><span data-en style="display:none">Selected shots</span></span>
+      <h2 class="sec-h2"><span data-it>Fotografia</span><span data-en style="display:none">Photography</span></h2>
     </div>
-
-    <!-- Mobile scroll -->
-    <div class="portfolio-scroll">
-        <div class="work-card" data-category="design">
-            <div class="work-type-hero">
-                <span class="wth-deco" aria-hidden="true">F</span>
-                <div class="wth-meta">Web App · 2025–26</div>
-                <div class="wth-name">FoggiApp</div>
-                <div class="wth-chips"><span class="wth-chip" data-it>Mappa</span><span class="wth-chip" data-it>Percorsi</span><span class="wth-chip" data-en style="display:none">Map</span><span class="wth-chip" data-en style="display:none">Trails</span></div>
-            </div>
-            <div class="work-info"><span class="work-name">FoggiApp</span><span class="work-cat">Web App</span></div>
-        </div>
-        <div class="work-card" data-category="adv">
-            <div class="work-img"><img src="layout admo x tutto (1)_page-0001.jpg" alt="ADMO" loading="lazy"/></div>
-            <div class="work-info"><span class="work-name">ADMO</span><span class="work-cat">ADV</span></div>
-        </div>
-        <div class="work-card" data-category="adv">
-            <div class="work-img"><img src="petito-elezioni-p1.jpg" alt="Campagna Petito" loading="lazy"/></div>
-            <div class="work-info"><span class="work-name" data-it>Campagna Elettorale</span><span class="work-name" data-en style="display:none">Election Campaign</span><span class="work-cat">ADV</span></div>
-        </div>
-        <div class="work-card" data-category="editorial">
-            <div class="work-img"><img src="copertina libro.jpg" alt="Copertina" loading="lazy"/></div>
-            <div class="work-info"><span class="work-name" data-it>Copertina</span><span class="work-name" data-en style="display:none">Cover</span><span class="work-cat">Editorial</span></div>
-        </div>
-        <div class="work-card" data-category="poster">
-            <div class="work-img"><img src="Blue Bold Modern Fashion Coming Soon Poster.jpg" alt="Poster" loading="lazy"/></div>
-            <div class="work-info"><span class="work-name">Poster</span><span class="work-cat">Design</span></div>
-        </div>
-        <div class="work-card" data-category="design">
-            <div class="work-img"><img src="Tavola disegno 1@3x.png" alt="Menú" loading="lazy"/></div>
-            <div class="work-info"><span class="work-name">Menú</span><span class="work-cat">Design</span></div>
-        </div>
-        <div class="work-card" data-category="poster">
-            <div class="work-img"><img src="consegna giornata della memoria -01.jpeg" alt="Memoria" loading="lazy"/></div>
-            <div class="work-info"><span class="work-name" data-it>Memoria</span><span class="work-name" data-en style="display:none">Memorial</span><span class="work-cat">Editorial</span></div>
-        </div>
-        <div class="work-card" data-category="poster">
-            <div class="work-img"><img src="MANIFESTO completo.jpg" alt="Manifesto" loading="lazy"/></div>
-            <div class="work-info"><span class="work-name">Manifesto</span><span class="work-cat">Design</span></div>
-        </div>
-        <div class="work-card" data-category="design">
-            <div class="work-img"><img src="ChatGPT Image 17 apr 2026, 17_56_25.png" alt="Inviti" loading="lazy"/></div>
-            <div class="work-info"><span class="work-name" data-it>Inviti</span><span class="work-name" data-en style="display:none">Invitations</span><span class="work-cat">Design</span></div>
-        </div>
+    <div class="photo-cols" data-sg>
+      <div class="pitem"><img src="IMG_1863-Edit.jpg" alt="Fotografia 01" loading="lazy"/><div class="pview"><span>VIEW</span></div></div>
+      <div class="pitem"><img src="IMG_1106.jpg" alt="Fotografia 02" loading="lazy"/><div class="pview"><span>VIEW</span></div></div>
+      <div class="pitem"><img src="IMG_1242.jpg" alt="Fotografia 03" loading="lazy"/><div class="pview"><span>VIEW</span></div></div>
+      <div class="pitem"><img src="IMG_1245.jpg" alt="Fotografia 04" loading="lazy"/><div class="pview"><span>VIEW</span></div></div>
+      <div class="pitem"><img src="IMG_1843.jpg" alt="Fotografia 05" loading="lazy"/><div class="pview"><span>VIEW</span></div></div>
+      <div class="pitem"><img src="IMG_0980.jpg" alt="Fotografia 06" loading="lazy"/><div class="pview"><span>VIEW</span></div></div>
+      <div class="pitem"><img src="IMG_0989.jpg" alt="Fotografia 07" loading="lazy"/><div class="pview"><span>VIEW</span></div></div>
+      <div class="pitem"><img src="IMG_0995.jpg" alt="Fotografia 08" loading="lazy"/><div class="pview"><span>VIEW</span></div></div>
+      <div class="pitem"><img src="IMG_1352.jpg" alt="Fotografia 09" loading="lazy"/><div class="pview"><span>VIEW</span></div></div>
+      <div class="pitem"><img src="3.jpg" alt="Fotografia 10" loading="lazy"/><div class="pview"><span>VIEW</span></div></div>
+      <div class="pitem"><img src="7b0ea8e9-adf0-42ef-923d-ab93ec44c02b.jpg" alt="Fotografia 11" loading="lazy"/><div class="pview"><span>VIEW</span></div></div>
+      <div class="pitem"><img src="890A6FF2-625E-4C06-8CCE-3B4FAE2E5FC6.jpg" alt="Fotografia 12" loading="lazy"/><div class="pview"><span>VIEW</span></div></div>
+      <div class="pitem"><img src="C511B57F-2E1F-434E-96E7-F7943D91B77D.jpg" alt="Fotografia 13" loading="lazy"/><div class="pview"><span>VIEW</span></div></div>
+      <div class="pitem"><img src="EBC6D4A8-8E5D-4C27-ADA8-2D70D02EEC97.jpg" alt="Fotografia 14" loading="lazy"/><div class="pview"><span>VIEW</span></div></div>
+      <div class="pitem"><img src="FDEB8F01-3D1A-4F8F-A43E-DEF6FA323882.jpg" alt="Fotografia 15" loading="lazy"/><div class="pview"><span>VIEW</span></div></div>
+      <div class="pitem"><img src="IMG_0621.jpg" alt="Fotografia 16" loading="lazy"/><div class="pview"><span>VIEW</span></div></div>
+      <div class="pitem"><img src="2e3a1980-286c-4b29-a1e7-2d15f1f1907d.jpg" alt="Fotografia 17" loading="lazy"/><div class="pview"><span>VIEW</span></div></div>
+      <div class="pitem"><img src="68ee55c1-d494-498a-9950-cbf8829da1f7.jpg" alt="Fotografia 18" loading="lazy"/><div class="pview"><span>VIEW</span></div></div>
+      <div class="pitem"><img src="ec5d42eb-55bd-4f0c-9544-be05dbdfe282.jpg" alt="Fotografia 19" loading="lazy"/><div class="pview"><span>VIEW</span></div></div>
     </div>
-
-    <div class="fadeup" style="padding:0 5vw 2rem;font-size:clamp(.82rem,1.3vw,1rem);font-weight:500;color:var(--text-muted)">
-        <span data-it>Per altri lavori visita i miei <a href="https://rinaldicristian92-hash.github.io/linkthreek/" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700">link</a>.</span>
-        <span data-en style="display:none">For more work visit my <a href="https://rinaldicristian92-hash.github.io/linkthreek/" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700">links</a>.</span>
-    </div>
-
-    <!-- Photography -->
-    <div class="photo-section fadeup" id="photoSection">
-        <div class="photo-section-header">
-            <span class="section-tag" data-it>Lavori Selezionati</span>
-            <span class="section-tag" data-en style="display:none">Selected Works</span>
-            <h3 class="photo-section-title">
-                <span data-it>Foto<span style="color:var(--accent)">grafia</span></span>
-                <span data-en style="display:none">Photo<span style="color:var(--accent)">graphy</span></span>
-            </h3>
-        </div>
-        <div class="photo-gallery" data-stagger>
-            <div class="photo-card"><img src="IMG_1863-Edit.jpg" alt="Fotografia 01" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="IMG_1106.jpg" alt="Fotografia 02" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="IMG_1242.jpg" alt="Fotografia 03" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="IMG_1245.jpg" alt="Fotografia 04" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="IMG_1843.jpg" alt="Fotografia 05" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="IMG_0980.jpg" alt="Fotografia 06" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="IMG_0989.jpg" alt="Fotografia 07" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="IMG_0995.jpg" alt="Fotografia 08" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="IMG_1352.jpg" alt="Fotografia 09" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="3.jpg" alt="Fotografia 10" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="7b0ea8e9-adf0-42ef-923d-ab93ec44c02b.jpg" alt="Fotografia 11" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="890A6FF2-625E-4C06-8CCE-3B4FAE2E5FC6.jpg" alt="Fotografia 12" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="C511B57F-2E1F-434E-96E7-F7943D91B77D.jpg" alt="Fotografia 13" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="EBC6D4A8-8E5D-4C27-ADA8-2D70D02EEC97.jpg" alt="Fotografia 14" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="FDEB8F01-3D1A-4F8F-A43E-DEF6FA323882.jpg" alt="Fotografia 15" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="IMG_0621.jpg" alt="Fotografia 16" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="2e3a1980-286c-4b29-a1e7-2d15f1f1907d.jpg" alt="Fotografia 17" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="68ee55c1-d494-498a-9950-cbf8829da1f7.jpg" alt="Fotografia 18" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-            <div class="photo-card"><img src="ec5d42eb-55bd-4f0c-9544-be05dbdfe282.jpg" alt="Fotografia 19" loading="lazy"/><div class="photo-card-view"><span>VIEW</span></div></div>
-        </div>
-    </div>
+  </div>
 </section>
 
 <!-- About -->
-<section class="s" id="about">
-    <div class="about-me-grid">
-        <div class="fadeup">
-            <span class="section-tag" data-it>Chi sono</span>
-            <span class="section-tag" data-en style="display:none">About me</span>
-            <p class="about-statement" style="margin-top:1.35rem">
-                <span data-it>Un buon progetto visivo non è solo esteticamente bello — <em>è quello che funziona per il tuo brand, riconoscibile, coerente, difficile da ignorare.</em></span>
-                <span data-en style="display:none">A good visual project isn't just beautiful — <em>it's the one that works for your brand: recognisable, consistent, hard to ignore.</em></span>
-            </p>
-            <p class="about-me-text" data-it>Graphic Designer e Fotografo a Foggia. Mi occupo di branding, campagne visive ed editorial design — lavoro con privati, associazioni e realtà locali che vogliono comunicare meglio attraverso il visual.</p>
-            <p class="about-me-text" data-en style="display:none">Graphic Designer and Photographer based in Foggia. I work on branding, visual campaigns and editorial design — for private clients, associations and local businesses that want stronger visual communication.</p>
-            <a href="Curriculum Vitae Semplice Essenziale Minimal Pulito Moderno Bianco Nero Designer.jpg" download="CV_CristianRinaldi.jpg" class="cv-download">
-                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                <span data-it>Scarica CV</span><span data-en style="display:none">Download CV</span>
-            </a>
-            <div class="exp-compact">
-                <div class="exp-compact-item"><span class="exp-compact-year">2026 —</span><span class="exp-compact-role">Social Media Management · GAM Ristorazione</span></div>
-                <div class="exp-compact-item">
-                    <span class="exp-compact-year">2026</span>
-                    <span class="exp-compact-role" data-it>Mostra collettiva · Fondazione Monti Uniti, Foggia</span>
-                    <span class="exp-compact-role" data-en style="display:none">Collective exhibition · Fondazione Monti Uniti, Foggia</span>
-                </div>
-                <div class="exp-compact-item">
-                    <span class="exp-compact-year">2025–26</span>
-                    <span class="exp-compact-role" data-it>Stage · Grani Digitali</span>
-                    <span class="exp-compact-role" data-en style="display:none">Internship · Grani Digitali</span>
-                </div>
-                <div class="exp-compact-item">
-                    <span class="exp-compact-year">2025</span>
-                    <span class="exp-compact-role" data-it>Layout · Capitanatale Foggia</span>
-                    <span class="exp-compact-role" data-en style="display:none">Layout · Capitanatale Foggia</span>
-                </div>
-                <div class="exp-compact-item">
-                    <span class="exp-compact-year">2024</span>
-                    <span class="exp-compact-role" data-it>Campagna ADMO con Gianmarco Saurino</span>
-                    <span class="exp-compact-role" data-en style="display:none">ADMO campaign with Gianmarco Saurino</span>
-                </div>
-            </div>
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="fu">
+        <span class="sec-tag"><span data-it>Chi sono</span><span data-en style="display:none">About me</span></span>
+        <p class="about-stmt">
+          <span data-it>Un buon progetto visivo non è solo esteticamente bello — <em>è quello che funziona per il tuo brand, riconoscibile, coerente, difficile da ignorare.</em></span>
+          <span data-en style="display:none">A good visual project isn't just beautiful — <em>it's what works for your brand: recognisable, consistent, hard to ignore.</em></span>
+        </p>
+        <p class="about-body" data-it>Graphic Designer e Fotografo a Foggia. Mi occupo di branding, campagne visive ed editorial design — lavoro con privati, associazioni e realtà locali che vogliono comunicare meglio attraverso il visual.</p>
+        <p class="about-body" data-en style="display:none">Graphic Designer and Photographer based in Foggia. I work on branding, visual campaigns and editorial design — for private clients, associations and local businesses that want stronger visual communication.</p>
+        <a href="Curriculum Vitae Semplice Essenziale Minimal Pulito Moderno Bianco Nero Designer.jpg" download="CV_CristianRinaldi.jpg" class="cv-btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span data-it>Scarica CV</span><span data-en style="display:none">Download CV</span>
+        </a>
+        <div class="exp-list">
+          <div class="exp-row"><span class="exp-yr">2026 —</span><span class="exp-role">Social Media Management · GAM Ristorazione</span></div>
+          <div class="exp-row"><span class="exp-yr">2026</span><span class="exp-role"><span data-it>Mostra collettiva · Fondazione Monti Uniti, Foggia</span><span data-en style="display:none">Collective exhibition · Fondazione Monti Uniti, Foggia</span></span></div>
+          <div class="exp-row"><span class="exp-yr">2025–26</span><span class="exp-role"><span data-it>Stage · Grani Digitali</span><span data-en style="display:none">Internship · Grani Digitali</span></span></div>
+          <div class="exp-row"><span class="exp-yr">2025</span><span class="exp-role"><span data-it>Layout · Capitanatale Foggia</span><span data-en style="display:none">Layout · Capitanatale Foggia</span></span></div>
+          <div class="exp-row"><span class="exp-yr">2024</span><span class="exp-role"><span data-it>Campagna ADMO con Gianmarco Saurino</span><span data-en style="display:none">ADMO campaign with Gianmarco Saurino</span></span></div>
         </div>
-        <div class="about-imgs fadeup fadeup-d1">
-            <div class="img-wrap portrait">
-                <img src="ritratto con sfondo.jpg" alt="Cristian Rinaldi" loading="lazy"/>
-            </div>
+      </div>
+      <div class="fu fu-d1">
+        <div class="about-portrait">
+          <img src="ritratto con sfondo.jpg" alt="Cristian Rinaldi" loading="lazy"/>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- Contact -->
-<section class="contact-s" id="contact">
-    <div class="contact-inner">
-        <div class="fadeup">
-            <h2 class="contact-h">
-                <span data-it>Iniziamo<br><span class="red">un progetto</span></span>
-                <span data-en style="display:none">Let's start<br><span class="red">a project</span></span>
-            </h2>
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="contact-inner fu">
+      <span class="sec-tag"><span data-it>Parliamo</span><span data-en style="display:none">Get in touch</span></span>
+      <h2 class="contact-h">
+        <span data-it>Iniziamo<br><span class="red">un progetto</span></span>
+        <span data-en style="display:none">Let's start<br><span class="red">a project</span></span>
+      </h2>
+      <p class="contact-body" data-it>Hai un progetto da avviare, un brand da costruire o materiali grafici da realizzare? Racconta brevemente cosa ti serve.</p>
+      <p class="contact-body" data-en style="display:none">Got a project to start, a brand to build or graphics to create? Tell me briefly what you need.</p>
+      <form class="form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-row">
+          <div class="field">
+            <label for="cf-name"><span data-it>Nome</span><span data-en style="display:none">Name</span></label>
+            <input type="text" id="cf-name" name="name" required placeholder="Mario Rossi" autocomplete="name"/>
+          </div>
+          <div class="field">
+            <label for="cf-email">Email</label>
+            <input type="email" id="cf-email" name="email" required placeholder="mario@email.com" autocomplete="email"/>
+          </div>
         </div>
-        <div class="fadeup fadeup-d1">
-            <p class="contact-eyebrow" data-it>Scrivimi — rispondo entro 24h</p>
-            <p class="contact-eyebrow" data-en style="display:none">Write to me — I reply within 24h</p>
-            <p class="contact-body" data-it>Hai un progetto da avviare, un brand da costruire o materiali grafici da realizzare? Racconta brevemente cosa ti serve — troveremo insieme la strada giusta.</p>
-            <p class="contact-body" data-en style="display:none">Got a project to start, a brand to build or graphics to create? Tell me briefly what you need — we'll find the right approach together.</p>
-            <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                <div class="form-row">
-                    <div class="form-field">
-                        <label for="cf-name" data-it>Nome</label><label for="cf-name" data-en style="display:none">Name</label>
-                        <input type="text" id="cf-name" name="name" required placeholder="Mario Rossi" autocomplete="name"/>
-                    </div>
-                    <div class="form-field">
-                        <label for="cf-email">Email</label>
-                        <input type="email" id="cf-email" name="email" required placeholder="mario@email.com" autocomplete="email"/>
-                    </div>
-                </div>
-                <div class="form-field">
-                    <label for="cf-service" data-it>Tipo di progetto</label><label for="cf-service" data-en style="display:none">Project type</label>
-                    <select id="cf-service" name="service">
-                        <option value="" data-it>Seleziona...</option><option value="" data-en style="display:none">Select...</option>
-                        <option value="branding">Branding &amp; Identity</option>
-                        <option value="graphic" data-it>Graphic Design</option><option value="graphic" data-en style="display:none">Graphic Design</option>
-                        <option value="photo" data-it>Fotografia</option><option value="photo" data-en style="display:none">Photography</option>
-                        <option value="other" data-it>Altro</option><option value="other" data-en style="display:none">Other</option>
-                    </select>
-                </div>
-                <div class="form-field">
-                    <label for="cf-msg" data-it>Messaggio</label><label for="cf-msg" data-en style="display:none">Message</label>
-                    <textarea id="cf-msg" name="message" required placeholder="Raccontami il tuo progetto..." data-placeholder-it="Raccontami il tuo progetto..." data-placeholder-en="Tell me about your project..."></textarea>
-                </div>
-                <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.7rem">
-                    <button type="submit" class="contact-btn">
-                        <span data-it>Invia messaggio</span><span data-en style="display:none">Send message</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                    </button>
-                    <p class="form-msg" id="formMsg"></p>
-                </div>
-                <p style="font-size:.62rem;color:var(--text-muted);margin-top:.38rem;font-weight:500">
-                    <span data-it>oppure scrivimi a</span><span data-en style="display:none">or email me at</span>
-                    <a href="mailto:rinaldicristian92@gmail.com" style="color:var(--accent);font-weight:700">rinaldicristian92@gmail.com</a>
-                </p>
-            </form>
+        <div class="field">
+          <label for="cf-svc"><span data-it>Tipo di progetto</span><span data-en style="display:none">Project type</span></label>
+          <select id="cf-svc" name="service">
+            <option value="" data-it>Seleziona...</option>
+            <option value="" data-en style="display:none">Select...</option>
+            <option value="branding">Branding &amp; Identity</option>
+            <option value="graphic">Graphic Design</option>
+            <option value="photo" data-it>Fotografia</option>
+            <option value="photo" data-en style="display:none">Photography</option>
+            <option value="other" data-it>Altro</option>
+            <option value="other" data-en style="display:none">Other</option>
+          </select>
         </div>
+        <div class="field">
+          <label for="cf-msg"><span data-it>Messaggio</span><span data-en style="display:none">Message</span></label>
+          <textarea id="cf-msg" name="message" required
+            data-ph-it="Raccontami il tuo progetto..."
+            data-ph-en="Tell me about your project..."
+            placeholder="Raccontami il tuo progetto..."></textarea>
+        </div>
+        <div class="form-foot">
+          <button type="submit" class="sub-btn">
+            <span data-it>Invia messaggio</span><span data-en style="display:none">Send message</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+          <p id="formMsg"></p>
+        </div>
+        <p class="form-note">
+          <span data-it>oppure scrivimi a</span><span data-en style="display:none">or email me at</span>
+          <a href="mailto:rinaldicristian92@gmail.com">rinaldicristian92@gmail.com</a>
+        </p>
+      </form>
     </div>
+  </div>
 </section>
 
 <!-- Mobile CTA -->
-<div class="mobile-cta" id="mobileCta">
-    <div class="mobile-cta-info">
-        <strong>Cristian Rinaldi</strong>
-        <span data-it>Grafico &amp; Fotografo</span>
-        <span data-en style="display:none">Designer &amp; Photographer</span>
-    </div>
-    <a href="#contact" class="mobile-cta-btn">
-        <span data-it>Scrivimi</span><span data-en style="display:none">Contact</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-    </a>
+<div class="mcta" id="mCta">
+  <div class="mcta-info">
+    <strong>Cristian Rinaldi</strong>
+    <span><span data-it>Grafico &amp; Fotografo</span><span data-en style="display:none">Designer &amp; Photographer</span></span>
+  </div>
+  <a href="#contact" class="mcta-btn">
+    <span data-it>Scrivimi</span><span data-en style="display:none">Contact</span>
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </a>
 </div>
 
 <!-- Footer -->
 <footer>
-    <div class="footer-inner">
-        <div class="footer-copy">
-            <p>&copy; 2026 <strong>Cristian Rinaldi</strong>. All Rights Reserved.</p>
-            <span style="font-size:.6rem;color:var(--text-muted)">Designed &amp; Built by Cristian Rinaldi and AI</span>
-        </div>
-        <nav class="footer-links">
-            <a href="https://rinaldicristian92-hash.github.io/linkthreek/" target="_blank" rel="noopener">Links</a>
-            <a href="mailto:rinaldicristian92@gmail.com">Email</a>
-        </nav>
+  <div class="foot-inner">
+    <div class="foot-copy">
+      <p>&copy; 2026 <strong>Cristian Rinaldi</strong>. All Rights Reserved.</p>
+      <span>Designed &amp; Built by Cristian Rinaldi and AI</span>
     </div>
+    <nav class="foot-links">
+      <a href="https://rinaldicristian92-hash.github.io/linkthreek/" target="_blank" rel="noopener">Links ↗</a>
+      <a href="mailto:rinaldicristian92@gmail.com">Email</a>
+    </nav>
+  </div>
 </footer>
 
 <!-- Lightbox -->
-<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Immagine ingrandita">
-    <button class="lb-close" id="lbClose" aria-label="Chiudi">&times;</button>
-    <img src="" alt="" id="lbImg"/>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Immagine ingrandita">
+  <button class="lb-x" id="lbX" aria-label="Chiudi">&times;</button>
+  <img src="" alt="" id="lbImg"/>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+  const html = document.documentElement;
 
-    /* ── THEME TOGGLE ── */
-    const html = document.documentElement;
-    const themeToggle = document.getElementById('themeToggle');
-    let savedTheme = 'dark';
-    try { savedTheme = localStorage.getItem('cr-theme') || 'dark'; } catch(e) {}
-    html.setAttribute('data-theme', savedTheme);
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', next);
-            try { localStorage.setItem('cr-theme', next); } catch(e) {}
-        });
-    }
+  /* ── THEME ── */
+  const themeBtn = document.getElementById('themeBtn');
+  let theme = 'dark';
+  try { theme = localStorage.getItem('cr-theme') || 'dark'; } catch(e) {}
+  html.setAttribute('data-theme', theme);
+  themeBtn.addEventListener('click', () => {
+    theme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', theme);
+    try { localStorage.setItem('cr-theme', theme); } catch(e) {}
+  });
 
-    /* ── PROGRESS BAR ── */
-    const progressBar = document.getElementById('progressBar');
-    window.addEventListener('scroll', () => {
-        const scrollTop = window.scrollY;
-        const docH = document.documentElement.scrollHeight - window.innerHeight;
-        if (progressBar) progressBar.style.width = (docH > 0 ? scrollTop / docH * 100 : 0) + '%';
-    }, { passive: true });
+  /* ── LANG ── */
+  const langBtns = document.querySelectorAll('.lang-btn');
+  let lang = 'it';
+  try { lang = localStorage.getItem('cr-lang') || 'it'; } catch(e) {}
+  applyLang(lang);
 
-    /* ── BACK TO TOP ── */
-    const backTop = document.getElementById('backTop');
-    window.addEventListener('scroll', () => { if (backTop) backTop.classList.toggle('visible', window.scrollY > 500); }, { passive: true });
-    if (backTop) backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    /* ── HAMBURGER ── */
-    const hamburger = document.getElementById('hamburger');
-    const drawer = document.getElementById('mobileDrawer');
-    function closeDrawer() {
-        if (!drawer || !hamburger) return;
-        drawer.classList.remove('open'); hamburger.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false'); hamburger.setAttribute('aria-label', 'Apri menu');
-        document.body.style.overflow = '';
-    }
-    if (hamburger && drawer) {
-        hamburger.addEventListener('click', () => {
-            const isOpen = drawer.classList.toggle('open');
-            hamburger.classList.toggle('open', isOpen);
-            hamburger.setAttribute('aria-expanded', String(isOpen));
-            hamburger.setAttribute('aria-label', isOpen ? 'Chiudi menu' : 'Apri menu');
-            document.body.style.overflow = isOpen ? 'hidden' : '';
-        });
-        drawer.querySelectorAll('.drawer-link').forEach(a => a.addEventListener('click', closeDrawer));
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
-    }
-
-    /* ── FADEUP REVEAL ── */
-    const fadeIO = new IntersectionObserver((entries, obs) => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-    }, { rootMargin: '40px 0px', threshold: 0.06 });
-    document.querySelectorAll('.fadeup').forEach(el => { if (!el.closest('[data-stagger]')) fadeIO.observe(el); });
-
-    /* ── STAGGER GRIDS ── */
-    const staggerIO = new IntersectionObserver((entries, obs) => {
-        entries.forEach(e => {
-            if (!e.isIntersecting) return;
-            Array.from(e.target.children).forEach((child, i) => {
-                child.style.transitionDelay = (i * 52) + 'ms';
-                requestAnimationFrame(() => child.classList.add('in'));
-            });
-            obs.unobserve(e.target);
-        });
-    }, { rootMargin: '0px 0px -15px 0px', threshold: 0.04 });
-    document.querySelectorAll('[data-stagger]').forEach(g => staggerIO.observe(g));
-
-    /* ── FILTER TABS ── */
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const photoSection = document.getElementById('photoSection');
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            const filter = btn.dataset.filter;
-            if (photoSection) photoSection.style.display = (filter === 'all' || filter === 'photo') ? '' : 'none';
-            const isPhotoOnly = filter === 'photo';
-            document.querySelectorAll('.portfolio-grid, .portfolio-scroll').forEach(g => { g.style.display = isPhotoOnly ? 'none' : ''; });
-            if (!isPhotoOnly) {
-                document.querySelectorAll('.portfolio-grid .work-card, .portfolio-scroll .work-card').forEach(card => {
-                    card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
-                });
-            }
-        });
+  langBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      applyLang(btn.dataset.l);
+      try { localStorage.setItem('cr-lang', btn.dataset.l); } catch(e) {}
     });
+  });
 
-    /* ── LIGHTBOX ── */
-    const lb = document.getElementById('lb');
-    const lbImg = document.getElementById('lbImg');
-    const lbClose = document.getElementById('lbClose');
-    function openLb(src, alt) { lbImg.src = src; lbImg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
-    function closeLb() { lb.classList.remove('open'); document.body.style.overflow = ''; setTimeout(() => { lbImg.src = ''; }, 350); }
-    document.querySelectorAll('.photo-card').forEach(card => {
-        card.addEventListener('click', () => { const img = card.querySelector('img'); if (img) openLb(img.src, img.alt); });
+  function applyLang(l) {
+    lang = l;
+    html.setAttribute('data-lang', l);
+    document.querySelectorAll('[data-it]').forEach(el => el.style.display = l === 'it' ? '' : 'none');
+    document.querySelectorAll('[data-en]').forEach(el => el.style.display = l === 'en' ? '' : 'none');
+    langBtns.forEach(b => {
+      b.classList.toggle('on', b.dataset.l === l);
+      b.setAttribute('aria-pressed', b.dataset.l === l);
     });
-    document.addEventListener('click', e => { const img = e.target.closest('.work-img img'); if (!img) return; e.preventDefault(); openLb(img.src, img.alt); });
-    if (lbClose) lbClose.addEventListener('click', closeLb);
-    if (lb) lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+    const ta = document.getElementById('cf-msg');
+    if (ta) ta.placeholder = ta.getAttribute(l === 'it' ? 'data-ph-it' : 'data-ph-en') || '';
+  }
 
-    /* ── MOBILE CTA HIDE ON CONTACT ── */
-    const contactSec = document.getElementById('contact');
-    const mobileCta = document.getElementById('mobileCta');
-    if (contactSec && mobileCta) {
-        new IntersectionObserver(([entry]) => {
-            mobileCta.style.transform = entry.isIntersecting ? 'translateY(120%)' : 'translateY(0)';
-        }, { threshold: 0.1 }).observe(contactSec);
-    }
+  /* ── PROGRESS ── */
+  const prog = document.getElementById('prog');
+  window.addEventListener('scroll', () => {
+    const p = (scrollY / (document.documentElement.scrollHeight - innerHeight)) * 100;
+    prog.style.width = p + '%';
+  }, { passive: true });
 
-    /* ── CONTACT FORM ── */
-    const form = document.getElementById('contactForm');
-    const formMsg = document.getElementById('formMsg');
-    if (form && formMsg) {
-        form.addEventListener('submit', async e => {
-            const action = form.getAttribute('action');
-            if (action.includes('YOUR_FORM_ID')) {
-                e.preventDefault();
-                const name = form.querySelector('[name="name"]').value;
-                const email = form.querySelector('[name="email"]').value;
-                const service = form.querySelector('[name="service"]').value;
-                const message = form.querySelector('[name="message"]').value;
-                window.location.href = 'mailto:rinaldicristian92@gmail.com?subject=' + encodeURIComponent('Progetto: ' + service) + '&body=' + encodeURIComponent('Da: ' + name + ' (' + email + ')\n\n' + message);
-                return;
-            }
-            e.preventDefault();
-            const btn = form.querySelector('button[type="submit"]');
-            btn.disabled = true; formMsg.textContent = '';
-            try {
-                const res = await fetch(action, { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) });
-                if (res.ok) { formMsg.textContent = html.dataset.lang === 'en' ? '✓ Message sent!' : '✓ Messaggio inviato!'; formMsg.style.color = '#34c759'; form.reset(); }
-                else { throw new Error(); }
-            } catch { formMsg.textContent = html.dataset.lang === 'en' ? 'Error. Try again or email directly.' : 'Errore. Riprova o scrivimi via email.'; formMsg.style.color = 'var(--accent)'; }
-            btn.disabled = false;
+  /* ── BACK TO TOP ── */
+  const btt = document.getElementById('btt');
+  window.addEventListener('scroll', () => btt.classList.toggle('show', scrollY > 500), { passive: true });
+  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* ── DRAWER ── */
+  const menuBtn = document.getElementById('menuBtn');
+  const drawer = document.getElementById('drawer');
+  const overlay = document.getElementById('overlay');
+  const drawerX = document.getElementById('drawerX');
+
+  const openDrawer = () => {
+    drawer.classList.add('open');
+    overlay.classList.add('open');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  };
+  const closeDrawer = () => {
+    drawer.classList.remove('open');
+    overlay.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  };
+  menuBtn.addEventListener('click', openDrawer);
+  drawerX.addEventListener('click', closeDrawer);
+  overlay.addEventListener('click', closeDrawer);
+  drawer.querySelectorAll('.drawer-a').forEach(a => a.addEventListener('click', closeDrawer));
+
+  /* ── MOBILE CTA hide at contact ── */
+  const mCta = document.getElementById('mCta');
+  const contactSec = document.getElementById('contact');
+  if (contactSec && mCta) {
+    new IntersectionObserver(([e]) => {
+      mCta.style.opacity = e.isIntersecting ? '0' : '1';
+      mCta.style.pointerEvents = e.isIntersecting ? 'none' : '';
+    }, { threshold: 0.1 }).observe(contactSec);
+  }
+
+  /* ── FADEUP ── */
+  const fuObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); fuObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fu').forEach(el => fuObs.observe(el));
+
+  /* ── STAGGER ── */
+  const sgObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        Array.from(e.target.children).forEach((c, i) => setTimeout(() => c.classList.add('in'), i * 55));
+        sgObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.04 });
+  document.querySelectorAll('[data-sg]').forEach(el => sgObs.observe(el));
+
+  /* ── FILTERS ── */
+  const fBtns = document.querySelectorAll('.f-btn');
+  fBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      fBtns.forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('.wcard[data-cat]').forEach(c => {
+        c.style.display = (f === 'all' || c.dataset.cat === f) ? '' : 'none';
+      });
+      const foggia = document.querySelector('.wcard-f');
+      if (foggia) foggia.style.display = (f === 'all' || f === 'design') ? '' : 'none';
+    });
+  });
+
+  /* ── LIGHTBOX ── */
+  const lb = document.getElementById('lb');
+  const lbImg = document.getElementById('lbImg');
+  const lbX = document.getElementById('lbX');
+
+  document.querySelectorAll('.pitem').forEach(item => {
+    item.addEventListener('click', () => {
+      lbImg.src = item.querySelector('img').src;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  const closeLb = () => { lb.classList.remove('open'); document.body.style.overflow = ''; lbImg.src = ''; };
+  lbX.addEventListener('click', closeLb);
+  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('open')) closeLb(); });
+
+  /* ── CONTACT FORM ── */
+  const form = document.getElementById('contactForm');
+  const formMsg = document.getElementById('formMsg');
+  if (form) {
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = form.querySelector('.sub-btn');
+      btn.disabled = true; btn.style.opacity = '.6';
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
         });
-    }
-
-    /* ── LANGUAGE SWITCH ── */
-    const langBtns = document.querySelectorAll('[data-lang-btn]');
-    function setLang(lang) {
-        html.setAttribute('data-lang', lang); html.setAttribute('lang', lang);
-        langBtns.forEach(b => { const a = b.dataset.langBtn === lang; b.classList.toggle('active', a); b.setAttribute('aria-pressed', String(a)); });
-        document.querySelectorAll('[data-it]').forEach(el => { el.style.display = lang === 'it' ? '' : 'none'; });
-        document.querySelectorAll('[data-en]').forEach(el => { el.style.display = lang === 'en' ? '' : 'none'; });
-        const ta = document.querySelector('textarea[data-placeholder-it]');
-        if (ta) ta.placeholder = lang === 'en' ? ta.dataset.placeholderEn : ta.dataset.placeholderIt;
-        try { localStorage.setItem('cr-lang', lang); } catch(e) {}
-    }
-    let savedLang = 'it';
-    try { savedLang = localStorage.getItem('cr-lang') || 'it'; } catch(e) {}
-    setLang(savedLang);
-    langBtns.forEach(btn => btn.addEventListener('click', () => setLang(btn.dataset.langBtn)));
-
-    /* ── LAZY DECODING ── */
-    document.querySelectorAll('img[loading="lazy"]').forEach(img => { img.decoding = 'async'; });
-
+        if (res.ok) {
+          formMsg.textContent = lang === 'it' ? 'Messaggio inviato!' : 'Message sent!';
+          formMsg.style.color = '#22c55e';
+          form.reset();
+        } else throw new Error();
+      } catch {
+        formMsg.textContent = lang === 'it'
+          ? 'Errore. Scrivi a rinaldicristian92@gmail.com'
+          : 'Error. Email rinaldicristian92@gmail.com';
+        formMsg.style.color = 'var(--accent)';
+      } finally {
+        btn.disabled = false; btn.style.opacity = '';
+      }
+    });
+  }
 });
 </script>
 </body>
