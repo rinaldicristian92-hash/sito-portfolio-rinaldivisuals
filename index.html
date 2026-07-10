@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Cristian Rinaldi — Rinaldi Visuals · Graphic Designer & Fotografo</title>
+<meta name="description" content="Cristian Rinaldi — Graphic Designer e Fotografo a Foggia. Branding, identità visive, fotografia e art direction. Design essenziale, impatto assoluto."/>
+<meta name="author" content="Cristian Rinaldi"/>
+<meta property="og:title" content="Cristian Rinaldi — Rinaldi Visuals"/>
+<meta property="og:description" content="Graphic Designer & Fotografo. Identità visive che lasciano il segno."/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="assets/ritratto.jpg"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23000'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Helvetica' font-weight='700' font-size='13' fill='%23fff'>R<tspan fill='%23ff3b30'>.</tspan></text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+<style>
+/* ════════════════════════════════════════════
+   RINALDI VISUALS — 2026
+   Apple-inspired · minimal · cinematic
+   ════════════════════════════════════════════ */
+:root{
+  --black:#000;
+  --ink:#1d1d1f;
+  --paper:#f5f5f7;
+  --white:#fff;
+  --gray:#86868b;
+  --gray-2:#6e6e73;
+  --hair:rgba(0,0,0,.08);
+  --hair-inv:rgba(255,255,255,.12);
+  --red:#ff3b30;
+  --red-deep:#e62020;
+  --grad:linear-gradient(100deg,#ff6b5e 0%,#ff3b30 40%,#e62020 100%);
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --ease-io:cubic-bezier(.4,0,.2,1);
+  --nav-h:52px;
+  --radius:28px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+a,button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+body{
+  font-family:var(--font);
+  background:var(--black);
+  color:var(--paper);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+::selection{background:var(--red);color:#fff}
+html.lb-open,body.lb-open{overflow:hidden}
+
+/* ── LOADER ── */
+.loader{
+  position:fixed;inset:0;z-index:2000;background:var(--black);
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .7s var(--ease-io),visibility .7s;
+}
+.loader.done{opacity:0;visibility:hidden}
+.loader-mark{
+  display:flex;flex-direction:column;align-items:center;gap:1.2rem;
+  opacity:0;animation:loadIn 1s var(--ease) .1s forwards;
+}
+.loader-mark img{width:clamp(64px,10vw,96px);height:auto}
+.loader-mark span{
+  font-size:clamp(.8rem,2vw,1rem);font-weight:700;letter-spacing:.4em;
+  text-transform:uppercase;color:#fff;
+}
+.loader-mark em{font-style:normal;color:var(--red)}
+@keyframes loadIn{from{opacity:0;transform:translateY(14px);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
+
+/* ── NAV ── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 max(22px,4vw);
+  background:rgba(0,0,0,.55);
+  backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid transparent;
+  transition:transform .5s var(--ease),background .4s,border-color .4s;
+}
+.nav.scrolled{background:rgba(0,0,0,.72);border-bottom-color:var(--hair-inv)}
+.nav.hidden{transform:translateY(-100%)}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;text-decoration:none;
+  font-weight:700;font-size:.88rem;letter-spacing:.22em;text-transform:uppercase;color:#fff;
+}
+.nav-logo img{height:30px;width:auto;transition:transform .4s var(--ease)}
+.nav-logo:hover img{transform:scale(1.08) rotate(-3deg)}
+.nav-logo b{color:var(--red);font-size:1.3em;line-height:0}
+@media(max-width:400px){.nav-logo span{display:none}}
+.nav-links{display:flex;gap:clamp(1rem,3vw,2.4rem);list-style:none}
+.nav-links a{
+  font-size:.78rem;font-weight:500;letter-spacing:.02em;text-decoration:none;
+  color:rgba(255,255,255,.72);transition:color .3s;
+}
+.nav-links a:hover{color:#fff}
+.nav-right{display:flex;align-items:center;gap:.9rem}
+.lang-pill{
+  display:flex;border:1px solid var(--hair-inv);border-radius:99px;overflow:hidden;
+}
+.lang-pill button{
+  background:none;border:none;color:rgba(255,255,255,.55);
+  font-family:var(--font);font-size:.66rem;font-weight:700;letter-spacing:.08em;
+  padding:.38rem .7rem;cursor:pointer;transition:background .3s,color .3s;
+}
+.lang-pill button.active{background:#fff;color:#000}
+.nav-cta{
+  font-size:.72rem;font-weight:600;text-decoration:none;color:#000;
+  background:#fff;border-radius:99px;padding:.5rem 1.05rem;
+  transition:background .3s,transform .3s;white-space:nowrap;
+}
+.nav-cta:hover{background:var(--red);color:#fff;transform:scale(1.04)}
+.burger{display:none;background:none;border:none;width:34px;height:34px;position:relative;cursor:pointer}
+.burger span{position:absolute;left:7px;right:7px;height:1.6px;background:#fff;transition:transform .35s var(--ease),opacity .3s}
+.burger span:nth-child(1){top:12px}.burger span:nth-child(2){top:20px}
+.burger.open span:nth-child(1){transform:translateY(4px) rotate(45deg)}
+.burger.open span:nth-child(2){transform:translateY(-4px) rotate(-45deg)}
+@media(max-width:820px){
+  .nav-links,.nav-cta{display:none}
+  .burger{display:block}
+}
+.drawer{
+  position:fixed;inset:0;z-index:990;background:rgba(0,0,0,.92);
+  backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
+  display:flex;flex-direction:column;justify-content:center;padding:0 9vw;gap:.4rem;
+  opacity:0;visibility:hidden;transition:opacity .45s var(--ease-io),visibility .45s;
+}
+.drawer.open{opacity:1;visibility:visible}
+.drawer a{
+  font-size:clamp(2rem,9vw,3.2rem);font-weight:700;letter-spacing:-.03em;
+  text-decoration:none;color:#fff;padding:.35rem 0;
+  opacity:0;transform:translateY(22px);
+  transition:opacity .5s var(--ease),transform .5s var(--ease),color .3s;
+}
+.drawer.open a{opacity:1;transform:none}
+.drawer.open a:nth-child(2){transition-delay:.06s}
+.drawer.open a:nth-child(3){transition-delay:.12s}
+.drawer.open a:nth-child(4){transition-delay:.18s}
+.drawer.open a:nth-child(5){transition-delay:.24s}
+.drawer a:hover{color:var(--red)}
+.drawer-foot{position:absolute;bottom:7vh;left:9vw;font-size:.72rem;color:var(--gray);letter-spacing:.15em;text-transform:uppercase}
+
+/* ── REVEAL SYSTEM ── */
+.rv{opacity:0;transform:translateY(34px);filter:blur(6px);
+  transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease)}
+.rv.in{opacity:1;transform:none;filter:none}
+.rv-d1{transition-delay:.1s}.rv-d2{transition-delay:.2s}.rv-d3{transition-delay:.3s}.rv-d4{transition-delay:.42s}
+
+/* ── HERO ── */
+.hero{
+  min-height:100svh;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:calc(var(--nav-h) + 4vh) 6vw 12vh;
+}
+.hero-glow{
+  position:absolute;pointer-events:none;border-radius:50%;
+  will-change:transform;
+}
+.hero-glow.g1{width:70vw;height:70vw;max-width:900px;max-height:900px;left:-20vw;top:-16vw;background:radial-gradient(circle,rgba(230,32,32,.2) 0%,rgba(230,32,32,.08) 38%,transparent 68%);animation:drift1 14s ease-in-out infinite alternate}
+.hero-glow.g2{width:56vw;height:56vw;max-width:760px;max-height:760px;right:-16vw;bottom:-14vw;background:radial-gradient(circle,rgba(255,107,94,.12) 0%,rgba(255,107,94,.05) 38%,transparent 68%);animation:drift2 18s ease-in-out infinite alternate}
+@keyframes drift1{from{transform:translate(0,0) scale(1)}to{transform:translate(6vw,4vh) scale(1.15)}}
+@keyframes drift2{from{transform:translate(0,0) scale(1.1)}to{transform:translate(-5vw,-5vh) scale(.95)}}
+.hero-grain{
+  position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:3px 3px;
+  mask-image:radial-gradient(ellipse at center,black 30%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse at center,black 30%,transparent 75%);
+}
+.hero-inner{position:relative;z-index:2;will-change:transform,opacity}
+.hero-logo{
+  width:clamp(70px,9vw,110px);height:auto;margin:0 auto 2rem;
+  filter:drop-shadow(0 14px 40px rgba(230,32,32,.35));
+  animation:logoFloat 6s ease-in-out infinite;
+}
+@keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:.55rem;
+  font-size:.72rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gray);margin-bottom:2.2rem;
+  border:1px solid var(--hair-inv);border-radius:99px;padding:.5rem 1.1rem;
+}
+.hero-eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 12px var(--red);animation:pulse 2.4s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.hero-h1{
+  font-size:clamp(3.2rem,11.5vw,9.5rem);font-weight:800;letter-spacing:-.045em;line-height:.98;
+  color:#fff;
+}
+.hero-h1 .grad{
+  background:var(--grad);background-size:200% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:gradShift 7s ease infinite;
+}
+@keyframes gradShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.hero-sub{
+  margin:2.2rem auto 0;max-width:34ch;
+  font-size:clamp(1.05rem,2.4vw,1.55rem);font-weight:400;line-height:1.45;
+  color:var(--gray);letter-spacing:-.01em;
+}
+.hero-sub strong{color:#f5f5f7;font-weight:600}
+.hero-btns{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;margin-top:2.8rem}
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.92rem;font-weight:600;text-decoration:none;letter-spacing:-.01em;
+  border-radius:99px;padding:.85rem 1.7rem;
+  transition:transform .35s var(--ease),background .3s,color .3s,border-color .3s,box-shadow .35s;
+}
+.btn:active{transform:scale(.97)}
+.btn-solid{background:#fff;color:#000}
+.btn-solid:hover{background:var(--red);color:#fff;transform:scale(1.045);box-shadow:0 12px 40px rgba(230,32,32,.35)}
+.btn-line{border:1px solid var(--hair-inv);color:#fff;background:rgba(255,255,255,.04)}
+.btn-line:hover{border-color:rgba(255,255,255,.4);transform:scale(1.045)}
+.btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.hero-scroll{
+  position:absolute;bottom:4.5vh;left:50%;transform:translateX(-50%);z-index:2;
+  display:flex;flex-direction:column;align-items:center;gap:.6rem;
+  font-size:.62rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gray);
+}
+.hero-scroll span:last-child{
+  width:1px;height:44px;background:linear-gradient(to bottom,var(--red),transparent);
+  animation:scrollHint 2.2s var(--ease-io) infinite;transform-origin:top;
+}
+@keyframes scrollHint{0%{transform:scaleY(0)}45%,60%{transform:scaleY(1)}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ── MARQUEE ── */
+.marquee{
+  border-top:1px solid var(--hair-inv);border-bottom:1px solid var(--hair-inv);
+  overflow:hidden;padding:1.4rem 0;background:var(--black);
+  mask-image:linear-gradient(90deg,transparent,black 12%,black 88%,transparent);
+  -webkit-mask-image:linear-gradient(90deg,transparent,black 12%,black 88%,transparent);
+}
+.marquee-track{display:flex;width:max-content;animation:mq 30s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-track span{
+  font-size:clamp(.9rem,1.8vw,1.15rem);font-weight:600;letter-spacing:.24em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);padding:0 1.6rem;white-space:nowrap;
+}
+.marquee-track i{font-style:normal;color:var(--red);padding:0}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ── SECTION SHELL ── */
+.sec{padding:clamp(5.5rem,12vw,10rem) max(22px,6vw);position:relative}
+.sec-light{background:var(--paper);color:var(--ink)}
+.sec-dark{background:var(--black);color:var(--paper)}
+.wrap{max-width:1200px;margin:0 auto}
+.kicker{
+  display:block;font-size:.72rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--red);margin-bottom:1.4rem;
+}
+.h2{
+  font-size:clamp(2.2rem,6vw,4.4rem);font-weight:800;letter-spacing:-.04em;line-height:1.04;
+}
+.sec-light .h2{color:var(--ink)}
+.h2 .soft{color:var(--gray)}
+
+/* ── STATEMENT (scroll-fill words) ── */
+.statement{
+  max-width:1000px;margin:0 auto;
+  font-size:clamp(1.7rem,4.6vw,3.4rem);font-weight:700;letter-spacing:-.035em;line-height:1.22;
+}
+.statement .w{color:rgba(29,29,31,.16);transition:color .35s linear}
+.statement .w.lit{color:var(--ink)}
+.statement .w.accent.lit{color:var(--red-deep)}
+
+/* ── ABOUT ── */
+.about-grid{
+  display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(2.5rem,6vw,5.5rem);
+  align-items:center;margin-top:clamp(2.5rem,5vw,4rem);
+}
+@media(max-width:860px){.about-grid{grid-template-columns:1fr}}
+.about-photo{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;
+  box-shadow:0 30px 80px rgba(0,0,0,.18)}
+.about-photo img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 1.4s var(--ease)}
+.about-photo:hover img{transform:scale(1.01)}
+.about-photo::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.28),transparent 45%);
+}
+.about-badge{
+  position:absolute;left:1.2rem;bottom:1.2rem;z-index:2;
+  background:rgba(255,255,255,.14);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.25);border-radius:16px;
+  color:#fff;padding:.7rem 1rem;font-size:.72rem;font-weight:600;letter-spacing:.05em;line-height:1.5;
+}
+.about-badge b{display:block;font-size:.85rem;letter-spacing:.02em}
+.about-text p{
+  font-size:clamp(1rem,1.6vw,1.18rem);line-height:1.7;color:var(--gray-2);
+  margin-bottom:1.3rem;letter-spacing:-.01em;
+}
+.about-text p strong{color:var(--ink);font-weight:600}
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--hair);border-radius:22px;overflow:hidden;
+  margin-top:clamp(3rem,7vw,5rem);border:1px solid var(--hair);
+}
+@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{background:#fff;padding:clamp(1.4rem,3vw,2.4rem) 1.4rem;text-align:center}
+.stat-n{
+  font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;letter-spacing:-.04em;color:var(--ink);
+  font-variant-numeric:tabular-nums;
+}
+.stat-n em{font-style:normal;color:var(--red)}
+.stat-l{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);margin-top:.4rem}
+.cv-btn{
+  display:inline-flex;align-items:center;gap:.55rem;margin-top:.6rem;
+  font-size:.9rem;font-weight:600;color:var(--ink);text-decoration:none;
+  border:1px solid rgba(0,0,0,.18);border-radius:99px;padding:.75rem 1.5rem;
+  transition:background .3s,color .3s,transform .3s,border-color .3s;
+}
+.cv-btn:hover{background:var(--ink);color:#fff;transform:scale(1.04)}
+.cv-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ── WORKS ── */
+.works-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:clamp(2.5rem,5vw,4rem)}
+.works-note{font-size:.9rem;color:var(--gray);max-width:32ch;line-height:1.6}
+.works-note a{color:#fff;text-decoration:none;border-bottom:1px solid var(--red);transition:color .3s}
+.works-note a:hover{color:var(--red)}
+.works-grid{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(.8rem,1.6vw,1.4rem);
+}
+.work{
+  position:relative;border-radius:var(--radius);overflow:hidden;cursor:pointer;
+  background:#101012;border:1px solid rgba(255,255,255,.06);
+  transition:transform .6s var(--ease),box-shadow .6s var(--ease);
+  aspect-ratio:4/3;
+}
+.work:hover{transform:translateY(-6px);box-shadow:0 30px 70px rgba(0,0,0,.55)}
+.work.big{grid-column:span 4;aspect-ratio:16/10}
+.work.mid{grid-column:span 2;aspect-ratio:auto}
+.work.third{grid-column:span 2}
+@media(max-width:760px){
+  .work.big,.work.mid,.work.third{grid-column:span 6;aspect-ratio:4/3}
+}
+.work img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform 1.2s var(--ease),filter .6s;
+}
+.work:hover img{transform:scale(1.055)}
+.work::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.72) 0%,transparent 42%);
+  opacity:.9;transition:opacity .5s;
+}
+.work-meta{
+  position:absolute;left:1.4rem;right:1.4rem;bottom:1.25rem;z-index:2;
+  display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;
+}
+.work-meta h3{font-size:clamp(1rem,1.8vw,1.3rem);font-weight:700;letter-spacing:-.02em;color:#fff}
+.work-meta span{font-size:.66rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.work-plus{
+  width:38px;height:38px;flex-shrink:0;border-radius:50%;
+  background:rgba(255,255,255,.14);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.22);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:1.1rem;font-weight:300;
+  transition:background .35s,transform .5s var(--ease);
+}
+.work:hover .work-plus{background:var(--red);border-color:var(--red);transform:rotate(90deg)}
+
+/* ── GALLERY (photography) ── */
+.gal-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:clamp(2rem,4vw,3rem)}
+.gal-ctrl{display:flex;align-items:center;gap:.8rem}
+.gal-count{font-size:.82rem;font-weight:600;color:var(--gray);font-variant-numeric:tabular-nums;letter-spacing:.1em}
+.gal-count b{color:#fff}
+.gal-btn{
+  width:46px;height:46px;border-radius:50%;border:1px solid var(--hair-inv);
+  background:rgba(255,255,255,.05);color:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .3s,border-color .3s,transform .3s,opacity .3s;
+}
+.gal-btn:hover{background:var(--red);border-color:var(--red);transform:scale(1.06)}
+.gal-btn:disabled{opacity:.28;pointer-events:none}
+.gal-btn svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.gal{
+  display:flex;gap:clamp(.8rem,1.5vw,1.3rem);
+  overflow-x:auto;scroll-snap-type:x mandatory;
+  padding:.4rem max(22px,6vw) 2.2rem;
+  scrollbar-width:none;-ms-overflow-style:none;
+  cursor:grab;
+}
+.gal.dragging{cursor:grabbing;scroll-snap-type:none}
+.gal::-webkit-scrollbar{display:none}
+.gal-item{
+  position:relative;flex:0 0 auto;scroll-snap-align:center;
+  width:clamp(230px,30vw,380px);aspect-ratio:3/4;
+  border-radius:calc(var(--radius) - 6px);overflow:hidden;
+  border:1px solid rgba(255,255,255,.07);
+}
+.gal-item img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 1.1s var(--ease);
+}
+.gal-item:hover img{transform:scale(1.05)}
+.gal-item .num{
+  position:absolute;top:1rem;left:1.1rem;z-index:2;
+  font-size:.66rem;font-weight:700;letter-spacing:.2em;color:rgba(255,255,255,.85);
+  background:rgba(0,0,0,.35);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  padding:.3rem .6rem;border-radius:99px;
+}
+.gal-bar{
+  height:2px;background:rgba(255,255,255,.1);border-radius:99px;
+  margin:0 max(22px,6vw);overflow:hidden;
+}
+.gal-bar i{display:block;height:100%;width:0;background:var(--grad);border-radius:99px;transition:width .25s var(--ease-io)}
+
+/* ── PROCESS ── */
+.proc-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.9rem,1.6vw,1.4rem);
+  margin-top:clamp(2.5rem,5vw,4rem);
+}
+@media(max-width:820px){.proc-grid{grid-template-columns:1fr}}
+.proc{
+  background:#fff;border-radius:var(--radius);padding:clamp(1.8rem,3.4vw,2.8rem);
+  border:1px solid var(--hair);position:relative;overflow:hidden;
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease);
+}
+.proc:hover{transform:translateY(-6px);box-shadow:0 26px 60px rgba(0,0,0,.1)}
+.proc-num{
+  font-size:.72rem;font-weight:700;letter-spacing:.24em;color:var(--red);
+  display:inline-block;margin-bottom:2.6rem;
+  border:1px solid rgba(230,32,32,.25);border-radius:99px;padding:.4rem .8rem;
+}
+.proc h3{font-size:clamp(1.2rem,2vw,1.5rem);font-weight:700;letter-spacing:-.025em;color:var(--ink);margin-bottom:.7rem}
+.proc p{font-size:.95rem;line-height:1.65;color:var(--gray-2)}
+
+/* ── JOURNEY ── */
+.tl{margin-top:clamp(2.5rem,5vw,4rem);border-top:1px solid var(--hair-inv)}
+.tl-item{
+  display:grid;grid-template-columns:170px 1fr auto;gap:1.6rem;align-items:baseline;
+  padding:clamp(1.4rem,2.6vw,2rem) .4rem;border-bottom:1px solid var(--hair-inv);
+  transition:background .35s,padding-left .35s var(--ease);
+}
+.tl-item:hover{background:rgba(255,255,255,.03);padding-left:1.2rem}
+.tl-year{font-size:.85rem;font-weight:700;letter-spacing:.12em;color:var(--red);font-variant-numeric:tabular-nums}
+.tl-body h3{font-size:clamp(1.1rem,2.2vw,1.55rem);font-weight:700;letter-spacing:-.025em;color:#fff;margin-bottom:.35rem}
+.tl-body p{font-size:.92rem;line-height:1.65;color:var(--gray);max-width:62ch}
+.tl-tag{
+  font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.55);border:1px solid var(--hair-inv);border-radius:99px;
+  padding:.38rem .8rem;white-space:nowrap;
+}
+@media(max-width:720px){
+  .tl-item{grid-template-columns:1fr;gap:.5rem}
+  .tl-tag{display:none}
+}
+
+/* ── LINKTREE ── */
+.link-card{
+  position:relative;border-radius:calc(var(--radius) + 8px);overflow:hidden;
+  background:
+    radial-gradient(120% 160% at 15% 0%,rgba(230,32,32,.32),transparent 55%),
+    radial-gradient(110% 150% at 90% 100%,rgba(255,107,94,.16),transparent 55%),
+    #0a0a0c;
+  border:1px solid rgba(255,255,255,.09);
+  padding:clamp(3rem,7vw,5.5rem) clamp(1.8rem,5vw,4.5rem);
+  display:grid;grid-template-columns:1.4fr auto;gap:clamp(2rem,5vw,4rem);align-items:center;
+}
+@media(max-width:820px){.link-card{grid-template-columns:1fr;text-align:center;justify-items:center}}
+.link-card h2{
+  font-size:clamp(2rem,5.4vw,3.8rem);font-weight:800;letter-spacing:-.04em;line-height:1.05;color:#fff;
+  margin-bottom:1.1rem;
+}
+.link-card h2 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.link-card p{font-size:clamp(.95rem,1.7vw,1.15rem);color:var(--gray);line-height:1.6;max-width:44ch;margin-bottom:2rem}
+.qr-tile{
+  background:#fff;border-radius:24px;padding:1.1rem;
+  box-shadow:0 24px 70px rgba(0,0,0,.5);
+  transform:rotate(2.5deg);transition:transform .6s var(--ease);
+}
+.qr-tile:hover{transform:rotate(0deg) scale(1.04)}
+.qr-tile img{width:clamp(140px,18vw,200px);height:auto;image-rendering:pixelated;border-radius:10px}
+.qr-tile figcaption{
+  text-align:center;font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:#555;padding-top:.7rem;
+}
+
+/* ── CONTACT ── */
+.contact{text-align:center}
+.contact .h2{margin-bottom:1.4rem}
+.contact-sub{font-size:clamp(1rem,2vw,1.3rem);color:var(--gray-2);max-width:46ch;margin:0 auto 2.6rem;line-height:1.6}
+.contact-mail{
+  display:inline-block;text-decoration:none;
+  font-size:clamp(1.15rem,4.5vw,2.6rem);font-weight:700;letter-spacing:-.03em;color:var(--ink);
+  position:relative;padding-bottom:.25rem;margin-bottom:2.8rem;
+  overflow-wrap:anywhere;max-width:100%;
+}
+.contact-mail::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:2.5px;
+  background:var(--grad);transform:scaleX(.25);transform-origin:left;
+  transition:transform .6s var(--ease);border-radius:99px;
+}
+.contact-mail:hover::after{transform:scaleX(1)}
+.contact-rows{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+.chip{
+  display:inline-flex;align-items:center;gap:.55rem;text-decoration:none;
+  font-size:.88rem;font-weight:600;color:var(--ink);
+  background:#fff;border:1px solid var(--hair);border-radius:99px;
+  padding:.8rem 1.5rem;
+  transition:transform .35s var(--ease),background .3s,color .3s,border-color .3s,box-shadow .35s;
+}
+.chip:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(0,0,0,.12)}
+.chip.hot{background:var(--ink);color:#fff;border-color:var(--ink)}
+.chip.hot:hover{background:var(--red);border-color:var(--red)}
+.chip svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.contact-place{margin-top:3rem;font-size:.72rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--gray)}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--black);border-top:1px solid var(--hair-inv);
+  padding:3.2rem max(22px,6vw) calc(2.4rem + env(safe-area-inset-bottom));
+}
+.foot-inner{
+  max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+}
+.foot-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:.85rem;letter-spacing:.22em;text-transform:uppercase;color:#fff}
+.foot-logo b{color:var(--red)}
+.foot-links{display:flex;gap:1.6rem;list-style:none;flex-wrap:wrap}
+.foot-links a{font-size:.78rem;font-weight:500;color:var(--gray);text-decoration:none;transition:color .3s}
+.foot-links a:hover{color:#fff}
+.foot-copy{font-size:.72rem;color:rgba(255,255,255,.35);width:100%;margin-top:1.6rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+
+/* ── LIGHTBOX ── */
+.lb{
+  position:fixed;inset:0;z-index:1500;
+  background:rgba(0,0,0,.82);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+  display:flex;align-items:center;justify-content:center;padding:4vh 4vw;
+  opacity:0;visibility:hidden;transition:opacity .4s var(--ease-io),visibility .4s;
+}
+.lb.open{opacity:1;visibility:visible}
+.lb img{
+  max-width:100%;max-height:100%;border-radius:18px;
+  box-shadow:0 40px 120px rgba(0,0,0,.6);
+  transform:scale(.94);transition:transform .5s var(--ease);
+}
+.lb.open img{transform:scale(1)}
+.lb-x{
+  position:absolute;top:max(18px,3vh);right:max(18px,3vw);
+  width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.25);
+  background:rgba(255,255,255,.1);color:#fff;font-size:1.15rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .3s,transform .3s;
+}
+.lb-x:hover{background:var(--red);transform:rotate(90deg)}
+
+/* ── BACK TO TOP ── */
+.top-btn{
+  position:fixed;right:max(18px,2.4vw);bottom:max(18px,3vh);z-index:900;
+  width:46px;height:46px;border-radius:50%;
+  background:rgba(255,255,255,.1);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--hair-inv);color:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;visibility:hidden;transform:translateY(12px);
+  transition:opacity .4s,visibility .4s,transform .4s var(--ease),background .3s;
+}
+.top-btn.show{opacity:1;visibility:visible;transform:none}
+.top-btn:hover{background:var(--red);border-color:var(--red)}
+.top-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ── MOBILE POLISH ── */
+.nav{height:calc(var(--nav-h) + env(safe-area-inset-top));padding-top:env(safe-area-inset-top)}
+.hero{padding-top:calc(var(--nav-h) + env(safe-area-inset-top) + 4vh)}
+.top-btn{bottom:calc(max(18px,3vh) + env(safe-area-inset-bottom))}
+@media(max-width:600px){
+  :root{--radius:22px}
+  .sec{padding-left:20px;padding-right:20px}
+  .hero{padding-left:6vw;padding-right:6vw}
+  .hero-sub{max-width:30ch}
+  .hero-btns{width:100%}
+  .hero-btns .btn{flex:1 1 auto;justify-content:center;min-width:150px}
+  .works-grid{gap:.9rem}
+  .work-meta{left:1.1rem;right:1.1rem;bottom:1rem}
+  .gal{padding-left:20px;padding-right:20px}
+  .gal-item{width:76vw;max-width:340px}
+  .gal-bar{margin:0 20px}
+  .link-card{padding:2.6rem 1.6rem}
+  .link-card .btn{width:100%;justify-content:center}
+  .tl-item:hover{padding-left:.4rem}
+  .chip{padding:.85rem 1.3rem}
+  .contact-rows{gap:.6rem}
+  .stat{padding:1.5rem .8rem}
+  .foot-inner{flex-direction:column;align-items:flex-start}
+  .foot-copy{flex-direction:column;gap:.4rem}
+}
+@media(max-width:390px){
+  .hero-h1{font-size:2.9rem}
+  .hero-eyebrow{font-size:.62rem;letter-spacing:.2em}
+}
+@media(max-height:640px){
+  .hero-scroll{display:none}
+  .hero-logo{width:60px;margin-bottom:1.2rem}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;filter:none}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-mark">
+    <img src="assets/logo-mark.png" alt="" decoding="async"/>
+    <span>Rinaldi<em>.</em>Visuals</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#top" class="nav-logo" aria-label="Rinaldi Visuals — Home">
+    <img src="assets/logo-mark.png" alt="Logo Rinaldi Visuals"/>
+    <span>Rinaldi<b>.</b></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#works" data-i18n="nav_works">Lavori</a></li>
+    <li><a href="#photo" data-i18n="nav_photo">Fotografia</a></li>
+    <li><a href="#journey" data-i18n="nav_journey">Percorso</a></li>
+    <li><a href="#contact" data-i18n="nav_contact">Contatti</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-pill" role="group" aria-label="Lingua / Language">
+      <button id="langIt" class="active" aria-pressed="true">IT</button>
+      <button id="langEn" aria-pressed="false">EN</button>
+    </div>
+    <a href="#contact" class="nav-cta" data-i18n="nav_cta">Lavoriamo insieme</a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer" id="drawer" role="dialog" aria-modal="true">
+  <a href="#top" data-i18n="nav_home">Home</a>
+  <a href="#works" data-i18n="nav_works">Lavori</a>
+  <a href="#photo" data-i18n="nav_photo">Fotografia</a>
+  <a href="#journey" data-i18n="nav_journey">Percorso</a>
+  <a href="#contact" data-i18n="nav_contact">Contatti</a>
+  <div class="drawer-foot">Rinaldi Visuals — Foggia, IT</div>
+</div>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-glow g1" aria-hidden="true"></div>
+  <div class="hero-glow g2" aria-hidden="true"></div>
+  <div class="hero-grain" aria-hidden="true"></div>
+  <div class="hero-inner" id="heroInner">
+    <img class="hero-logo rv" src="assets/logo-mark.png" alt="Logo Rinaldi Visuals" fetchpriority="high"/>
+    <span class="hero-eyebrow rv" data-i18n="hero_eyebrow">Graphic Designer &amp; Fotografo — Foggia</span>
+    <h1 class="hero-h1 rv rv-d1">Rinaldi <span class="grad">Visuals</span><span style="color:var(--red)">.</span></h1>
+    <p class="hero-sub rv rv-d2" data-i18n-html="hero_sub">Identità visive che <strong>lasciano il segno</strong>.<br>Design essenziale. Impatto assoluto.</p>
+    <div class="hero-btns rv rv-d3">
+      <a href="#works" class="btn btn-solid"><span data-i18n="hero_cta1">Guarda i lavori</span>
+        <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+      <a href="#contact" class="btn btn-line" data-i18n="hero_cta2">Parliamone</a>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true"><span data-i18n="hero_scroll">Scorri</span><span></span></div>
+</header>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="mqTrack">
+    <span>Branding</span><i>·</i><span>Graphic Design</span><i>·</i><span>Photography</span><i>·</i><span>Art Direction</span><i>·</i><span>Editorial</span><i>·</i><span>Social Content</span><i>·</i>
+  </div>
+</div>
+
+<!-- STATEMENT -->
+<section class="sec sec-light">
+  <div class="wrap">
+    <span class="kicker rv" data-i18n="st_kicker">La visione</span>
+    <p class="statement" id="statement"></p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec sec-light" id="about" style="padding-top:0">
+  <div class="wrap">
+    <span class="kicker rv" data-i18n="ab_kicker">Chi sono</span>
+    <h2 class="h2 rv rv-d1" data-i18n-html="ab_title">Cristian Rinaldi.<br><span class="soft">Design con un punto di vista.</span></h2>
+    <div class="about-grid">
+      <div class="about-photo rv">
+        <img src="assets/ritratto.jpg" alt="Cristian Rinaldi" loading="lazy"/>
+        <div class="about-badge"><b>Cristian Rinaldi</b><span data-i18n="ab_badge">Visual Designer · Classe 2007</span></div>
+      </div>
+      <div class="about-text">
+        <p class="rv" data-i18n-html="ab_p1"><strong>Creativo e professionale, specializzato in Visual Design.</strong> Sono proattivo, imparo in fretta nuove metodologie di lavoro e mi tengo costantemente aggiornato sui trend.</p>
+        <p class="rv rv-d1" data-i18n-html="ab_p2">Con un occhio attento ai dettagli e una passione per le forme decise, costruisco identità visive e layout che comunicano con forza e chiarezza — unendo <strong>fotografia, tipografia e design editoriale</strong> in un'unica visione coerente.</p>
+        <p class="rv rv-d2" data-i18n-html="ab_p3">Studio Grafica presso l'I.I.S. Einaudi–Grieco di Foggia dal 2021. I miei lavori sono già stati selezionati per <strong>campagne ufficiali, eventi cittadini e una mostra collettiva</strong>.</p>
+        <div class="rv rv-d3">
+          <a class="cv-btn" href="assets/cv-cristian-rinaldi.jpg" download="CV_Cristian_Rinaldi.jpg">
+            <svg viewBox="0 0 24 24"><path d="M12 3v12M6 11l6 6 6-6M4 21h16"/></svg>
+            <span data-i18n="ab_cv">Scarica il CV</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="stats rv">
+      <div class="stat"><div class="stat-n"><span data-count="4">0</span><em>+</em></div><div class="stat-l" data-i18n="stat1">Anni di studio</div></div>
+      <div class="stat"><div class="stat-n"><span data-count="10">0</span><em>+</em></div><div class="stat-l" data-i18n="stat2">Progetti completati</div></div>
+      <div class="stat"><div class="stat-n"><span data-count="2">0</span><em></em></div><div class="stat-l" data-i18n="stat3">Campagne pubblicate</div></div>
+      <div class="stat"><div class="stat-n"><span data-count="1">0</span><em></em></div><div class="stat-l" data-i18n="stat4">Mostra collettiva</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section class="sec sec-dark" id="works">
+  <div class="wrap">
+    <div class="works-head">
+      <div>
+        <span class="kicker rv" data-i18n="wk_kicker">Portfolio</span>
+        <h2 class="h2 rv rv-d1" data-i18n-html="wk_title">Lavori<br>selezionati<span style="color:var(--red)">.</span></h2>
+      </div>
+      <p class="works-note rv rv-d2" data-i18n-html="wk_note">Una selezione di progetti. Per vedere tutto, seguimi su <a href="https://www.instagram.com/rinaldi.visuals/" target="_blank" rel="noopener">Instagram</a>.</p>
+    </div>
+    <div class="works-grid">
+      <figure class="work big rv" data-full="assets/work-admo.jpg">
+        <img src="assets/work-admo.jpg" alt="Campagna ADMO Puglia" loading="lazy"/>
+        <figcaption class="work-meta">
+          <div><h3 data-i18n="w1_t">Campagna ADMO Puglia</h3><span data-i18n="w1_c">ADV · con Gianmarco Saurino</span></div>
+          <div class="work-plus">+</div>
+        </figcaption>
+      </figure>
+      <figure class="work mid rv rv-d1" data-full="assets/work-copertina.jpg">
+        <img src="assets/work-copertina.jpg" alt="Copertina libro" loading="lazy"/>
+        <figcaption class="work-meta">
+          <div><h3 data-i18n="w2_t">Copertina editoriale</h3><span>Editorial Design</span></div>
+          <div class="work-plus">+</div>
+        </figcaption>
+      </figure>
+      <figure class="work third rv" data-full="assets/work-memoria.jpg">
+        <img src="assets/work-memoria.jpg" alt="Poster Giornata della Memoria" loading="lazy"/>
+        <figcaption class="work-meta">
+          <div><h3 data-i18n="w3_t">Giornata della Memoria</h3><span>Poster</span></div>
+          <div class="work-plus">+</div>
+        </figcaption>
+      </figure>
+      <figure class="work third rv rv-d1" data-full="assets/work-manifesto.jpg">
+        <img src="assets/work-manifesto.jpg" alt="Manifesto" loading="lazy"/>
+        <figcaption class="work-meta">
+          <div><h3 data-i18n="w4_t">Manifesto Off-Road</h3><span>Poster</span></div>
+          <div class="work-plus">+</div>
+        </figcaption>
+      </figure>
+      <figure class="work third rv rv-d2" data-full="assets/work-poster-fashion.jpg">
+        <img src="assets/work-poster-fashion.jpg" alt="Fashion poster" loading="lazy"/>
+        <figcaption class="work-meta">
+          <div><h3 data-i18n="w5_t">Fashion Poster</h3><span>Poster</span></div>
+          <div class="work-plus">+</div>
+        </figcaption>
+      </figure>
+      <figure class="work third rv" data-full="assets/work-menu.png">
+        <img src="assets/work-menu.png" alt="Menu" loading="lazy"/>
+        <figcaption class="work-meta">
+          <div><h3 data-i18n="w6_t">Menù evento</h3><span>Graphic Design</span></div>
+          <div class="work-plus">+</div>
+        </figcaption>
+      </figure>
+      <figure class="work third rv rv-d1" data-full="assets/work-inviti.png">
+        <img src="assets/work-inviti.png" alt="Inviti" loading="lazy"/>
+        <figcaption class="work-meta">
+          <div><h3 data-i18n="w7_t">Inviti compleanno</h3><span>Invitation Design</span></div>
+          <div class="work-plus">+</div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTOGRAPHY -->
+<section class="sec sec-dark" id="photo" style="padding-left:0;padding-right:0">
+  <div class="wrap" style="padding:0 max(22px,6vw)">
+    <div class="gal-head">
+      <div>
+        <span class="kicker rv" data-i18n="ph_kicker">Fotografia</span>
+        <h2 class="h2 rv rv-d1" data-i18n-html="ph_title">Attraverso<br>l'obiettivo<span style="color:var(--red)">.</span></h2>
+      </div>
+      <div class="gal-ctrl rv rv-d2">
+        <span class="gal-count"><b id="galCur">01</b> / <span id="galTot">19</span></span>
+        <button class="gal-btn" id="galPrev" aria-label="Precedente"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="gal-btn" id="galNext" aria-label="Successiva"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </div>
+  <div class="gal rv" id="gal"></div>
+  <div class="gal-bar" aria-hidden="true"><i id="galBar"></i></div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec sec-light" id="process">
+  <div class="wrap">
+    <span class="kicker rv" data-i18n="pr_kicker">Metodo</span>
+    <h2 class="h2 rv rv-d1" data-i18n-html="pr_title">Come lavoro<span style="color:var(--red-deep)">.</span></h2>
+    <div class="proc-grid">
+      <div class="proc rv">
+        <span class="proc-num">01</span>
+        <h3 data-i18n="pr1_t">Ascolto &amp; Analisi</h3>
+        <p data-i18n="pr1_p">Capisco il tuo brand, i tuoi obiettivi e il pubblico a cui ti rivolgi. Ogni progetto inizia con le domande giuste.</p>
+      </div>
+      <div class="proc rv rv-d1">
+        <span class="proc-num">02</span>
+        <h3 data-i18n="pr2_t">Idea &amp; Sviluppo</h3>
+        <p data-i18n="pr2_p">Costruisco concept, esploro direzioni visive e raffino ogni dettaglio fino a trovare la soluzione che funziona davvero.</p>
+      </div>
+      <div class="proc rv rv-d2">
+        <span class="proc-num">03</span>
+        <h3 data-i18n="pr3_t">Consegna &amp; Supporto</h3>
+        <p data-i18n="pr3_p">Rilascio file pronti all'uso in tutti i formati necessari, con supporto post-consegna incluso.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section class="sec sec-dark" id="journey">
+  <div class="wrap">
+    <span class="kicker rv" data-i18n="jr_kicker">Percorso</span>
+    <h2 class="h2 rv rv-d1" data-i18n-html="jr_title">Esperienze<br>&amp; formazione<span style="color:var(--red)">.</span></h2>
+    <div class="tl">
+      <div class="tl-item rv">
+        <span class="tl-year">2026</span>
+        <div class="tl-body">
+          <h3 data-i18n="j1_t">Mostra collettiva — Fondazione Monti Uniti, Foggia</h3>
+          <p data-i18n="j1_p">Opera selezionata ed esposta al pubblico per la mostra del 27 gennaio. Progetto sviluppato in ambito scolastico e presentato in contesto culturale ufficiale.</p>
+        </div>
+        <span class="tl-tag" data-i18n="j1_tag">Mostra</span>
+      </div>
+      <div class="tl-item rv">
+        <span class="tl-year">2025 — 2026</span>
+        <div class="tl-body">
+          <h3 data-i18n="j2_t">Stage — Grani Digitali</h3>
+          <p data-i18n="j2_p">Sviluppo di una web app per la promozione della città di Foggia nell'ambito del progetto Grani Digitali.</p>
+        </div>
+        <span class="tl-tag">Stage</span>
+      </div>
+      <div class="tl-item rv">
+        <span class="tl-year">2025</span>
+        <div class="tl-body">
+          <h3 data-i18n="j3_t">Capitanatale Foggia — Fondale &amp; poster</h3>
+          <p data-i18n="j3_p">Layout e impaginazione per l'evento Capitanatale, in occasione dell'ottavo centenario del "Cantico delle Creature".</p>
+        </div>
+        <span class="tl-tag" data-i18n="j3_tag">Evento</span>
+      </div>
+      <div class="tl-item rv">
+        <span class="tl-year">2024</span>
+        <div class="tl-body">
+          <h3 data-i18n="j4_t">Campagna ADMO Puglia — con Gianmarco Saurino</h3>
+          <p data-i18n="j4_p">Layout per campagna di sensibilizzazione: elaborato selezionato e pubblicato nella comunicazione ufficiale.</p>
+        </div>
+        <span class="tl-tag" data-i18n="j4_tag">Campagna</span>
+      </div>
+      <div class="tl-item rv">
+        <span class="tl-year">2021 — 2026</span>
+        <div class="tl-body">
+          <h3 data-i18n="j5_t">Diploma Tecnico Grafico — I.I.S. Einaudi–Grieco, Foggia</h3>
+          <p data-i18n="j5_p">Impaginazione editoriale e pubblicitaria, identità visiva, gerarchia tipografica, preparazione file per stampa, contenuti social. Adobe Photoshop, Illustrator, InDesign e utilizzo consapevole dell'IA.</p>
+        </div>
+        <span class="tl-tag" data-i18n="j5_tag">Formazione</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LINKTREE -->
+<section class="sec sec-dark" id="links" style="padding-top:0">
+  <div class="wrap">
+    <div class="link-card rv">
+      <div>
+        <h2 data-i18n-html="lk_title">Tutti i miei link.<br><span class="grad">In un posto solo.</span></h2>
+        <p data-i18n="lk_p">Social, progetti, contatti e aggiornamenti: trovi tutto nel mio Linktree personale. Oppure inquadra il QR code.</p>
+        <a class="btn btn-solid" target="_blank" rel="noopener"
+           href="https://rinaldicristian92-hash.github.io/linkthreek/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnotrKTyb5S9HCyJi2uArnHgWJGd0RY6RQ9keLeSySrVkQUlMwZzXZ8uQ4LPE_aem_8mHmHzO6XWPVqBJ3Sbt9pQ">
+          <span data-i18n="lk_btn">Apri il Linktree</span>
+          <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </a>
+      </div>
+      <figure class="qr-tile">
+        <img src="assets/qr-linktree.png" alt="QR code Linktree di Cristian Rinaldi" loading="lazy"/>
+        <figcaption data-i18n="lk_qr">Inquadrami</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec sec-light contact" id="contact">
+  <div class="wrap">
+    <span class="kicker rv" data-i18n="ct_kicker">Contatti</span>
+    <h2 class="h2 rv rv-d1" data-i18n-html="ct_title">Iniziamo<br>un progetto<span style="color:var(--red-deep)">.</span></h2>
+    <p class="contact-sub rv rv-d2" data-i18n="ct_sub">Hai un'idea, un brand da costruire o un progetto da rendere più forte visivamente? Scrivimi — senza impegno.</p>
+    <div class="rv rv-d2">
+      <a class="contact-mail" href="mailto:rinaldicristian92@gmail.com">rinaldicristian92@gmail.com</a>
+    </div>
+    <div class="contact-rows rv rv-d3">
+      <a class="chip hot" href="mailto:rinaldicristian92@gmail.com?subject=Nuovo%20progetto">
+        <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg>
+        <span data-i18n="ct_mailbtn">Scrivimi una mail</span>
+      </a>
+      <a class="chip" href="https://www.instagram.com/rinaldi.visuals/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg>
+        Instagram
+      </a>
+      <a class="chip" href="https://www.linkedin.com/in/cristian-rinaldi-514b553a0/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M5 9v11M5 4v1M10 20v-6a3 3 0 016 0v6M10 9v11"/></svg>
+        LinkedIn
+      </a>
+      <a class="chip" target="_blank" rel="noopener"
+         href="https://rinaldicristian92-hash.github.io/linkthreek/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnotrKTyb5S9HCyJi2uArnHgWJGd0RY6RQ9keLeSySrVkQUlMwZzXZ8uQ4LPE_aem_8mHmHzO6XWPVqBJ3Sbt9pQ">
+        <svg viewBox="0 0 24 24"><path d="M12 3v18M6 8l6 4 6-4M6 16l6-4 6 4"/></svg>
+        Linktree
+      </a>
+    </div>
+    <p class="contact-place" data-i18n="ct_place">Foggia, Italia — disponibile anche da remoto</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-logo"><img src="assets/logo-mark.png" alt="" style="height:34px;width:auto"/>Rinaldi<b>.</b>Visuals</div>
+    <ul class="foot-links">
+      <li><a href="#works" data-i18n="nav_works">Lavori</a></li>
+      <li><a href="#photo" data-i18n="nav_photo">Fotografia</a></li>
+      <li><a href="#journey" data-i18n="nav_journey">Percorso</a></li>
+      <li><a href="#contact" data-i18n="nav_contact">Contatti</a></li>
+      <li><a target="_blank" rel="noopener" href="https://rinaldicristian92-hash.github.io/linkthreek/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnotrKTyb5S9HCyJi2uArnHgWJGd0RY6RQ9keLeSySrVkQUlMwZzXZ8uQ4LPE_aem_8mHmHzO6XWPVqBJ3Sbt9pQ">Linktree</a></li>
+    </ul>
+    <div class="foot-copy">
+      <span>© 2026 Cristian Rinaldi. <span data-i18n="ft_rights">Tutti i diritti riservati.</span></span>
+      <span data-i18n="ft_made">Progettato e costruito con passione a Foggia.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Immagine">
+  <button class="lb-x" id="lbX" aria-label="Chiudi">✕</button>
+  <img src="" alt="" id="lbImg"/>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="top-btn" id="topBtn" aria-label="Torna su">
+  <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<script>
+(() => {
+'use strict';
+const $  = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const vh = () => Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0) || (screen.height || 800);
+
+/* ══ I18N ══ */
+const I18N = {
+  it: {
+    nav_home:'Home', nav_works:'Lavori', nav_photo:'Fotografia', nav_journey:'Percorso', nav_contact:'Contatti',
+    nav_cta:'Lavoriamo insieme',
+    hero_eyebrow:'Graphic Designer & Fotografo — Foggia',
+    hero_sub:'Identità visive che <strong>lasciano il segno</strong>.<br>Design essenziale. Impatto assoluto.',
+    hero_cta1:'Guarda i lavori', hero_cta2:'Parliamone', hero_scroll:'Scorri',
+    st_kicker:'La visione',
+    statement:"Ogni progetto nasce da un'idea semplice: il design deve *emozionare.* Unisco tipografia, fotografia e colore per costruire identità che *non si dimenticano.*",
+    ab_kicker:'Chi sono',
+    ab_title:'Cristian Rinaldi.<br><span class="soft">Design con un punto di vista.</span>',
+    ab_badge:'Visual Designer · Foggia',
+    ab_p1:"<strong>Creativo e professionale, specializzato in Visual Design.</strong> Sono proattivo, imparo in fretta nuove metodologie di lavoro e mi tengo costantemente aggiornato sui trend.",
+    ab_p2:"Con un occhio attento ai dettagli e una passione per le forme decise, costruisco identità visive e layout che comunicano con forza e chiarezza — unendo <strong>fotografia, tipografia e design editoriale</strong> in un'unica visione coerente.",
+    ab_p3:"Studio Grafica presso l'I.I.S. Einaudi–Grieco di Foggia dal 2021. I miei lavori sono già stati selezionati per <strong>campagne ufficiali, eventi cittadini e una mostra collettiva</strong>.",
+    ab_cv:'Scarica il CV',
+    stat1:'Anni di studio', stat2:'Progetti completati', stat3:'Campagne pubblicate', stat4:'Mostra collettiva',
+    wk_kicker:'Portfolio',
+    wk_title:'Lavori<br>selezionati<span style="color:var(--red)">.</span>',
+    wk_note:'Una selezione di progetti. Per vedere tutto, seguimi su <a href="https://www.instagram.com/rinaldi.visuals/" target="_blank" rel="noopener">Instagram</a>.',
+    w1_t:'Campagna ADMO Puglia', w1_c:'ADV · con Gianmarco Saurino',
+    w2_t:'Copertina editoriale', w3_t:'Giornata della Memoria', w4_t:'Manifesto Off-Road',
+    w5_t:'Fashion Poster', w6_t:'Menù evento', w7_t:'Inviti compleanno',
+    ph_kicker:'Fotografia',
+    ph_title:"Attraverso<br>l'obiettivo<span style=\"color:var(--red)\">.</span>",
+    pr_kicker:'Metodo', pr_title:'Come lavoro<span style="color:var(--red-deep)">.</span>',
+    pr1_t:'Ascolto & Analisi', pr1_p:'Capisco il tuo brand, i tuoi obiettivi e il pubblico a cui ti rivolgi. Ogni progetto inizia con le domande giuste.',
+    pr2_t:'Idea & Sviluppo', pr2_p:'Costruisco concept, esploro direzioni visive e raffino ogni dettaglio fino a trovare la soluzione che funziona davvero.',
+    pr3_t:'Consegna & Supporto', pr3_p:'Rilascio file pronti all\'uso in tutti i formati necessari, con supporto post-consegna incluso.',
+    jr_kicker:'Percorso', jr_title:'Esperienze<br>&amp; formazione<span style="color:var(--red)">.</span>',
+    j1_t:'Mostra collettiva — Fondazione Monti Uniti, Foggia',
+    j1_p:'Opera selezionata ed esposta al pubblico per la mostra del 27 gennaio. Progetto sviluppato in ambito scolastico e presentato in contesto culturale ufficiale.',
+    j1_tag:'Mostra',
+    j2_t:'Stage — Grani Digitali',
+    j2_p:'Sviluppo di una web app per la promozione della città di Foggia nell\'ambito del progetto Grani Digitali.',
+    j3_t:'Capitanatale Foggia — Fondale & poster',
+    j3_p:'Layout e impaginazione per l\'evento Capitanatale, in occasione dell\'ottavo centenario del "Cantico delle Creature".',
+    j3_tag:'Evento',
+    j4_t:'Campagna ADMO Puglia — con Gianmarco Saurino',
+    j4_p:'Layout per campagna di sensibilizzazione: elaborato selezionato e pubblicato nella comunicazione ufficiale.',
+    j4_tag:'Campagna',
+    j5_t:'Diploma Tecnico Grafico — I.I.S. Einaudi–Grieco, Foggia',
+    j5_p:'Impaginazione editoriale e pubblicitaria, identità visiva, gerarchia tipografica, preparazione file per stampa, contenuti social. Adobe Photoshop, Illustrator, InDesign e utilizzo consapevole dell\'IA.',
+    j5_tag:'Formazione',
+    lk_title:'Tutti i miei link.<br><span class="grad">In un posto solo.</span>',
+    lk_p:'Social, progetti, contatti e aggiornamenti: trovi tutto nel mio Linktree personale. Oppure inquadra il QR code.',
+    lk_btn:'Apri il Linktree', lk_qr:'Inquadrami',
+    ct_kicker:'Contatti', ct_title:'Iniziamo<br>un progetto<span style="color:var(--red-deep)">.</span>',
+    ct_sub:'Hai un\'idea, un brand da costruire o un progetto da rendere più forte visivamente? Scrivimi — senza impegno.',
+    ct_mailbtn:'Scrivimi una mail',
+    ct_place:'Foggia, Italia — disponibile anche da remoto',
+    ft_rights:'Tutti i diritti riservati.', ft_made:'Progettato e costruito con passione a Foggia.',
+  },
+  en: {
+    nav_home:'Home', nav_works:'Works', nav_photo:'Photography', nav_journey:'Journey', nav_contact:'Contact',
+    nav_cta:"Let's work together",
+    hero_eyebrow:'Graphic Designer & Photographer — Foggia, Italy',
+    hero_sub:'Visual identities that <strong>leave a mark</strong>.<br>Essential design. Absolute impact.',
+    hero_cta1:'See the works', hero_cta2:"Let's talk", hero_scroll:'Scroll',
+    st_kicker:'The vision',
+    statement:"Every project starts from a simple idea: design must *move you.* I blend typography, photography and colour to build identities that are *impossible to forget.*",
+    ab_kicker:'About me',
+    ab_title:'Cristian Rinaldi.<br><span class="soft">Design with a point of view.</span>',
+    ab_badge:'Visual Designer · Foggia, Italy',
+    ab_p1:"<strong>Creative and professional, specialised in Visual Design.</strong> I'm proactive, I learn new working methods fast and I constantly keep up with trends.",
+    ab_p2:"With a keen eye for detail and a passion for bold forms, I build visual identities and layouts that communicate with strength and clarity — combining <strong>photography, typography and editorial design</strong> into one coherent vision.",
+    ab_p3:"I've been studying Graphic Design at I.I.S. Einaudi–Grieco in Foggia since 2021. My work has already been selected for <strong>official campaigns, city events and a collective exhibition</strong>.",
+    ab_cv:'Download CV',
+    stat1:'Years of study', stat2:'Completed projects', stat3:'Published campaigns', stat4:'Collective exhibition',
+    wk_kicker:'Portfolio',
+    wk_title:'Selected<br>works<span style="color:var(--red)">.</span>',
+    wk_note:'A selection of projects. To see everything, follow me on <a href="https://www.instagram.com/rinaldi.visuals/" target="_blank" rel="noopener">Instagram</a>.',
+    w1_t:'ADMO Puglia Campaign', w1_c:'ADV · with Gianmarco Saurino',
+    w2_t:'Editorial book cover', w3_t:'Holocaust Memorial Day', w4_t:'Off-Road Poster',
+    w5_t:'Fashion Poster', w6_t:'Event menu', w7_t:'Birthday invitations',
+    ph_kicker:'Photography',
+    ph_title:'Through<br>the lens<span style="color:var(--red)">.</span>',
+    pr_kicker:'Method', pr_title:'How I work<span style="color:var(--red-deep)">.</span>',
+    pr1_t:'Listening & Analysis', pr1_p:'I get to know your brand, your goals and your audience. Every project starts with the right questions.',
+    pr2_t:'Concept & Development', pr2_p:'I build concepts, explore visual directions and refine every detail until I find the solution that truly works.',
+    pr3_t:'Delivery & Support', pr3_p:'I deliver production-ready files in every required format, with post-delivery support included.',
+    jr_kicker:'Journey', jr_title:'Experience<br>&amp; education<span style="color:var(--red)">.</span>',
+    j1_t:'Collective exhibition — Monti Uniti Foundation, Foggia',
+    j1_p:'Selected artwork publicly exhibited at the January 27th memorial exhibition. School project presented in an official cultural context.',
+    j1_tag:'Exhibition',
+    j2_t:'Internship — Grani Digitali',
+    j2_p:'Development of a web app promoting the city of Foggia as part of the Grani Digitali project.',
+    j3_t:'Capitanatale Foggia — Backdrop & poster',
+    j3_p:'Layout and typesetting for the Capitanatale event, marking the eighth centenary of the "Canticle of the Creatures".',
+    j3_tag:'Event',
+    j4_t:'ADMO Puglia Campaign — with Gianmarco Saurino',
+    j4_p:'Layout for an awareness campaign: artwork selected and published in the official communication.',
+    j4_tag:'Campaign',
+    j5_t:'Graphic Design Technical Diploma — I.I.S. Einaudi–Grieco, Foggia',
+    j5_p:'Editorial and advertising layout, visual identity, typographic hierarchy, print-ready files, social content. Adobe Photoshop, Illustrator, InDesign and mindful use of AI.',
+    j5_tag:'Education',
+    lk_title:'All my links.<br><span class="grad">In one place.</span>',
+    lk_p:'Socials, projects, contacts and updates: everything lives in my personal Linktree. Or just scan the QR code.',
+    lk_btn:'Open Linktree', lk_qr:'Scan me',
+    ct_kicker:'Contact', ct_title:"Let's start<br>a project<span style=\"color:var(--red-deep)\">.</span>",
+    ct_sub:'Got an idea, a brand to build or a project that needs a stronger visual voice? Write to me — no strings attached.',
+    ct_mailbtn:'Send me an email',
+    ct_place:'Foggia, Italy — also available remotely',
+    ft_rights:'All rights reserved.', ft_made:'Designed & built with passion in Foggia.',
+  }
+};
+
+let lang = localStorage.getItem('rv-lang') || 'it';
+
+function buildStatement(){
+  const el = $('#statement');
+  const raw = I18N[lang].statement;
+  el.innerHTML = '';
+  // words wrapped in *...* get the accent class
+  let accent = false;
+  raw.split(/\s+/).forEach(tok => {
+    let word = tok;
+    let isAccentStart = word.startsWith('*');
+    if (isAccentStart){ accent = true; word = word.slice(1); }
+    let isAccentEnd = word.endsWith('*');
+    if (isAccentEnd) word = word.slice(0,-1);
+    const s = document.createElement('span');
+    s.className = 'w' + (accent ? ' accent' : '');
+    s.textContent = word;
+    el.appendChild(s);
+    el.appendChild(document.createTextNode(' '));
+    if (isAccentEnd) accent = false;
+  });
+  stWords = $$('#statement .w');
+}
+
+function applyLang(){
+  document.documentElement.lang = lang;
+  const d = I18N[lang];
+  $$('[data-i18n]').forEach(el => { const k = el.dataset.i18n; if (d[k] != null) el.textContent = d[k]; });
+  $$('[data-i18n-html]').forEach(el => { const k = el.dataset.i18nHtml; if (d[k] != null) el.innerHTML = d[k]; });
+  $('#langIt').classList.toggle('active', lang === 'it');
+  $('#langEn').classList.toggle('active', lang === 'en');
+  $('#langIt').setAttribute('aria-pressed', lang === 'it');
+  $('#langEn').setAttribute('aria-pressed', lang === 'en');
+  buildStatement();
+  onScroll(); // refresh statement fill
+}
+$('#langIt').addEventListener('click', () => { lang = 'it'; localStorage.setItem('rv-lang','it'); applyLang(); });
+$('#langEn').addEventListener('click', () => { lang = 'en'; localStorage.setItem('rv-lang','en'); applyLang(); });
+
+/* ══ LOADER ══ */
+window.addEventListener('load', () => {
+  setTimeout(() => $('#loader').classList.add('done'), reduced ? 0 : 900);
+});
+setTimeout(() => $('#loader').classList.add('done'), 2600); // safety
+
+/* ══ NAV ══ */
+const nav = $('#nav');
+let lastY = 0;
+const burger = $('#burger'), drawer = $('#drawer');
+function toggleDrawer(force){
+  const open = force != null ? force : !drawer.classList.contains('open');
+  drawer.classList.toggle('open', open);
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+burger.addEventListener('click', () => toggleDrawer());
+$$('#drawer a').forEach(a => a.addEventListener('click', () => toggleDrawer(false)));
+
+/* ══ REVEALS & COUNTERS ══ */
+function startCount(el){
+  if (el.dataset.started) return;
+  el.dataset.started = '1';
+  const target = +el.dataset.count;
+  if (reduced){ el.textContent = target; return; }
+  const t0 = performance.now(), dur = 1400;
+  (function tick(t){
+    const p = Math.min((t - t0)/dur, 1);
+    el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+    if (p < 1) requestAnimationFrame(tick);
+  })(t0);
+}
+
+let ioFired = false;
+const io = new IntersectionObserver(entries => {
+  ioFired = true;
+  entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:.12, rootMargin:'0px 0px -6% 0px'});
+$$('.rv').forEach(el => io.observe(el));
+
+const cio = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting){ cio.unobserve(e.target); startCount(e.target); } });
+},{threshold:.6});
+$$('[data-count]').forEach(el => cio.observe(el));
+
+/* Fallback: if IntersectionObserver never fires (old/embedded browsers),
+   reveal via scroll position instead — nothing must stay invisible. */
+function rectCheck(){
+  const h = vh();
+  $$('.rv:not(.in)').forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < h * .94 && r.bottom > 0) el.classList.add('in');
+  });
+  $$('[data-count]').forEach(el => {
+    if (el.dataset.started) return;
+    const r = el.getBoundingClientRect();
+    if (r.top < h * .9 && r.bottom > 0) startCount(el);
+  });
+}
+setTimeout(() => {
+  if (ioFired) return;
+  io.disconnect(); cio.disconnect();
+  addEventListener('scroll', rectCheck, {passive:true});
+  addEventListener('resize', rectCheck);
+  rectCheck();
+}, 1200);
+
+/* ══ GALLERY ══ */
+const gal = $('#gal');
+const PHOTOS = 19;
+for (let i = 1; i <= PHOTOS; i++){
+  const n = String(i).padStart(2,'0');
+  const d = document.createElement('div');
+  d.className = 'gal-item';
+  d.dataset.full = `assets/photo-${n}.jpg`;
+  d.innerHTML = `<span class="num">${n}</span><img src="assets/photo-${n}.jpg" alt="Fotografia ${n} — Cristian Rinaldi" loading="lazy" draggable="false"/>`;
+  gal.appendChild(d);
+}
+$('#galTot').textContent = String(PHOTOS);
+const items = $$('.gal-item');
+
+function galStep(){ return items[0].offsetWidth + parseFloat(getComputedStyle(gal).gap || 16); }
+$('#galNext').addEventListener('click', () => gal.scrollBy({left: galStep(), behavior:'smooth'}));
+$('#galPrev').addEventListener('click', () => gal.scrollBy({left: -galStep(), behavior:'smooth'}));
+
+function galUpdate(){
+  const max = gal.scrollWidth - gal.clientWidth;
+  const p = max > 0 ? gal.scrollLeft / max : 0;
+  $('#galBar').style.width = (p * 100) + '%';
+  const idx = Math.min(PHOTOS, Math.max(1, Math.round(p * (PHOTOS - 1)) + 1));
+  $('#galCur').textContent = String(idx).padStart(2,'0');
+  $('#galPrev').disabled = gal.scrollLeft <= 4;
+  $('#galNext').disabled = gal.scrollLeft >= max - 4;
+}
+gal.addEventListener('scroll', galUpdate, {passive:true});
+window.addEventListener('resize', galUpdate);
+galUpdate();
+
+/* drag to scroll (desktop) */
+let dragging = false, dragMoved = false, startX = 0, startL = 0;
+gal.addEventListener('pointerdown', e => {
+  if (e.pointerType !== 'mouse') return;
+  dragging = true; dragMoved = false;
+  startX = e.clientX; startL = gal.scrollLeft;
+  gal.classList.add('dragging');
+});
+window.addEventListener('pointermove', e => {
+  if (!dragging) return;
+  const dx = e.clientX - startX;
+  if (Math.abs(dx) > 6) dragMoved = true;
+  gal.scrollLeft = startL - dx;
+});
+window.addEventListener('pointerup', () => {
+  dragging = false;
+  setTimeout(() => gal.classList.remove('dragging'), 40);
+});
+
+/* ══ LIGHTBOX ══ */
+const lb = $('#lb'), lbImg = $('#lbImg');
+function openLb(src, alt){
+  lbImg.src = src; lbImg.alt = alt || '';
+  lb.classList.add('open');
+  document.documentElement.classList.add('lb-open');
+}
+function closeLb(){
+  lb.classList.remove('open');
+  document.documentElement.classList.remove('lb-open');
+  setTimeout(() => { lbImg.src = ''; }, 400);
+}
+$$('.work').forEach(w => w.addEventListener('click', () => openLb(w.dataset.full, w.querySelector('h3')?.textContent)));
+items.forEach(it => it.addEventListener('click', () => { if (!dragMoved) openLb(it.dataset.full, it.querySelector('img').alt); }));
+$('#lbX').addEventListener('click', closeLb);
+lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+window.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+
+/* ══ SCROLL EFFECTS ══ */
+const heroInner = $('#heroInner');
+let stWords = [];
+const topBtn = $('#topBtn');
+const statementSec = $('#statement');
+
+function onScroll(){
+  const y = scrollY;
+
+  // nav
+  nav.classList.toggle('scrolled', y > 30);
+  if (!drawer.classList.contains('open')){
+    nav.classList.toggle('hidden', y > lastY && y > 380);
+  }
+  lastY = y;
+
+  const h = vh() || 1;
+
+  // hero parallax fade
+  if (!reduced && heroInner){
+    const p = Math.min(y / (h * .85), 1);
+    heroInner.style.opacity = 1 - p * 1.05;
+    heroInner.style.transform = `translateY(${y * .28}px) scale(${1 - p * .06})`;
+  }
+
+  // statement word fill
+  if (stWords.length){
+    const r = statementSec.getBoundingClientRect();
+    const start = h * .82, end = h * .28;
+    const prog = Math.min(Math.max((start - r.top) / (start - end), 0), 1);
+    const lit = Math.floor(prog * stWords.length);
+    stWords.forEach((w,i) => w.classList.toggle('lit', i < lit));
+  }
+
+  topBtn.classList.toggle('show', y > h * 1.2);
+}
+addEventListener('scroll', onScroll, {passive:true});
+topBtn.addEventListener('click', () => scrollTo({top:0, behavior: reduced ? 'auto' : 'smooth'}));
+
+/* init */
+applyLang();
+onScroll();
+})();
+</script>
+</body>
+</html>
