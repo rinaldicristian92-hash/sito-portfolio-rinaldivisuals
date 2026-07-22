@@ -293,19 +293,6 @@ html.lb-open,body.lb-open{overflow:hidden}
   margin-bottom:1.3rem;letter-spacing:-.01em;
 }
 .about-text p strong{color:var(--ink);font-weight:600}
-.stats{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
-  background:var(--hair);border-radius:22px;overflow:hidden;
-  margin-top:clamp(3rem,7vw,5rem);border:1px solid var(--hair);
-}
-@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
-.stat{background:#fff;padding:clamp(1.4rem,3vw,2.4rem) 1.4rem;text-align:center}
-.stat-n{
-  font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;letter-spacing:-.04em;color:var(--ink);
-  font-variant-numeric:tabular-nums;
-}
-.stat-n em{font-style:normal;color:var(--red)}
-.stat-l{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);margin-top:.4rem}
 .cv-btn{
   display:inline-flex;align-items:center;gap:.55rem;margin-top:.6rem;
   font-size:.9rem;font-weight:600;color:var(--ink);text-decoration:none;
@@ -583,7 +570,6 @@ footer{
   .tl-item:hover{padding-left:.4rem}
   .chip{padding:.85rem 1.3rem}
   .contact-rows{gap:.6rem}
-  .stat{padding:1.5rem .8rem}
   .foot-inner{flex-direction:column;align-items:flex-start}
   .foot-copy{flex-direction:column;gap:.4rem}
 }
@@ -702,12 +688,6 @@ footer{
           </a>
         </div>
       </div>
-    </div>
-    <div class="stats rv">
-      <div class="stat"><div class="stat-n"><span data-count="4">0</span><em>+</em></div><div class="stat-l" data-i18n="stat1">Anni di studio</div></div>
-      <div class="stat"><div class="stat-n"><span data-count="10">0</span><em>+</em></div><div class="stat-l" data-i18n="stat2">Progetti completati</div></div>
-      <div class="stat"><div class="stat-n"><span data-count="2">0</span><em></em></div><div class="stat-l" data-i18n="stat3">Campagne pubblicate</div></div>
-      <div class="stat"><div class="stat-n"><span data-count="1">0</span><em></em></div><div class="stat-l" data-i18n="stat4">Mostra collettiva</div></div>
     </div>
   </div>
 </section>
@@ -833,6 +813,46 @@ footer{
           <p data-i18n="j1_p">Opera selezionata ed esposta al pubblico per la mostra del 27 gennaio. Progetto sviluppato in ambito scolastico e presentato in contesto culturale ufficiale.</p>
         </div>
         <span class="tl-tag" data-i18n="j1_tag">Mostra</span>
+      </div>
+      <div class="tl-item rv">
+        <span class="tl-year">2026</span>
+        <div class="tl-body">
+          <h3 data-i18n="j6_t">Social Media Manager — GAM Ristorazione</h3>
+          <p data-i18n="j6_p">Gestione dei canali social e creazione di contenuti per il brand GAM Ristorazione.</p>
+        </div>
+        <span class="tl-tag" data-i18n="j6_tag">Social Media</span>
+      </div>
+      <div class="tl-item rv">
+        <span class="tl-year">2026</span>
+        <div class="tl-body">
+          <h3 data-i18n="j7_t">Social Media Manager — MyPetLab</h3>
+          <p data-i18n="j7_p">Gestione dei canali social e creazione di contenuti per il brand MyPetLab.</p>
+        </div>
+        <span class="tl-tag" data-i18n="j7_tag">Social Media</span>
+      </div>
+      <div class="tl-item rv">
+        <span class="tl-year">2026</span>
+        <div class="tl-body">
+          <h3 data-i18n="j8_t">Logo design — Refingo</h3>
+          <p data-i18n="j8_p">Progettazione dell'identità visiva e realizzazione del logo per il brand Refingo.</p>
+        </div>
+        <span class="tl-tag" data-i18n="j8_tag">Branding</span>
+      </div>
+      <div class="tl-item rv">
+        <span class="tl-year">2026</span>
+        <div class="tl-body">
+          <h3 data-i18n="j9_t">Logo design — Fuoriquota</h3>
+          <p data-i18n="j9_p">Progettazione dell'identità visiva e realizzazione del logo per il brand Fuoriquota.</p>
+        </div>
+        <span class="tl-tag" data-i18n="j9_tag">Branding</span>
+      </div>
+      <div class="tl-item rv">
+        <span class="tl-year">2026</span>
+        <div class="tl-body">
+          <h3 data-i18n="j10_t">Borghi in Piazza — Pieghevoli territoriali</h3>
+          <p data-i18n="j10_p">Progettazione di tre pieghevoli per valorizzare il territorio, realizzati per l'iniziativa Borghi in Piazza.</p>
+        </div>
+        <span class="tl-tag" data-i18n="j10_tag">Stampa</span>
       </div>
       <div class="tl-item rv">
         <span class="tl-year">2025 — 2026</span>
@@ -977,7 +997,6 @@ const I18N = {
     ab_p2:"Con un occhio attento ai dettagli e una passione per le forme decise, costruisco identità visive e layout che comunicano con forza e chiarezza — unendo <strong>fotografia, tipografia e design editoriale</strong> in un'unica visione coerente.",
     ab_p3:"Studio Grafica presso l'I.I.S. Einaudi–Grieco di Foggia dal 2021. I miei lavori sono già stati selezionati per <strong>campagne ufficiali, eventi cittadini e una mostra collettiva</strong>.",
     ab_cv:'Scarica il CV',
-    stat1:'Anni di studio', stat2:'Progetti completati', stat3:'Campagne pubblicate', stat4:'Mostra collettiva',
     wk_kicker:'Portfolio',
     wk_title:'Lavori<br>selezionati<span style="color:var(--red)">.</span>',
     wk_note:'Una selezione di progetti. Per vedere tutto, seguimi su <a href="https://www.instagram.com/rinaldi.visuals/" target="_blank" rel="noopener">Instagram</a>.',
@@ -994,6 +1013,21 @@ const I18N = {
     j1_t:'Mostra collettiva — Fondazione Monti Uniti, Foggia',
     j1_p:'Opera selezionata ed esposta al pubblico per la mostra del 27 gennaio. Progetto sviluppato in ambito scolastico e presentato in contesto culturale ufficiale.',
     j1_tag:'Mostra',
+    j6_t:'Social Media Manager — GAM Ristorazione',
+    j6_p:'Gestione dei canali social e creazione di contenuti per il brand GAM Ristorazione.',
+    j6_tag:'Social Media',
+    j7_t:'Social Media Manager — MyPetLab',
+    j7_p:'Gestione dei canali social e creazione di contenuti per il brand MyPetLab.',
+    j7_tag:'Social Media',
+    j8_t:'Logo design — Refingo',
+    j8_p:"Progettazione dell'identità visiva e realizzazione del logo per il brand Refingo.",
+    j8_tag:'Branding',
+    j9_t:'Logo design — Fuoriquota',
+    j9_p:"Progettazione dell'identità visiva e realizzazione del logo per il brand Fuoriquota.",
+    j9_tag:'Branding',
+    j10_t:'Borghi in Piazza — Pieghevoli territoriali',
+    j10_p:"Progettazione di tre pieghevoli per valorizzare il territorio, realizzati per l'iniziativa Borghi in Piazza.",
+    j10_tag:'Stampa',
     j2_t:'Stage — Grani Digitali',
     j2_p:'Sviluppo di una web app per la promozione della città di Foggia nell\'ambito del progetto Grani Digitali.',
     j3_t:'Capitanatale Foggia — Fondale & poster',
@@ -1029,7 +1063,6 @@ const I18N = {
     ab_p2:"With a keen eye for detail and a passion for bold forms, I build visual identities and layouts that communicate with strength and clarity — combining <strong>photography, typography and editorial design</strong> into one coherent vision.",
     ab_p3:"I've been studying Graphic Design at I.I.S. Einaudi–Grieco in Foggia since 2021. My work has already been selected for <strong>official campaigns, city events and a collective exhibition</strong>.",
     ab_cv:'Download CV',
-    stat1:'Years of study', stat2:'Completed projects', stat3:'Published campaigns', stat4:'Collective exhibition',
     wk_kicker:'Portfolio',
     wk_title:'Selected<br>works<span style="color:var(--red)">.</span>',
     wk_note:'A selection of projects. To see everything, follow me on <a href="https://www.instagram.com/rinaldi.visuals/" target="_blank" rel="noopener">Instagram</a>.',
@@ -1046,6 +1079,21 @@ const I18N = {
     j1_t:'Collective exhibition — Monti Uniti Foundation, Foggia',
     j1_p:'Selected artwork publicly exhibited at the January 27th memorial exhibition. School project presented in an official cultural context.',
     j1_tag:'Exhibition',
+    j6_t:'Social Media Manager — GAM Ristorazione',
+    j6_p:'Managing social media channels and content creation for the GAM Ristorazione brand.',
+    j6_tag:'Social Media',
+    j7_t:'Social Media Manager — MyPetLab',
+    j7_p:'Managing social media channels and content creation for the MyPetLab brand.',
+    j7_tag:'Social Media',
+    j8_t:'Logo design — Refingo',
+    j8_p:'Visual identity design and logo creation for the Refingo brand.',
+    j8_tag:'Branding',
+    j9_t:'Logo design — Fuoriquota',
+    j9_p:'Visual identity design and logo creation for the Fuoriquota brand.',
+    j9_tag:'Branding',
+    j10_t:'Borghi in Piazza — Territorial leaflets',
+    j10_p:'Design of three leaflets to promote the local area, created for the Borghi in Piazza initiative.',
+    j10_tag:'Print',
     j2_t:'Internship — Grani Digitali',
     j2_p:'Development of a web app promoting the city of Foggia as part of the Grani Digitali project.',
     j3_t:'Capitanatale Foggia — Backdrop & poster',
