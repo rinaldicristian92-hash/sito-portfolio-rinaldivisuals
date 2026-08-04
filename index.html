@@ -678,9 +678,9 @@ footer{
     <span class="hero-badge rv" data-i18n="hero_badge">Graphic Designer &amp; Fotografo — Foggia</span>
     <span class="hero-studio rv" data-i18n="hero_studio">Visual Design Studio</span>
     <div class="hero-claims rv rv-d1" id="heroClaims">
-      <p class="hero-claim active" data-i18n-html="hero_claim1">Do forma alle idee, rendo unici i brand.</p>
-      <p class="hero-claim" data-i18n-html="hero_claim2">Identità visive che lasciano il segno.</p>
-      <p class="hero-claim" data-i18n-html="hero_claim3">Design essenziale. Impatto assoluto.</p>
+      <p class="hero-claim active" data-i18n-html="hero_claim1" aria-hidden="false">Do forma alle idee, rendo unici i brand.</p>
+      <p class="hero-claim" data-i18n-html="hero_claim2" aria-hidden="true">Identità visive che lasciano il segno.</p>
+      <p class="hero-claim" data-i18n-html="hero_claim3" aria-hidden="true">Design essenziale. Impatto assoluto.</p>
     </div>
     <div class="hero-dots rv rv-d2" id="heroDots" role="tablist" aria-label="Claim in evidenza">
       <button class="active" role="tab" aria-selected="true" aria-label="Claim 1"></button>
@@ -1213,7 +1213,7 @@ const heroDots = $$('#heroDots button');
 let claimIdx = 0, claimTimer = null;
 function showClaim(i){
   claimIdx = i;
-  heroClaims.forEach((el,n) => el.classList.toggle('active', n === i));
+  heroClaims.forEach((el,n) => { el.classList.toggle('active', n === i); el.setAttribute('aria-hidden', n !== i); });
   heroDots.forEach((el,n) => { el.classList.toggle('active', n === i); el.setAttribute('aria-selected', n === i); });
 }
 function startClaimTimer(){
