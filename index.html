@@ -13,7 +13,8 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23000'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Helvetica' font-weight='700' font-size='13' fill='%23fff'>R<tspan fill='%23ff3b30'>.</tspan></text></svg>"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Bebas+Neue&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<meta name="theme-color" content="#0A0A0A"/>
 
 <style>
 /* ════════════════════════════════════════════
@@ -37,6 +38,26 @@
   --ease-io:cubic-bezier(.4,0,.2,1);
   --nav-h:52px;
   --radius:28px;
+
+  /* ── NUOVO SISTEMA (redesign app UI — iOS26 dark glass) ──
+     Token ufficiali del redesign. Le sezioni non ancora convertite
+     continuano a usare i token storici sopra; verranno migrate
+     una a una fino alla rimozione dei token legacy. */
+  --bg:#0A0A0A;
+  --surface:#141414;
+  --surface-2:#1C1C1C;
+  --stroke:rgba(255,255,255,.08);
+  --stroke-top:rgba(255,255,255,.18);
+  --text:#FFFFFF;
+  --muted:#9A9A9A;
+  --accent:#E8000E;
+  --font-display:'Bebas Neue',sans-serif;
+  --font-body:'DM Sans',sans-serif;
+  --font-mono:'DM Mono',monospace;
+  --radius-card:22px;
+  --radius-pill:999px;
+  --topbar-h:64px;
+  --tabbar-h:64px;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -53,6 +74,7 @@ img{max-width:100%;display:block}
 a{color:inherit}
 ::selection{background:var(--red);color:#fff}
 html.lb-open,body.lb-open{overflow:hidden}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
 /* ── LOADER ── */
 .loader{
@@ -151,59 +173,91 @@ html.lb-open,body.lb-open{overflow:hidden}
 .rv.in{opacity:1;transform:none;filter:none}
 .rv-d1{transition-delay:.1s}.rv-d2{transition-delay:.2s}.rv-d3{transition-delay:.3s}.rv-d4{transition-delay:.42s}
 
+/* ── DESIGN SYSTEM PRIMITIVES (redesign app UI) ── */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:var(--font-mono);font-size:11px;font-weight:500;
+  letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);
+}
+.eyebrow::before{content:'/';color:var(--accent);font-weight:700}
+.pill{
+  display:inline-flex;align-items:center;gap:.6rem;justify-content:center;
+  height:56px;padding:0 1.7rem;border-radius:var(--radius-pill);
+  font-family:var(--font-mono);font-size:13px;font-weight:500;letter-spacing:2px;
+  text-transform:uppercase;text-decoration:none;white-space:nowrap;cursor:pointer;border:none;
+  transition:transform .4s var(--ease),background .3s,border-color .3s,box-shadow .4s;
+}
+.pill:active{transform:scale(.97)}
+.pill-primary{background:var(--accent);color:#fff;box-shadow:0 4px 24px rgba(232,0,14,.35)}
+.pill-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(232,0,14,.45)}
+.pill-ghost{background:transparent;color:var(--text);border:1px solid var(--stroke)}
+.pill-ghost:hover{border-color:var(--stroke-top);transform:translateY(-2px)}
+.pill svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
 /* ── HERO ── */
 .hero{
   min-height:100svh;position:relative;overflow:hidden;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:calc(var(--nav-h) + 4vh) 6vw 12vh;
+  background:var(--bg);
 }
-.hero-glow{
-  position:absolute;pointer-events:none;border-radius:50%;
-  will-change:transform;
+.hero::before{
+  content:'';position:absolute;top:-8%;left:-12%;width:65%;height:60%;
+  background:radial-gradient(circle,rgba(232,0,14,.06) 0%,transparent 70%);
+  pointer-events:none;
 }
-.hero-glow.g1{width:70vw;height:70vw;max-width:900px;max-height:900px;left:-20vw;top:-16vw;background:radial-gradient(circle,rgba(230,32,32,.2) 0%,rgba(230,32,32,.08) 38%,transparent 68%);animation:drift1 14s ease-in-out infinite alternate}
-.hero-glow.g2{width:56vw;height:56vw;max-width:760px;max-height:760px;right:-16vw;bottom:-14vw;background:radial-gradient(circle,rgba(255,107,94,.12) 0%,rgba(255,107,94,.05) 38%,transparent 68%);animation:drift2 18s ease-in-out infinite alternate}
-@keyframes drift1{from{transform:translate(0,0) scale(1)}to{transform:translate(6vw,4vh) scale(1.15)}}
-@keyframes drift2{from{transform:translate(0,0) scale(1.1)}to{transform:translate(-5vw,-5vh) scale(.95)}}
-.hero-grain{
-  position:absolute;inset:0;pointer-events:none;opacity:.5;
-  background-image:radial-gradient(rgba(255,255,255,.045) 1px,transparent 1px);
-  background-size:3px 3px;
-  mask-image:radial-gradient(ellipse at center,black 30%,transparent 75%);
-  -webkit-mask-image:radial-gradient(ellipse at center,black 30%,transparent 75%);
+.hero-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;width:100%}
+.hero-logo{width:clamp(52px,7vw,76px);height:auto;margin:0 auto 1.3rem}
+.hero-wordmark{
+  font-family:var(--font-display);text-transform:uppercase;color:var(--text);
+  font-size:clamp(1.7rem,4.5vw,2.6rem);letter-spacing:-.5px;line-height:1;margin-bottom:1rem;
 }
-.hero-inner{position:relative;z-index:2;will-change:transform,opacity}
-.hero-logo{
-  width:clamp(70px,9vw,110px);height:auto;margin:0 auto 2rem;
-  filter:drop-shadow(0 14px 40px rgba(230,32,32,.35));
-  animation:logoFloat 6s ease-in-out infinite;
+.hero-wordmark b{color:var(--accent);font-style:normal}
+.hero-badge{
+  font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:2.5px;
+  text-transform:uppercase;color:var(--muted);margin-bottom:.9rem;
 }
-@keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:.55rem;
-  font-size:.72rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;
-  color:var(--gray);margin-bottom:2.2rem;
-  border:1px solid var(--hair-inv);border-radius:99px;padding:.5rem 1.1rem;
+.hero-studio{
+  font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:2.5px;
+  text-transform:uppercase;color:var(--accent);margin-bottom:1.6rem;
 }
-.hero-eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 12px var(--red);animation:pulse 2.4s ease infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-.hero-h1{
-  font-size:clamp(3.2rem,11.5vw,9.5rem);font-weight:800;letter-spacing:-.045em;line-height:.98;
-  color:#fff;
+.hero-claims{
+  position:relative;width:100%;max-width:min(820px,88vw);
+  min-height:calc(2 * clamp(30px,6.4vw,66px) * 1.02);
+  display:flex;align-items:center;justify-content:center;
 }
-.hero-h1 .grad{
-  background:var(--grad);background-size:200% 100%;
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  animation:gradShift 7s ease infinite;
+.hero-claim{
+  width:100%;
+  font-family:var(--font-display);text-transform:uppercase;
+  font-size:clamp(30px,6.4vw,66px);line-height:1.02;letter-spacing:-.5px;color:var(--text);
+  text-wrap:balance;
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  opacity:0;transform:translateY(10px);pointer-events:none;
+  transition:opacity .5s var(--ease),transform .5s var(--ease);
 }
-@keyframes gradShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-.hero-sub{
-  margin:2.2rem auto 0;max-width:34ch;
-  font-size:clamp(1.05rem,2.4vw,1.55rem);font-weight:400;line-height:1.45;
-  color:var(--gray);letter-spacing:-.01em;
+.hero-claim.active{position:relative;opacity:1;transform:none;pointer-events:auto}
+.hero-dots{display:flex;gap:.5rem;margin-top:2.2rem}
+.hero-dots button{
+  width:7px;height:7px;border-radius:50%;border:none;padding:0;cursor:pointer;
+  background:var(--stroke-top);transition:background .3s,transform .3s;
 }
-.hero-sub strong{color:#f5f5f7;font-weight:600}
-.hero-btns{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;margin-top:2.8rem}
+.hero-dots button.active{background:var(--accent);transform:scale(1.3)}
+.hero-card{
+  margin-top:clamp(2.4rem,6vw,3.6rem);width:100%;max-width:420px;
+  background:var(--surface);border:1px solid var(--stroke);border-top:1px solid var(--stroke-top);
+  border-radius:var(--radius-card);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);
+  box-shadow:0 8px 32px rgba(0,0,0,.5);
+  padding:1.4rem 1.4rem calc(1.4rem + env(safe-area-inset-bottom));
+  display:flex;flex-direction:column;align-items:center;gap:.9rem;
+}
+@supports not (backdrop-filter:blur(1px)){.hero-card{background:rgba(20,20,20,.94)}}
+.hero-card-btns{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center;width:100%}
+.hero-scroll-label{
+  font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:2.5px;
+  text-transform:uppercase;color:var(--muted);
+}
+
+/* .btn — legacy, ancora usato dalla sezione Linktree in attesa di migrazione */
 .btn{
   display:inline-flex;align-items:center;gap:.5rem;
   font-size:.92rem;font-weight:600;text-decoration:none;letter-spacing:-.01em;
@@ -216,16 +270,6 @@ html.lb-open,body.lb-open{overflow:hidden}
 .btn-line{border:1px solid var(--hair-inv);color:#fff;background:rgba(255,255,255,.04)}
 .btn-line:hover{border-color:rgba(255,255,255,.4);transform:scale(1.045)}
 .btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.hero-scroll{
-  position:absolute;bottom:4.5vh;left:50%;transform:translateX(-50%);z-index:2;
-  display:flex;flex-direction:column;align-items:center;gap:.6rem;
-  font-size:.62rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gray);
-}
-.hero-scroll span:last-child{
-  width:1px;height:44px;background:linear-gradient(to bottom,var(--red),transparent);
-  animation:scrollHint 2.2s var(--ease-io) infinite;transform-origin:top;
-}
-@keyframes scrollHint{0%{transform:scaleY(0)}45%,60%{transform:scaleY(1)}100%{transform:scaleY(0);transform-origin:bottom}}
 
 /* ── MARQUEE ── */
 .marquee{
@@ -557,9 +601,6 @@ footer{
   :root{--radius:22px}
   .sec{padding-left:20px;padding-right:20px}
   .hero{padding-left:6vw;padding-right:6vw}
-  .hero-sub{max-width:30ch}
-  .hero-btns{width:100%}
-  .hero-btns .btn{flex:1 1 auto;justify-content:center;min-width:150px}
   .works-grid{gap:.9rem}
   .work-meta{left:1.1rem;right:1.1rem;bottom:1rem}
   .gal{padding-left:20px;padding-right:20px}
@@ -573,13 +614,9 @@ footer{
   .foot-inner{flex-direction:column;align-items:flex-start}
   .foot-copy{flex-direction:column;gap:.4rem}
 }
-@media(max-width:390px){
-  .hero-h1{font-size:2.9rem}
-  .hero-eyebrow{font-size:.62rem;letter-spacing:.2em}
-}
 @media(max-height:640px){
-  .hero-scroll{display:none}
-  .hero-logo{width:60px;margin-bottom:1.2rem}
+  .hero-card{margin-top:1.6rem}
+  .hero-logo{width:52px;margin-bottom:.9rem}
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -635,21 +672,30 @@ footer{
 
 <!-- HERO -->
 <header class="hero" id="top">
-  <div class="hero-glow g1" aria-hidden="true"></div>
-  <div class="hero-glow g2" aria-hidden="true"></div>
-  <div class="hero-grain" aria-hidden="true"></div>
   <div class="hero-inner" id="heroInner">
     <img class="hero-logo rv" src="assets/logo-mark.png" alt="Logo Rinaldi Visuals" fetchpriority="high"/>
-    <span class="hero-eyebrow rv" data-i18n="hero_eyebrow">Graphic Designer &amp; Fotografo — Foggia</span>
-    <h1 class="hero-h1 rv rv-d1">Rinaldi <span class="grad">Visuals</span><span style="color:var(--red)">.</span></h1>
-    <p class="hero-sub rv rv-d2" data-i18n-html="hero_sub">Identità visive che <strong>lasciano il segno</strong>.<br>Design essenziale. Impatto assoluto.</p>
-    <div class="hero-btns rv rv-d3">
-      <a href="#works" class="btn btn-solid"><span data-i18n="hero_cta1">Guarda i lavori</span>
-        <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
-      <a href="#contact" class="btn btn-line" data-i18n="hero_cta2">Parliamone</a>
+    <h1 class="hero-wordmark rv">Rinaldi<b>.</b>Visuals</h1>
+    <span class="hero-badge rv" data-i18n="hero_badge">Graphic Designer &amp; Fotografo — Foggia</span>
+    <span class="hero-studio rv" data-i18n="hero_studio">Visual Design Studio</span>
+    <div class="hero-claims rv rv-d1" id="heroClaims">
+      <p class="hero-claim active" data-i18n-html="hero_claim1">Do forma alle idee, rendo unici i brand.</p>
+      <p class="hero-claim" data-i18n-html="hero_claim2">Identità visive che lasciano il segno.</p>
+      <p class="hero-claim" data-i18n-html="hero_claim3">Design essenziale. Impatto assoluto.</p>
+    </div>
+    <div class="hero-dots rv rv-d2" id="heroDots" role="tablist" aria-label="Claim in evidenza">
+      <button class="active" role="tab" aria-selected="true" aria-label="Claim 1"></button>
+      <button role="tab" aria-selected="false" aria-label="Claim 2"></button>
+      <button role="tab" aria-selected="false" aria-label="Claim 3"></button>
+    </div>
+    <div class="hero-card rv rv-d3">
+      <div class="hero-card-btns">
+        <a href="#works" class="pill pill-primary"><span data-i18n="hero_cta1">Esplora lo studio</span>
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#contact" class="pill pill-ghost" data-i18n="hero_cta2">Contattami</a>
+      </div>
+      <span class="hero-scroll-label" data-i18n="hero_scroll">Scorri per continuare</span>
     </div>
   </div>
-  <div class="hero-scroll" aria-hidden="true"><span data-i18n="hero_scroll">Scorri</span><span></span></div>
 </header>
 
 <!-- MARQUEE -->
@@ -984,10 +1030,13 @@ const vh = () => Math.max(document.documentElement.clientHeight || 0, window.inn
 const I18N = {
   it: {
     nav_home:'Home', nav_works:'Lavori', nav_photo:'Fotografia', nav_journey:'Percorso', nav_contact:'Contatti',
-    nav_cta:'Lavoriamo insieme',
-    hero_eyebrow:'Graphic Designer & Fotografo — Foggia',
-    hero_sub:'Identità visive che <strong>lasciano il segno</strong>.<br>Design essenziale. Impatto assoluto.',
-    hero_cta1:'Guarda i lavori', hero_cta2:'Parliamone', hero_scroll:'Scorri',
+    nav_cta:'Lavora con me',
+    hero_badge:'Graphic Designer & Fotografo — Foggia',
+    hero_studio:'Visual Design Studio',
+    hero_claim1:'Do forma alle idee, rendo unici i brand.',
+    hero_claim2:'Identità visive che lasciano il segno.',
+    hero_claim3:'Design essenziale. Impatto assoluto.',
+    hero_cta1:'Esplora lo studio', hero_cta2:'Contattami', hero_scroll:'Scorri per continuare',
     st_kicker:'La visione',
     statement:"Ogni progetto nasce da un'idea semplice: il design deve *emozionare.* Unisco tipografia, fotografia e colore per costruire identità che *non si dimenticano.*",
     ab_kicker:'Chi sono',
@@ -1042,7 +1091,7 @@ const I18N = {
     lk_title:'Tutti i miei link.<br><span class="grad">In un posto solo.</span>',
     lk_p:'Social, progetti, contatti e aggiornamenti: trovi tutto nel mio Linktree personale. Oppure inquadra il QR code.',
     lk_btn:'Apri il Linktree', lk_qr:'Inquadrami',
-    ct_kicker:'Contatti', ct_title:'Iniziamo<br>un progetto<span style="color:var(--red-deep)">.</span>',
+    ct_kicker:'Contatti', ct_title:'Inizia<br>un progetto<span style="color:var(--red-deep)">.</span>',
     ct_sub:'Hai un\'idea, un brand da costruire o un progetto da rendere più forte visivamente? Scrivimi — senza impegno.',
     ct_mailbtn:'Scrivimi una mail',
     ct_place:'Foggia, Italia — disponibile anche da remoto',
@@ -1050,10 +1099,13 @@ const I18N = {
   },
   en: {
     nav_home:'Home', nav_works:'Works', nav_photo:'Photography', nav_journey:'Journey', nav_contact:'Contact',
-    nav_cta:"Let's work together",
-    hero_eyebrow:'Graphic Designer & Photographer — Foggia, Italy',
-    hero_sub:'Visual identities that <strong>leave a mark</strong>.<br>Essential design. Absolute impact.',
-    hero_cta1:'See the works', hero_cta2:"Let's talk", hero_scroll:'Scroll',
+    nav_cta:'Work with me',
+    hero_badge:'Graphic Designer & Photographer — Foggia, Italy',
+    hero_studio:'Visual Design Studio',
+    hero_claim1:'I shape ideas, I make brands unique.',
+    hero_claim2:'Visual identities that leave a mark.',
+    hero_claim3:'Essential design. Absolute impact.',
+    hero_cta1:'Explore the studio', hero_cta2:'Contact me', hero_scroll:'Scroll to continue',
     st_kicker:'The vision',
     statement:"Every project starts from a simple idea: design must *move you.* I blend typography, photography and colour to build identities that are *impossible to forget.*",
     ab_kicker:'About me',
@@ -1108,7 +1160,7 @@ const I18N = {
     lk_title:'All my links.<br><span class="grad">In one place.</span>',
     lk_p:'Socials, projects, contacts and updates: everything lives in my personal Linktree. Or just scan the QR code.',
     lk_btn:'Open Linktree', lk_qr:'Scan me',
-    ct_kicker:'Contact', ct_title:"Let's start<br>a project<span style=\"color:var(--red-deep)\">.</span>",
+    ct_kicker:'Contact', ct_title:"Start<br>a project<span style=\"color:var(--red-deep)\">.</span>",
     ct_sub:'Got an idea, a brand to build or a project that needs a stronger visual voice? Write to me — no strings attached.',
     ct_mailbtn:'Send me an email',
     ct_place:'Foggia, Italy — also available remotely',
@@ -1154,6 +1206,23 @@ function applyLang(){
 }
 $('#langIt').addEventListener('click', () => { lang = 'it'; localStorage.setItem('rv-lang','it'); applyLang(); });
 $('#langEn').addEventListener('click', () => { lang = 'en'; localStorage.setItem('rv-lang','en'); applyLang(); });
+
+/* ══ HERO CLAIMS (rotazione) ══ */
+const heroClaims = $$('#heroClaims .hero-claim');
+const heroDots = $$('#heroDots button');
+let claimIdx = 0, claimTimer = null;
+function showClaim(i){
+  claimIdx = i;
+  heroClaims.forEach((el,n) => el.classList.toggle('active', n === i));
+  heroDots.forEach((el,n) => { el.classList.toggle('active', n === i); el.setAttribute('aria-selected', n === i); });
+}
+function startClaimTimer(){
+  clearInterval(claimTimer);
+  if (reduced) return;
+  claimTimer = setInterval(() => showClaim((claimIdx + 1) % heroClaims.length), 5000);
+}
+heroDots.forEach((btn,i) => btn.addEventListener('click', () => { showClaim(i); startClaimTimer(); }));
+startClaimTimer();
 
 /* ══ LOADER ══ */
 window.addEventListener('load', () => {
