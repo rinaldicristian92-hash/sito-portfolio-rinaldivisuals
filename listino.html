@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="it" class="no-anim">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<meta name="theme-color" content="#000"/>
+<title>Listino — Rinaldi Visuals</title>
+<meta name="description" content="Prezzi trasparenti per logo, identità visiva, social, stampa e presentazioni. Visual director a Foggia."/>
+<meta name="author" content="Cristian Rinaldi"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Listino — Rinaldi Visuals"/>
+<meta property="og:description" content="Prezzi trasparenti per logo, identità visiva, social, stampa e presentazioni. Visual director a Foggia."/>
+<meta property="og:url" content="https://rinaldicristian92-hash.github.io/sito-portfolio-rinaldivisuals/listino.html"/>
+<meta property="og:image" content="https://rinaldicristian92-hash.github.io/sito-portfolio-rinaldivisuals/assets/og-listino.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Listino — Rinaldi Visuals"/>
+<meta name="twitter:description" content="Prezzi trasparenti per logo, identità visiva, social, stampa e presentazioni. Visual director a Foggia."/>
+<meta name="twitter:image" content="https://rinaldicristian92-hash.github.io/sito-portfolio-rinaldivisuals/assets/og-listino.jpg"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23000'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Helvetica' font-weight='700' font-size='13' fill='%23fff'>R<tspan fill='%23ff3b30'>.</tspan></text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+<style>
+/* ════════════════════════════════════════════
+   RINALDI VISUALS — LISTINO 2026
+   Pagina autonoma. Stesso sistema di index.html.
+   ════════════════════════════════════════════ */
+:root{
+  --black:#000;
+  --ink:#1d1d1f;
+  --paper:#f5f5f7;
+  --white:#fff;
+  --gray:#86868b;
+  --gray-2:#6e6e73;
+  --hair:rgba(0,0,0,.08);
+  --hair-inv:rgba(255,255,255,.12);
+  --red:#ff3b30;
+  --red-deep:#e62020;
+  --grad:linear-gradient(100deg,#ff6b5e 0%,#ff3b30 40%,#e62020 100%);
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --ease-io:cubic-bezier(.4,0,.2,1);
+  --nav-h:52px;
+  --radius:28px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+a,button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+body{
+  font-family:var(--font);
+  background:var(--black);
+  color:var(--paper);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+a{color:inherit}
+::selection{background:var(--red);color:#fff}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:4px}
+/* blocca le transizioni al primo paint, così il deep link non anima all'arrivo */
+.no-anim *,.no-anim *::before,.no-anim *::after{transition:none!important}
+
+.wrap{max-width:720px;margin:0 auto;padding:0 clamp(16px,4vw,24px)}
+
+/* ── 1 · INTESTAZIONE ── */
+.head{padding:clamp(40px,12vw,72px) 0 clamp(26px,7vw,38px)}
+.eyebrow{
+  font-size:11px;font-weight:600;letter-spacing:2px;
+  text-transform:uppercase;color:var(--red);
+}
+.head h1{
+  margin-top:14px;
+  font-size:clamp(2.4rem,9vw,4rem);font-weight:800;
+  letter-spacing:-.03em;line-height:1;color:#fff;
+}
+.head-sub{
+  margin-top:16px;max-width:44ch;
+  font-size:clamp(1rem,3.6vw,1.15rem);font-weight:400;line-height:1.55;color:var(--gray);
+}
+.head-meta{
+  margin-top:22px;
+  font-size:11px;font-weight:500;letter-spacing:1.5px;
+  text-transform:uppercase;color:rgba(255,255,255,.5);
+}
+
+/* ── CARD (lista + condizioni) ── */
+.card{
+  border:1px solid var(--hair-inv);border-radius:var(--radius);
+  background:rgba(255,255,255,.035);overflow:hidden;
+}
+
+/* ── 2 · ACCORDION ── */
+.grp{
+  font-size:11px;font-weight:600;letter-spacing:2px;
+  text-transform:uppercase;color:var(--red);
+  padding:20px 22px 10px;
+}
+.item+.grp,.item+.item{border-top:1px solid var(--hair-inv)}
+
+.svc-h{font-size:inherit;font-weight:inherit;line-height:inherit}
+.svc-row{
+  position:relative;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  grid-template-areas:"ico name plus" "ico price plus";
+  align-items:center;column-gap:14px;
+  width:100%;min-height:52px;padding:16px 18px;
+  background:none;border:0;cursor:pointer;text-align:left;
+  font-family:var(--font);color:#fff;
+  transition:background .3s var(--ease-io);
+}
+.svc-row::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:var(--red);transform:scaleX(0);transform-origin:left;
+  transition:transform 280ms var(--ease-io);
+}
+.item.open .svc-row::before{transform:scaleX(1)}
+.svc-row:focus-visible{outline:2px solid var(--red);outline-offset:-3px}
+@media(hover:hover){.svc-row:hover{background:rgba(255,255,255,.04)}}
+
+.svc-ico{
+  grid-area:ico;display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.55);transition:color .3s var(--ease-io);
+}
+.svc-row svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.svc-name{grid-area:name;font-size:16px;font-weight:500;letter-spacing:-.01em;line-height:1.3;color:#fff}
+.svc-price{
+  grid-area:price;margin-top:3px;
+  font-size:13px;font-weight:500;color:var(--gray);
+  transition:color .3s var(--ease-io);
+}
+.item.open .svc-ico,.item.open .svc-price{color:var(--red)}
+
+.svc-plus{
+  grid-area:plus;position:relative;width:16px;height:16px;flex:none;
+  color:rgba(255,255,255,.55);
+  transition:color .3s var(--ease-io),transform 280ms var(--ease-io);
+}
+.svc-plus::before,.svc-plus::after{
+  content:"";position:absolute;top:50%;left:50%;
+  background:currentColor;border-radius:1px;
+}
+.svc-plus::before{width:11px;height:1.5px;transform:translate(-50%,-50%)}
+.svc-plus::after{width:1.5px;height:11px;transform:translate(-50%,-50%)}
+.item.open .svc-plus{transform:rotate(45deg);color:var(--red)}
+
+/* pannello: grid 0fr → 1fr, nessuna max-height arbitraria */
+.svc-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows 280ms var(--ease-io)}
+.svc-panel[hidden]{display:none}
+.item.open .svc-panel{grid-template-rows:1fr}
+.svc-panel-in{overflow:hidden;min-height:0}
+.svc-body{padding:0 18px 22px}
+
+.svc-desc{font-size:15px;font-weight:400;line-height:1.65;color:rgba(255,255,255,.72);max-width:62ch}
+.lbl{
+  margin-top:18px;
+  font-size:10px;font-weight:600;letter-spacing:1.8px;
+  text-transform:uppercase;color:var(--red);
+}
+.lbl-alt{color:rgba(255,255,255,.55)}
+.svc-list{list-style:none;margin-top:9px}
+.svc-list li{
+  position:relative;padding-left:16px;margin-top:7px;
+  font-size:14px;line-height:1.6;color:rgba(255,255,255,.72);
+}
+.svc-list li::before{content:"";position:absolute;left:0;top:.62em;width:4px;height:4px;background:var(--red)}
+.svc-note{margin-top:8px;font-size:14px;line-height:1.6;color:rgba(255,255,255,.72);max-width:62ch}
+.svc-cta{
+  display:inline-flex;align-items:center;gap:8px;margin-top:22px;
+  font-size:14px;font-weight:500;color:var(--red);text-decoration:none;
+  transition:gap .3s var(--ease),opacity .3s;
+}
+.svc-cta svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.svc-cta:hover{gap:12px;opacity:.85}
+.svc-cta:active{transform:scale(.97)}
+
+/* ── 3 · CONDIZIONI ── */
+.cond{margin-top:clamp(28px,7vw,40px);padding:clamp(20px,5vw,28px)}
+.cond h2{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--red)}
+.cond ul{list-style:none;margin-top:4px}
+.cond li{padding:14px 0;font-size:14px;font-weight:400;line-height:1.6;color:var(--gray)}
+.cond li+li{border-top:1px solid var(--hair-inv)}
+.cond li:last-child{padding-bottom:0}
+
+/* ── 4 · CONTATTO ── */
+.contact{padding:clamp(46px,11vw,74px) 0 0}
+.contact h2{font-size:clamp(1.8rem,7vw,2.6rem);font-weight:800;letter-spacing:-.02em;line-height:1.05;color:#fff}
+.contact p{margin-top:14px;max-width:52ch;font-size:clamp(.95rem,3.4vw,1.05rem);line-height:1.6;color:var(--gray)}
+.contact-btns{display:flex;flex-direction:column;gap:10px;margin-top:26px}
+.contact-btns .btn{justify-content:center}
+
+/* ── BOTTONI (stessa regola di index.html) ── */
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.92rem;font-weight:600;text-decoration:none;letter-spacing:-.01em;
+  border-radius:99px;padding:.85rem 1.7rem;
+  transition:transform .35s var(--ease),background .3s,color .3s,border-color .3s,box-shadow .35s;
+}
+.btn:active{transform:scale(.97)}
+.btn-solid{background:#fff;color:#000}
+.btn-solid:hover{background:var(--red);color:#fff;transform:scale(1.045);box-shadow:0 12px 40px rgba(230,32,32,.35)}
+.btn-line{border:1px solid var(--hair-inv);color:#fff;background:rgba(255,255,255,.04)}
+.btn-line:hover{border-color:rgba(255,255,255,.4);transform:scale(1.045)}
+.btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ── 5 · RITORNO ── */
+.back-wrap{padding:clamp(34px,8vw,52px) 0 clamp(30px,8vw,56px)}
+.back{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:500;color:var(--gray);text-decoration:none;
+  transition:color .3s,gap .3s var(--ease);
+}
+.back:hover{color:#fff;gap:12px}
+.back svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ── 6 · BARRA CTA FISSA (solo < 768px) ── */
+.cta-bar{
+  position:sticky;bottom:0;z-index:50;
+  background:rgba(0,0,0,.92);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-top:1px solid var(--hair-inv);
+  padding:12px clamp(16px,4vw,24px);
+  padding-bottom:calc(12px + env(safe-area-inset-bottom));
+  opacity:0;visibility:hidden;transform:translateY(100%);
+  transition:opacity 200ms var(--ease-io),transform 200ms var(--ease-io),visibility 200ms;
+}
+.cta-bar.show{opacity:1;visibility:visible;transform:none}
+.cta-bar .btn{width:100%;justify-content:center}
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){:root{--radius:22px}}
+@media(min-width:768px){
+  .grp{padding:20px 24px 10px}
+  .svc-row{
+    grid-template-columns:auto 1fr auto auto;
+    grid-template-areas:"ico name price plus";
+    column-gap:16px;padding:20px 24px;
+  }
+  .svc-price{margin-top:0;font-size:14px;text-align:right}
+  .svc-body{padding:0 24px 26px}
+  .contact-btns{flex-direction:row;flex-wrap:wrap}
+  .contact-btns .btn{justify-content:center}
+  .cta-bar{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:0ms!important;animation-duration:0ms!important;animation-iteration-count:1!important}
+}
+</style>
+</head>
+<body>
+
+<main class="wrap">
+  <header class="head">
+    <p class="eyebrow">Rinaldi Visuals</p>
+    <h1>Listino</h1>
+    <p class="head-sub">Prezzi di partenza, trasparenti. Da qui capisci come lavoro e cosa ricevi, prima ancora di scrivermi.</p>
+    <p class="head-meta">Aggiornato agosto 2026 · IVA esclusa</p>
+  </header>
+
+  <section class="card list" aria-label="Servizi e prezzi">
+    <h2 class="grp">Identità</h2>
+    <div class="item" data-slug="logo-essenziale">
+      <h3 class="svc-h">
+        <button class="svc-row" type="button" id="btn-logo-essenziale" aria-expanded="false" aria-controls="pan-logo-essenziale">
+          <span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="3" transform="rotate(45 12 12)"/><circle cx="12" cy="12" r="2.4" fill="currentColor" stroke="none"/></svg></span>
+          <span class="svc-name">Logo essenziale</span>
+          <span class="svc-price">da 290 €</span>
+          <span class="svc-plus" aria-hidden="true"></span>
+        </button>
+      </h3>
+      <div class="svc-panel" id="pan-logo-essenziale" role="region" aria-labelledby="btn-logo-essenziale" hidden>
+        <div class="svc-panel-in">
+          <div class="svc-body">
+            <p class="svc-desc">Il punto di partenza di tutto. Progetto un marchio che funziona ovunque: sull’insegna, sul biglietto da visita e nella foto profilo da 40 pixel. Ti consegno due direzioni diverse tra loro, non venti varianti dello stesso segno — perché scegliere tra due idee vere è più utile che scegliere tra venti sfumature.</p>
+            <p class="lbl">Cosa include</p>
+            <ul class="svc-list">
+              <li>Brief iniziale per capire cosa deve comunicare il marchio</li>
+              <li>2 direzioni creative distinte</li>
+              <li>2 cicli di revisione</li>
+              <li>File vettoriali (SVG, PDF, AI) + PNG a fondo trasparente</li>
+              <li>Versioni positivo, negativo e monocromatica</li>
+            </ul>
+            <p class="lbl lbl-alt">Non include</p>
+            <p class="svc-note">Palette estesa, tipografia di sistema, manuale d’uso — sono nel pacchetto successivo.</p>
+            <p class="lbl lbl-alt">Tempi</p>
+            <p class="svc-note">7–10 giorni lavorativi.</p>
+            <a class="svc-cta" href="https://wa.me/393500883962?text=Ciao%20Cristian%2C%20mi%20interessa%20il%20servizio%20Logo%20essenziale" target="_blank" rel="noopener">Richiedi preventivo per questo servizio <svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item" data-slug="identita-visiva-starter">
+      <h3 class="svc-h">
+        <button class="svc-row" type="button" id="btn-identita-visiva-starter" aria-expanded="false" aria-controls="pan-identita-visiva-starter">
+          <span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="4.3"/><circle cx="12" cy="12" r="4.3"/><circle cx="18" cy="12" r="4.3"/></svg></span>
+          <span class="svc-name">Identità visiva starter</span>
+          <span class="svc-price">da 650 €</span>
+          <span class="svc-plus" aria-hidden="true"></span>
+        </button>
+      </h3>
+      <div class="svc-panel" id="pan-identita-visiva-starter" role="region" aria-labelledby="btn-identita-visiva-starter" hidden>
+        <div class="svc-panel-in">
+          <div class="svc-body">
+            <p class="svc-desc">Un logo da solo non è un’identità. Qui definisco anche colori, caratteri e regole con cui il tuo brand si comporta: così un post, un volantino e un’insegna sembrano usciti dalla stessa mano, anche quando li fa una persona diversa da me.</p>
+            <p class="lbl">Cosa include</p>
+            <ul class="svc-list">
+              <li>Logo completo, tutto il pacchetto precedente</li>
+              <li>Palette colori con codici HEX, RGB e CMYK</li>
+              <li>Tipografia primaria e secondaria</li>
+              <li>Elementi grafici ricorrenti</li>
+              <li>Mini guida PDF con le regole d’uso</li>
+              <li>2 applicazioni pratiche, per esempio biglietto da visita e template post</li>
+            </ul>
+            <p class="lbl lbl-alt">Tempi</p>
+            <p class="svc-note">2–3 settimane.</p>
+            <a class="svc-cta" href="https://wa.me/393500883962?text=Ciao%20Cristian%2C%20mi%20interessa%20il%20servizio%20Identit%C3%A0%20visiva%20starter" target="_blank" rel="noopener">Richiedi preventivo per questo servizio <svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h2 class="grp">Social</h2>
+    <div class="item" data-slug="kit-grafico-social">
+      <h3 class="svc-h">
+        <button class="svc-row" type="button" id="btn-kit-grafico-social" aria-expanded="false" aria-controls="pan-kit-grafico-social">
+          <span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2.7" y="2.7" width="7.6" height="7.6" rx="2"/><rect x="13.7" y="2.7" width="7.6" height="7.6" rx="2"/><rect x="2.7" y="13.7" width="7.6" height="7.6" rx="2"/><rect x="13.7" y="13.7" width="7.6" height="7.6" rx="2"/></svg></span>
+          <span class="svc-name">Kit grafico social</span>
+          <span class="svc-price">da 199 €</span>
+          <span class="svc-plus" aria-hidden="true"></span>
+        </button>
+      </h3>
+      <div class="svc-panel" id="pan-kit-grafico-social" role="region" aria-labelledby="btn-kit-grafico-social" hidden>
+        <div class="svc-panel-in">
+          <div class="svc-body">
+            <p class="svc-desc">Una tantum, per chi pubblica da solo. Ti consegno 8 template con la struttura già impostata: tu cambi testo e foto, la coerenza resta. È la soluzione giusta se hai contenuti da pubblicare ma nessuno che li imposti.</p>
+            <p class="lbl">Cosa include</p>
+            <ul class="svc-list">
+              <li>8 template personalizzati sul tuo brand</li>
+              <li>File editabili, Canva o PSD a tua scelta</li>
+              <li>Formati feed e stories</li>
+              <li>Guida rapida per modificarli senza rompere la gerarchia</li>
+            </ul>
+            <p class="lbl lbl-alt">Non include</p>
+            <p class="svc-note">Creazione contenuti, copy, pubblicazione.</p>
+            <a class="svc-cta" href="https://wa.me/393500883962?text=Ciao%20Cristian%2C%20mi%20interessa%20il%20servizio%20Kit%20grafico%20social" target="_blank" rel="noopener">Richiedi preventivo per questo servizio <svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item" data-slug="gestione-visiva-mensile">
+      <h3 class="svc-h">
+        <button class="svc-row" type="button" id="btn-gestione-visiva-mensile" aria-expanded="false" aria-controls="pan-gestione-visiva-mensile">
+          <span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="16" rx="2.5"/><path d="M8 3v5M16 3v5"/><circle cx="7.5" cy="12.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="16.5" cy="12.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="7.5" cy="17" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="17" r="1.2" fill="currentColor" stroke="none"/><circle cx="16.5" cy="17" r="1.2" fill="currentColor" stroke="none"/></svg></span>
+          <span class="svc-name">Gestione visiva mensile</span>
+          <span class="svc-price">da 450 €/mese</span>
+          <span class="svc-plus" aria-hidden="true"></span>
+        </button>
+      </h3>
+      <div class="svc-panel" id="pan-gestione-visiva-mensile" role="region" aria-labelledby="btn-gestione-visiva-mensile" hidden>
+        <div class="svc-panel-in">
+          <div class="svc-body">
+            <p class="svc-desc">Se pubblichi ogni settimana ma ogni post sembra di un brand diverso, il problema non sono i contenuti: è la direzione. Ogni mese ti consegno 12 contenuti coerenti, pronti da pubblicare, costruiti su una linea visiva decisa insieme.</p>
+            <p class="lbl">Cosa include</p>
+            <ul class="svc-list">
+              <li>12 contenuti al mese</li>
+              <li>Linea visiva definita e mantenuta nel tempo</li>
+              <li>Adattamenti formato per feed, stories e copertine reel</li>
+              <li>Revisione mensile di cosa ha funzionato</li>
+            </ul>
+            <p class="lbl lbl-alt">Non include</p>
+            <p class="svc-note">Copywriting, pubblicazione, gestione commenti, advertising — si preventivano a parte.</p>
+            <p class="lbl lbl-alt">Impegno minimo</p>
+            <p class="svc-note">3 mesi. Sotto i 3 mesi non si vede nessun risultato.</p>
+            <a class="svc-cta" href="https://wa.me/393500883962?text=Ciao%20Cristian%2C%20mi%20interessa%20il%20servizio%20Gestione%20visiva%20mensile" target="_blank" rel="noopener">Richiedi preventivo per questo servizio <svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h2 class="grp">Stampa e documenti</h2>
+    <div class="item" data-slug="presentazioni">
+      <h3 class="svc-h">
+        <button class="svc-row" type="button" id="btn-presentazioni" aria-expanded="false" aria-controls="pan-presentazioni">
+          <span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2.5" y="3" width="19" height="13" rx="2"/><path d="M12 16v3M8 21.5l4-2.5 4 2.5"/><path d="M7.5 12.5V10M12 12.5V7.5M16.5 12.5V9.5"/></svg></span>
+          <span class="svc-name">Presentazioni</span>
+          <span class="svc-price">da 199 €</span>
+          <span class="svc-plus" aria-hidden="true"></span>
+        </button>
+      </h3>
+      <div class="svc-panel" id="pan-presentazioni" role="region" aria-labelledby="btn-presentazioni" hidden>
+        <div class="svc-panel-in">
+          <div class="svc-body">
+            <p class="svc-desc">Una presentazione non deve essere bella: deve farsi capire in trenta secondi da chi la guarda distratto. Imposto gerarchia, ritmo e leggibilità, decido cosa sta su ogni slide e soprattutto cosa va tolto.</p>
+            <p class="lbl">Cosa include</p>
+            <ul class="svc-list">
+              <li>Template grafico e impaginazione fino a 10 slide</li>
+              <li>2 cicli di revisione</li>
+              <li>File in PowerPoint o Google Slides, modificabile</li>
+            </ul>
+            <p class="lbl lbl-alt">Extra</p>
+            <p class="svc-note">Slide aggiuntiva 20 € · restyling di slide esistenti da 15 € a slide.</p>
+            <p class="lbl lbl-alt">Nota</p>
+            <p class="svc-note">I testi li fornisci tu. Riscriverli è copywriting, si preventiva a parte.</p>
+            <a class="svc-cta" href="https://wa.me/393500883962?text=Ciao%20Cristian%2C%20mi%20interessa%20il%20servizio%20Presentazioni" target="_blank" rel="noopener">Richiedi preventivo per questo servizio <svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item" data-slug="brochure-e-pieghevoli">
+      <h3 class="svc-h">
+        <button class="svc-row" type="button" id="btn-brochure-e-pieghevoli" aria-expanded="false" aria-controls="pan-brochure-e-pieghevoli">
+          <span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 4.5h6v13H9z"/><path d="M9 4.5L3.5 7.5v13L9 17.5"/><path d="M15 4.5L20.5 7.5v13L15 17.5"/></svg></span>
+          <span class="svc-name">Brochure e pieghevoli</span>
+          <span class="svc-price">da 150 €</span>
+          <span class="svc-plus" aria-hidden="true"></span>
+        </button>
+      </h3>
+      <div class="svc-panel" id="pan-brochure-e-pieghevoli" role="region" aria-labelledby="btn-brochure-e-pieghevoli" hidden>
+        <div class="svc-panel-in">
+          <div class="svc-body">
+            <p class="svc-desc">Carta che finisce in mano al cliente: qui contano ordine, ritmo di lettura e leggibilità reale, non l’effetto sullo schermo. Imposto la gabbia perché l’occhio sappia sempre dove andare dopo.</p>
+            <p class="lbl">Cosa include</p>
+            <ul class="svc-list">
+              <li>Pieghevole 2 o 3 ante da 150 €</li>
+              <li>Brochure 8 pagine da 280 €</li>
+              <li>Impaginazione e file esecutivo pronto per la tipografia, con abbondanze, crocini e profilo colore</li>
+            </ul>
+            <p class="lbl lbl-alt">Extra</p>
+            <p class="svc-note">Pagina aggiuntiva 20–35 €.</p>
+            <p class="lbl lbl-alt">Non include</p>
+            <p class="svc-note">Stampa e spedizione. Coordino il fornitore, ma restano voci separate.</p>
+            <a class="svc-cta" href="https://wa.me/393500883962?text=Ciao%20Cristian%2C%20mi%20interessa%20il%20servizio%20Brochure%20e%20pieghevoli" target="_blank" rel="noopener">Richiedi preventivo per questo servizio <svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item" data-slug="poster-e-locandine">
+      <h3 class="svc-h">
+        <button class="svc-row" type="button" id="btn-poster-e-locandine" aria-expanded="false" aria-controls="pan-poster-e-locandine">
+          <span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="1.8" width="16" height="20.4" rx="1.5"/><circle cx="12" cy="8.4" r="3.4"/><path d="M7.6 15.2h8.8M7.6 18.6h5"/></svg></span>
+          <span class="svc-name">Poster e locandine</span>
+          <span class="svc-price">da 150 €</span>
+          <span class="svc-plus" aria-hidden="true"></span>
+        </button>
+      </h3>
+      <div class="svc-panel" id="pan-poster-e-locandine" role="region" aria-labelledby="btn-poster-e-locandine" hidden>
+        <div class="svc-panel-in">
+          <div class="svc-body">
+            <p class="svc-desc">Un manifesto ha tre secondi per essere letto da lontano, spesso di sfuggita. Progetto la gerarchia perché l’informazione che serve davvero — data, nome, luogo — arrivi per prima e le altre dopo.</p>
+            <p class="lbl">Cosa include</p>
+            <ul class="svc-list">
+              <li>1 formato a scelta</li>
+              <li>2 cicli di revisione</li>
+              <li>File esecutivo pronto stampa</li>
+            </ul>
+            <p class="lbl lbl-alt">Extra</p>
+            <p class="svc-note">Adattamento social, feed e stories, +30 €.</p>
+            <a class="svc-cta" href="https://wa.me/393500883962?text=Ciao%20Cristian%2C%20mi%20interessa%20il%20servizio%20Poster%20e%20locandine" target="_blank" rel="noopener">Richiedi preventivo per questo servizio <svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item" data-slug="menu">
+      <h3 class="svc-h">
+        <button class="svc-row" type="button" id="btn-menu" aria-expanded="false" aria-controls="pan-menu">
+          <span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="1.8" width="16" height="20.4" rx="2.5"/><path d="M7 5v3.8h3.2V5M8.6 8.8v5.4"/><path d="M15.2 14.2V5"/><path d="M15.2 5L17 8.3c.5.9-.1 1.7-1 1.7h-.8"/><path d="M7.6 18h8.8"/></svg></span>
+          <span class="svc-name">Menù</span>
+          <span class="svc-price">da 120 €</span>
+          <span class="svc-plus" aria-hidden="true"></span>
+        </button>
+      </h3>
+      <div class="svc-panel" id="pan-menu" role="region" aria-labelledby="btn-menu" hidden>
+        <div class="svc-panel-in">
+          <div class="svc-body">
+            <p class="svc-desc">Il menù è il documento più letto del tuo locale, e quasi sempre il più trascurato. Lo progetto perché sia leggibile con poca luce e perché l’occhio si fermi sui piatti che ti conviene vendere.</p>
+            <p class="lbl">Cosa include</p>
+            <ul class="svc-list">
+              <li>Fronte e retro</li>
+              <li>Impaginazione e gerarchia delle portate</li>
+              <li>File PDF pronto stampa</li>
+            </ul>
+            <p class="lbl lbl-alt">Extra</p>
+            <p class="svc-note">Facciata aggiuntiva 30 €.</p>
+            <a class="svc-cta" href="https://wa.me/393500883962?text=Ciao%20Cristian%2C%20mi%20interessa%20il%20servizio%20Men%C3%B9" target="_blank" rel="noopener">Richiedi preventivo per questo servizio <svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item" data-slug="biglietti-da-visita">
+      <h3 class="svc-h">
+        <button class="svc-row" type="button" id="btn-biglietti-da-visita" aria-expanded="false" aria-controls="pan-biglietti-da-visita">
+          <span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2.5" y="6" width="14" height="9.5" rx="2.5" transform="rotate(-9 9.5 10.75)"/><rect x="7.5" y="8.5" width="14" height="9.5" rx="2.5" transform="rotate(6 14.5 13.25)"/></svg></span>
+          <span class="svc-name">Biglietti da visita</span>
+          <span class="svc-price">da 69 €</span>
+          <span class="svc-plus" aria-hidden="true"></span>
+        </button>
+      </h3>
+      <div class="svc-panel" id="pan-biglietti-da-visita" role="region" aria-labelledby="btn-biglietti-da-visita" hidden>
+        <div class="svc-panel-in">
+          <div class="svc-body">
+            <p class="svc-desc">Formato piccolo, zero margine d’errore: qui un millimetro sbagliato si vede. Fronte e retro coordinati al tuo brand, consegnati pronti per la stampa senza sorprese in tipografia.</p>
+            <p class="lbl">Cosa include</p>
+            <ul class="svc-list">
+              <li>1 proposta grafica</li>
+              <li>2 cicli di revisione</li>
+              <li>PDF stampa con abbondanze e crocini di taglio</li>
+            </ul>
+            <p class="lbl lbl-alt">Nota</p>
+            <p class="svc-note">Se non hai ancora un logo, parti da Logo essenziale.</p>
+            <a class="svc-cta" href="https://wa.me/393500883962?text=Ciao%20Cristian%2C%20mi%20interessa%20il%20servizio%20Biglietti%20da%20visita" target="_blank" rel="noopener">Richiedi preventivo per questo servizio <svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item" data-slug="curriculum">
+      <h3 class="svc-h">
+        <button class="svc-row" type="button" id="btn-curriculum" aria-expanded="false" aria-controls="pan-curriculum">
+          <span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="1.8" width="16" height="20.4" rx="2.5"/><circle cx="12" cy="7" r="1.9"/><path d="M8.4 14.2a4.2 4.2 0 017.2 0"/><path d="M7.6 17h8.8M7.6 19.9h5"/></svg></span>
+          <span class="svc-name">Curriculum</span>
+          <span class="svc-price">da 69 €</span>
+          <span class="svc-plus" aria-hidden="true"></span>
+        </button>
+      </h3>
+      <div class="svc-panel" id="pan-curriculum" role="region" aria-labelledby="btn-curriculum" hidden>
+        <div class="svc-panel-in">
+          <div class="svc-body">
+            <p class="svc-desc">Chi legge il tuo CV ci passa sei secondi prima di decidere. Lo impagino perché in quei sei secondi trovi quello che conta, non perché sia pieno di grafica.</p>
+            <p class="lbl">Cosa include</p>
+            <ul class="svc-list">
+              <li>Impaginazione 1 pagina</li>
+              <li>2 cicli di revisione</li>
+              <li>PDF pronto per invio e per stampa</li>
+            </ul>
+            <p class="lbl lbl-alt">Extra</p>
+            <p class="svc-note">Con lettera motivazionale impaginata 99 €.</p>
+            <p class="lbl lbl-alt">Nota</p>
+            <p class="svc-note">La riscrittura dei testi è copywriting, si preventiva a parte.</p>
+            <a class="svc-cta" href="https://wa.me/393500883962?text=Ciao%20Cristian%2C%20mi%20interessa%20il%20servizio%20Curriculum" target="_blank" rel="noopener">Richiedi preventivo per questo servizio <svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card cond" aria-labelledby="cond-title">
+    <h2 id="cond-title">Condizioni</h2>
+    <ul>
+      <li>Ogni prezzo comprende brief iniziale, proposta grafica, due cicli di revisione e consegna dei file finali concordati.</li>
+      <li>Sono esclusi stampa e spedizione, acquisto di font e immagini, copywriting, fotografie e illustrazioni complesse.</li>
+      <li>Revisioni oltre le due incluse: 30 €/ora oppure a blocco, da concordare.</li>
+      <li>Consegne fuori pianificazione: supplemento urgenza dal 25% al 50%.</li>
+      <li>Pagamento: anticipo 40% all’avvio, saldo prima della consegna dei file definitivi.</li>
+      <li>I prezzi indicati con “da” sono di partenza. Il preventivo finale dipende da materiali forniti, quantità e scadenza.</li>
+    </ul>
+  </section>
+
+  <section class="contact">
+    <h2>Parliamone</h2>
+    <p>Il tuo progetto non rientra in nessuna di queste voci, o non sai da dove partire? Scrivimi e ne parliamo. Il preventivo è gratuito e non impegna a niente.</p>
+    <div class="contact-btns">
+      <a class="btn btn-solid" href="https://wa.me/393500883962?text=Ciao%20Cristian%2C%20ho%20visto%20il%20listino%20e%20vorrei%20un%20preventivo" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.5 11.6a8.5 8.5 0 01-12.4 7.5L3.5 20.5l1.4-4.6a8.5 8.5 0 1115.6-4.3z"/><path d="M8.9 9.2c0 3.1 2.5 5.6 5.6 5.6"/></svg><span>WhatsApp</span></a>
+      <a class="btn btn-line" href="mailto:rinaldicristian92@gmail.com?subject=Richiesta%20preventivo"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg><span>Email</span></a>
+      <a class="btn btn-line" href="https://instagram.com/rinaldi.visuals" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg><span>Instagram</span></a>
+    </div>
+  </section>
+
+  <p class="back-wrap"><a class="back" href="index.html"><svg viewBox="0 0 24 24"><path d="M19 12H6M11 18l-6-6 6-6"/></svg><span>Torna al portfolio</span></a></p>
+</main>
+
+<!-- barra CTA: solo sotto 768px, compare dopo 400px di scroll -->
+<div class="cta-bar">
+  <a class="btn btn-solid" href="https://wa.me/393500883962?text=Ciao%20Cristian%2C%20ho%20visto%20il%20listino%20e%20vorrei%20un%20preventivo" target="_blank" rel="noopener">Richiedi un preventivo</a>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* una sola voce aperta alla volta: metti false per aprirne quante vuoi */
+  var SINGLE_OPEN = true;
+  var DURATION = 280;
+
+  var reduce  = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var mobile  = window.matchMedia('(max-width: 767px)');
+  var items   = Array.prototype.slice.call(document.querySelectorAll('.item'));
+  var bar     = document.querySelector('.cta-bar');
+
+  function dur(){ return reduce.matches ? 0 : DURATION; }
+
+  /* l'hash è solo un segnalibro: replaceState, mai pushState */
+  function setHash(slug){
+    try{
+      history.replaceState(null,'', slug ? '#'+slug : location.pathname+location.search);
+    }catch(e){ /* file:// non consente replaceState */ }
+  }
+
+  function isOpen(item){ return item.classList.contains('open'); }
+
+  function close(item){
+    if(!isOpen(item)) return;
+    var btn = item.querySelector('.svc-row');
+    var pan = item.querySelector('.svc-panel');
+    item.classList.remove('open');
+    btn.setAttribute('aria-expanded','false');
+    window.clearTimeout(item._t);
+    /* hidden solo a transizione finita, altrimenti l'animazione salta */
+    item._t = window.setTimeout(function(){
+      if(!isOpen(item)) pan.hidden = true;
+    }, dur() + 40);
+  }
+
+  function open(item, animate){
+    if(isOpen(item)) return;
+    var btn = item.querySelector('.svc-row');
+    var pan = item.querySelector('.svc-panel');
+
+    if(SINGLE_OPEN){
+      items.forEach(function(other){ if(other !== item) close(other); });
+    }
+    window.clearTimeout(item._t);
+    pan.hidden = false;
+    void pan.offsetHeight;                 /* reflow: parte da 0fr */
+    item.classList.add('open');
+    btn.setAttribute('aria-expanded','true');
+    setHash(item.getAttribute('data-slug'));
+    if(animate !== false && mobile.matches) keepVisible(item, btn);
+  }
+
+  /* porta la voce in cima alla vista; scroll-behavior:smooth del CSS
+     va neutralizzato a mano quando serve un salto secco */
+  function scrollToItem(item, smooth){
+    var root = document.documentElement;
+    var prev = root.style.scrollBehavior;
+    if(!smooth) root.style.scrollBehavior = 'auto';
+    window.scrollTo({
+      top: item.getBoundingClientRect().top + window.pageYOffset - 16,
+      behavior: (smooth && !reduce.matches) ? 'smooth' : 'auto'
+    });
+    if(!smooth) root.style.scrollBehavior = prev;
+  }
+
+  /* su mobile la riga aperta deve restare leggibile sopra la barra CTA */
+  function keepVisible(item, btn){
+    window.setTimeout(function(){
+      var barH  = (bar && mobile.matches && bar.classList.contains('show')) ? bar.offsetHeight : 0;
+      var row   = btn.getBoundingClientRect();
+      var panel = item.querySelector('.svc-panel').getBoundingClientRect();
+      var limit = window.innerHeight - barH - 12;
+      if(row.top < 8 || (panel.bottom > limit && row.top > 16)){
+        window.scrollTo({
+          top: window.pageYOffset + row.top - 16,
+          behavior: reduce.matches ? 'auto' : 'smooth'
+        });
+      }
+    }, dur() + 60);
+  }
+
+  items.forEach(function(item){
+    item.querySelector('.svc-row').addEventListener('click', function(){
+      if(isOpen(item)){
+        close(item);
+        if(location.hash.slice(1) === item.getAttribute('data-slug')) setHash('');
+      }else{
+        open(item, true);
+      }
+    });
+  });
+
+  /* deep link: #logo-essenziale apre la voce e ci porta sopra */
+  function fromHash(){
+    var raw = location.hash.replace('#','');
+    if(!raw) return null;
+    var slug; try{ slug = decodeURIComponent(raw); }catch(e){ slug = raw; }
+    for(var i=0;i<items.length;i++){
+      if(items[i].getAttribute('data-slug') === slug){ return items[i]; }
+    }
+    return null;
+  }
+
+  var target = fromHash();
+  if(target) open(target, false);
+
+  /* sblocca le transizioni solo dopo il primo paint */
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      if(target) scrollToItem(target, false);
+      document.documentElement.classList.remove('no-anim');
+    });
+  });
+
+  window.addEventListener('hashchange', function(){
+    var item = fromHash();
+    if(!item) return;
+    open(item, false);
+    scrollToItem(item, true);
+  });
+
+  /* barra CTA: compare dopo 400px, così non copre l'intestazione */
+  if(bar){
+    var ticking = false;
+    var onScroll = function(){
+      if(ticking) return;
+      ticking = true;
+      requestAnimationFrame(function(){
+        bar.classList.toggle('show', window.pageYOffset > 400);
+        ticking = false;
+      });
+    };
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  }
+})();
+</script>
+</body>
+</html>
