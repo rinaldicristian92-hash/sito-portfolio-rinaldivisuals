@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-<title>Cristian Rinaldi — Rinaldi Visuals · Graphic Designer & Fotografo</title>
-<meta name="description" content="Cristian Rinaldi — Graphic Designer e Fotografo a Foggia. Branding, identità visive, fotografia e art direction. Design essenziale, impatto assoluto."/>
+<title>Cristian Rinaldi — Rinaldi Visuals · Graphic Designer &amp; Visual Director</title>
+<meta name="description" content="Cristian Rinaldi — Graphic Designer e Visual Director a Foggia, Puglia. Identità visive, layout editoriali e contenuti social. Portfolio, esperienze e contatti."/>
 <meta name="author" content="Cristian Rinaldi"/>
 <meta property="og:title" content="Cristian Rinaldi — Rinaldi Visuals"/>
-<meta property="og:description" content="Graphic Designer & Fotografo. Identità visive che lasciano il segno."/>
+<meta property="og:description" content="Graphic Designer &amp; Visual Director. Identità visive, editoria &amp; stampa, contenuti social."/>
 <meta property="og:type" content="website"/>
 <meta property="og:image" content="assets/ritratto.jpg"/>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23000'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Helvetica' font-weight='700' font-size='13' fill='%23fff'>R<tspan fill='%23ff3b30'>.</tspan></text></svg>"/>
@@ -243,6 +243,28 @@ html.lb-open,body.lb-open{overflow:hidden}
 .marquee-track i{font-style:normal;color:var(--red);padding:0}
 @keyframes mq{to{transform:translateX(-50%)}}
 
+/* ── PILLARS (fascia rossa, come il CV) ── */
+.pillars{background:var(--red);padding:clamp(1rem,2.2vw,1.5rem) max(22px,6vw)}
+.pillars-inner{
+  max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);
+  align-items:center;gap:clamp(.7rem,2vw,1.8rem);
+}
+.pillar{display:flex;align-items:center;gap:.8rem;justify-content:center;position:relative;color:#fff}
+.pillar+.pillar::before{
+  content:'';position:absolute;left:calc(-1 * clamp(.35rem,1vw,.9rem));top:10%;bottom:10%;
+  width:1px;background:rgba(255,255,255,.4);
+}
+.pillar b{
+  flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;
+  background:#fff;color:var(--red);font-size:.68rem;font-weight:800;font-variant-numeric:tabular-nums;
+}
+.pillar span{font-size:clamp(.62rem,1.3vw,.8rem);font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+@media(max-width:760px){
+  .pillars-inner{grid-template-columns:1fr;gap:.65rem}
+  .pillar{justify-content:flex-start}
+  .pillar+.pillar::before{display:none}
+}
+
 /* ── SECTION SHELL ── */
 .sec{padding:clamp(5.5rem,12vw,10rem) max(22px,6vw);position:relative}
 .sec-light{background:var(--paper);color:var(--ink)}
@@ -301,6 +323,11 @@ html.lb-open,body.lb-open{overflow:hidden}
 }
 .cv-btn:hover{background:var(--ink);color:#fff;transform:scale(1.04)}
 .cv-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;margin:1.9rem 0 .5rem}
+.facts div{background:#fff;border:1px solid var(--hair);border-radius:16px;padding:.9rem 1.1rem}
+.facts dt{font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gray);margin-bottom:.35rem}
+.facts dd{font-size:.92rem;font-weight:600;color:var(--ink);letter-spacing:-.01em;line-height:1.45}
+@media(max-width:480px){.facts{grid-template-columns:1fr}}
 
 /* ── WORKS ── */
 .works-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:clamp(2.5rem,5vw,4rem)}
@@ -435,6 +462,34 @@ html.lb-open,body.lb-open{overflow:hidden}
   .tl-item{grid-template-columns:1fr;gap:.5rem}
   .tl-tag{display:none}
 }
+.tl-live{
+  display:inline-flex;align-items:center;gap:.4rem;vertical-align:middle;
+  margin-left:.6rem;transform:translateY(-2px);
+  font-style:normal;font-size:.56rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+  background:var(--red);color:#fff;border-radius:99px;padding:.3rem .62rem;white-space:nowrap;
+}
+.tl-live::before{content:'';width:5px;height:5px;border-radius:50%;background:#fff;animation:pulseDot 1.8s ease-in-out infinite}
+@keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ── COMPETENZE ── */
+.skills{
+  margin-top:clamp(2.6rem,5vw,4rem);background:rgba(255,255,255,.03);
+  border:1px solid var(--hair-inv);border-radius:var(--radius);
+  padding:clamp(1.8rem,3.4vw,2.8rem);
+}
+.skills h3{
+  font-size:.72rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--red);margin-bottom:1.5rem;
+}
+.skill-tags{display:flex;flex-wrap:wrap;gap:.6rem}
+.skill-tags span{
+  font-size:.82rem;font-weight:500;color:rgba(255,255,255,.75);
+  border:1px solid var(--hair-inv);border-radius:99px;padding:.55rem 1.05rem;
+  transition:background .3s,border-color .3s,color .3s;
+}
+.skill-tags span:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.38);color:#fff}
+.skill-tags span.tool{color:#fff;border-color:rgba(255,59,48,.55)}
+.skill-tags span.tool:hover{background:rgba(255,59,48,.14);border-color:var(--red)}
 
 /* ── LINKTREE ── */
 .link-card{
@@ -630,7 +685,7 @@ footer{
   <a href="#photo" data-i18n="nav_photo">Fotografia</a>
   <a href="#journey" data-i18n="nav_journey">Percorso</a>
   <a href="#contact" data-i18n="nav_contact">Contatti</a>
-  <div class="drawer-foot">Rinaldi Visuals — Foggia, IT</div>
+  <div class="drawer-foot">Rinaldi Visuals — Foggia, Puglia</div>
 </div>
 
 <!-- HERO -->
@@ -640,7 +695,7 @@ footer{
   <div class="hero-grain" aria-hidden="true"></div>
   <div class="hero-inner" id="heroInner">
     <img class="hero-logo rv" src="assets/logo-mark.png" alt="Logo Rinaldi Visuals" fetchpriority="high"/>
-    <span class="hero-eyebrow rv" data-i18n="hero_eyebrow">Graphic Designer &amp; Fotografo — Foggia</span>
+    <span class="hero-eyebrow rv" data-i18n="hero_eyebrow">Graphic Designer · Visual Director — Foggia</span>
     <h1 class="hero-h1 rv rv-d1">Rinaldi <span class="grad">Visuals</span><span style="color:var(--red)">.</span></h1>
     <p class="hero-sub rv rv-d2" data-i18n-html="hero_sub">Identità visive che <strong>lasciano il segno</strong>.<br>Design essenziale. Impatto assoluto.</p>
     <div class="hero-btns rv rv-d3">
@@ -655,7 +710,16 @@ footer{
 <!-- MARQUEE -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track" id="mqTrack">
-    <span>Branding</span><i>·</i><span>Graphic Design</span><i>·</i><span>Photography</span><i>·</i><span>Art Direction</span><i>·</i><span>Editorial</span><i>·</i><span>Social Content</span><i>·</i>
+    <span>Identità visiva</span><i>·</i><span>Editoria &amp; Stampa</span><i>·</i><span>Contenuti Social</span><i>·</i><span>Visual Direction</span><i>·</i><span>Branding</span><i>·</i><span>Layout Editoriale</span><i>·</i>
+  </div>
+</div>
+
+<!-- PILLARS -->
+<div class="pillars">
+  <div class="pillars-inner">
+    <div class="pillar"><b>01</b><span data-i18n="pl1">Identità visiva</span></div>
+    <div class="pillar"><b>02</b><span data-i18n="pl2">Editoria &amp; stampa</span></div>
+    <div class="pillar"><b>03</b><span data-i18n="pl3">Contenuti social</span></div>
   </div>
 </div>
 
@@ -675,12 +739,18 @@ footer{
     <div class="about-grid">
       <div class="about-photo rv">
         <img src="assets/ritratto.jpg" alt="Cristian Rinaldi" loading="lazy"/>
-        <div class="about-badge"><b>Cristian Rinaldi</b><span data-i18n="ab_badge">Visual Designer · Classe 2007</span></div>
+        <div class="about-badge"><b>Cristian Rinaldi</b><span data-i18n="ab_badge">Graphic Designer · Visual Director</span></div>
       </div>
       <div class="about-text">
-        <p class="rv" data-i18n-html="ab_p1"><strong>Creativo e professionale, specializzato in Visual Design.</strong> Sono proattivo, imparo in fretta nuove metodologie di lavoro e mi tengo costantemente aggiornato sui trend.</p>
-        <p class="rv rv-d1" data-i18n-html="ab_p2">Con un occhio attento ai dettagli e una passione per le forme decise, costruisco identità visive e layout che comunicano con forza e chiarezza — unendo <strong>fotografia, tipografia e design editoriale</strong> in un'unica visione coerente.</p>
-        <p class="rv rv-d2" data-i18n-html="ab_p3">Studio Grafica presso l'I.I.S. Einaudi–Grieco di Foggia dal 2021. I miei lavori sono già stati selezionati per <strong>campagne ufficiali, eventi cittadini e una mostra collettiva</strong>.</p>
+        <p class="rv" data-i18n-html="ab_p1">Progetto <strong>identità visive</strong>, <strong>layout editoriali</strong> e <strong>contenuti social</strong> con criterio. Sono rapido nell'apprendere nuove metodologie e resto aggiornato sulle tendenze del settore.</p>
+        <p class="rv rv-d1" data-i18n-html="ab_p2">Un progetto funziona quando chi guarda capisce prima di leggere: parto sempre da lì. Gerarchia tipografica, colore e composizione diventano <strong>sistemi coerenti</strong> che reggono dalla pagina stampata al feed.</p>
+        <p class="rv rv-d2" data-i18n-html="ab_p3">Studio <strong>Progettazione Artistica per l'Impresa</strong> all'Accademia di Belle Arti di Foggia, dopo il diploma di Tecnico Grafico all'IIS Einaudi Grieco. I miei lavori sono già stati selezionati per <strong>campagne ufficiali, eventi cittadini e una mostra collettiva</strong>.</p>
+        <dl class="facts rv rv-d2">
+          <div><dt data-i18n="fc1_l">Nato il</dt><dd data-i18n="fc1_v">12 / 11 / 2007</dd></div>
+          <div><dt data-i18n="fc2_l">Residenza</dt><dd data-i18n="fc2_v">Puglia, Italia</dd></div>
+          <div><dt data-i18n="fc3_l">Lingue</dt><dd data-i18n="fc3_v">Italiano madrelingua · Inglese B1</dd></div>
+          <div><dt data-i18n="fc4_l">Patenti</dt><dd data-i18n="fc4_v">AM · A1 · B</dd></div>
+        </dl>
         <div class="rv rv-d3">
           <a class="cv-btn" href="assets/cv-cristian-rinaldi.png" download="CV_Cristian_Rinaldi.png">
             <svg viewBox="0 0 24 24"><path d="M12 3v12M6 11l6 6 6-6M4 21h16"/></svg>
@@ -809,83 +879,79 @@ footer{
       <div class="tl-item rv">
         <span class="tl-year">2026</span>
         <div class="tl-body">
-          <h3 data-i18n="j1_t">Mostra collettiva — Fondazione Monti Uniti, Foggia</h3>
-          <p data-i18n="j1_p">Opera selezionata ed esposta al pubblico per la mostra del 27 gennaio. Progetto sviluppato in ambito scolastico e presentato in contesto culturale ufficiale.</p>
+          <h3 data-i18n-html="j1_t">Social Media Manager — MyPetLab <em class="tl-live">In corso</em></h3>
+          <p data-i18n="j1_p">Direzione visiva, produzione contenuti e coerenza dell'identità nel piano editoriale.</p>
         </div>
-        <span class="tl-tag" data-i18n="j1_tag">Mostra</span>
+        <span class="tl-tag" data-i18n="j1_tag">Social Media</span>
       </div>
       <div class="tl-item rv">
         <span class="tl-year">2026</span>
         <div class="tl-body">
-          <h3 data-i18n="j6_t">Social Media Manager — GAM Ristorazione</h3>
-          <p data-i18n="j6_p">Gestione dei canali social e creazione di contenuti per il brand GAM Ristorazione.</p>
+          <h3 data-i18n-html="j2_t">Social Media Manager — GAM Ristorazione <em class="tl-live">In corso</em></h3>
+          <p data-i18n="j2_p">Gestione della pagina social: direzione visiva, creazione contenuti, coerenza del brand.</p>
         </div>
-        <span class="tl-tag" data-i18n="j6_tag">Social Media</span>
+        <span class="tl-tag" data-i18n="j2_tag">Social Media</span>
       </div>
       <div class="tl-item rv">
         <span class="tl-year">2026</span>
         <div class="tl-body">
-          <h3 data-i18n="j7_t">Social Media Manager — MyPetLab</h3>
-          <p data-i18n="j7_p">Gestione dei canali social e creazione di contenuti per il brand MyPetLab.</p>
+          <h3 data-i18n="j3_t">Borghi in Piazza — Collana cartografica PNRR</h3>
+          <p data-i18n="j3_p">Design system e impaginazione di 3 mappe pieghevoli coordinate (Riace · Stilo · Pazzano): cartografia illustrata, indice POI, itinerari narrati, esecutivi di stampa.</p>
         </div>
-        <span class="tl-tag" data-i18n="j7_tag">Social Media</span>
+        <span class="tl-tag" data-i18n="j3_tag">Editoria &amp; Stampa</span>
       </div>
       <div class="tl-item rv">
         <span class="tl-year">2026</span>
         <div class="tl-body">
-          <h3 data-i18n="j8_t">Logo design — Refingo</h3>
-          <p data-i18n="j8_p">Progettazione dell'identità visiva e realizzazione del logo per l'azienda Refingo.</p>
+          <h3 data-i18n="j4_t">Borghi in Piazza — Guida digitale bilingue</h3>
+          <p data-i18n="j4_p">Versione web della collana: itinerari, indice tematico dei luoghi, feste, mappe scaricabili in PDF. Interfaccia IT/EN coerente con l'identità della collana.</p>
         </div>
-        <span class="tl-tag" data-i18n="j8_tag">Branding</span>
+        <span class="tl-tag" data-i18n="j4_tag">Digitale</span>
       </div>
       <div class="tl-item rv">
         <span class="tl-year">2026</span>
         <div class="tl-body">
-          <h3 data-i18n="j9_t">Logo — fuoriQuota</h3>
-          <p data-i18n="j9_p">Realizzazione del logo per fuoriQuota.</p>
+          <h3 data-i18n="j5_t">Mostra — Fondazione dei Monti Uniti di Foggia</h3>
+          <p data-i18n="j5_p">Opere selezionate ed esposte al pubblico nella collettiva del 27 gennaio.</p>
         </div>
-        <span class="tl-tag" data-i18n="j9_tag">Branding</span>
-      </div>
-      <div class="tl-item rv">
-        <span class="tl-year">2026</span>
-        <div class="tl-body">
-          <h3 data-i18n="j10_t">Borghi in Piazza — Pieghevoli turistici per Riace, Stilo e Pazzano</h3>
-          <p data-i18n="j10_p">Progettazione di tre pieghevoli turistici per valorizzare il territorio di Riace, Stilo e Pazzano, realizzati per l'iniziativa Borghi in Piazza.</p>
-        </div>
-        <span class="tl-tag" data-i18n="j10_tag">Stampa</span>
-      </div>
-      <div class="tl-item rv">
-        <span class="tl-year">2025 — 2026</span>
-        <div class="tl-body">
-          <h3 data-i18n="j2_t">Realizzazione webapp foggiApp</h3>
-          <p data-i18n="j2_p">Sviluppo della web app foggiApp per la promozione della città di Foggia, nell'ambito del progetto Grani Digitali.</p>
-        </div>
-        <span class="tl-tag">Stage</span>
+        <span class="tl-tag" data-i18n="j5_tag">Mostra</span>
       </div>
       <div class="tl-item rv">
         <span class="tl-year">2025</span>
         <div class="tl-body">
-          <h3 data-i18n="j3_t">Capitanatale Foggia — Fondale &amp; poster</h3>
-          <p data-i18n="j3_p">Layout e impaginazione per l'evento Capitanatale, in occasione dell'ottavo centenario del "Cantico delle Creature".</p>
+          <h3 data-i18n="j6_t">Capitanatale Foggia — Layout &amp; Poster</h3>
+          <p data-i18n="j6_p">Impaginazione della rivista e poster per l’800° anniversario del «Cantico delle Creature».</p>
         </div>
-        <span class="tl-tag" data-i18n="j3_tag">Evento</span>
+        <span class="tl-tag" data-i18n="j6_tag">Editoriale</span>
       </div>
       <div class="tl-item rv">
         <span class="tl-year">2024</span>
         <div class="tl-body">
-          <h3 data-i18n="j4_t">Campagna ADMO Puglia — con Gianmarco Saurino</h3>
-          <p data-i18n="j4_p">Layout per campagna di sensibilizzazione: elaborato selezionato e pubblicato nella comunicazione ufficiale.</p>
+          <h3 data-i18n="j7_t">ADMO Puglia — Poster Design</h3>
+          <p data-i18n="j7_p">Campagna di sensibilizzazione con Gianmarco Saurino, pubblicata nella comunicazione ufficiale.</p>
         </div>
-        <span class="tl-tag" data-i18n="j4_tag">Campagna</span>
+        <span class="tl-tag" data-i18n="j7_tag">Campagna</span>
+      </div>
+      <div class="tl-item rv">
+        <span class="tl-year">2026 — 2029</span>
+        <div class="tl-body">
+          <h3 data-i18n="j8_t">Diploma Accademico di I Livello · Progettazione Artistica per l'Impresa</h3>
+          <p data-i18n="j8_p">Accademia di Belle Arti di Foggia — Indirizzo Graphic Design. Corso triennale, 1° anno.</p>
+        </div>
+        <span class="tl-tag" data-i18n="j8_tag">Formazione</span>
       </div>
       <div class="tl-item rv">
         <span class="tl-year">2021 — 2026</span>
         <div class="tl-body">
-          <h3 data-i18n="j5_t">Diploma Tecnico Grafico — I.I.S. Einaudi–Grieco, Foggia</h3>
-          <p data-i18n="j5_p">Impaginazione editoriale e pubblicitaria, identità visiva, gerarchia tipografica, preparazione file per stampa, contenuti social. Adobe Photoshop, Illustrator, InDesign e utilizzo consapevole dell'IA.</p>
+          <h3 data-i18n="j9_t">Diploma di Tecnico Grafico · Graphic Designer</h3>
+          <p data-i18n="j9_p">IIS Einaudi Grieco, Foggia — Indirizzo Computer Graphics.</p>
         </div>
-        <span class="tl-tag" data-i18n="j5_tag">Formazione</span>
+        <span class="tl-tag" data-i18n="j9_tag">Formazione</span>
       </div>
+    </div>
+    <div class="skills rv">
+      <h3 data-i18n="sk_title">Competenze</h3>
+      <div class="skill-tags" data-i18n-html="sk_list"><span>Impaginazione editoriale</span><span>Layout per campagne</span><span>Identità visiva</span><span>Gerarchia tipografica</span><span>Colore &amp; composizione</span><span>File per la stampa</span><span>Contenuti social</span><span>Concept creativo</span><span>Adattamento multi-formato</span><span class="tool">Adobe Photoshop</span><span class="tool">Adobe Illustrator</span><span class="tool">Adobe InDesign</span><span class="tool">Uso consapevole dell'AI</span></div>
     </div>
   </div>
 </section>
@@ -925,9 +991,17 @@ footer{
         <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg>
         <span data-i18n="ct_mailbtn">Scrivimi una mail</span>
       </a>
+      <a class="chip" href="tel:+393500883962">
+        <svg viewBox="0 0 24 24"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 006.5 6.5l1.5-2 4 1.5v3a2 2 0 01-2.2 2A17 17 0 014.5 5.2 2 2 0 016.5 3z"/></svg>
+        350 088 3962
+      </a>
       <a class="chip" href="https://www.instagram.com/rinaldi.visuals/" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg>
         Instagram
+      </a>
+      <a class="chip" href="https://www.tiktok.com/@rinaldi.visuals" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M14 3v12.2a3.3 3.3 0 11-2.6-3.2"/><path d="M14 3a5.2 5.2 0 005.2 5.2"/></svg>
+        TikTok
       </a>
       <a class="chip" href="https://www.linkedin.com/in/cristian-rinaldi-514b553a0/" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24"><path d="M5 9v11M5 4v1M10 20v-6a3 3 0 016 0v6M10 9v11"/></svg>
@@ -956,7 +1030,7 @@ footer{
     </ul>
     <div class="foot-copy">
       <span>© 2026 Cristian Rinaldi. <span data-i18n="ft_rights">Tutti i diritti riservati.</span></span>
-      <span data-i18n="ft_made">Progettato e costruito con passione a Foggia.</span>
+      <span data-i18n="ft_made">Graphic Design · Visual Direction · Branding</span>
     </div>
   </div>
 </footer>
@@ -985,17 +1059,22 @@ const I18N = {
   it: {
     nav_home:'Home', nav_works:'Lavori', nav_photo:'Fotografia', nav_journey:'Percorso', nav_contact:'Contatti',
     nav_cta:'Lavoriamo insieme',
-    hero_eyebrow:'Graphic Designer & Fotografo — Foggia',
+    hero_eyebrow:'Graphic Designer · Visual Director — Foggia, Puglia',
+    pl1:'Identità visiva', pl2:'Editoria & stampa', pl3:'Contenuti social',
     hero_sub:'Identità visive che <strong>lasciano il segno</strong>.<br>Design essenziale. Impatto assoluto.',
     hero_cta1:'Guarda i lavori', hero_cta2:'Parliamone', hero_scroll:'Scorri',
     st_kicker:'La visione',
-    statement:"Ogni progetto nasce da un'idea semplice: il design deve *emozionare.* Unisco tipografia, fotografia e colore per costruire identità che *non si dimenticano.*",
+    statement:"Un progetto funziona quando *chi guarda capisce prima di leggere.*",
     ab_kicker:'Chi sono',
     ab_title:'Cristian Rinaldi.<br><span class="soft">Design con un punto di vista.</span>',
-    ab_badge:'Visual Designer · Foggia',
-    ab_p1:"<strong>Creativo e professionale, specializzato in Visual Design.</strong> Sono proattivo, imparo in fretta nuove metodologie di lavoro e mi tengo costantemente aggiornato sui trend.",
-    ab_p2:"Con un occhio attento ai dettagli e una passione per le forme decise, costruisco identità visive e layout che comunicano con forza e chiarezza — unendo <strong>fotografia, tipografia e design editoriale</strong> in un'unica visione coerente.",
-    ab_p3:"Studio Grafica presso l'I.I.S. Einaudi–Grieco di Foggia dal 2021. I miei lavori sono già stati selezionati per <strong>campagne ufficiali, eventi cittadini e una mostra collettiva</strong>.",
+    ab_badge:'Graphic Designer · Visual Director',
+    ab_p1:"Progetto <strong>identità visive</strong>, <strong>layout editoriali</strong> e <strong>contenuti social</strong> con criterio. Sono rapido nell'apprendere nuove metodologie e resto aggiornato sulle tendenze del settore.",
+    ab_p2:"Un progetto funziona quando chi guarda capisce prima di leggere: parto sempre da lì. Gerarchia tipografica, colore e composizione diventano <strong>sistemi coerenti</strong> che reggono dalla pagina stampata al feed.",
+    ab_p3:"Studio <strong>Progettazione Artistica per l'Impresa</strong> all'Accademia di Belle Arti di Foggia, dopo il diploma di Tecnico Grafico all'IIS Einaudi Grieco. I miei lavori sono già stati selezionati per <strong>campagne ufficiali, eventi cittadini e una mostra collettiva</strong>.",
+    fc1_l:'Nato il', fc1_v:'12 / 11 / 2007',
+    fc2_l:'Residenza', fc2_v:'Puglia, Italia',
+    fc3_l:'Lingue', fc3_v:'Italiano madrelingua · Inglese B1',
+    fc4_l:'Patenti', fc4_v:'AM · A1 · B',
     ab_cv:'Scarica il CV',
     wk_kicker:'Portfolio',
     wk_title:'Lavori<br>selezionati<span style="color:var(--red)">.</span>',
@@ -1010,35 +1089,35 @@ const I18N = {
     pr2_t:'Idea & Sviluppo', pr2_p:'Costruisco concept, esploro direzioni visive e raffino ogni dettaglio fino a trovare la soluzione che funziona davvero.',
     pr3_t:'Consegna & Supporto', pr3_p:'Rilascio file pronti all\'uso in tutti i formati necessari, con supporto post-consegna incluso.',
     jr_kicker:'Percorso', jr_title:'Esperienze<br>&amp; formazione<span style="color:var(--red)">.</span>',
-    j1_t:'Mostra collettiva — Fondazione Monti Uniti, Foggia',
-    j1_p:'Opera selezionata ed esposta al pubblico per la mostra del 27 gennaio. Progetto sviluppato in ambito scolastico e presentato in contesto culturale ufficiale.',
-    j1_tag:'Mostra',
-    j6_t:'Social Media Manager — GAM Ristorazione',
-    j6_p:'Gestione dei canali social e creazione di contenuti per il brand GAM Ristorazione.',
-    j6_tag:'Social Media',
-    j7_t:'Social Media Manager — MyPetLab',
-    j7_p:'Gestione dei canali social e creazione di contenuti per il brand MyPetLab.',
-    j7_tag:'Social Media',
-    j8_t:'Logo design — Refingo',
-    j8_p:"Progettazione dell'identità visiva e realizzazione del logo per l'azienda Refingo.",
-    j8_tag:'Branding',
-    j9_t:'Logo — fuoriQuota',
-    j9_p:'Realizzazione del logo per fuoriQuota.',
-    j9_tag:'Branding',
-    j10_t:'Borghi in Piazza — Pieghevoli turistici per Riace, Stilo e Pazzano',
-    j10_p:"Progettazione di tre pieghevoli turistici per valorizzare il territorio di Riace, Stilo e Pazzano, realizzati per l'iniziativa Borghi in Piazza.",
-    j10_tag:'Stampa',
-    j2_t:'Realizzazione webapp foggiApp',
-    j2_p:'Sviluppo della web app foggiApp per la promozione della città di Foggia, nell\'ambito del progetto Grani Digitali.',
-    j3_t:'Capitanatale Foggia — Fondale & poster',
-    j3_p:'Layout e impaginazione per l\'evento Capitanatale, in occasione dell\'ottavo centenario del "Cantico delle Creature".',
-    j3_tag:'Evento',
-    j4_t:'Campagna ADMO Puglia — con Gianmarco Saurino',
-    j4_p:'Layout per campagna di sensibilizzazione: elaborato selezionato e pubblicato nella comunicazione ufficiale.',
-    j4_tag:'Campagna',
-    j5_t:'Diploma Tecnico Grafico — I.I.S. Einaudi–Grieco, Foggia',
-    j5_p:'Impaginazione editoriale e pubblicitaria, identità visiva, gerarchia tipografica, preparazione file per stampa, contenuti social. Adobe Photoshop, Illustrator, InDesign e utilizzo consapevole dell\'IA.',
-    j5_tag:'Formazione',
+    j1_t:'Social Media Manager — MyPetLab <em class="tl-live">In corso</em>',
+    j1_p:"Direzione visiva, produzione contenuti e coerenza dell'identità nel piano editoriale.",
+    j1_tag:'Social Media',
+    j2_t:'Social Media Manager — GAM Ristorazione <em class="tl-live">In corso</em>',
+    j2_p:'Gestione della pagina social: direzione visiva, creazione contenuti, coerenza del brand.',
+    j2_tag:'Social Media',
+    j3_t:'Borghi in Piazza — Collana cartografica PNRR',
+    j3_p:'Design system e impaginazione di 3 mappe pieghevoli coordinate (Riace · Stilo · Pazzano): cartografia illustrata, indice POI, itinerari narrati, esecutivi di stampa.',
+    j3_tag:'Editoria & Stampa',
+    j4_t:'Borghi in Piazza — Guida digitale bilingue',
+    j4_p:"Versione web della collana: itinerari, indice tematico dei luoghi, feste, mappe scaricabili in PDF. Interfaccia IT/EN coerente con l'identità della collana.",
+    j4_tag:'Digitale',
+    j5_t:'Mostra — Fondazione dei Monti Uniti di Foggia',
+    j5_p:'Opere selezionate ed esposte al pubblico nella collettiva del 27 gennaio.',
+    j5_tag:'Mostra',
+    j6_t:'Capitanatale Foggia — Layout & Poster',
+    j6_p:'Impaginazione della rivista e poster per l\u2019800° anniversario del «Cantico delle Creature».',
+    j6_tag:'Editoriale',
+    j7_t:'ADMO Puglia — Poster Design',
+    j7_p:'Campagna di sensibilizzazione con Gianmarco Saurino, pubblicata nella comunicazione ufficiale.',
+    j7_tag:'Campagna',
+    j8_t:"Diploma Accademico di I Livello · Progettazione Artistica per l'Impresa",
+    j8_p:'Accademia di Belle Arti di Foggia — Indirizzo Graphic Design. Corso triennale, 1° anno.',
+    j8_tag:'Formazione',
+    j9_t:'Diploma di Tecnico Grafico · Graphic Designer',
+    j9_p:'IIS Einaudi Grieco, Foggia — Indirizzo Computer Graphics.',
+    j9_tag:'Formazione',
+    sk_title:'Competenze',
+    sk_list:'<span>Impaginazione editoriale</span><span>Layout per campagne</span><span>Identità visiva</span><span>Gerarchia tipografica</span><span>Colore &amp; composizione</span><span>File per la stampa</span><span>Contenuti social</span><span>Concept creativo</span><span>Adattamento multi-formato</span><span class="tool">Adobe Photoshop</span><span class="tool">Adobe Illustrator</span><span class="tool">Adobe InDesign</span><span class="tool">Uso consapevole dell\'AI</span>',
     lk_title:'Tutti i miei link.<br><span class="grad">In un posto solo.</span>',
     lk_p:'Social, progetti, contatti e aggiornamenti: trovi tutto nel mio Linktree personale. Oppure inquadra il QR code.',
     lk_btn:'Apri il Linktree', lk_qr:'Inquadrami',
@@ -1046,22 +1125,27 @@ const I18N = {
     ct_sub:'Hai un\'idea, un brand da costruire o un progetto da rendere più forte visivamente? Scrivimi — senza impegno.',
     ct_mailbtn:'Scrivimi una mail',
     ct_place:'Foggia, Italia — disponibile anche da remoto',
-    ft_rights:'Tutti i diritti riservati.', ft_made:'Progettato e costruito con passione a Foggia.',
+    ft_rights:'Tutti i diritti riservati.', ft_made:'Graphic Design · Visual Direction · Branding',
   },
   en: {
     nav_home:'Home', nav_works:'Works', nav_photo:'Photography', nav_journey:'Journey', nav_contact:'Contact',
     nav_cta:"Let's work together",
-    hero_eyebrow:'Graphic Designer & Photographer — Foggia, Italy',
+    hero_eyebrow:'Graphic Designer · Visual Director — Foggia, Italy',
+    pl1:'Visual identity', pl2:'Editorial & print', pl3:'Social content',
     hero_sub:'Visual identities that <strong>leave a mark</strong>.<br>Essential design. Absolute impact.',
     hero_cta1:'See the works', hero_cta2:"Let's talk", hero_scroll:'Scroll',
     st_kicker:'The vision',
-    statement:"Every project starts from a simple idea: design must *move you.* I blend typography, photography and colour to build identities that are *impossible to forget.*",
+    statement:"A project works when *the viewer understands before reading.*",
     ab_kicker:'About me',
     ab_title:'Cristian Rinaldi.<br><span class="soft">Design with a point of view.</span>',
-    ab_badge:'Visual Designer · Foggia, Italy',
-    ab_p1:"<strong>Creative and professional, specialised in Visual Design.</strong> I'm proactive, I learn new working methods fast and I constantly keep up with trends.",
-    ab_p2:"With a keen eye for detail and a passion for bold forms, I build visual identities and layouts that communicate with strength and clarity — combining <strong>photography, typography and editorial design</strong> into one coherent vision.",
-    ab_p3:"I've been studying Graphic Design at I.I.S. Einaudi–Grieco in Foggia since 2021. My work has already been selected for <strong>official campaigns, city events and a collective exhibition</strong>.",
+    ab_badge:'Graphic Designer · Visual Director',
+    ab_p1:"I design <strong>visual identities</strong>, <strong>editorial layouts</strong> and <strong>social content</strong> with method. I pick up new workflows quickly and keep up with where the field is going.",
+    ab_p2:"A project works when the viewer understands before reading — that's always my starting point. Typographic hierarchy, colour and composition become <strong>coherent systems</strong> that hold up from the printed page to the feed.",
+    ab_p3:"I'm studying <strong>Artistic Design for Business</strong> at the Accademia di Belle Arti in Foggia, after my Technical Diploma in Graphics at IIS Einaudi Grieco. My work has already been selected for <strong>official campaigns, city events and a collective exhibition</strong>.",
+    fc1_l:'Born on', fc1_v:'12 / 11 / 2007',
+    fc2_l:'Based in', fc2_v:'Puglia, Italy',
+    fc3_l:'Languages', fc3_v:'Italian native · English B1',
+    fc4_l:'Licences', fc4_v:'AM · A1 · B',
     ab_cv:'Download CV',
     wk_kicker:'Portfolio',
     wk_title:'Selected<br>works<span style="color:var(--red)">.</span>',
@@ -1076,35 +1160,35 @@ const I18N = {
     pr2_t:'Concept & Development', pr2_p:'I build concepts, explore visual directions and refine every detail until I find the solution that truly works.',
     pr3_t:'Delivery & Support', pr3_p:'I deliver production-ready files in every required format, with post-delivery support included.',
     jr_kicker:'Journey', jr_title:'Experience<br>&amp; education<span style="color:var(--red)">.</span>',
-    j1_t:'Collective exhibition — Monti Uniti Foundation, Foggia',
-    j1_p:'Selected artwork publicly exhibited at the January 27th memorial exhibition. School project presented in an official cultural context.',
-    j1_tag:'Exhibition',
-    j6_t:'Social Media Manager — GAM Ristorazione',
-    j6_p:'Managing social media channels and content creation for the GAM Ristorazione brand.',
-    j6_tag:'Social Media',
-    j7_t:'Social Media Manager — MyPetLab',
-    j7_p:'Managing social media channels and content creation for the MyPetLab brand.',
-    j7_tag:'Social Media',
-    j8_t:'Logo design — Refingo',
-    j8_p:'Visual identity design and logo creation for the company Refingo.',
-    j8_tag:'Branding',
-    j9_t:'Logo — fuoriQuota',
-    j9_p:'Logo creation for fuoriQuota.',
-    j9_tag:'Branding',
-    j10_t:'Borghi in Piazza — Tourist leaflets for Riace, Stilo and Pazzano',
-    j10_p:'Design of three tourist leaflets promoting the areas of Riace, Stilo and Pazzano, created for the Borghi in Piazza initiative.',
-    j10_tag:'Print',
-    j2_t:'Development of the foggiApp web app',
-    j2_p:'Development of the foggiApp web app promoting the city of Foggia, as part of the Grani Digitali project.',
-    j3_t:'Capitanatale Foggia — Backdrop & poster',
-    j3_p:'Layout and typesetting for the Capitanatale event, marking the eighth centenary of the "Canticle of the Creatures".',
-    j3_tag:'Event',
-    j4_t:'ADMO Puglia Campaign — with Gianmarco Saurino',
-    j4_p:'Layout for an awareness campaign: artwork selected and published in the official communication.',
-    j4_tag:'Campaign',
-    j5_t:'Graphic Design Technical Diploma — I.I.S. Einaudi–Grieco, Foggia',
-    j5_p:'Editorial and advertising layout, visual identity, typographic hierarchy, print-ready files, social content. Adobe Photoshop, Illustrator, InDesign and mindful use of AI.',
-    j5_tag:'Education',
+    j1_t:'Social Media Manager — MyPetLab <em class="tl-live">Ongoing</em>',
+    j1_p:'Visual direction, content production and identity consistency across the editorial plan.',
+    j1_tag:'Social Media',
+    j2_t:'Social Media Manager — GAM Ristorazione <em class="tl-live">Ongoing</em>',
+    j2_p:'Running the social page: visual direction, content creation, brand consistency.',
+    j2_tag:'Social Media',
+    j3_t:'Borghi in Piazza — PNRR map collection',
+    j3_p:'Design system and layout for 3 coordinated folding maps (Riace · Stilo · Pazzano): illustrated cartography, POI index, narrated itineraries, print-ready artwork.',
+    j3_tag:'Editorial & Print',
+    j4_t:'Borghi in Piazza — Bilingual digital guide',
+    j4_p:"Web version of the collection: itineraries, thematic index of places, festivals, downloadable PDF maps. IT/EN interface consistent with the collection's identity.",
+    j4_tag:'Digital',
+    j5_t:'Exhibition — Fondazione dei Monti Uniti di Foggia',
+    j5_p:'Selected works publicly exhibited in the group show on January 27th.',
+    j5_tag:'Exhibition',
+    j6_t:'Capitanatale Foggia — Layout & Poster',
+    j6_p:'Magazine layout and poster for the 800th anniversary of the "Canticle of the Creatures".',
+    j6_tag:'Editorial',
+    j7_t:'ADMO Puglia — Poster Design',
+    j7_p:'Awareness campaign with Gianmarco Saurino, published in the official communication.',
+    j7_tag:'Campaign',
+    j8_t:'Level I Academic Diploma · Artistic Design for Business',
+    j8_p:'Accademia di Belle Arti di Foggia — Graphic Design track. Three-year course, 1st year.',
+    j8_tag:'Education',
+    j9_t:'Technical Diploma in Graphics · Graphic Designer',
+    j9_p:'IIS Einaudi Grieco, Foggia — Computer Graphics track.',
+    j9_tag:'Education',
+    sk_title:'Skills',
+    sk_list:'<span>Editorial layout</span><span>Campaign layouts</span><span>Visual identity</span><span>Typographic hierarchy</span><span>Colour &amp; composition</span><span>Print-ready files</span><span>Social content</span><span>Creative concept</span><span>Multi-format adaptation</span><span class="tool">Adobe Photoshop</span><span class="tool">Adobe Illustrator</span><span class="tool">Adobe InDesign</span><span class="tool">Mindful use of AI</span>',
     lk_title:'All my links.<br><span class="grad">In one place.</span>',
     lk_p:'Socials, projects, contacts and updates: everything lives in my personal Linktree. Or just scan the QR code.',
     lk_btn:'Open Linktree', lk_qr:'Scan me',
@@ -1112,7 +1196,7 @@ const I18N = {
     ct_sub:'Got an idea, a brand to build or a project that needs a stronger visual voice? Write to me — no strings attached.',
     ct_mailbtn:'Send me an email',
     ct_place:'Foggia, Italy — also available remotely',
-    ft_rights:'All rights reserved.', ft_made:'Designed & built with passion in Foggia.',
+    ft_rights:'All rights reserved.', ft_made:'Graphic Design · Visual Direction · Branding',
   }
 };
 
