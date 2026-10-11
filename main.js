@@ -159,6 +159,9 @@ const WORKS = [
 /* ══════════════ MOTION ══════════════
    Per aggiungere un video: copia un oggetto e cambia src / poster / testi. */
 const MOTION = [
+  { type: 'ident',
+    it: { t: 'Ident Rinaldi Visuals', d: 'Motion graphic animata in codice, loop da 10 secondi' },
+    en: { t: 'Rinaldi Visuals ident', d: 'Motion graphic built in code, 10-second loop' } },
   { src: 'assets/Maya_Style_Reel_01.mp4', poster: 'assets/maya-poster.jpg',
     it: { t: 'Maya Style', d: 'Reel per toelettatura, Foggia' },
     en: { t: 'Maya Style', d: 'Reel for a pet grooming salon, Foggia' } },
@@ -295,6 +298,20 @@ function applyStatic(){
   $('#langPill').style.transform = lang === 'en' ? 'translateX(100%)' : 'none';
   const snd = $('#soundBtn span:last-child');
   snd.textContent = video.muted ? t('mo_sound_on') : t('mo_sound_off');
+  splitTitles();
+}
+
+/* Titoli divisi in righe per l'animazione a maschera */
+const tio = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting){ e.target.classList.add('t-in'); tio.unobserve(e.target); }
+}), { threshold: .3 }) : null;
+function splitTitles(){
+  $$('.h2, .contact-title').forEach(h => {
+    const parts = h.innerHTML.split(/<br\s*\/?>/i);
+    h.innerHTML = parts.map(p => `<span class="ln"><span>${p}</span></span>`).join('');
+    if (reduced || !tio) h.classList.add('t-in');
+    else if (!h.classList.contains('t-in')) tio.observe(h);
+  });
 }
 function renderDynamic(){
   renderWorks(); renderTimeline(); renderMotion(); renderStatement();
@@ -333,7 +350,18 @@ function updateTheme(){
     const r = s.getBoundingClientRect();
     if (r.top <= mid && r.bottom > mid){ theme = s.dataset.theme; break; }
   }
-  if (document.body.dataset.theme !== theme) document.body.dataset.theme = theme;
+  if (document.body.dataset.theme !== theme){
+    document.body.dataset.theme = theme;
+    fireStreak();
+  }
+}
+const streak = $('#streak');
+let streakT = 0;
+function fireStreak(){
+  if (reduced || !document.body.classList.contains('is-loaded')) return;
+  const now = performance.now(); if (now - streakT < 1200) return; streakT = now;
+  streak.classList.remove('go', 'up'); void streak.offsetWidth;
+  streak.classList.add('go'); if (velocity < 0) streak.classList.add('up');
 }
 
 /* ══════════════ NAV ATTIVA ══════════════ */
@@ -368,6 +396,7 @@ function updatePath(){
 }
 
 /* ══════════════ PARALLASSE ══════════════ */
+const heroInner = $('.hero-inner');
 function updateParallax(){
   if (reduced) return;
   $$('[data-speed]').forEach(el => {
@@ -376,6 +405,13 @@ function updateParallax(){
     const off = (r.top + r.height / 2 - innerHeight / 2) * parseFloat(el.dataset.speed);
     el.style.translate = `0 ${off.toFixed(1)}px`;
   });
+  // uscita dell'hero: il titolo si sfoca e sale mentre scorri
+  const hp = Math.min(1, Math.max(0, scrollY / innerHeight));
+  if (hp < 1){
+    heroInner.style.transform = `translate3d(0, ${(-hp * 90).toFixed(1)}px, 0)`;
+    heroInner.style.opacity = (1 - hp * 1.15).toFixed(3);
+    heroInner.style.filter = hp > .01 ? `blur(${(hp * 10).toFixed(1)}px)` : '';
+  }
   const bw = $('.motion-bgword');
   const mr = $('#motion').getBoundingClientRect();
   if (mr.bottom > 0 && mr.top < innerHeight) bw.style.transform = `translateX(${(-mr.top * .35 - 100).toFixed(1)}px)`;
@@ -430,7 +466,7 @@ $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
 
 function frame(time){
   if (lenis) lenis.raf(time);
-  if (!reduced) marqueeTick();
+  if (!reduced){ marqueeTick(); heroTick(time); }
   mVel *= 0.92;
   requestAnimationFrame(frame);
 }
@@ -588,9 +624,13 @@ caseEl.addEventListener('click', e => { if (e.target === caseEl) closeCase(); })
 /* ══════════════ MOTION: video ══════════════ */
 const video = $('#motionVideo');
 const soundBtn = $('#soundBtn');
+const phone = $('#phone'), ident = $('#ident');
 function loadMotion(i){
   motionIdx = i;
   const m = MOTION[i];
+  const isIdent = m.type === 'ident';
+  phone.classList.toggle('is-ident', isIdent);
+  if (isIdent){ video.pause(); video.removeAttribute('src'); video.load(); renderMotion(); playIfVisible(); return; }
   video.src = m.src; video.poster = m.poster || '';
   video.muted = true; soundBtn.setAttribute('aria-pressed', 'false');
   $('#soundBtn span:last-child').textContent = t('mo_sound_on');
@@ -606,11 +646,21 @@ soundBtn.addEventListener('click', e => {
   if (!video.muted) video.play().catch(() => {});
 });
 let videoVisible = false;
-function playIfVisible(){ if (videoVisible && !reduced) video.play().catch(() => {}); else video.pause(); }
+function playIfVisible(){
+  const isIdent = MOTION[motionIdx].type === 'ident';
+  ident.classList.toggle('paused', !videoVisible || !isIdent);
+  if (isIdent) return;
+  if (videoVisible && !reduced) video.play().catch(() => {}); else video.pause();
+}
 if (io){
   new IntersectionObserver(es => { videoVisible = es[0].isIntersecting; playIfVisible(); }, { threshold: .25 }).observe($('#phone'));
 }
-$('#phone').addEventListener('click', e => { if (e.target === soundBtn || soundBtn.contains(e.target)) return; video.paused ? video.play().catch(() => {}) : video.pause(); });
+phone.addEventListener('click', e => {
+  if (e.target === soundBtn || soundBtn.contains(e.target)) return;
+  if (MOTION[motionIdx].type === 'ident'){ ident.classList.toggle('paused'); return; }
+  video.paused ? video.play().catch(() => {}) : video.pause();
+});
+playIfVisible();
 
 /* ══════════════ FOTOGRAFIA: trascina + lightbox ══════════════ */
 const strip = $('#strip');
@@ -633,7 +683,10 @@ strip.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight'){ e.preventDefault(); strip.scrollBy({ left: stripStep(), behavior: 'smooth' }); }
   if (e.key === 'ArrowLeft'){ e.preventDefault(); strip.scrollBy({ left: -stripStep(), behavior: 'smooth' }); }
 });
+let stripLast = 0, stripSk = 0;
 strip.addEventListener('scroll', () => {
+  const d = strip.scrollLeft - stripLast; stripLast = strip.scrollLeft;
+  if (!reduced){ stripSk = Math.max(-7, Math.min(7, -d * .18)); strip.style.setProperty('--sk', stripSk.toFixed(2) + 'deg'); clearTimeout(strip._t); strip._t = setTimeout(() => strip.style.setProperty('--sk', '0deg'), 90); }
   const shots = $$('.shot'); const mid = strip.getBoundingClientRect().left + strip.clientWidth / 2;
   let best = 0, bd = Infinity;
   shots.forEach((s, i) => { const r = s.getBoundingClientRect(); const d = Math.abs(r.left + r.width / 2 - mid); if (d < bd){ bd = d; best = i; } });
@@ -668,6 +721,75 @@ document.addEventListener('keydown', e => {
     if (e.key === 'ArrowLeft') showLb(lbIdx - 1);
   }
 });
+
+
+/* ══════════════ HERO: lettere a peso variabile ══════════════
+   Il titolo "respira": vicino al cursore le lettere si assottigliano. */
+const heroLetters = [];
+$$('.hero-title .line > span').forEach(span => {
+  [...span.childNodes].forEach(node => {
+    if (node.nodeType !== 3) return;
+    const frag = document.createDocumentFragment();
+    [...node.textContent].forEach(chr => {
+      const c = document.createElement('span'); c.className = 'ch'; c.textContent = chr; c.setAttribute('aria-hidden', 'true');
+      frag.appendChild(c); heroLetters.push({ el: c, w: 800 });
+    });
+    node.replaceWith(frag);
+  });
+});
+let hpx = -9999, hpy = -9999, heroHover = false;
+const heroEl = $('.hero');
+heroEl.addEventListener('pointermove', e => { hpx = e.clientX; hpy = e.clientY; heroHover = true; });
+heroEl.addEventListener('pointerleave', () => { heroHover = false; });
+function heroTick(time){
+  if (reduced || scrollY > innerHeight || !document.body.classList.contains('is-loaded')) return;
+  heroLetters.forEach((L, i) => {
+    let target;
+    if (heroHover && finePointer){
+      const r = L.el.getBoundingClientRect();
+      const d = Math.hypot(r.left + r.width / 2 - hpx, r.top + r.height / 2 - hpy);
+      const f = Math.max(0, 1 - d / 320);
+      target = 800 - 580 * f * f;
+    } else {
+      target = 760 + 40 * Math.sin(time / 650 + i * .55); // respiro lento
+    }
+    L.w += (target - L.w) * .12;
+    L.el.style.fontWeight = L.w.toFixed(0);
+  });
+}
+
+/* ══════════════ CARD: inclinazione 3D + riflesso ══════════════ */
+if (finePointer && !reduced){
+  document.addEventListener('pointermove', e => {
+    const host = e.target.closest('.feat-media, .tile');
+    $$('.media-frame.tilting').forEach(f => { if (!host || !host.contains(f)){ f.classList.remove('tilting'); f.style.transform = ''; } });
+    if (!host) return;
+    const f = $('.media-frame', host); if (!f) return;
+    const r = f.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+    f.classList.add('tilting');
+    f.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+    f.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+    f.style.transform = `rotateX(${((.5 - y) * 7).toFixed(2)}deg) rotateY(${((x - .5) * 9).toFixed(2)}deg) scale(.985)`;
+  }, { passive: true });
+}
+
+/* ══════════════ BOTTONI MAGNETICI ══════════════ */
+if (finePointer && !reduced){
+  const magnets = () => $$('.btn, .round, .lang, .avatar');
+  document.addEventListener('pointermove', e => {
+    magnets().forEach(m => {
+      const r = m.getBoundingClientRect();
+      const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      const dx = e.clientX - cx, dy = e.clientY - cy;
+      const reach = Math.max(r.width, r.height) * .5 + 40;
+      if (Math.abs(dx) < reach && Math.abs(dy) < reach){
+        m.classList.add('magnet');
+        m.style.translate = `${(dx * .22).toFixed(1)}px ${(dy * .28).toFixed(1)}px`;
+      } else if (m.style.translate){ m.style.translate = ''; }
+    });
+  }, { passive: true });
+}
 
 /* ══════════════ AVVIO ══════════════ */
 $('#year').textContent = new Date().getFullYear();

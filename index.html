@@ -35,6 +35,7 @@
 <!-- ═════ ELEMENTI FISSI ═════ -->
 <div class="progress" id="progress" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
+<div class="streak" id="streak" aria-hidden="true"></div>
 <div class="cursor" id="cursor" aria-hidden="true"><span class="cursor-label" id="cursorLabel"></span></div>
 
 <!-- ═════ NAVBAR ═════ -->
@@ -133,8 +134,32 @@
       <ul class="motion-list" id="motionList"></ul>
     </div>
     <div class="motion-stage">
-      <div class="phone" id="phone" data-cursor="">
-        <video id="motionVideo" src="assets/Maya_Style_Reel_01.mp4" poster="assets/maya-poster.jpg" muted loop playsinline preload="metadata"></video>
+      <div class="phone is-ident" id="phone" data-cursor="">
+        <!-- Ident animato in codice: 5 scene in loop da 10 secondi -->
+        <div class="ident" id="ident" aria-hidden="true">
+          <div class="id-ui id-ui-top"><span>rinaldi visuals</span><span>ident · 2026</span></div>
+          <div class="id-scene id-s1">
+            <p class="id-word id-brand"><span>B</span><span>r</span><span>a</span><span>n</span><span>d</span></p>
+          </div>
+          <div class="id-paper"></div>
+          <div class="id-scene id-s2"><p class="id-serif">editoria<em>.</em></p></div>
+          <div class="id-scene id-s3">
+            <span class="id-ring"></span><span class="id-ring id-ring2"></span>
+            <img src="assets/logo-mark.png" alt="" class="id-mark">
+            <span class="id-cut id-cut1"></span><span class="id-cut id-cut2"></span>
+          </div>
+          <div class="id-scene id-s4">
+            <div class="id-iris"><img src="assets/photo-16.jpg" alt=""></div>
+            <p class="id-mono">foto / ritratto</p>
+          </div>
+          <div class="id-scene id-s5">
+            <p class="id-word id-motion"><span>M</span><span>o</span><span>t</span><span>i</span><span>o</span><span>n</span><span class="r">.</span></p>
+          </div>
+          <span class="id-slash id-slash-a"></span>
+          <span class="id-slash id-slash-b"></span>
+          <div class="id-ui id-ui-bot"><span class="id-bar"><i></i></span></div>
+        </div>
+        <video id="motionVideo" poster="assets/maya-poster.jpg" muted loop playsinline preload="none"></video>
         <button class="sound" id="soundBtn" type="button" aria-pressed="false">
           <span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i></span>
           <span data-i18n="mo_sound_on">Attiva audio</span>

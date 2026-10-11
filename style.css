@@ -618,3 +618,174 @@ main section{ position: relative; padding: clamp(96px, 13vw, 200px) var(--gut); 
   .statement .w{ color: var(--fg); }
   .statement .w.accent{ color: var(--red); }
 }
+
+/* ════════════════════════════════════════════════════════════
+   MOTION GRAPHIC
+   ════════════════════════════════════════════════════════════ */
+
+/* ── Ident animato (5 scene, loop 10s) ── */
+.phone .ident{ display: none; }
+.phone.is-ident .ident{ display: block; }
+.phone.is-ident video, .phone.is-ident .sound{ display: none; }
+.ident{
+  --T: 10s;
+  position: absolute; inset: 0; overflow: hidden; background: #141414; color: #F5F2ED;
+  container-type: inline-size;
+}
+.ident *{ animation-duration: var(--T); animation-iteration-count: infinite; animation-timing-function: var(--ease); animation-fill-mode: both; }
+.ident.paused *{ animation-play-state: paused; }
+.id-scene{ position: absolute; inset: 0; display: grid; place-items: center; }
+.id-ui{ position: absolute; z-index: 6; left: 7cqw; right: 7cqw; display: flex; justify-content: space-between; font-family: var(--f-mono); font-size: 3.2cqw; color: #fff; mix-blend-mode: difference; opacity: .8; }
+.id-ui-top{ top: 7cqw; }
+.id-ui-bot{ bottom: 8cqw; }
+.id-bar{ position: relative; flex: 1; height: 2px; background: rgba(255,255,255,.25); border-radius: 2px; overflow: hidden; }
+.id-bar i{ position: absolute; inset: 0; background: #fff; transform-origin: 0 50%; animation-name: idBar; animation-timing-function: linear !important; }
+@keyframes idBar{ from{ transform: scaleX(0); } to{ transform: scaleX(1); } }
+
+.id-word{ margin: 0; display: flex; overflow: hidden; padding: 0 0 .06em; font-family: var(--f-display); font-weight: 800; letter-spacing: -0.06em; line-height: .9; }
+.id-word span{ display: inline-block; }
+.id-brand{ font-size: 30cqw; }
+.id-brand span{ animation-name: idUp; }
+.id-word span:nth-child(2){ animation-delay: .05s; } .id-word span:nth-child(3){ animation-delay: .1s; }
+.id-word span:nth-child(4){ animation-delay: .15s; } .id-word span:nth-child(5){ animation-delay: .2s; }
+.id-word span:nth-child(6){ animation-delay: .25s; } .id-word span:nth-child(7){ animation-delay: .3s; }
+@keyframes idUp{
+  0%, 3%{ transform: translateY(115%); }
+  9%, 16%{ transform: translateY(0); }
+  19.5%, 100%{ transform: translateY(-120%); }
+}
+
+.id-paper{ position: absolute; inset: 0; background: var(--paper); animation-name: idPaper; }
+@keyframes idPaper{
+  0%, 19%{ clip-path: inset(100% 0 0 0 round 40% 40% 0 0); }
+  25%, 36%{ clip-path: inset(0 0 0 0 round 0); }
+  41%, 100%{ clip-path: inset(0 0 100% 0 round 0 0 40% 40%); }
+}
+.id-serif{ margin: 0; font-family: var(--f-serif); font-style: italic; font-size: 25cqw; color: var(--ink); letter-spacing: -0.02em; animation-name: idSerif; }
+.id-serif em{ display: inline-block; color: var(--red); font-style: normal; animation-name: idDot; }
+@keyframes idSerif{
+  0%, 21%{ opacity: 0; filter: blur(14px); transform: translateY(14%) scale(1.06); }
+  27%, 34%{ opacity: 1; filter: blur(0); transform: none; }
+  39%, 100%{ opacity: 0; filter: blur(10px); transform: translateY(-12%); }
+}
+@keyframes idDot{
+  0%, 26%{ transform: scale(0); }
+  29%{ transform: scale(1.6); }
+  31%, 35%{ transform: scale(1); }
+  38%, 100%{ transform: scale(0); }
+}
+
+.id-mark{ width: 34cqw; animation-name: idMark; position: relative; z-index: 2; }
+@keyframes idMark{
+  0%, 41%{ opacity: 0; filter: blur(18px); transform: scale(1.5) rotate(-10deg); }
+  47%{ opacity: 1; filter: blur(0); transform: none; }
+  56%{ opacity: 1; filter: blur(0); transform: scale(1.05); }
+  60%, 100%{ opacity: 0; filter: blur(14px); transform: scale(.8); }
+}
+.id-cut{ position: absolute; z-index: 3; left: 0; width: 120%; height: 1.4cqw; background: var(--red); box-shadow: 0 0 6cqw rgba(232,0,14,.9); transform-origin: 0 50%; animation-name: idCut; }
+.id-cut1{ top: 66%; }
+.id-cut2{ top: 76%; height: .7cqw; animation-delay: .15s; }
+@keyframes idCut{
+  0%, 45%{ transform: rotate(-36deg) scaleX(0); opacity: 1; }
+  50%, 56%{ transform: rotate(-36deg) scaleX(1); opacity: 1; }
+  60%, 100%{ transform: rotate(-36deg) scaleX(1); opacity: 0; }
+}
+.id-ring{ position: absolute; width: 50cqw; aspect-ratio: 1; border-radius: 50%; border: 1px solid rgba(232,0,14,.8); animation-name: idRing; }
+.id-ring2{ animation-delay: .45s; }
+@keyframes idRing{
+  0%, 47%{ transform: scale(.4); opacity: 0; }
+  49%{ opacity: .9; }
+  59%, 100%{ transform: scale(2.4); opacity: 0; }
+}
+
+.id-iris{ position: absolute; inset: 0; animation-name: idIris; }
+.id-iris img{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; animation-name: idIrisImg; }
+@keyframes idIris{
+  0%, 61%{ clip-path: circle(0% at 50% 44%); }
+  67%, 76%{ clip-path: circle(38% at 50% 44%); }
+  80%, 100%{ clip-path: circle(0% at 50% 44%); }
+}
+@keyframes idIrisImg{
+  0%, 61%{ filter: blur(14px); transform: scale(1.35); }
+  71%{ filter: blur(0); transform: scale(1.06); }
+  80%, 100%{ filter: blur(0); transform: scale(1); }
+}
+.id-mono{ position: absolute; bottom: 22cqw; margin: 0; font-family: var(--f-mono); font-size: 4cqw; animation-name: idMono; }
+@keyframes idMono{
+  0%, 64%{ opacity: 0; transform: translateY(10px); filter: blur(4px); }
+  68%, 76%{ opacity: 1; transform: none; filter: blur(0); }
+  79%, 100%{ opacity: 0; }
+}
+
+.id-motion{ font-size: 21cqw; }
+.id-motion span{ animation-name: idWave; }
+.id-motion .r{ color: var(--red); }
+@keyframes idWave{
+  0%, 81%{ transform: translateY(115%); }
+  86%{ transform: translateY(-10%); }
+  88%, 92%{ transform: translateY(0); }
+  93.5%{ transform: translateY(-7%); }
+  95%, 100%{ transform: translateY(0); }
+}
+
+.id-slash{ position: absolute; z-index: 5; top: -50%; left: -20%; width: 140%; height: 200%; background: var(--red); }
+.id-slash-a{ animation-name: idSlashA; }
+.id-slash-b{ animation-name: idSlashB; }
+@keyframes idSlashA{
+  0%{ transform: translateX(0) rotate(-22deg); }
+  8%, 100%{ transform: translateX(175%) rotate(-22deg); }
+}
+@keyframes idSlashB{
+  0%, 93%{ transform: translateX(-175%) rotate(-22deg); }
+  100%{ transform: translateX(0) rotate(-22deg); }
+}
+
+/* ── Lampo rosso al cambio sezione chiaro/scuro ── */
+.streak{
+  position: fixed; z-index: 115; left: -20vw; top: 50%; width: 140vw; height: 2px; pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(232,0,14,.0) 10%, #E8000E 50%, rgba(232,0,14,0) 90%, transparent);
+  box-shadow: 0 0 24px 4px rgba(232,0,14,.55);
+  opacity: 0; transform: translateY(-60vh) rotate(-9deg);
+}
+.streak.go{ animation: streak 1.1s var(--ease) forwards; }
+.streak.go.up{ animation-name: streakUp; }
+@keyframes streak{ 0%{ opacity: 0; transform: translateY(-62vh) rotate(-9deg); } 18%{ opacity: 1; } 100%{ opacity: 0; transform: translateY(62vh) rotate(-9deg); } }
+@keyframes streakUp{ 0%{ opacity: 0; transform: translateY(62vh) rotate(-9deg); } 18%{ opacity: 1; } 100%{ opacity: 0; transform: translateY(-62vh) rotate(-9deg); } }
+
+/* ── Titoli: righe che salgono da una maschera, punto rosso che "cade" ── */
+.ln{ display: block; overflow: hidden; padding-bottom: .1em; margin-bottom: -.1em; }
+.ln > span{ display: inline-block; transform: translateY(108%); transition: transform 1.15s var(--ease); }
+.ln:nth-child(2) > span{ transition-delay: .09s; }
+.ln:nth-child(3) > span{ transition-delay: .18s; }
+.t-in .ln > span{ transform: none; }
+.h2 .dot, .contact-title .dot, .feat-title .dot{ display: inline-block; transform-origin: 50% 80%; }
+.t-in .dot{ animation: dotDrop 1s var(--ease) .55s both; }
+@keyframes dotDrop{ 0%{ transform: translateY(-120%) scale(.2); opacity: 0; } 55%{ transform: translateY(6%) scale(1.25, .8); opacity: 1; } 75%{ transform: translateY(-4%) scale(.92, 1.08); } 100%{ transform: none; } }
+
+/* ── Hero: lettere a peso variabile ── */
+.hero-title .ch{ display: inline-block; font-weight: 800; will-change: font-weight; }
+
+/* ── Card con inclinazione 3D e riflesso che segue il cursore ── */
+.feat-media, .tile{ perspective: 1100px; }
+.media-frame{ transform-style: preserve-3d; }
+.media-frame::before{
+  content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none; border-radius: inherit;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,.22), rgba(255,255,255,0) 45%);
+  opacity: 0; transition: opacity .5s var(--ease);
+}
+.feat-media:hover .media-frame::before, .tile:hover .media-frame::before{ opacity: 1; }
+.media-frame.tilting{ transition: transform .25s ease-out, border-radius .9s var(--ease); }
+
+/* ── Galleria: inclinazione in base alla velocità ── */
+.shot{ transform: skewX(var(--sk, 0deg)); transition: transform .6s var(--ease); }
+
+/* ── Bottoni magnetici ── */
+.magnet{ transition: translate .5s var(--ease); }
+
+@media (prefers-reduced-motion: reduce){
+  .ident *{ animation: none !important; }
+  .id-s1 .id-brand span{ transform: none; }
+  .id-slash, .id-paper, .id-s2, .id-s3, .id-s4, .id-s5{ display: none; }
+  .ln > span{ transform: none !important; }
+  .streak{ display: none; }
+}
