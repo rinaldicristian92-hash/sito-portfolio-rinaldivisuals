@@ -462,15 +462,6 @@ html.lb-open,body.lb-open{overflow:hidden}
   .tl-item{grid-template-columns:1fr;gap:.5rem}
   .tl-tag{display:none}
 }
-.tl-live{
-  display:inline-flex;align-items:center;gap:.4rem;vertical-align:middle;
-  margin-left:.6rem;transform:translateY(-2px);
-  font-style:normal;font-size:.56rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
-  background:var(--red);color:#fff;border-radius:99px;padding:.3rem .62rem;white-space:nowrap;
-}
-.tl-live::before{content:'';width:5px;height:5px;border-radius:50%;background:#fff;animation:pulseDot 1.8s ease-in-out infinite}
-@keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.3}}
-
 /* ── COMPETENZE ── */
 .skills{
   margin-top:clamp(2.6rem,5vw,4rem);background:rgba(255,255,255,.03);
@@ -879,7 +870,7 @@ footer{
       <div class="tl-item rv">
         <span class="tl-year">2026</span>
         <div class="tl-body">
-          <h3 data-i18n-html="j1_t">Social Media Manager — MyPetLab <em class="tl-live">In corso</em></h3>
+          <h3 data-i18n="j1_t">Social Media Manager — MyPetLab</h3>
           <p data-i18n="j1_p">Direzione visiva, produzione contenuti e coerenza dell'identità nel piano editoriale.</p>
         </div>
         <span class="tl-tag" data-i18n="j1_tag">Social Media</span>
@@ -887,7 +878,7 @@ footer{
       <div class="tl-item rv">
         <span class="tl-year">2026</span>
         <div class="tl-body">
-          <h3 data-i18n-html="j2_t">Social Media Manager — GAM Ristorazione <em class="tl-live">In corso</em></h3>
+          <h3 data-i18n="j2_t">Social Media Manager — GAM Ristorazione</h3>
           <p data-i18n="j2_p">Gestione della pagina social: direzione visiva, creazione contenuti, coerenza del brand.</p>
         </div>
         <span class="tl-tag" data-i18n="j2_tag">Social Media</span>
@@ -1113,10 +1104,10 @@ const I18N = {
     pr2_t:'Idea & Sviluppo', pr2_p:'Costruisco concept, esploro direzioni visive e raffino ogni dettaglio fino a trovare la soluzione che funziona davvero.',
     pr3_t:'Consegna & Supporto', pr3_p:'Rilascio file pronti all\'uso in tutti i formati necessari, con supporto post-consegna incluso.',
     jr_kicker:'Percorso', jr_title:'Esperienze<br>&amp; formazione<span style="color:var(--red)">.</span>',
-    j1_t:'Social Media Manager — MyPetLab <em class="tl-live">In corso</em>',
+    j1_t:'Social Media Manager — MyPetLab',
     j1_p:"Direzione visiva, produzione contenuti e coerenza dell'identità nel piano editoriale.",
     j1_tag:'Social Media',
-    j2_t:'Social Media Manager — GAM Ristorazione <em class="tl-live">In corso</em>',
+    j2_t:'Social Media Manager — GAM Ristorazione',
     j2_p:'Gestione della pagina social: direzione visiva, creazione contenuti, coerenza del brand.',
     j2_tag:'Social Media',
     j3_t:'Borghi in Piazza — Collana cartografica PNRR',
@@ -1193,10 +1184,10 @@ const I18N = {
     pr2_t:'Concept & Development', pr2_p:'I build concepts, explore visual directions and refine every detail until I find the solution that truly works.',
     pr3_t:'Delivery & Support', pr3_p:'I deliver production-ready files in every required format, with post-delivery support included.',
     jr_kicker:'Journey', jr_title:'Experience<br>&amp; education<span style="color:var(--red)">.</span>',
-    j1_t:'Social Media Manager — MyPetLab <em class="tl-live">Ongoing</em>',
+    j1_t:'Social Media Manager — MyPetLab',
     j1_p:'Visual direction, content production and identity consistency across the editorial plan.',
     j1_tag:'Social Media',
-    j2_t:'Social Media Manager — GAM Ristorazione <em class="tl-live">Ongoing</em>',
+    j2_t:'Social Media Manager — GAM Ristorazione',
     j2_p:'Running the social page: visual direction, content creation, brand consistency.',
     j2_tag:'Social Media',
     j3_t:'Borghi in Piazza — PNRR map collection',
