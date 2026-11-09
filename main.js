@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════════
-   RINALDI VISUALS — main.js
+   GOUACHE — main.js
    Contenuti (lavori, motion, foto, percorso) · lingua IT/EN · motion · avatar
    Per aggiungere un lavoro o un video: modifica gli array WORKS / MOTION qui sotto.
    ════════════════════════════════════════════════════════════ */
@@ -20,7 +20,7 @@ const I18N = {
   it: {
     skip: 'Vai ai lavori',
     nav_works: 'Lavori', nav_motion: 'Motion', nav_photo: 'Fotografia', nav_about: 'Chi sono', nav_contact: 'Contatti',
-    hero_eyebrow: 'Graphic designer e visual director a Foggia',
+    hero_eyebrow: 'Cristian Rinaldi · graphic designer e visual director a Foggia', hero_say: 'si legge',
     hero_sub: 'Costruisco identità visive che si capiscono in un secondo e si ricordano a lungo.',
     hero_cta1: 'Guarda i lavori', hero_cta2: 'Parliamone', scroll: 'Scorri',
     statement: "Ogni progetto nasce da un'idea semplice: il design deve *emozionare.* Unisco tipografia, fotografia e colore per costruire identità che *non si dimenticano.*",
@@ -38,6 +38,7 @@ const I18N = {
     ab_title: 'Cristian<br>Rinaldi<em class="dot">.</em>',
     ab_p1: 'Sono un graphic designer e visual director di Foggia. Progetto identità visive, editoria, contenuti social e siti, e fotografo le persone e i luoghi che racconto.',
     ab_p2: 'Mi sono diplomato Tecnico Grafico all\'I.I.S. Einaudi–Grieco e oggi studio Progettazione Artistica per l\'Impresa, indirizzo Graphic Design, all\'Accademia di Belle Arti di Foggia.',
+    ab_p0: 'Gouache è il nome del mio studio. Viene dalla pittura opaca e coprente: colori pieni, niente effetti, forme morbide. È così che lavoro.',
     ab_p3: 'I miei lavori sono stati scelti per campagne ufficiali, eventi cittadini e una mostra collettiva. Oggi curo la comunicazione social di GAM Ristorazione e MyPetLab.',
     f1_t: 'Base', f1_d: 'Foggia, anche da remoto', f2_t: 'Strumenti', f3_t: 'Lingue', f3_d: 'Italiano, inglese',
     pr_title: 'Come<br>lavoro<em class="dot">.</em>',
@@ -50,13 +51,13 @@ const I18N = {
     ct_sub: 'Hai un\'idea, un brand da costruire o un progetto da rendere più forte? Scrivimi, ti rispondo entro un giorno.',
     ct_links: 'Tutti i link', ct_qr: 'Inquadra per tutti i miei link',
     ct_place: 'Foggia, Italia. Disponibile anche da remoto.',
-    ft_made: 'Progettato e costruito a Foggia.', ft_top: 'Torna su',
+    ft_made: 'Gouache è lo studio di Cristian Rinaldi. Progettato e costruito a Foggia.', ft_top: 'Torna su',
     bub_idle: 'Ancora lì?', bub_contact: 'Parliamone.', bub_lang: 'Ok, cambio lingua.', bub_hello: 'Ciao, sono Cristian.',
   },
   en: {
     skip: 'Skip to work',
     nav_works: 'Work', nav_motion: 'Motion', nav_photo: 'Photography', nav_about: 'About', nav_contact: 'Contact',
-    hero_eyebrow: 'Graphic designer and visual director in Foggia, Italy',
+    hero_eyebrow: 'Cristian Rinaldi · graphic designer and visual director in Foggia, Italy', hero_say: 'say it',
     hero_sub: 'I build visual identities that make sense in a second and stay with you for a long time.',
     hero_cta1: 'See the work', hero_cta2: "Let's talk", scroll: 'Scroll',
     statement: 'Every project starts from a simple idea: design has to *move you.* I bring typography, photography and colour together to build identities that *people remember.*',
@@ -74,6 +75,7 @@ const I18N = {
     ab_title: 'Cristian<br>Rinaldi<em class="dot">.</em>',
     ab_p1: "I'm a graphic designer and visual director based in Foggia, Italy. I design visual identities, editorial pieces, social content and websites, and I photograph the people and places I tell stories about.",
     ab_p2: 'I graduated as a Graphic Technician at I.I.S. Einaudi–Grieco and I now study Art Direction for Business, Graphic Design track, at the Academy of Fine Arts of Foggia.',
+    ab_p0: 'Gouache is the name of my studio. It comes from the opaque, matte paint: solid colours, no tricks, soft shapes. That is how I work.',
     ab_p3: 'My work has been chosen for official campaigns, city events and a group exhibition. Today I run social media communication for GAM Ristorazione and MyPetLab.',
     f1_t: 'Based in', f1_d: 'Foggia, also remote', f2_t: 'Tools', f3_t: 'Languages', f3_d: 'Italian, English',
     pr_title: 'How<br>I work<em class="dot">.</em>',
@@ -86,7 +88,7 @@ const I18N = {
     ct_sub: 'Got an idea, a brand to build or a project that needs a stronger visual voice? Write to me, I reply within a day.',
     ct_links: 'All links', ct_qr: 'Scan for all my links',
     ct_place: 'Foggia, Italy. Also available remotely.',
-    ft_made: 'Designed and built in Foggia.', ft_top: 'Back to top',
+    ft_made: 'Gouache is Cristian Rinaldi\'s studio. Designed and built in Foggia.', ft_top: 'Back to top',
     bub_idle: 'Still there?', bub_contact: "Let's talk.", bub_lang: 'Fine, switching language.', bub_hello: "Hi, I'm Cristian.",
   }
 };
@@ -160,8 +162,8 @@ const WORKS = [
    Per aggiungere un video: copia un oggetto e cambia src / poster / testi. */
 const MOTION = [
   { type: 'ident',
-    it: { t: 'Ident Rinaldi Visuals', d: 'Motion graphic animata in codice, loop da 10 secondi' },
-    en: { t: 'Rinaldi Visuals ident', d: 'Motion graphic built in code, 10-second loop' } },
+    it: { t: 'Ident Gouache', d: 'Motion graphic animata in codice, loop da 10 secondi' },
+    en: { t: 'Gouache ident', d: 'Motion graphic built in code, 10-second loop' } },
   { src: 'assets/Maya_Style_Reel_01.mp4', poster: 'assets/maya-poster.jpg',
     it: { t: 'Maya Style', d: 'Reel per toelettatura, Foggia' },
     en: { t: 'Maya Style', d: 'Reel for a pet grooming salon, Foggia' } },
@@ -238,9 +240,9 @@ function renderWorks(){
   });
   const more = document.createElement('a');
   more.className = 'tile-more';
-  more.href = 'https://www.instagram.com/rinaldi.visuals/'; more.target = '_blank'; more.rel = 'noopener';
+  more.href = 'https://www.instagram.com/gouache__/'; more.target = '_blank'; more.rel = 'noopener';
   more.dataset.cursor = 'Instagram';
-  more.innerHTML = `<strong>${t('more_t')}<em class="dot">.</em></strong><span>${t('more_p')}<br>@rinaldi.visuals</span>`;
+  more.innerHTML = `<strong>${t('more_t')}<em class="dot">.</em></strong><span>${t('more_p')}<br>@gouache__</span>`;
   grid.appendChild(more);
 }
 
@@ -322,7 +324,7 @@ function renderDynamic(){
 function setLang(next){
   if (next === lang) return;
   lang = next; store.set('rv-lang', lang);
-  avatarFlash('impassibile', 1500, t('bub_lang'));
+  avatarFlash('soddisfatto', 1500, t('bub_lang'));
   if (reduced){ applyStatic(); renderDynamic(); return; }
   document.body.classList.add('lang-swap');
   $$('#featured, #grid, #timeline, #statementText, #motionList').forEach(e => e.classList.add('i18n-dyn'));
@@ -442,7 +444,7 @@ function onScroll(){
   updateTheme(); updateStatement(); updatePath(); updateParallax();
   const cur = updateNav();
   avatarSection(cur);
-  if (Math.abs(velocity) > 75) avatarFlash('scettico', 1200);
+  if (Math.abs(velocity) > 75) avatarFlash('sgranato', 1200);
   poke();
 }
 
@@ -524,7 +526,7 @@ addEventListener('pointermove', e => { if (scrollY < innerHeight){ gtx = e.clien
    Priorità: case study > lampo (lingua, scroll veloce) > hover lavoro > inattività > sezione */
 const faces = $$('#avatarFace img');
 const bubble = $('#avatarBubble');
-const av = { base: 'neutro', hover: false, caseOpen: false, flash: null, idle: false, current: 'neutro' };
+const av = { base: 'impassibile', hover: false, caseOpen: false, flash: null, idle: false, current: 'impassibile' };
 let flashTimer, idleTimer, bubbleTimer;
 function setFace(m){
   if (av.current === m) return;
@@ -532,7 +534,7 @@ function setFace(m){
   faces.forEach(img => img.classList.toggle('on', img.dataset.mood === m));
 }
 function resolveFace(){
-  setFace(av.caseOpen ? 'sgranato' : av.flash ? av.flash : av.hover ? 'soddisfatto' : av.idle ? 'stanco' : av.base);
+  setFace(av.caseOpen ? 'sgranato' : av.flash ? av.flash : av.hover ? 'soddisfatto' : av.idle ? 'serio' : av.base);
 }
 function say(text, ms = 2200){
   if (!text) return;
@@ -545,7 +547,7 @@ function avatarFlash(m, ms, text){
 }
 let lastSec = '';
 function avatarSection(cur){
-  const base = cur === 'contact' ? 'serio' : 'neutro';
+  const base = cur === 'contact' ? 'serio' : 'impassibile';
   if (cur !== lastSec){ lastSec = cur; if (cur === 'contact') say(t('bub_contact')); }
   if (av.base !== base){ av.base = base; resolveFace(); }
 }
@@ -741,7 +743,16 @@ let hpx = -9999, hpy = -9999, heroHover = false;
 const heroEl = $('.hero');
 heroEl.addEventListener('pointermove', e => { hpx = e.clientX; hpy = e.clientY; heroHover = true; });
 heroEl.addEventListener('pointerleave', () => { heroHover = false; });
+const heroLogo = $('.hero-logo');
+setTimeout(() => heroLogo && heroLogo.classList.add('breathe'), 2600);
 function heroTick(time){
+  // il lettering si sposta appena verso il cursore, come colore ancora fresco
+  if (heroLogo && finePointer && !reduced && scrollY < innerHeight){
+    const tx = heroHover ? (hpx / innerWidth - .5) * 18 : 0, ty = heroHover ? (hpy / innerHeight - .5) * 12 : 0;
+    heroLogo._x = (heroLogo._x || 0) + (tx - (heroLogo._x || 0)) * .06;
+    heroLogo._y = (heroLogo._y || 0) + (ty - (heroLogo._y || 0)) * .06;
+    heroLogo.style.translate = `${heroLogo._x.toFixed(2)}px ${heroLogo._y.toFixed(2)}px`;
+  }
   if (reduced || scrollY > innerHeight || !document.body.classList.contains('is-loaded')) return;
   heroLetters.forEach((L, i) => {
     let target;

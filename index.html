@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <!--
-  RINALDI VISUALS — portfolio 2026
-  Direzione: "Luce diffusa" — immagini che vanno a fuoco, linee morbide, rosso come unica fonte di calore.
+  GOUACHE (ex Rinaldi Visuals) — portfolio di Cristian Rinaldi
+  Direzione: pittura opaca — macchie morbide di colore, navy come struttura, un solo punto d'ocra.
   File: index.html (struttura) · style.css (stile) · main.js (motion, lingua, avatar)
 -->
 <html lang="it">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Rinaldi Visuals — Cristian Rinaldi, graphic designer a Foggia</title>
+<title>Gouache — Cristian Rinaldi, graphic designer a Foggia</title>
 <meta name="description" content="Portfolio di Cristian Rinaldi, graphic designer e visual director a Foggia: identità visive, editoria, web app, fotografia e motion.">
-<meta name="theme-color" content="#1A1A1A">
-<meta property="og:title" content="Rinaldi Visuals — Cristian Rinaldi">
+<meta name="theme-color" content="#202A44">
+<meta property="og:title" content="Gouache — Cristian Rinaldi">
 <meta property="og:description" content="Graphic designer e visual director a Foggia. Identità visive, editoria, web, fotografia, motion.">
-<meta property="og:image" content="assets/ritratto.jpg">
-<link rel="icon" type="image/png" href="assets/logo-mark.png">
-<link rel="apple-touch-icon" href="assets/logo-mark.png">
+<meta property="og:image" content="assets/og-gouache.png">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
 
-<link rel="preload" as="font" type="font/woff2" href="fonts/bricolage-grotesque-latin-opsz-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/fraunces-latin-full-normal.woff2" crossorigin>
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="preload" as="image" href="assets/ritratto.jpg">
+<link rel="preload" as="image" href="assets/gouache-navy.svg">
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body data-theme="dark">
+<body data-theme="light">
 
 <a class="skip" href="#works" data-i18n="skip">Vai ai lavori</a>
 
 <!-- ═════ LOADER ═════ -->
 <div class="loader" id="loader" aria-hidden="true">
-  <img src="assets/logo-mark.png" alt="" class="loader-mark">
+  <img src="assets/gouache-neutral.svg" alt="" class="loader-mark">
 </div>
 
 <!-- ═════ ELEMENTI FISSI ═════ -->
@@ -40,10 +40,9 @@
 
 <!-- ═════ NAVBAR ═════ -->
 <header class="nav" id="nav">
-  <a href="#top" class="nav-brand" aria-label="Rinaldi Visuals, torna su">
-    <img src="assets/logo-mark.png" alt="" class="nav-mark nav-mark--light">
-    <img src="assets/logo-mark-ink.png" alt="" class="nav-mark nav-mark--ink">
-    <span>Rinaldi Visuals</span>
+  <a href="#top" class="nav-brand" aria-label="Gouache, torna su">
+    <img src="assets/gouache-neutral.svg" alt="" class="nav-mark nav-mark--light">
+    <img src="assets/gouache-navy.svg" alt="" class="nav-mark nav-mark--ink">
   </a>
   <nav class="nav-links" aria-label="Sezioni">
     <a href="#works" data-i18n="nav_works">Lavori</a>
@@ -76,18 +75,16 @@
 <main>
 
 <!-- ═════ 1 · HERO ═════ -->
-<section class="hero" id="top" data-theme="dark">
+<section class="hero" id="top" data-theme="light">
+  <div class="blobs" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="ocra"></i></div>
   <div class="hero-glow" id="heroGlow" aria-hidden="true"></div>
-  <figure class="hero-portrait" data-speed="-0.12">
-    <img src="assets/ritratto.jpg" alt="Ritratto di Cristian Rinaldi" width="1612" height="2000">
-  </figure>
 
   <div class="hero-inner">
-    <p class="hero-eyebrow" data-i18n="hero_eyebrow">Graphic designer e visual director a Foggia</p>
-    <h1 class="hero-title" aria-label="Rinaldi Visuals">
-      <span class="line"><span>Rinaldi</span></span>
-      <span class="line"><span>Visuals<em class="dot">.</em></span></span>
+    <p class="hero-eyebrow" data-i18n="hero_eyebrow">Cristian Rinaldi · graphic designer e visual director a Foggia</p>
+    <h1 class="hero-title">
+      <img src="assets/gouache-navy.svg" alt="Gouache" class="hero-logo" width="2390" height="1035">
     </h1>
+    <p class="hero-say"><span data-i18n="hero_say">si legge</span> <b>guàsh</b></p>
     <p class="hero-sub" data-i18n-html="hero_sub">Costruisco identità visive che si capiscono in un secondo e si ricordano a lungo.</p>
     <div class="hero-ctas">
       <a href="#works" class="btn btn--solid" data-cursor="" data-i18n="hero_cta1">Guarda i lavori</a>
@@ -103,19 +100,20 @@
 <!-- ═════ STRISCIA IN MOVIMENTO ═════ -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track" id="marquee">
-    <span>Brand identity</span><img src="assets/logo-mark.png" alt=""><span><i>Editoria</i></span><img src="assets/logo-mark.png" alt="">
-    <span>Web app</span><img src="assets/logo-mark.png" alt=""><span><i>Fotografia</i></span><img src="assets/logo-mark.png" alt="">
-    <span>Motion</span><img src="assets/logo-mark.png" alt=""><span><i>Social</i></span><img src="assets/logo-mark.png" alt="">
+    <span>Brand identity</span><b class="mq-blob"></b><span><i>Editoria</i></span><b class="mq-blob b2"></b>
+    <span>Web app</span><b class="mq-blob b3"></b><span><i>Fotografia</i></span><b class="mq-blob"></b>
+    <span>Motion</span><b class="mq-blob b2"></b><span><i>Social</i></span><b class="mq-blob b3"></b>
   </div>
 </div>
 
 <!-- ═════ 2 · STATEMENT ═════ -->
-<section class="statement-sec" id="statement" data-theme="light">
+<section class="statement-sec" id="statement" data-theme="dark">
+  <div class="blobs blobs--quiet" aria-hidden="true"><i></i><i></i></div>
   <p class="statement" id="statementText"></p>
 </section>
 
 <!-- ═════ 3 · LAVORI ═════ -->
-<section class="works" id="works" data-theme="dark">
+<section class="works" id="works" data-theme="light">
   <div class="sec-head">
     <h2 class="h2" data-i18n-html="wk_title">Lavori<br>selezionati<em class="dot">.</em></h2>
     <p class="sec-note" data-i18n-html="wk_note">Tre progetti raccontati per intero, poi una selezione di stampa ed editoria. Tocca un lavoro per aprirlo.</p>
@@ -137,7 +135,7 @@
       <div class="phone is-ident" id="phone" data-cursor="">
         <!-- Ident animato in codice: 5 scene in loop da 10 secondi -->
         <div class="ident" id="ident" aria-hidden="true">
-          <div class="id-ui id-ui-top"><span>rinaldi visuals</span><span>ident · 2026</span></div>
+          <div class="id-ui id-ui-top"><span>gouache</span><span>ident · 2026</span></div>
           <div class="id-scene id-s1">
             <p class="id-word id-brand"><span>B</span><span>r</span><span>a</span><span>n</span><span>d</span></p>
           </div>
@@ -145,12 +143,12 @@
           <div class="id-scene id-s2"><p class="id-serif">editoria<em>.</em></p></div>
           <div class="id-scene id-s3">
             <span class="id-ring"></span><span class="id-ring id-ring2"></span>
-            <img src="assets/logo-mark.png" alt="" class="id-mark">
+            <img src="assets/gouache-neutral.svg" alt="" class="id-mark">
             <span class="id-cut id-cut1"></span><span class="id-cut id-cut2"></span>
           </div>
           <div class="id-scene id-s4">
-            <div class="id-iris"><img src="assets/photo-16.jpg" alt=""></div>
-            <p class="id-mono">foto / ritratto</p>
+            <div class="id-iris"><img src="assets/photo-08.jpg" alt=""></div>
+            <p class="id-mono">foto / architettura</p>
           </div>
           <div class="id-scene id-s5">
             <p class="id-word id-motion"><span>M</span><span>o</span><span>t</span><span>i</span><span>o</span><span>n</span><span class="r">.</span></p>
@@ -194,6 +192,7 @@
   <div class="about-copy">
     <h2 class="h2" data-i18n-html="ab_title">Cristian<br>Rinaldi<em class="dot">.</em></h2>
     <p class="lead" data-i18n-html="ab_p1">Sono un graphic designer e visual director di Foggia. Progetto identità visive, editoria, contenuti social e siti, e fotografo le persone e i luoghi che racconto.</p>
+    <p data-i18n-html="ab_p0">Gouache è il nome del mio studio. Viene dalla pittura opaca e coprente: colori pieni, niente effetti, forme morbide. È così che lavoro.</p>
     <p data-i18n-html="ab_p2">Mi sono diplomato Tecnico Grafico all'I.I.S. Einaudi–Grieco e oggi studio Progettazione Artistica per l'Impresa, indirizzo Graphic Design, all'Accademia di Belle Arti di Foggia.</p>
     <p data-i18n-html="ab_p3">I miei lavori sono stati scelti per campagne ufficiali, eventi cittadini e una mostra collettiva. Oggi curo la comunicazione social di GAM Ristorazione e MyPetLab.</p>
     <dl class="facts">
@@ -232,18 +231,18 @@
 
 <!-- ═════ 9 · CONTATTI ═════ -->
 <section class="contact" id="contact" data-theme="dark">
-  <div class="contact-glow" aria-hidden="true"></div>
+  <div class="blobs blobs--contact" aria-hidden="true"><i></i><i></i><i></i></div>
   <h2 class="contact-title" data-i18n-html="ct_title">Iniziamo<br>un progetto<em class="dot">.</em></h2>
   <p class="contact-sub" data-i18n="ct_sub">Hai un'idea, un brand da costruire o un progetto da rendere più forte? Scrivimi, ti rispondo entro un giorno.</p>
   <a class="contact-mail" href="mailto:rinaldicristian92@gmail.com?subject=Nuovo%20progetto" data-cursor="">rinaldicristian92@gmail.com</a>
   <div class="contact-row">
     <a class="btn btn--solid" href="https://wa.me/393500883962" target="_blank" rel="noopener" data-cursor="">WhatsApp</a>
-    <a class="btn btn--ghost" href="https://www.instagram.com/rinaldi.visuals/" target="_blank" rel="noopener" data-cursor="">Instagram</a>
+    <a class="btn btn--ghost" href="https://www.instagram.com/gouache__/" target="_blank" rel="noopener" data-cursor="">Instagram</a>
     <a class="btn btn--ghost" href="https://www.linkedin.com/in/cristian-rinaldi-514b553a0/" target="_blank" rel="noopener" data-cursor="">LinkedIn</a>
     <a class="btn btn--ghost" href="https://rinaldicristian92-hash.github.io/linkthreek/" target="_blank" rel="noopener" data-cursor="" data-i18n="ct_links">Tutti i link</a>
   </div>
   <div class="contact-qr">
-    <img src="assets/qr-linktree.png" alt="QR code verso tutti i link di Rinaldi Visuals" loading="lazy">
+    <img src="assets/qr-linktree.png" alt="QR code verso tutti i link di Gouache" loading="lazy">
     <span data-i18n="ct_qr">Inquadra per tutti i miei link</span>
   </div>
   <p class="contact-place" data-i18n="ct_place">Foggia, Italia. Disponibile anche da remoto.</p>
@@ -252,7 +251,7 @@
 </main>
 
 <footer class="footer" data-theme="dark">
-  <img src="assets/logo.png" alt="Rinaldi Visuals" class="footer-logo" loading="lazy">
+  <img src="assets/gouache-neutral.svg" alt="Gouache" class="footer-logo" loading="lazy">
   <p>© <span id="year">2026</span> Cristian Rinaldi. <span data-i18n="ft_made">Progettato e costruito a Foggia.</span></p>
   <a href="#top" class="footer-top" data-i18n="ft_top">Torna su</a>
 </footer>
@@ -261,13 +260,10 @@
 <button class="avatar" id="avatar" type="button" aria-label="Contattami">
   <span class="avatar-bubble" id="avatarBubble" aria-live="polite"></span>
   <span class="avatar-face" id="avatarFace">
-    <img src="assets/avatar-neutro.jpg" alt="" data-mood="neutro" class="on">
-    <img src="assets/soddisfatto.jpg" alt="" data-mood="soddisfatto" loading="lazy">
-    <img src="assets/sgranato.jpg" alt="" data-mood="sgranato" loading="lazy">
-    <img src="assets/scettico.png" alt="" data-mood="scettico" loading="lazy">
-    <img src="assets/stanco.jpg" alt="" data-mood="stanco" loading="lazy">
-    <img src="assets/serio.jpg" alt="" data-mood="serio" loading="lazy">
-    <img src="assets/impassibile.jpg" alt="" data-mood="impassibile" loading="lazy">
+    <img src="assets/mascotte/impassibile.svg" alt="" data-mood="impassibile" class="on">
+    <img src="assets/mascotte/soddisfatto.svg" alt="" data-mood="soddisfatto">
+    <img src="assets/mascotte/sgranato.svg" alt="" data-mood="sgranato">
+    <img src="assets/mascotte/serio.svg" alt="" data-mood="serio">
   </span>
 </button>
 
